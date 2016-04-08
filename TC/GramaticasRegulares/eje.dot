@@ -1,0 +1,10 @@
+digraph{
+S [color = "green"];
+S->X[label ="x"];
+S->Y[label ="y"];
+X [color = "red"];
+X->X[label ="x"];
+X->Y[label ="y"];
+Y [color = "red"];
+Y->X[label ="x"];
+}

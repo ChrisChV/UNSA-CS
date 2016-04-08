@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1441312308 source:/home/cs-unsa-lab_12/Documents/Chris/TC/Semestre4/LectorDeTExtoPlano/main.cpp
+	<iostream>
+	<fstream>
+

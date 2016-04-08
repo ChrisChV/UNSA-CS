@@ -1,0 +1,2 @@
+Este texto se encuentra en el archivo t2,
+no se si se va unir con el archivo t1;
