@@ -1,4 +1,0 @@
-hola este es un texto
-plano que quiero que
-el programa
-lea 

@@ -1,9 +1,0 @@
-N:S,X,Y;
-T:x,y;
-R:
-S->xX
-S->yY
-X->yY
-X->%
-Y->xX
-Y->%
