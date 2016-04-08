@@ -1,0 +1,9 @@
+digraph{
+2 [label = "2 - hola2" color=black]
+2->1
+2->3
+1 [label = "1 - hola1" color=black]
+3 [label = "3 - hola3" color=black]
+3->30
+30 [label = "30 - hola30" color=red]
+}

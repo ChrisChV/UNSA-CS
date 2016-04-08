@@ -1,0 +1,15 @@
+# depslib dependency file v1.0
+1446358769 source:/home/chris/Documentos/Semestre/Semestre4/AED CHRISTIAN/Fibonacci Heap/main.cpp
+	<iostream>
+	"FibonacciHeap.h"
+	"stdlib.h"
+	"time.h"
+
+1446358870 /home/chris/Documentos/Semestre/Semestre4/AED CHRISTIAN/Fibonacci Heap/include/FibonacciHeap.h
+	"list"
+	"map"
+	"fstream"
+	"iostream"
+
+1446348499 source:/home/chris/Documentos/Semestre/Semestre4/AED CHRISTIAN/Fibonacci Heap/src/FibonacciHeap.cpp
+

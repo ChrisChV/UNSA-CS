@@ -1,0 +1,13 @@
+# depslib dependency file v1.0
+1446323979 source:/home/chris/Documentos/Semestre/Semestre4/AED CHRISTIAN/Hash/main.cpp
+	<iostream>
+	"Hash.h"
+	"stdlib.h"
+	"time.h"
+
+1446323924 /home/chris/Documentos/Semestre/Semestre4/AED CHRISTIAN/Hash/include/Hash.h
+	"list"
+	"algorithm"
+
+1446320362 source:/home/chris/Documentos/Semestre/Semestre4/AED CHRISTIAN/Hash/src/Hash.cpp
+

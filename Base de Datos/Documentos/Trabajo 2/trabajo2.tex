@@ -1,0 +1,400 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{color}
+\usepackage{parskip}
+\usepackage{graphicx}
+\usepackage{multirow}
+\usepackage{listings}
+\definecolor{mygreen}{rgb}{0,0.6,0}
+\definecolor{lbcolor}{rgb}{0.9,0.9,0.9}
+
+\lstset{
+backgroundcolor=\color{lbcolor},
+    tabsize=4,    
+%   rulecolor=,
+    language=SQL,
+        basicstyle=\scriptsize,
+        aboveskip={1.5\baselineskip},
+        columns=fixed,
+        showstringspaces=false,
+        extendedchars=false,
+        breaklines=true,
+        prebreak = \raisebox{0ex}[0ex][0ex]{\ensuremath{\hookleftarrow}},
+        frame=single,
+        numbers=left,
+        showtabs=false,
+        showspaces=false,
+        showstringspaces=false,
+        identifierstyle=\ttfamily,
+        keywordstyle=\color[rgb]{0,0,1},
+        commentstyle=\color[rgb]{0.026,0.112,0.095},
+        stringstyle=\color{red},
+        numberstyle=\color[rgb]{0.205, 0.142, 0.73},
+%        \lstdefinestyle{C++}{language=C++,style=numbers}’.
+}
+
+\begin{document}
+
+\section{Ejercicio 1}
+
+\begin{lstlisting}
+create database tienda;
+use tienda;
+
+create table Clientes(
+DNI char(8) not null,
+apellidos varchar(100) not null,
+nombres varchar (100) not null,
+dir varchar(200) not null,
+fechanac date not null);
+
+describe Clientes;
+
+alter table Clientes
+add constraint pk_Clientes
+primary key(DNI);
+
+create table Producto(
+codPro int not null,
+nombre varchar(100) not null,
+RUC char(11) not null);
+
+describe Producto;
+
+alter table Producto
+add constraint pk_Producto
+primary key(codPro);
+
+create table Compras(
+codCompras int not null,
+DNI char(8) not null,
+codPro int not null);
+
+alter table Compras
+add constraint pk_compras
+primary key(codCompras);
+
+alter table Compras
+add constraint fk_compras_cliente
+foreign key(DNI)
+references Clientes(DNI);
+
+alter table Compras
+add constraint fk_compras_producto
+foreign key(codPro)
+references Producto(codPro);
+
+create table Proveedor(
+RUC char(11) not null,
+nombre varchar(100) not null,
+dir varchar(200));
+
+describe Proveedor;
+
+alter table Proveedor
+add constraint pk_proveedor
+primary key(RUC);
+
+alter table Producto
+add constraint fk_producto_proveedor
+foreign key(RUC)
+references Proveedor(RUC);
+\end{lstlisting}
+
+\section{Ejercicio 2}
+
+\begin{lstlisting}
+create database ejercicio2;
+use ejercicio2;
+
+create table Camiones(
+Matricula char(11) not null,
+Modelo varchar(100) not null,
+Tipo varchar(100) not null,
+Potencia varchar(100) not null);
+
+alter table Camiones
+add constraint pk_camiones
+primary key(Matricula);
+
+describe Camiones;
+
+create table Camiones_Camioneros(
+Cod int not null,
+Matricula char(11) not null,
+DNI char(8) not null);
+
+alter table Camiones_Camioneros
+add constraint pk_Camiones_Camioneros
+primary key(Cod);
+
+describe Camiones_Camioneros;
+
+create table Camioneros(
+DNI char(8) not null,
+Ciudad varchar(100),
+Nombre varchar(100) not null,
+Telefono varchar(20),
+Direccion varchar(200),
+Salario int not null);
+
+alter table Camioneros
+add constraint pk_Camioneros
+primary key(DNI);
+
+describe Camioneros;
+
+alter table Camiones_Camioneros
+add constraint fk_Camiones_CC
+foreign key(Matricula)
+references Camiones(Matricula);
+
+alter table Camiones_Camioneros
+add constraint fk_Camioneros_CC
+foreign key(DNI) 
+references Camioneros(DNI);
+
+create table Paquetes(
+CodPaq int not null,
+Descripcion varchar(200) not null,
+Destinatario varchar(100) not null,
+Dir varchar(200) not null,
+DNI char(8) not null,
+CodProv int not null);
+
+
+alter table Paquetes
+add constraint pk_paquetes
+primary key(CodPaq);
+
+describe Paquetes;
+
+create table Provincia(
+CodProv int not null,
+Nombre varchar(100));
+
+alter table Provincia
+add constraint pk_provincia
+primary key(CodProv);
+
+describe Provincia;
+
+alter table Paquetes
+add constraint fk_paquetes_provincia
+foreign key(CodProv)
+references Provincia(CodProv);
+
+alter table Paquetes
+add constraint fk_paquetes_camioneros
+foreign key(DNI)
+references Camioneros(DNI);
+\end{lstlisting}
+
+\section{Ejercicio 3}
+
+\begin{lstlisting}
+create database ejercicio3;
+use ejercicio3;
+
+create table Profesores(
+DNI char(8) not null,
+Nombre varchar(100) not null,
+Direccion varchar(200),
+Telefono varchar(20));
+
+alter table Profesores
+add constraint pk_profesores
+primary key(DNI);
+
+describe Profesores;
+
+create table Modulos(
+CodMod int not null,
+Nombre varchar(100) not null,
+DNI char(8) not null);
+
+alter table Modulos
+add constraint pk_modulos
+primary key(CodMod);
+
+describe Modulos;
+
+create table Alumno(
+Expediente int not null,
+Nombre varchar(100) not null,
+FechaNac date,
+Apellidos varchar(100) not null);
+
+alter table Alumno
+add constraint pk_alumno
+primary key(Expediente);
+
+describe Alumno;
+
+create table Alumno_Modulo(
+Cod int not null,
+Expediente int not null,
+CodMod int not null,
+Delegado boolean not null);
+
+alter table Alumno_Modulo
+add constraint pk_AM
+primary key(Cod);
+
+alter table Alumno_Modulo
+add constraint fk_AM_Modulos
+foreign key(CodMod)
+references Modulos(CodMod);
+
+alter table Alumno_Modulo
+add constraint fk_AM_Alumno
+foreign key(Expediente)
+references Alumno(Expediente);
+
+alter table Modulos
+add constraint fk_Modulos_Profesores
+foreign key(DNI)
+references Profesores(DNI);
+\end{lstlisting}
+
+\section{Ejercicio 4}
+
+\begin{lstlisting}
+create database ejercicio4;
+use ejercicio4;
+
+
+create table Coche(
+Matricula char(11) not null,
+Marca varchar(100) not null,
+Precio int not null,
+Color varchar(100),
+CodEmpresa int not null,
+Modelo varchar(100));
+
+alter table Coche
+add constraint pk_coche
+primary key(Matricula);
+
+describe Coche;
+
+create table Revision(
+CodRev int not null,
+Matricula char(11) not null);
+
+alter table Revision
+add constraint pk_revision
+primary key(CodRev);
+
+create table Cliente(
+CodEmpresa int not null,
+DNI char(8) not null,
+Nombre varchar(100) not null,
+Dir varchar(200),
+Ciudad varchar(100),
+Telefono char(8));
+
+alter table Cliente
+add constraint pk_Clientes
+primary key(CodEmpresa);
+
+create table Partes(
+CodParte int not null,
+Descripcion varchar(200) not null);
+
+alter table Partes
+add constraint pk_Partes
+primary key(CodParte);
+
+create table Partes_Revision(
+CodPR int not null,
+CodParte int not null,
+CodRev int not null);
+
+alter table Partes_Revision
+add constraint pk_PR
+primary key(CodPR);
+
+alter table Coche
+add constraint fk_Coche_Cliente
+foreign key(CodEmpresa)
+references Cliente(CodEmpresa);
+
+alter table Revision
+add constraint fk_Revision_Coche
+foreign key(Matricula)
+references Coche(Matricula);
+
+alter table Partes_Revision
+add constraint fk_PR_Revision
+foreign key(CodRev)
+references Revision(CodRev);
+
+alter table Partes_Revision
+add constraint fk_PR_Partes
+foreign key(CodParte) 
+references Partes(CodParte);
+\end{lstlisting}
+
+\section{Ejercicio 5}
+
+\begin{lstlisting}
+create database ejercicio5;
+use ejercicio5;
+
+create table Paciente(
+CodPaciente int not null,
+Nombre varchar(100) not null,
+Apellido varchar(100) not null,
+Dir varchar(200),
+Ciudad varchar(100),
+Distrito varchar(100),
+Telefono char(8),
+FechaNac date);
+
+alter table Paciente
+add constraint pk_Paciente
+primary key(CodPaciente);
+
+describe Paciente;
+
+create table Ingreso(
+CodIngreso int not null,
+Cama varchar(20) not null,
+Habitacion varchar(20) not null,
+Fecha date not null,
+CodPaciente int not null,
+CodMedico int not null);
+
+alter table Ingreso
+add constraint pk_Ingreso
+primary key(CodIngreso);
+
+describe Ingreso;
+
+create table Medico(
+CodMedico int not null,
+Nombre varchar(100) not null,
+Apellidos varchar(100) not null,
+Especialidad varchar(100) not null,
+Telefono char(8));
+
+alter table Medico
+add constraint pk_Medico
+primary key(CodMedico);
+
+describe Medico;
+
+alter table Ingreso
+add constraint fk_Ingreso_Medico
+foreign key(CodMedico)
+references Medico(CodMedico);
+
+alter table Ingreso
+add constraint fk_Ingreso_Paciente
+foreign key(CodPaciente)
+references Paciente(CodPaciente);
+\end{lstlisting}
+
+\end{document}

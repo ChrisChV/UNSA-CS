@@ -1,0 +1,21 @@
+# depslib dependency file v1.0
+1441076444 source:c:\users\christofer\documents\c++11\listaenlazadaoad\main.cpp
+	<iostream>
+	"Lista.h"
+
+1441071369 source:c:\users\christofer\documents\c++11\listaenlazadaoad\src\lista.cpp
+	"Lista.h"
+
+1441079311 c:\users\christofer\documents\c++11\listaenlazadaoad\include\lista.h
+	"iostream"
+
+1441311416 source:/home/cs-unsa-lab_12/Documents/Chris/TC/Semestre4/ListaEnlazadaOAD/main.cpp
+	<iostream>
+	"Lista.h"
+
+1441658878 /home/cs-unsa-lab_12/Documents/Chris/TC/Semestre4/ListaEnlazadaOAD/include/Lista.h
+	"iostream"
+
+1441311416 source:/home/cs-unsa-lab_12/Documents/Chris/TC/Semestre4/ListaEnlazadaOAD/src/Lista.cpp
+	"Lista.h"
+
