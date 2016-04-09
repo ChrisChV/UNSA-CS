@@ -1,8 +1,0 @@
-digraph{
-S->X;
-S->Y;
-X;
-X->Y;
-Y->X;
-Y;
-}
