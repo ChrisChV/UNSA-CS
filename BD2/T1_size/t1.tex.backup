@@ -1,0 +1,19 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{epstopdf}
+\begin{document}
+
+  \begin{center}
+   \textbf{MySQL}
+  \end{center}
+
+
+  \textbf{Block Size}
+  
+  
+  \textbf(Key Buffer Size}
+  
+  
+  
+\end{document}
