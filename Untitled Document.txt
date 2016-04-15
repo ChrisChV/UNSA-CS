@@ -1,0 +1,1 @@
+https://inforlife.wordpress.com/2009/04/27/apagar-y-encender-equipos-remotamente-con-ssh-ethtool-y-wakeonlan/
