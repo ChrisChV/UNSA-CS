@@ -1,0 +1,187 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{color}
+\usepackage{parskip}
+\usepackage{graphicx}
+\usepackage{multirow}
+\usepackage{listings}
+\usepackage{vmargin}
+\graphicspath{ {imagenes/} }
+\definecolor{mygreen}{rgb}{0,0.6,0}
+\definecolor{lbcolor}{rgb}{0.9,0.9,0.9}
+\usepackage{epstopdf}
+
+
+\setpapersize{A4}
+\setmargins{2.5cm}       % margen izquierdo
+{1.5cm}                        % margen superior
+{16.5cm}                      % anchura del texto
+{23.42cm}                    % altura del texto
+{10pt}                           % altura de los encabezados
+{1cm}                           % espacio entre el texto y los encabezados
+{0pt}                             % altura del pie de página
+{2cm}     
+
+\lstset{
+backgroundcolor=\color{lbcolor},
+    tabsize=4,    
+%   rulecolor=,
+    language=[GNU]C++,
+        basicstyle=\tiny,
+        aboveskip={1.5\baselineskip},
+        columns=fixed,
+        showstringspaces=false,
+        extendedchars=false,
+        breaklines=true,
+        prebreak = \raisebox{0ex}[0ex][0ex]{\ensuremath{\hookleftarrow}},
+        frame=single,
+        numbers=left,                    
+	numbersep=5pt, 
+        showtabs=false,
+        showspaces=false,
+        showstringspaces=false,
+        identifierstyle=\ttfamily,
+        keywordstyle=\color[rgb]{0,0,1},
+        commentstyle=\color[rgb]{0.026,0.112,0.095},
+        stringstyle=\color{red},
+        numberstyle=\color[rgb]{0.205, 0.142, 0.73},
+%        \lstdefinestyle{C++}{language=C++,style=numbers}’.
+}
+
+\begin{document}
+
+\section{Problemas}
+\section{Getting Started}
+  \subsection{Insert-Sort}
+    \subsubsection{} Using Figure 2.2 as a model, illustrate the operation of INSERTION-SORT on the
+    array \hspace{3mm}  A = \{31,41,59,26,41,58\} \\
+    \begin{itemize}
+     \item 31,\textbf{41},59,26,41,68   (The key is 41. This remains in place).
+     \item 31,41,\textbf{59},26,41,68   (The key is 59. This remains in place).
+     \item 31,41,59,\textbf{26},41,58   (The key is 26. This takes the position of the number 31).
+     \item 26,31,41,49,\textbf{41},58   (The key is 41. This takes the position of the number 59).
+     \item 26,31,41,41,59,\textbf{58}   (The key is 58. This takes the position of the number 59).
+     \item \textbf{Result: } 26,31,41,41,58,59
+    \end{itemize}
+    \subsubsection{} Rewrite the INSERTION-SORT procedure to sort into nonincreasing instead of 
+    nondecreasing order. \\
+    \begin{lstlisting}
+void insertSort(vector<int> &vec){
+	for(int j = 1; j < vec.size(); j++){
+		int key = vec[j];
+		int i = j - 1;
+		while(i >= 0 and vec[i] < key){
+			swap(vec[i + 1], vec[i]);
+			i--;
+		}
+	}
+}
+    \end{lstlisting}
+
+    \subsubsection{} Consider the \textbf{searching problem:} \\
+    \textbf{Input: } A sequence of \textit{i} such that \textit{v}
+    = A[i] or the special value \textit{NIL} if \textit{v} does not appear in A.\\
+    Write pseudocode for \textbf{linear search}, which scans through the sequence, looking
+    for \textit{v}. Using a loop invariant, prove that your algorithm is correct. Make sure that
+    your loop invariant fulfills the three necessary properties.\\
+    
+    \begin{lstlisting}
+for (int j = 0; i < A.size(); j++{
+  if(v == A[j]) return j;
+}
+return NULL;
+    \end{lstlisting}
+    
+    \subsubsection{} Cosider the problem of adding two \textit{n-bit}
+    binary integers, stored in two \textit{n-element} arrays A and B. The sum
+     of the two integers should be stored in binaty form in an (n+1)-elemnt array C.
+     State the problem formally and write pseudocode for adding the two integers.
+     
+     \begin{lstlisting}
+vector<int> sumBin(vector<int> &A, vector<int> &B){
+	int n = A.size();
+	vector<int> C(n + 1);
+	int l = 0;
+	for(int i = n - 1; i >= 0; i--){
+		if(!A[i] and !B[i]){
+			C[i + 1]  = l;
+			l = 0; 
+		}
+		else if(A[i] and B[i]){
+			C[i + 1] = l;
+			if(!l) l = !l;
+		}
+		else{
+			if((A[i] or B[i]) and l){
+				C[i + 1] = 0;
+				l = 1;
+			}
+			else C[i + 1] = 1;
+		}
+	}
+	C[0] = l;
+	return C;
+}
+     \end{lstlisting}
+
+  \subsection{Analyzing algorithms}
+    \subsubsection{} Express the function $n^3/1000-100n^2+3$ in
+   terms of $\Theta$-notation \\
+   
+  $$n^3/1000 - 100n^2 - 100n + 3 < n^3 - 100n^3 - 100n^3 + 3n^3$$
+  $$n^3/1000 - 100n^2 - 100n + 3 < 203n^3$$
+  $$\Theta(n^3)$$
+  
+    \subsubsection{} Consider sorting $n$ numbers stored in array $A$
+    by first finding the smallest element of $A$ and exchanging it with
+    the element in $A[1]$. The find the second smallest element of $a$
+    , and exchange it with $A[2]$. Continue in this manner for the first $n-1$
+    element of $A$. Write pseudocode for this algorithm, which is know as 
+    \textbf{selection sort}.
+    
+    \begin{itemize}
+     \item  \textbf {What lop invariant does this algorithm mainthain?}
+     
+     \item \textbf{ Why does it need to run only the first $n-1$ rather than for all $n$ elements?}  
+	  \hspace{2mm} Because allways the last element is in the correct site.
+     
+     \item \textbf{Give the best-case and worst-case running times of
+     selection sort int $\Theta$-notation.}
+     
+     \begin{tabular}{l l l}
+      SELECTION SORT & cost & times \\
+      1	$n$ = A.length & $C1$ & $1$ \\
+      2 for $i = 0$ to $n-1$ & $C2$ & $n$ \\
+      3	\hspace{0.5cm} $menor =$ NUMERO INFINITAMENTE GRANDE & $C3$ & $n-1$ \\
+      4 \hspace{0.5cm} $index = 0$ & $C4$ & $n-1$ \\
+      5	\hspace{0.5cm} for $j = i$ to $n$ & $C5$ & $\sum_{i=1}^{n+1} i$ \\
+      6 \hspace{1cm} if $A[j] <  menor$ then & $C6$ & $\sum_{i=0}^{n} i$ \\
+      7 \hspace{1.5cm} $menor = A[j]$ & $C7$ & $\sum_{i=0}^{n} i$ \\
+      8 \hspace{1.5cm} $index = j$ & $C8$ & $\sum_{i=0}^{n} i$ \\
+      9 \hspace{0.5cm} swap($A[index]$,$A[i]$) & $C9$ & $n-1$	
+     \end{tabular}
+
+     
+     
+      $ T(n) = C1 + nC2 + C3(n-1) + C4(n-1) + C5(\sum_{i=1}^{n+1} i) \\     
+	+  C6(\sum_{i=0}^{n} i) + C7(\sum_{i=0}^{n} i) + C8(\sum_{i=0}^{n} i) + C9(n-1)	\\
+    $
+	
+	$T(n) = C1 + nC2 + nC3 + nC4 + nC9 - C3 - C4 - C9 + C5(\frac{n^2+3n+2}{2}) \\
+         +  C6(\frac{n^2+n}{2}) + C7(\frac{n^2+n}{2}) + C8(\frac{n^2+n}{2})   
+    $
+     
+     $ T(n) = n^2(\frac{C6+C7+C8+C5}{2}) + n(C2+C3+C4+C9 + \frac{3C5+C6+C7+C8}{2}) \\
+       + C1 - C3 - C4 - C9$
+  
+     
+    \end{itemize}
+
+    
+    
+    
+
+
+
+\end{document}
