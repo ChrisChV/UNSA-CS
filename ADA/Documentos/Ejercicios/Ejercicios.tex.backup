@@ -5,6 +5,8 @@
 \usepackage{parskip}
 \usepackage{graphicx}
 \usepackage{multirow}
+\usepackage{cancel}
+\usepackage{amssymb, amsmath, amsbsy}
 \usepackage{listings}
 \usepackage{vmargin}
 \graphicspath{ {imagenes/} }
@@ -87,7 +89,7 @@ void insertSort(vector<int> &vec){
     your loop invariant fulfills the three necessary properties.\\
     
     \begin{lstlisting}
-for (int j = 0; i < A.size(); j++{
+for (int j = 0; i < A.size(); j++){
   if(v == A[j]) return j;
 }
 return NULL;
@@ -166,15 +168,329 @@ vector<int> sumBin(vector<int> &A, vector<int> &B){
      
       $ T(n) = C1 + nC2 + C3(n-1) + C4(n-1) + C5(\sum_{i=1}^{n+1} i) \\     
 	+  C6(\sum_{i=0}^{n} i) + C7(\sum_{i=0}^{n} i) + C8(\sum_{i=0}^{n} i) + C9(n-1)	\\
+    $
 	
-	T(n) = C1 + nC2 + nC3 + nC4 + nC9 - C3 - C4 - C9 + C5(\frac{n^2+3n+2}{2}) \\
-         +  C6(\frac{n^2+n}{2}) + C7(\frac{n^2+n}{2}) + C8(\frac{n^2+n}{2})   
+	$T(n) = C1 + nC2 + nC3 + nC4 + nC9 - C3 - C4 - C9 + C5(\frac{n^2+3n+2}{2}) \\
+         +  C6(\frac{n^2+n}{2}) + C7(\frac{n^2+n}{2}) + C8(\frac{n^2+n}{2})   \\
     $
      
-     
+     $ T(n) = n^2(\frac{C6+C7+C8+C5}{2}) + n(C2+C3+C4+C9 + \frac{3C5+C6+C7+C8}{2}) \\
+       + C1 - C3 - C4 - C9$ \\
+      
+      $ T(n) = An^2 + Bn + C$ \\
   
-     
+      $T(n) \in \Theta(n^2)$
     \end{itemize}
+    
+    \subsubsection{} Consider linear search again.
+    
+    \begin{itemize}
+     \item \textbf {How many elemnts of the input sequence need to be checked on the
+     average, assuming that the element begin searched for is equally likely to be any element
+     in the array?}
+     
+     \item \textbf{How about in the worst case?}
+     
+     \item \textbf{What are the average-case and worts-case running
+     times of linear searching in $\Theta$-notation?}
+     
+     \begin{tabular}{l l l}
+      LINEAR SEARCH & cost & times \\
+      1 for $i = 0$ to A.length & $c1$ & $n + 1$ \\
+      2 \hspace{0.5cm} if($A[i] == v$) return $i$ & $c2$ & $n$ \\
+      3 return NIL & $c3$ & $1$ \\
+     \end{tabular}
+     
+     $ T(n) = c1(n + 1) + c2(n) + c3 $ \\
+     $ T(n) = n(c1 + c2) + c3 + c1 $\\
+     $ T(n) = An + B  $\\
+     $ T(n) \in \Theta(n) $
+
+    \end{itemize}
+    
+    \subsubsection{} How can we modify almost any algorithm to
+    have a good best-case running time?
+    
+    It can improve the algorithm efficiency if the data input
+    is efficient too.
+    
+  \subsection{Designing algorithms}
+     \subsubsection{} Using Figure 2.4 as a model, illustrate the
+     operation of merge sort on the array
+     $A = {3,41,52,26,38,57,9,49}$.
+     
+     \textbf{First Sequence}
+      \begin{center}
+	    \begin{tabular}{l l l l l l l l}
+             3 & 41 & 52 & 26 & 38 & 57 & 9 & 49
+            \end{tabular}
+     \end{center}
+     \textbf{Second Sequence}
+     \begin {center}
+	\begin{tabular}{l l l l}
+	  3 41 & 26 52 & 38 57 & 9 49
+	\end{tabular}
+     \end {center}
+     \textbf{Third Sequence}
+     \begin{center}
+      \begin{tabular}{l l}
+       3 26 41 52 & 9 38 49 57
+      \end{tabular}
+     \end{center}
+     \textbf{Sorted Sequence}
+     \begin{center}
+      3 9 26 38 41 49 52 57
+     \end{center}
+    \subsubsection{} Rewrite the MERGE procedure so that it does not
+    use sentinels, instead stopping once either array L or R has had all its elements copied
+    back to A and then copying the remainder of the other array back into A.
+    
+    
+    \subsubsection{} Use mathematical induction to show that when $n$
+    is an exact power of 2, the solution of the recurrence
+    
+   $ T(n) =  \left \lbrace
+   \begin{array}{l l l}
+      2 & if \hspace{0.2cm} n = 2, \\
+      2T(n/2) + n & if \hspace{0.2cm} n = 2^k, for \hspace{0.2cm} k > 1
+   \end{array}
+    \right. $
+    
+    is $T(n) = n\lg n$
+    
+    $T(n) = 2T(n/2) + n$ \\
+    $T(n) = 2(2T(n/4) + n) + n$ \\
+    $T(n) = 4T(n/4) + 3n$ \\
+    $T(n) = 4(2T(n/8) + n) 3n$ \\
+    $T(n) = 8(T(n/8) + 7n$ \\
+    \vdots \\
+    $T(n) = \frac{n}{2}(T(\frac{n}{n/2})) + n(\frac{n}{2} - 1)$ \\
+    $T(n) = \frac{n}{2}(2) + n(\frac{n}{2} - 1)$ \\
+    $T(n) = n + \frac{n^2}{2} - n$ \\
+    $T(n) = \frac{n^2}{2}$ \\
+    
+    \subsubsection{} We can express insertion sort as a recursive procedure as
+    follows. In order to sort $A[1..n]$, we recursively sort $A[1..n-1]$
+    and then insert $A[n]$ into the sorted array $A[1..n-1]$. Write a
+    recurrence for the running time of this recursive version of insertion sort.
+    
+    $T(n) = \left \lbrace
+    \begin{array}{l l}
+      1 & if \hspace{0.2cm} n = 1 \\
+      T(n-1) + n & if \hspace{0.2cm} n > 1
+    \end{array}
+    \right.$
+    
+    $T(n) = T(n-1) + n$ \\
+    $T(n) = n + (n-1) + T(n-2)$ \\
+    $T(n) = n + (n-1) + (n-2) + T(n-3)$ \\
+    $T(n) = n + (n-1) + (n-2) + \cdots + 2 +T(1)$ \\
+    $T(n) = \frac{n(n-1)}{2} + 1$ \\
+    $T(n) \in \Theta(n^2)$
+    
+    \subsubsection{} Referring back to the searching problem, observe
+    that if the sequence $A$ is sorted, we can check the midpoint of the
+    sequence against $v$ and eliminate half of the sequence from futher
+    consideration. The \textbf{binary search} algorithm repeats this
+    procedure, halving the size of the remaining portion for the
+    sequence each time. Write pseudocode, either iterative or recursive, for
+    binary search. Argue that the worst-case running time of binary search is
+    $\Theta(\lg n)$.
+    
+    \begin{tabular}{l l l}
+     BINARY SEARCH & cost & times \\
+     1 Do & &	\\
+     2 \hspace{0.5cm} media $= \frac{i + f}{2}$ & $c1$ & $m$ \\
+     2 \hspace{0.5cm} if $(A[medio] == v)$ & $c2$ & $m$ \\
+     3 \hspace{1cm} return true & $c3$ & $1$ \\
+     4 \hspace{0.5cm} if $(A[medio] > v)$ & $c4$ & $m$ \\
+     5 \hspace{1cm} $f = medio + 1$ & $c5$ & $m$ \\
+     6 \hspace{0.5cm} else $i = M + 1$ & $c5$ & $m$ \\
+     7 while $i <= f$ & $c6$ & $m$  \\
+    \end{tabular}
+     
+     $T(n) = m(c1 + c2 + c4 + c5 + c6) + c3$ \\
+     $T(n) = Am + B$ \\
+     $n = 2^m$ \\
+     $m = \lg m$ \\
+     $T(n) = A\lg n + B$ \\
+     $T(n) \in \Theta(\lg n)$ 
+
+    \subsubsection{} Observe that the \textbf{while} loop of lines 5-7
+    of lines 5-7 of the INSERTION-SORT procedure in Section 2.1 uses a linear
+    search to scan (backward) though the sorted subarray $A[1..j-1]$.
+    Can we use a binary search instead to improve the overall worst-case
+    running time of insertion sort to $\Theta(n \lg n)$?
+    
+  \subsection{Problems}
+    \subsubsection{Insertion sort on small arrays in merge sort}
+    \begin{enumerate}
+      \item \textbf{ Show that insertion sort can sort the $n/k$ sublists, each
+      of length $k$, in $\Theta(nk)$ worst-case time}. \\
+           
+      \begin{tabular}{l l}
+       $L = n/k$ & Where $L$ is the number of sublists \\ 
+       $\Theta(k^2)$ & Time delay algorith insert sort to sort a sublist. \\
+       $\Theta(k^2 * L)$ & Multiplying for L \\
+       $\Theta(\cancel{k^2} * \frac{n}{\cancel{k}})$ & By solving the equation.\\
+       $\Theta(nk)$ & Result
+      \end{tabular}
+      
+      \item \textbf{Show hoe to merge the sublist in $\Theta(n \lg(n/k))$
+      worst-case time.}
+      
+      The original merge runs in $\Theta(n \lg n)$, the $n$ into the $\lg$
+      represents the most sublists that can divide. In this case, the most sublists that can 
+      divide is $n/k$, consequently the merge in this problem runs in
+      $\Theta(n\log(n/k))$ worst-case time.
+      
+     \item \textbf{Given that the modified algorithm runs in $\Theta(nk+n\log(n/k))$
+     worst-case time, what is the largest value of $k$ as a function of $n$
+      for which the modified algorithm has the same running time as standard merge sort, in terms of
+      $\Theta$-notation} 
+      
+     If we take a $k = 1$ then, the modified algorithm raid in 
+     $\Theta(n\log n)$
+      
+      \item \textbf{How should we choose k in practice?}
+      
+     Choose k most tiny.
+      
+    \end{enumerate}
+    
+    \subsubsection{Correctness of bubblesort}
+    
+    \begin{enumerate}
+     \item \textbf{ Let $A'$ denote the output of BUBBLESORT(A). To peove
+     that BUBBLESORT is correct, we need to prove that it terminates and that
+     $$A'[1]\leq A'[2] \leq \cdots \leq A'[n]$$
+     where $n = A.kength$. In order to show that BUBBLESORT actually
+     sorts, what else do need to prove?}
+     
+     I need prove that the loop of the bubblesort is invariant.
+     
+     \item \textbf{State precisely a loop invariant for the for loop in lines 2-4, and
+     prove that this invariant holds. Your proof should use the structure of the loop invariant
+     proof presented in this chapter.}
+     
+     \item \textbf{Using the termination condition of the loop invariant proved
+     in part (b), state a loop invariant for the for loop in lines 1-4 that will
+     allow you to prove inequality. Your proof should use the structure of the loop invariant
+     proof presented in this chapter.}
+     
+     \item \textbf{What is the worst-case running time of bubblesort? How does it compare to
+     the running time of onsertion sort?}
+     
+     The bubblesort runs in $\Theta(n^2)$ worst-case time. The difference
+     with the insert sort is that the first have a bigger constant.
+     
+    \end{enumerate}
+    
+    \subsubsection{Correctness of Horner's rule}
+    
+    \begin{enumerate}
+     \item \textbf{In terms of $\Theta$-notation, what is the running
+     time of this code fragment for Horner's rule?}
+     
+     Is $\Theta(n)$
+     
+     \item \textbf{Write pseudocode to implement the naive polynomial-evaluation
+     algorithm that computes each terms of the polynomial from scratch.
+     What is the running time of this algorithm? How does it compare to Horner's rule?}
+     
+    \end{enumerate}
+    
+    \subsubsection{Inversion}
+    
+    \begin{enumerate}
+     \item \textbf{List the five Inversion of the array $\{2,3,8,6,1\}$}
+	\begin{itemize}
+	 \item 1,3,8,6,2
+	 \item 2,1,8,6,3
+	 \item 2,3,6,8,1
+	 \item 2,3,1,6,8
+	 \item 2,3,8,1,6
+	\end{itemize}
+    \item \textbf{What array with elements from the set $\{1,2,....n\}$
+    has the most inversions? How many does it have?}
+    
+    Haven't any
+    
+    \item \textbf{What is the relationship between the running time of
+    insertion sort and be number of inversions in the input array?}
+    
+    \item \textbf{Give an algorithm that determines the number of inversions in
+    any permutation on n elements in $\Theta(n\lg n)$ worst-case time.}
+    
+    MERGE-INVERSIONS(A,p,q,r) \\
+    1 $n_{1} = q-p+1$ \\
+    2 $n_{2} = r-q$ \\
+    3 let $L[1..n_{1} + 1] and R[1..n_{2} + 1]$ be new arrays \\
+    4 for $i = 1$ to $n_{1}$
+    5 \hspace{0.5cm} $L[i] = A[p+i-1]$ \\
+    6 for $j = 1 $ to $n_{2}$
+    7 \hspace{0.5cm} $R[J] = A[q+j]$ \\
+    8 $L[n_{1}+1] = \infty$ \\
+    9 $R[n_{2}+1] = \infty$ \\
+    10 $i = 1$ \\
+    11 $j = 1$ \\
+    12 $invertions = 0$ \\
+    13 for $k = p$ to $r$ \\
+    14 \hspace{0.5cm} if $L[I] \leq R[j]$ \\
+    15 \hspace{1cm} $A[k] = L[i]$ \\
+    16 \hspace{1cm} $i = i + 1$ \\
+    17 \hspace{0.5cm} else $A[k] = R[j]$ \\
+    18 \hspace{1cm} $j = j + 1$ \\
+    19 \hspace{1cm} $invertions++$ \\
+    20 return $invertions$ \\
+    
+    MERGE-SORT-INVERSIONS(A,p,r)\\
+    1 $inversions = 0$ \\
+    2 if $p<r$ \\
+    3 \hspace{0.5cm} $ q = [(p+r)/2]$ \\
+    4 \hspace{0.5cm} $inversions +=$ MERGE-SORT-INVERSIONS(A,p,q) \\
+    5 \hspace{0.5cm} $inversions +=$ MERGE-SORT-INVERSIONS(A,q +1,r) \\
+    6 \hspace{0.5cm} $inversions +=$ MERGE-INVERSIONS(A,p,q,r) \\
+    7 return $inversions$ \\
+     \end{enumerate}
+    
+ \section{Growth of Functions}
+  \subsection{Asymptotic notation}
+   \subsubsection{} Let $f(n)$ and $g(n)$ be asymptotically nonnegative functions.
+   Using the basic definition of $\Theta$-notation, prove that $max(f(n),g(n))=\Theta(f(n)+g(n)))$.
+   
+   \subsubsection{} Show that for any real constants $a$ and $b$,
+   where $b>0$, $$(n+a)^b = \Theta(n^b)$$
+   
+   \begin{center}
+   $(n+a)^b \leq Cn^b$ \\
+   $\frac{(n+a)^b}{n^b} \leq C$ \\
+   $(\frac{n+a}{n})^b \leq C$ \\
+   $(1 + \frac{a}{n})^b \leq C$ \\
+   Min value = $1$ \\
+   Max value = $(1 + a)^b$ \\
+   $\Rightarrow C_{1} = (1+a)^b \wedge C_{2} = 1$
+   
+   \end{center}
+
+   \subsubsection{} Explain why the statement, The running time of
+   algorithm A is at least $O(n^2)$, is meaningless.
+    
+   \subsubsection{} Is $2^{n+1} = O(2^n)$
+   
+   $2^{n+1} \leq C(2^n)$ \\
+   $
+   
+
+
+
+
+
+
+
+
+
+
 
     
     
