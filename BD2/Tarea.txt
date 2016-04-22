@@ -1,0 +1,7 @@
+Que es un indice primario y un indice secundario ponga un ejemplo??
+Cual es el efecto que logra el atributo o la caracteristica clustered(agrupado)??
+
+Create clustered index IDX.dinero on Tabla(Dinero)
+Create index IDX.dinero on Tabla(Dinero)
+
+Como guarda la Tabla y el Indice???
