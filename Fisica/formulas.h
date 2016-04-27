@@ -55,13 +55,9 @@ Number Alcance(Number aceleracion, Number velocidadInicialEnX, Number velocidadI
 	return (velocidadInicialEnX * velocidadInicialEnY) / aceleracion;
 }
 
-
-
 Number PosicionEnX(Number velocidadInicial, Number tiempo, Number angulo, Number posicionInicial){
 	return VelocidadInicialEnX(velocidadInicial,angulo) * tiempo + posicionInicial;
 }
-
-
 
 Number Elevacion(Number aceleracion, Number velocidadInicial, Number angulo){
 	return 0.5 * (velocidadInicial * velocidadInicial) / aceleracion * pow(sin(angulo*PI/180),2);
