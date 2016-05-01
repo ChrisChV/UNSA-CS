@@ -7,11 +7,11 @@
 \usepackage{multirow}
 \usepackage{listings}
 \usepackage{vmargin}
+\usepackage{float}
 \graphicspath{ {imagenes/} }
 \definecolor{mygreen}{rgb}{0,0.6,0}
 \definecolor{lbcolor}{rgb}{0.9,0.9,0.9}
 \usepackage{epstopdf}
-
 
 \setpapersize{A4}
 \setmargins{2.5cm}       % margen izquierdo
@@ -48,10 +48,6 @@ backgroundcolor=\color{lbcolor},
 }
 
 \begin{document}
-
-\begin{LARGE}
- CHRISTOFER FABIÁN CHÁVEZ CARAZAS
-\end{LARGE}
 
 Programar los cinco métodos iterativos planteados en clase, para dar solución a las siguientes ecuaciones:
 
@@ -347,7 +343,6 @@ int main(){
       \includegraphics[scale = 0.3]{1.eps}
      \end{figure}
 
-     \newpage
      
      \item $x-cos(senx) = 0$
      
@@ -356,6 +351,7 @@ int main(){
       \includegraphics[scale = 0.3]{2.eps}
      \end{figure}
      
+     \newpage
      
      \item $x^5 - 3x^3 - 2x^2 + 2 = x$
      
@@ -365,7 +361,6 @@ int main(){
      \end{figure}
     \end{itemize}
 
-    \newpage
 
     \subsection{Método de Bisección}
     
@@ -380,6 +375,8 @@ int main(){
       \centering
       \includegraphics[scale = 0.4]{21.eps}
      \end{figure}
+      
+      \newpage
       
       \item $a = 1.1$ $b = 1.5$
       
@@ -408,8 +405,7 @@ int main(){
      
      
       \begin{itemize}
-      
-      \newpage
+           
        \item $a = -2$ $b = -1$
       
       \begin{figure}[h]
@@ -417,6 +413,7 @@ int main(){
       \includegraphics[scale = 0.4]{231.eps}
      \end{figure}
       
+      \newpage
        
        \item $a = 0$ $ b = 1$
        
@@ -436,7 +433,7 @@ int main(){
       \end{itemize}
     \end{itemize}
 
-    \newpage
+   
     
     
     \subsection{Método de Falsa Posición}
@@ -472,7 +469,7 @@ int main(){
      \end{figure}
     \end{itemize}
  
-  \newpage
+
  
     \subsection{Método de la Secante}
     
@@ -481,27 +478,29 @@ int main(){
      
      \begin{figure}[h]
       \centering
-      \includegraphics[scale = 0.5]{41.eps}
+      \includegraphics[scale = 0.6]{41.eps}
      \end{figure}
 
      \item $x-cos(senx) = 0$ $r_{0} = 0$ $r_{1} = 0.5$
-      
-      \begin{figure}[h]
-      \centering
-      \includegraphics[scale = 0.5]{42.eps}
-     \end{figure}
      
+      \begin{figure}[H]
+      \centering
+      \includegraphics[scale = 0.6]{42.eps}
+     \end{figure}
+    
+    
+    \newpage
+    
      \item $x^5 - 3x^3 - 2x^2 + 2 = x$ $r_{0} = 0 $ $r_{1} =0.5 $
      
       \begin{figure}[h]
       \centering
-      \includegraphics[scale = 0.5]{43.eps}
+      \includegraphics[scale = 0.6]{43.eps}
      \end{figure}
      
     \end{itemize}
    
-   
-   \newpage
+  
   
     \subsection{Método de Newton}
     
@@ -510,7 +509,7 @@ int main(){
      
      \begin{figure}[h]
       \centering
-      \includegraphics[scale = 0.5]{51.eps}
+      \includegraphics[scale = 0.6]{51.eps}
      \end{figure}
    
     
@@ -518,18 +517,46 @@ int main(){
       
       \begin{figure}[h]
       \centering
-      \includegraphics[scale = 0.5]{52.eps}
+      \includegraphics[scale = 0.6]{52.eps}
+     \end{figure}
+    
+    \item $x^5 - 3x^3 - 2x^2 + 2 = x$ $r_{0} = 1$
+     
+      \begin{figure}[H]
+      \centering
+      \includegraphics[scale = 0.6]{53.eps}
+     \end{figure}
+    
+    \end{itemize}
+
+    
+    \newpage
+  
+    \subsection{Método de Newton con derivada aproximada}
+    
+    \begin{itemize}
+    \item $x-x^{x-cosx} = 0$ $r_{0} = 0.5$
+     
+     \begin{figure}[h]
+      \centering
+      \includegraphics[scale = 0.6]{61.eps}
+     \end{figure}
+   
+    
+    \item $x-cos(senx) = 0$ $r_{0} = 1$
+      
+      \begin{figure}[h]
+      \centering
+      \includegraphics[scale = 0.6]{62.eps}
      \end{figure}
     
     \item $x^5 - 3x^3 - 2x^2 + 2 = x$ $r_{0} = 1$
      
       \begin{figure}[h]
       \centering
-      \includegraphics[scale = 0.5]{53.eps}
+      \includegraphics[scale = 0.6]{63.eps}
      \end{figure}
     
     \end{itemize}
-
-  
   
 \end{document}

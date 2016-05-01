@@ -13,7 +13,7 @@ enum Tipos{SECANTE = 1, NEWTON_A, NEWTON_B};
 
 Number funcion(Number x){
 	//return x - pow(x,x-cos(x));
-	//eturn x - cos(sin(x));
+	//return x - cos(sin(x));
 	return pow(x,5) - 3 * pow(x,3) - 2 * x * x + 2 - x;
 }
 
@@ -32,7 +32,7 @@ Number _MetodoNewton_A(Number r, Number fr, Number f_r){
 }
 
 Number _MetodoNewton_B(Number r, Number fr, Number frh, Number h){
-	return r * ((fr * h)/(frh - fr));
+	return r - ((fr * h)/(frh - fr));
 }
 
 void MetodoSecante(Number r0, Number r1, Number(*f)(Number), int n, Number presicion, string fi){
@@ -76,7 +76,7 @@ void MetodoNewton_A(Number r, Number(*f)(Number), Number(*df)(Number), Number pr
 		archivo<<i<<","<<r<<","<<fr<<","<<f_r<<","<<r2<<endl;
 		r = r2;
 		i++;
-	}while((ErrorAbsoluto(r_anteriror, r) > presicion and i != n)or i == 1);
+	}while((ErrorAbsoluto(r_anteriror, r) > presicion and i != n) or i == 1);
 	archivo<<"\"Resultado actual\","<<r<<endl;
 	archivo.close();
 }
@@ -98,7 +98,7 @@ void MetodoNewton_B(Number r, Number(*f)(Number), Number h, Number presicion, in
 		archivo<<i<<","<<r<<","<<fr<<","<<frh<<","<<r2<<endl;
 		r = r2;
 		i++;
-	}while((ErrorAbsoluto(r_anteriror, r) > presicion and i != n)or i == 1);
+	}while((ErrorAbsoluto(r_anteriror, r) > presicion and i != n) or i == 1);
 	archivo<<"\"Resultado actual\","<<r<<endl;
 	archivo.close();
 }
