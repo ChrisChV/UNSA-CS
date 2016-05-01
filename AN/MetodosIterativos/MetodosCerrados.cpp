@@ -18,9 +18,9 @@ Number FalsaPosicion(Number a, Number b, Number fa, Number fb){
 }
 
 Number Funcion(Number x){
-	//return x - pow(x,x-cos(x));
+	return x - pow(x,x-cos(x));
 	//return x - cos(sin(x));
-	return pow(x,5) - 3 * pow(x,3) - 2 * x * x + 2 - x;
+	//return pow(x,5) - 3 * pow(x,3) - 2 * x * x + 2 - x;
 }
 
 bool MetodoCerrado(Number a, Number b, string file, Number(*f)(Number), int tipo, Number presicion, int n){

@@ -182,7 +182,7 @@ int main(){
   
   \subsection{MetodosAbiertos.cpp}
   
-  En este caso hay una función para cada método restante: Método de la Secante(\textbf(MetodoSecante())), 
+  En este caso hay una función para cada método restante: Método de la Secante(\textbf{MetodoSecante()})), 
   Método de Newton(\textbf{MetododeNewton\_A()}), Método de Newton con derivada aproximada(\textbf{MetodoNewton\_B()}).
   La ecuación que se quiere resolver debe ser programada dentro de la función
   \textbf{funcion()}.\\
@@ -370,12 +370,30 @@ int main(){
     \subsection{Método de Bisección}
     
     \begin{itemize}
-     \item $x-x^{x-cosx} = 0$ $a = 0.7$ $b = 1.2$
+     \item $x-x^{x-cosx} = 0$ 
      
-     \begin{figure}[h]
+     Esta ecuación tiene varias respuestas dependiendo del intervalo que se le asigne.
+     
+     \begin{itemize}
+      \item $a = 0.7$ $b = 1.2$
+      \begin{figure}[h]
       \centering
       \includegraphics[scale = 0.4]{21.eps}
      \end{figure}
+      
+      \item $a = 1.1$ $b = 1.5$
+      
+      \begin{figure}[h]
+      \centering
+      \includegraphics[scale = 0.4]{212.eps}
+     \end{figure}
+      
+     \end{itemize}
+
+     
+     
+     
+     
      
      \item $x-cos(senx) = 0$ $a = 0$ $b = 1$
       
@@ -390,14 +408,15 @@ int main(){
      
      
       \begin{itemize}
+      
+      \newpage
        \item $a = -2$ $b = -1$
       
       \begin{figure}[h]
       \centering
       \includegraphics[scale = 0.4]{231.eps}
      \end{figure}
-       
-       \newpage
+      
        
        \item $a = 0$ $ b = 1$
        
@@ -417,18 +436,21 @@ int main(){
       \end{itemize}
     \end{itemize}
 
+    \newpage
+    
     
     \subsection{Método de Falsa Posición}
      
      \begin{itemize}
-      \item $x-x^{x-cosx} = 0$ $a = 0.7$ $b = 1.2$
+      \item $x-x^{x-cosx} = 0$
+      
+      Desde este punto solo se calculará el intervalo $a = 0.7$, $b = 1.2$ que dá la
+     respuesta $1$ (La más cercana a cero):
      
      \begin{figure}[h]
       \centering
       \includegraphics[scale = 0.4]{31.eps}
      \end{figure}
-     
-    \newpage
      
      \item $x-cos(senx) = 0$ $a = 0$ $b = 1$
      
@@ -450,9 +472,64 @@ int main(){
      \end{figure}
     \end{itemize}
  
+  \newpage
+ 
     \subsection{Método de la Secante}
     
+    \begin{itemize}
+      \item $x-x^{x-cosx} = 0$ $r_{0} = 0.5$ $r_{1} = 0.8$
+     
+     \begin{figure}[h]
+      \centering
+      \includegraphics[scale = 0.5]{41.eps}
+     \end{figure}
+
+     \item $x-cos(senx) = 0$ $r_{0} = 0$ $r_{1} = 0.5$
+      
+      \begin{figure}[h]
+      \centering
+      \includegraphics[scale = 0.5]{42.eps}
+     \end{figure}
+     
+     \item $x^5 - 3x^3 - 2x^2 + 2 = x$ $r_{0} = 0 $ $r_{1} =0.5 $
+     
+      \begin{figure}[h]
+      \centering
+      \includegraphics[scale = 0.5]{43.eps}
+     \end{figure}
+     
+    \end{itemize}
+   
+   
+   \newpage
+  
+    \subsection{Método de Newton}
     
+    \begin{itemize}
+    \item $x-x^{x-cosx} = 0$ $r_{0} = 0.5$
+     
+     \begin{figure}[h]
+      \centering
+      \includegraphics[scale = 0.5]{51.eps}
+     \end{figure}
+   
+    
+    \item $x-cos(senx) = 0$ $r_{0} = 1$
+      
+      \begin{figure}[h]
+      \centering
+      \includegraphics[scale = 0.5]{52.eps}
+     \end{figure}
+    
+    \item $x^5 - 3x^3 - 2x^2 + 2 = x$ $r_{0} = 1$
+     
+      \begin{figure}[h]
+      \centering
+      \includegraphics[scale = 0.5]{53.eps}
+     \end{figure}
+    
+    \end{itemize}
 
-
+  
+  
 \end{document}

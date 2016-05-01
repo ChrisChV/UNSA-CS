@@ -182,7 +182,7 @@ int main(){
   
   \subsection{MetodosAbiertos.cpp}
   
-  En este caso hay una función para cada método restante: Método de la Secante(\textbf(MetodoSecante())), 
+  En este caso hay una función para cada método restante: Método de la Secante(\textbf{MetodoSecante()})), 
   Método de Newton(\textbf{MetododeNewton\_A()}), Método de Newton con derivada aproximada(\textbf{MetodoNewton\_B()}).
   La ecuación que se quiere resolver debe ser programada dentro de la función
   \textbf{funcion()}.\\
@@ -331,7 +331,11 @@ int main(){
 }
   \end{lstlisting}
 
+  \newpage
+  
   \section{Soluciones}
+  
+    Todas las pruebas con todos los métodos se hicieron con una $presicion$ igual a $10^{-6}$ y un $n$ igual a $100$. 
   
     \subsection{Gráficas}
     
@@ -365,15 +369,31 @@ int main(){
 
     \subsection{Método de Bisección}
     
-    Todas las pruebas se hicieron con una $presicion$ igual a $10^{-6}$ y un $n$ igual a $100$. 
-    
     \begin{itemize}
-     \item $x-x^{x-cosx} = 0$ $a = 0.7$ $b = 1.2$
+     \item $x-x^{x-cosx} = 0$ 
      
-     \begin{figure}[h]
+     Esta ecuación tiene varias respuestas dependiendo del intervalo que se le asigne.
+     
+     \begin{itemize}
+      \item $a = 0.7$ $b = 1.2$
+      \begin{figure}[h]
       \centering
       \includegraphics[scale = 0.4]{21.eps}
      \end{figure}
+      
+      \item $a = 1.1$ $b = 1.5$
+      
+      \begin{figure}[h]
+      \centering
+      \includegraphics[scale = 0.4]{212.eps}
+     \end{figure}
+      
+     \end{itemize}
+
+     
+     
+     
+     
      
      \item $x-cos(senx) = 0$ $a = 0$ $b = 1$
       
@@ -388,16 +408,19 @@ int main(){
      
      
       \begin{itemize}
+      
+      \newpage
        \item $a = -2$ $b = -1$
       
       \begin{figure}[h]
       \centering
       \includegraphics[scale = 0.4]{231.eps}
      \end{figure}
+      
        
        \item $a = 0$ $ b = 1$
        
-       \vspace{3mm}
+       
        
       \begin{figure}[h]
       \centering
@@ -413,21 +436,25 @@ int main(){
       \end{itemize}
     \end{itemize}
 
+    \newpage
+    
     
     \subsection{Método de Falsa Posición}
-    
-     Todas las pruebas se hicieron con una $presicion$ igual a $10^{-6}$ y un $n$ igual a $100$.
      
      \begin{itemize}
-      \item $x-x^{x-cosx} = 0$ $a = 0.7$ $b = 1.2$
+      \item $x-x^{x-cosx} = 0$
+      
+      Desde este punto solo se calculará el intervalo $a = 0.7$, $b = 1.2$ que dá la
+     respuesta $1$ (La más cercana a cero):
      
      \begin{figure}[h]
       \centering
       \includegraphics[scale = 0.4]{31.eps}
      \end{figure}
      
-     
      \item $x-cos(senx) = 0$ $a = 0$ $b = 1$
+     
+     \vspace{4.5mm}
       
       \begin{figure}[h]
       \centering
@@ -436,10 +463,35 @@ int main(){
 
      \item $x^5 - 3x^3 - 2x^2 + 2 = x$
      
-     Desde este punto solo se calculará el intervalo $a = 0$ $b = 1$ 
+     Desde este punto solo se calculará el intervalo $a = 0$, $b = 1$ que dá la
+     respuesta $0.618033409118652$ (La más cercana a cero):
      
+      \begin{figure}[h]
+      \centering
+      \includegraphics[scale = 0.4]{33.eps}
+     \end{figure}
     \end{itemize}
  
+  \newpage
+ 
+    \subsection{Método de la Secante}
+    
+    \begin{itemize}
+      \item $x-x^{x-cosx} = 0$ $a = 0.7$ $b = 1.2$
+     
+     \begin{figure}[h]
+      \centering
+      \includegraphics[scale = 0.4]{41.eps}
+     \end{figure}
 
-
+     \item $x-cos(senx) = 0$ $a = 0$ $b = 1$
+      
+      \begin{figure}[h]
+      \centering
+      \includegraphics[scale = 0.4]{32.eps}
+     \end{figure}
+     
+    \end{itemize}
+  
+  
 \end{document}
