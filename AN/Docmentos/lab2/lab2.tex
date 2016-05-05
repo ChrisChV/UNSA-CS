@@ -327,7 +327,72 @@ int main(){
 }
   \end{lstlisting}
 
-  \newpage
+  \subsection{PuntoFijo.cpp}
+  
+  \begin{lstlisting}
+#include <iostream>
+#include <fstream>
+#include <cmath>
+#include "formulas.h"
+
+using namespace std;
+
+Number funcion(Number x){
+	return x - pow(x,x-cos(x));
+	//return x - cos(sin(x));
+	//return pow(x,5) - 3 * pow(x,3) - 2 * x * x + 2 - x;
+	//return 1 - (x*x/4);
+}
+
+Number _funcion(Number x){
+	return pow(x,x-cos(x));
+	//return x - cos(sin(x)) + x;
+	//return pow(x,5) - 3 * pow(x,3) - 2 * x * x + 2 - x + x;
+	//return 1 + x -(x*x/4);
+}
+
+void MetodoPuntoFijo(Number(*f)(Number),Number(*g)(Number), Number r, string fi, Number n, Number presicion){
+	string file = fi + ".csv";
+	ofstream archivo(file);
+	Number fr = 0;
+	Number gr = 0;
+	Number i = 0;
+	Number r_anterior = 0;
+	archivo<<"\"i\",\"ri\",\"f(ri)\",\"g(ri)\""<<endl;
+	do{
+		r_anterior = r;
+		fr = f(r);
+		gr = g(r);
+		archivo<<i<<","<<r<<","<<fr<<","<<gr<<endl;
+		r = gr;
+		i++;
+	}while((ErrorAbsoluto(r_anterior,r) > presicion and i != n) or i == 1);
+	archivo<<"\"Resultado Final\","<<r<<endl;
+	archivo.close();
+	cout<<"Archivo generado correctamente"<<endl;
+}
+
+int main(){
+	Number(*f)(Number) = funcion;
+	Number(*g)(Number) = _funcion;
+	Number r;
+	Number n;
+	Number presicion;
+	string file;
+	cout<<"Ingrese su r0->";
+	cin>>r;
+	cout<<"Ingrese su n->";
+	cin>>n;
+	cout<<"Ingrese la presicion->";
+	cin>>presicion;
+	cout<<"Ingrese el nombre del archivo->";
+	cin>>file;
+	MetodoPuntoFijo(f,g,r,file,n,presicion);
+}
+  \end{lstlisting}
+
+  
+  
   
   \section{Soluciones}
   
@@ -476,7 +541,7 @@ int main(){
     \begin{itemize}
       \item $x-x^{x-cosx} = 0$ $r_{0} = 0.5$ $r_{1} = 0.8$
      
-     \begin{figure}[h]
+     \begin{figure}[H]
       \centering
       \includegraphics[scale = 0.6]{41.eps}
      \end{figure}
@@ -487,9 +552,6 @@ int main(){
       \centering
       \includegraphics[scale = 0.6]{42.eps}
      \end{figure}
-    
-    
-    \newpage
     
      \item $x^5 - 3x^3 - 2x^2 + 2 = x$ $r_{0} = 0 $ $r_{1} =0.5 $
      
@@ -558,5 +620,27 @@ int main(){
      \end{figure}
     
     \end{itemize}
-  
+
+    \subsection{Método del Punto Fijo}
+    
+    \begin{itemize}
+    \item $x-x^{x-cosx} = 0$ $r_{0} = 0.7$
+     
+     \begin{figure}[H]
+      \centering
+      \includegraphics[scale = 0.6]{71.eps}
+     \end{figure}
+   
+   \newpage
+    
+    \item $x-cos(senx) = 0$ $r_{0} = 1$
+      
+      \begin{figure}[h]
+      \centering
+      \includegraphics[scale = 0.6]{72.eps}
+     \end{figure}
+    
+    \end{itemize}
+    
+    
 \end{document}
