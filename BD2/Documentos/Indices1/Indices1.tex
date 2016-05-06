@@ -53,7 +53,7 @@ backgroundcolor=\color{lbcolor},
  CHRISTOFER FABIAN CHÁVEZ CARAZAS
 \end{LARGE}
 
-\section{Diga qué es un índice primeario y secundario. Ponga un ejemplo}
+\section{Diga qué es un índice primario y secundario. Ponga un ejemplo}
 
   \subsection{Índices primarios}
   
@@ -61,7 +61,7 @@ backgroundcolor=\color{lbcolor},
     Se denominan índice primario cuando el archivo de datos asociado 
     se encuentra ordenado en base a la llave de búsqueda. \\
     
-    \textbf{Ejemplo->}El ejemplo más utilizado vendría ser el 
+    \textbf{Ejemplo:}El ejemplo más utilizado vendría ser el 
     de la biblioteca que se ordena por nombre de autor o de libro.
     
     
@@ -72,7 +72,29 @@ backgroundcolor=\color{lbcolor},
     Permite hacer referencia a una misma estructura.
     Un índice mantiene la llave de búsqueda y el otro índice la organicación del archivo. \\
     
-    \textbf{Ejemplo->}Un ejemplo 
+    \textbf{Ejemplo:}Un ejemplo podría ser una tabla con el saldo de las personas.
+    El índice secundario de dicha tabla puede estar con la clave saldo.
+    
+\section{¿Cuál es el efecto que logra el atributo o la característica
+	  clustered?}
+	  En un índice non-clustered, la clave por la que buscamos tiene un puntero a la página de datos donde se encuentra el registro. Mientras que en índice clustered, la leaf level es la pagina de datos!. Con lo cual, el gestor de base de datos, se ahorra hacer un salto para leer los datos del registro (Bookmark lookup)
+    
+    \newpage
+    
+\section{Cómo guarda la tabla y el índice en el siguiente ejemplo:}
+
+
+  \begin{itemize}
+   \item Create clustered index IDX.dinero on Tabla(Dinero)
+   \item Create index IDX.dinero on Tabla(Dinero)
+  \end{itemize}
+
+  Con el primero la tabla se ordena físicamente segun el índice
+  Dinero.
+  Con el segundo se crea un index secundario con el atributo Dinero.
+  
+  
+  
     
 
     

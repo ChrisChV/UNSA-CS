@@ -1,7 +1,22 @@
-Que es un indice primario y un indice secundario ponga un ejemplo??
-Cual es el efecto que logra el atributo o la caracteristica clustered(agrupado)??
+1. select * from ventas where id producto = @; (5 consultas con valores diferentes); Anotar el tiempo en segundos
+				Dar la media.(Reiniciar en cada uno)
+ Crear un indicie clustered en la col Id_Producto de tb ventas y consultar las misamas consultas con el tiempo y la 
+   media
 
-Create clustered index IDX.dinero on Tabla(Dinero)
-Create index IDX.dinero on Tabla(Dinero)
+   CONCLUSIONES
 
-Como guarda la Tabla y el Indice???
+2. select * from ventas where idProd = @ and id_cliente = @@(5 consultas con valores diferentes) Teimpo y la media.
+
+	Crear un indice secundario compuesto sobre id_producto y id_cliente. Ejecutar las 5 consultas anteriores. Tiempo y la media
+
+	OJO-> REINICIAR SERVICIO
+
+	CONCLUSIONES
+
+3. select * from ventas where idProd = @ and id_cliente @@ and fecha = @@@ and cantidad @@@@(5 consultas con valores diferentes) Tiempo y la media.
+
+	Crear un indice secundario covered sobre id_producto,id_cliente,fecha,cantidad.Ejecutar las 5 consultas anteriores.Tiempo y l amedia
+
+	CONCLUSIONES
+
+Friend Likes Student
