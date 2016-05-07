@@ -14,13 +14,17 @@ enum Tipos{SECANTE = 1, NEWTON_A, NEWTON_B};
 Number funcion(Number x){
 	//return x - pow(x,x-cos(x));
 	//return x - cos(sin(x));
-	return pow(x,5) - 3 * pow(x,3) - 2 * x * x + 2 - x;
+	//return pow(x,5) - 3 * pow(x,3) - 2 * x * x + 2 - x;
+	//return pow(x,3) - 1.265 * x + 1;
+	return pow(x,3) - 9 * pow(x,2) + 27 * x - 27;
 }
 
 Number _funcion(Number x){
 	//return 1 - pow(x,x-cos(x)) * (((x-cos(x)) / x) + log(x) * (sin(x) + 1));
 	//return sin(sin(x)) * cos(x) + 1;
-	return 5 * pow(x,4) - 9 * x * x - 4 * x - 1;
+	//return 5 * pow(x,4) - 9 * x * x - 4 * x - 1;
+	//return 3 * x * x - 1.265;
+	return 3 * pow(x,2) - 18 * x + 27;
 }
 
 Number _MetodoSecante(Number r0, Number r1, Number fr0, Number fr1){

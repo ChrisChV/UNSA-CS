@@ -5,6 +5,12 @@
 
 /// rjhancco@impa.br
 
+/// Usar el metodo de falsa posicion para hallar la razi positiva de x² - senx = 0 n = 30 ea = 10^-4
+
+///Resolver la ecuacion anterior usando el metodo del punto fijo;
+
+///Usar el metodo de newton con derivada exacta para resolver x^3-1.265 solucion positiva;
+
 using namespace std;
 
 enum Tipos{BISECCION,FALSA_POSICION};
@@ -18,9 +24,11 @@ Number FalsaPosicion(Number a, Number b, Number fa, Number fb){
 }
 
 Number Funcion(Number x){
-	return x - pow(x,x-cos(x));
+	//return x - pow(x,x-cos(x));
 	//return x - cos(sin(x));
 	//return pow(x,5) - 3 * pow(x,3) - 2 * x * x + 2 - x;
+	return x*x - sin(x);
+
 }
 
 bool MetodoCerrado(Number a, Number b, string file, Number(*f)(Number), int tipo, Number presicion, int n){

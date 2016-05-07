@@ -8,15 +8,18 @@ using namespace std;
 Number funcion(Number x){
 	//return x - pow(x,x-cos(x));
 	//return x - cos(sin(x));
-	return pow(x,5) - 3 * pow(x,3) - 2 * x * x + 2 - x;
+	//return pow(x,5) - 3 * pow(x,3) - 2 * x * x + 2 - x;
 	//return 1 - (x*x/4);
+	return x * x - sin(x);
+
 }
 
 Number _funcion(Number x){
 	//return pow(x,x-cos(x));
 	//return cos(sin(x));
-	return pow(x,5) - 3 * pow(x,3) - 2 * x * x + 2;
+	//return pow(x,5) - 3 * pow(x,3) - 2 * x * x + 2;
 	//return 1 + x -(x*x/4);
+	return sin(x) / x;
 }
 
 void MetodoPuntoFijo(Number(*f)(Number),Number(*g)(Number), Number r, string fi, Number n, Number presicion){

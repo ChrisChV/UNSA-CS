@@ -11,6 +11,7 @@ void insertPais(MYSQL * connect){
 	mysql_query(connect, "insert into Pais values(1,'Chile');");
 	mysql_query(connect, "insert into Pais values(2,'Peru');");
 	mysql_query(connect, "insert into Pais values(3,'Colombia');");
+	cout<<"paises terminados"<<endl;
 }
 
 void insertProducto(MYSQL * connect){
@@ -19,6 +20,7 @@ void insertProducto(MYSQL * connect){
 		string query = "insert into Producto values(" + to_string(i+1) + ",'" + prod + "');";
 		mysql_query(connect,query.c_str());
 	}
+	cout<<"productos terminados"<<endl;
 }
 void insertCliente(MYSQL * connect){
 	for(int i = 0; i < 300; i++){
@@ -27,6 +29,7 @@ void insertCliente(MYSQL * connect){
 				 + cli + "'," + to_string(rand()%3+1) + ");";
 		mysql_query(connect,query.c_str());
 	}
+	cout<<"paises cliente"<<endl;
 }
 
 void insertVentas(string *r,long ini, long fin){
@@ -65,24 +68,23 @@ int main(){
 	double timeUsed = 0;
 	start = clock();
 	MYSQL * connect = getConnect();
-
-	long ii = 80400000;
-	for(; ii <= 100000000; ii = ii + 400000){
+	long ii = 100400000;
+	for(; ii < 101400000; ii = ii + 10000){
 		vector<string *> res;
 		for(int i = 0; i < 100; i++) res.push_back(new string);
 		vector<thread> tt;
 		long ini = ii;
-		long fin  = ini + 4000;
+		long fin  = ini + 100;
 		for(int i = 0; i < 100; i++){
 			tt.push_back(thread(insertVentas,res[i],ini,fin));
 			ini = fin;
-			fin += 4000;	
+			fin += 100;	
 		}
 		for(auto iter = tt.begin(); iter != tt.end(); ++iter){
 			(*iter).join();
 		}
-		string query = "insert into Ventas values ";
-		for(int i = 0; i < 100; i++){
+		string query = "insert into ventas values ";
+		for(int i = 0; i < 50; i++){
 			if(i == 99) res[i]->pop_back();
 			query = query + (*(res[i]));
 		}
@@ -90,6 +92,7 @@ int main(){
 	//insertPais(connect);
 	//insertCliente(connect);
 		mysql_query(connect,query.c_str());	
+		cout<<ii<<endl;
 		for(string * ss : res) delete(ss);
 	}
 	end = clock();
