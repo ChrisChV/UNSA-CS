@@ -117,3 +117,4 @@ int main(){
 	generarGrafica(res,file);
 	generarExcel(res,file);
 }
+

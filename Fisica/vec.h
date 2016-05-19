@@ -1,3 +1,6 @@
+#ifndef VEC_H
+#define VEC_H
+
 #include <iostream>
 #include <cmath>
 #include "integral.h"
@@ -20,7 +23,8 @@ class Vector3 {
     void operator*(Vector3); // Producto Escalar
     void operator+(Vector3); // Suma
     void operator-(Vector3); // Resta
-    void operator*=(Vector3);// Producto Vectorial
+    Vector3 operator*=(Vector3);// Producto Vectorial entre dos vectores
+    Vector3 operator*=(valor); //Producto Vectorial entre vector y un número
     void integral(numero t);
     void modulo();
     void print();
@@ -64,9 +68,13 @@ void Vector3::operator-(Vector3 v2)
   cout<<"Resta: "<<'('<<this->x-v2.getX()<<','<<this->y-v2.getY()<<','<<this->z-v2.getZ()<<')'<<'\n';
 }
 
-void Vector3::operator*=(Vector3 v2)
+Vector3 Vector3::operator*=(Vector3 v2)
 {
-  cout<<"Producto Vectorial: "<<'('<<this->y*v2.getZ()-this->z*v2.getY()<<','<<this->z*v2.getX()-this->x*v2.getZ()<<','<<this->x*v2.getY()-this->y*v2.getX()<<')'<<'\n';
+  return Vector3(this->y*v2.getZ()-this->z*v2.getY(),this->z*v2.getX()-this->x*v2.getZ(),this->x*v2.getY()-this->y*v2.getX());
+}
+
+Vector3 Vector3::operator*=(valor t){
+  return Vector3(x*t,y*t,z*t);
 }
 
 void Vector3::modulo()
@@ -79,11 +87,4 @@ void Vector3::print()
   cout<<"Vector: "<<'('<<this->x<<','<<this->y<<','<<this->z<<')'<<'\n';
 }
 
-int main()
-{
-  Vector3 v1;
-  numero t;
-  cout<<"Ingrese su t: "<<endl;
-  cin>>t;
-  v1.integral(t);
-}
+#endif

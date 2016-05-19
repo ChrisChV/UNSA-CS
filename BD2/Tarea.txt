@@ -15,7 +15,7 @@
 
 3. select * from ventas where idProd = @ and id_cliente @@ and fecha = @@@ and cantidad @@@@(5 consultas con valores diferentes) Tiempo y la media.
 
-	Crear un indice secundario covered sobre id_producto,id_cliente,fecha,cantidad.Ejecutar las 5 consultas anteriores.Tiempo y l amedia
+		Crear un indice secundario covered sobre id_producto,id_cliente,fecha,cantidad.Ejecutar las 5 consultas anteriores.Tiempo y l amedia
 
 	CONCLUSIONES
 

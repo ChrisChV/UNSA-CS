@@ -1,0 +1,136 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{color}
+\usepackage{parskip}
+\usepackage{graphicx}
+\usepackage{multirow}
+\usepackage{listings}
+\usepackage{vmargin}
+\graphicspath{ {imagenes/} }
+\definecolor{mygreen}{rgb}{0,0.6,0}
+\definecolor{lbcolor}{rgb}{0.9,0.9,0.9}
+\usepackage{epstopdf}
+
+
+\setpapersize{A4}
+\setmargins{2.5cm}       % margen izquierdo
+{1.5cm}                        % margen superior
+{16.5cm}                      % anchura del texto
+{23.42cm}                    % altura del texto
+{10pt}                           % altura de los encabezados
+{1cm}                           % espacio entre el texto y los encabezados
+{0pt}                             % altura del pie de página
+{2cm}     
+
+\lstset{
+backgroundcolor=\color{lbcolor},
+    tabsize=4,    
+%   rulecolor=,
+    language=[GNU]C++,
+        basicstyle=\tiny,
+        aboveskip={1.5\baselineskip},
+        columns=fixed,
+        showstringspaces=false,
+        extendedchars=false,
+        breaklines=true,
+        prebreak = \raisebox{0ex}[0ex][0ex]{\ensuremath{\hookleftarrow}},
+        frame=single,
+        showtabs=false,
+        showspaces=false,
+        showstringspaces=false,
+        identifierstyle=\ttfamily,
+        keywordstyle=\color[rgb]{0,0,1},
+        commentstyle=\color[rgb]{0.026,0.112,0.095},
+        stringstyle=\color{red},
+        numberstyle=\color[rgb]{0.205, 0.142, 0.73},
+%        \lstdefinestyle{C++}{language=C++,style=numbers}’.
+}
+
+\begin{document}
+
+  \section{Hacer 5 consultas select sobre la tabla ventas y el id del producto. Anotar el tiempo en segundos y la media}
+  
+  \begin{itemize}
+   \item select * from Ventas where IdProducto = 100; Tiempo: 131 s.
+   \item select * from Ventas where IdProducto = 200; Tiempo: 103 s.
+   \item select * from Ventas where IdProducto = 300; Tiempo: 133 s.
+   \item select * from Ventas where IdProducto = 400; Tiempo: 142 s.
+   \item select * from Ventas where IdProducto = 500; Tiempo: 104 s.
+   \item Media: 122.6 s.
+  \end{itemize}
+
+  \section{Crear un Índice clustered en la columna Id producto de la tabla ventas. Hacer las mismas consultas. Anotar el tiempo
+  en segundos y dar la media}
+  
+  \begin{itemize}
+   \item select * from Ventas where IdProducto = 100; Tiempo: 0.54s.
+   \item select * from Ventas where IdProducto = 200; Tiempo: 0.44s.
+   \item select * from Ventas where IdProducto = 300; Tiempo: 0.42s.
+   \item select * from Ventas where IdProducto = 400; Tiempo: 0.42s.
+   \item select * from Ventas where IdProducto = 500; Tiempo: 0.44s.
+   \item Media: 0.452s.
+  \end{itemize}
+  
+  \section{Conclusiones}
+  
+  \begin{itemize}
+   \item En mysql, con el motor innodb, los índices clustered, por defecto, son las PRIMARY\_KEY.
+   \item El tiempo baja significativamente al crear el index.
+  \end{itemize}
+  
+  \section{Hacer 5 consultas select sobre la tabla venta, el id del cliente y el id del producto. Anotar el tiempo y dar la media}
+  
+  \begin{itemize}
+   \item select * from Ventas where idProducto = 400 and idCliente = 85; Tiempo: 3.30 s.
+   \item select * from Ventas where idProducto = 302 and idCliente = 102; Tiempo: 6.60 s.
+   \item select * from Ventas where idProducto = 100 and idCliente = 100; Tiempo: 5.13 s.
+   \item select * from Ventas where idProducto = 50 and idCliente = 145; Tiempo: 5.65 s.
+   \item select * from Ventas where idProducto = 10 and idCliente = 1; Tiempo: 5.37 s.
+   \item Media: 5.21 s.
+  \end{itemize}
+
+  \section{Crear un indice secundario compuesto sobre id del producto y id del cliente.
+  Ejecutar las 5 consultas anteriores. Anotar el tiempo y dar la media}
+  
+  \begin{itemize}
+   \item select * from Ventas where idProducto = 400 and idCliente = 85; Tiempo: 0.12s.
+   \item select * from Ventas where idProducto = 302 and idCliente = 102; Tiempo: 0.14s.
+   \item select * from Ventas where idProducto = 100 and idCliente = 100; Tiempo: 0.08s.
+   \item select * from Ventas where idProducto = 50 and idCliente = 145; Tiempo: 0.35s.
+   \item select * from Ventas where idProducto = 10 and idCliente = 1; Tiempo: 0.14s.
+   \item Media: 0.166s.
+  \end{itemize}
+  
+  \section{Conclusiones}
+    
+   El tiempo baja hasta casi llegar a 0.
+  
+  \section{Hacer 5 consultas sobre todos los campos de la tabla ventas. Anotar el tiempo y dar la media}
+  
+  \begin{itemize}
+   \item select * from Ventas where idProducto = 200 and idCliente = 50 and fecha = 2015-10-10 and cantidad = 300; Tiempo: 2.98s.
+   \item select * from Ventas where idProducto = 100 and idCliente = 100 and fecha = 2015-09.15 and cantidad = 100; Tiempo: 5.49s.
+   \item select * from Ventas where idProducto = 45 and idCliente = 117 and fecha = 2015-06-21 and cantidad = 100; Tiempo: 4.58s.
+   \item select * from Ventas where idProducto = 55 and idCliente = 200 and fecha = 2015-03-20 and cantidad = 150; Tiempo: 4.95s.
+   \item select * from Ventas where idProducto = 300 and idCliente = 300 and fecha = 2015-01-26 and cantidad = 300; Tiempo: 2.95s.
+   \item Media: 4.19s.
+  \end{itemize}
+
+  \section{Crear un indice secundario covered sobre id del producto, id del cliente, fecha y cantidad.
+  Ejecutar las 5 consultas anteriores. Anotar el tiempo y dar la media}
+  
+  \begin{itemize}
+   \item select * from Ventas where idProducto = 200 and idCliente = 50 and fecha = 2015-10-10 and cantidad = 300; Tiempo: 0.10s.
+   \item select * from Ventas where idProducto = 100 and idCliente = 100 and fecha = 2015-09.15 and cantidad = 100; Tiempo: 0.01s.
+   \item select * from Ventas where idProducto = 45 and idCliente = 117 and fecha = 2015-06-21 and cantidad = 100; Tiempo: 0.12s.
+   \item select * from Ventas where idProducto = 55 and idCliente = 200 and fecha = 2015-03-20 and cantidad = 150; Tiempo: 0.23s.
+   \item select * from Ventas where idProducto = 300 and idCliente = 300 and fecha = 2015-01-26 and cantidad = 300; Tiempo: 0.10s.
+   \item Media: 0.112s.
+  \end{itemize}
+  
+  \section{Conclusiones}
+  
+  El tiempo baja hasta casi llegar a 0.
+  
+\end{document}

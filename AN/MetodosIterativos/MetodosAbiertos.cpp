@@ -16,7 +16,8 @@ Number funcion(Number x){
 	//return x - cos(sin(x));
 	//return pow(x,5) - 3 * pow(x,3) - 2 * x * x + 2 - x;
 	//return pow(x,3) - 1.265 * x + 1;
-	return pow(x,3) - 9 * pow(x,2) + 27 * x - 27;
+	//return pow(x,3) - 9 * pow(x,2) + 27 * x - 27;
+	return pow(x,3) - x;
 }
 
 Number _funcion(Number x){
@@ -24,7 +25,8 @@ Number _funcion(Number x){
 	//return sin(sin(x)) * cos(x) + 1;
 	//return 5 * pow(x,4) - 9 * x * x - 4 * x - 1;
 	//return 3 * x * x - 1.265;
-	return 3 * pow(x,2) - 18 * x + 27;
+	//return 3 * pow(x,2) - 18 * x + 27;
+	return 3 * x * x - 1;
 }
 
 Number _MetodoSecante(Number r0, Number r1, Number fr0, Number fr1){
@@ -66,6 +68,7 @@ void MetodoSecante(Number r0, Number r1, Number(*f)(Number), int n, Number presi
 void MetodoNewton_A(Number r, Number(*f)(Number), Number(*df)(Number), Number presicion, int n, string fi){
 	string file = fi + ".csv";
 	ofstream archivo(file);
+	archivo.precision(100);
 	Number fr = 0;
 	Number f_r = 0;
 	Number r2 = 0;
