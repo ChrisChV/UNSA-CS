@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.4.22)  15 MAY 2016 21:25
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.4.22)  18 MAY 2016 21:48
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -527,7 +527,7 @@ LaTeX Info: Redefining \% on input line 50.
 )
 \c@lstlisting=\count104
 
-Overfull \hbox (12.45457pt too wide) in paragraph at lines 78--79
+Overfull \hbox (12.45457pt too wide) in paragraph at lines 83--84
 []\OT1/cmr/m/n/12 En mysql, con el mo-tor in-nodb, los ^^S^^Pndi-ces clus-te-re
 d, por de-fec-to, son las PRI-MARY[]KEY. 
  []
@@ -539,19 +539,20 @@ LaTeX Info: Redefining \. on input line 6.
 LaTeX Info: Redefining \% on input line 6.
 ) ) 
 Here is how much of TeX's memory you used:
- 4115 strings out of 494891
- 56156 string characters out of 6179039
- 151095 words of memory out of 5000000
- 7359 multiletter control sequences out of 15000+600000
- 4544 words of font info for 17 fonts, out of 8000000 for 9000
+ 4118 strings out of 494891
+ 56189 string characters out of 6179039
+ 150095 words of memory out of 5000000
+ 7362 multiletter control sequences out of 15000+600000
+ 4843 words of font info for 18 fonts, out of 8000000 for 9000
  40 hyphenation exceptions out of 8191
  42i,5n,67p,302b,384s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></u
-sr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb>
-Output written on indices2.pdf (3 pages, 35496 bytes).
+sr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/shar
+e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb>
+Output written on indices2.pdf (3 pages, 45415 bytes).
 PDF statistics:
- 22 PDF objects out of 1000 (max. 8388607)
- 14 compressed objects within 1 object stream
+ 26 PDF objects out of 1000 (max. 8388607)
+ 17 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 
