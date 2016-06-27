@@ -10,8 +10,29 @@ using namespace std;
 typedef long double Num;
 typedef vector<vector<Num>> Matriz;
 typedef vector<Num> Lista;
+typedef vector<Num(*)(Lista)> ListaFunciones;
+typedef vector<ListaFunciones> MatrizFunciones;
 
+void escribirLista(Lista x, ofstream &archivo){
+	for(auto iter = x.begin(); iter != x.end(); ++iter){
+			archivo<<to_string(*iter);
+			if(iter != x.end()-1) archivo<<",";
+			else archivo<<endl;
+	}
+}
 
+Num Distancia(Lista r_anterior, Lista r_actual){
+	Num sum = 0;
+	for(int i = 0; i < r_anterior.size(); i++){
+		sum += pow(r_anterior[i] - r_actual[i],2);
+	}
+	return sqrt(sum);
+}
+
+bool ErrorAbsoluto(Lista r_anterior, Lista r_actual, Num presicion){
+	if(Distancia(r_anterior,r_actual) < presicion) return true;
+	return false;
+}
 
 void mostrarLista(Lista &A){
 	for(int i = 0; i < A.size(); i++){
@@ -80,6 +101,14 @@ Matriz operator *(Matriz a, Matriz b){
 	return res;
 }
 
+Lista operator *(Lista a, Num b){
+	Lista res = a;
+	for(int i = 0; i < a.size(); i++){
+		res[i] = b * a[i];
+	}
+	return res;
+}
+
 Matriz operator +(Matriz a, Matriz b){
 	int n = a.size();
 	Matriz res = a;
@@ -87,6 +116,14 @@ Matriz operator +(Matriz a, Matriz b){
 		for(int j = 0; j < n; j++){
 			res[i][j] = a[i][j] + b[i][j];
 		}
+	}
+	return res;
+}
+
+Lista operator +(Lista a, Lista b){
+	Lista res = a;
+	for(int i = 0; i < a.size(); i++){
+		res[i] = a[i] + b[i];
 	}
 	return res;
 }
@@ -108,26 +145,6 @@ Matriz identidad(int n){
 		for(int j = 0; j < n; j++){
 			if(i == j) res[i][j] = 1;
 		}
-	}
-	return res;
-}
-
-Matriz generarMatrizA(){
-	Matriz res = zeros(10);
-	for(int i = 0; i < 10; i++){
-		for(int j = 0; j < 10; j++){
-			if(i==j) res[i][j] = -1;
-			else if(abs(i-j)<2) res[i][j] = 1;
-			else res[i][j] = 0;
-		}
-	}
-	return res;
-}
-
-Lista generarMatrizB(){
-	Lista res;
-	for(int i = 0; i < 10; i++){
-		res.push_back(10-i);
 	}
 	return res;
 }

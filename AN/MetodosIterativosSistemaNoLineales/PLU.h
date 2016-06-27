@@ -1,3 +1,5 @@
+#ifndef PLU_H
+#define PLU_H
 #include <iostream>
 #include <tuple>
 #include "Sustituciones.h"
@@ -35,37 +37,13 @@ tuple<Matriz,Matriz,Matriz> PLU(Matriz A){
 	return make_tuple(P,L,U);
 }
 
-int main(){
-	Matriz A = generarMatrizA();
-	Lista B = generarMatrizB();
+Lista MetodoPLU(Matriz A, Lista B){
 	auto t = PLU(A);
 	Matriz P = get<M_P>(t);
 	Matriz L = get<M_L>(t);
 	Matriz U = get<M_U>(t);
 	Lista Y = SustitucionProgresiva(matrizAumentada(L,P*B));
-	Lista res = SustitucionRegresiva(matrizAumentada(U,Y));
-	mostrarLista(res);
+	return SustitucionRegresiva(matrizAumentada(U,Y));
 }
 
-/*
-int main(){
-	//Matriz A = {{1,2,3},{2,3,6},{8,4,1}};
-	Matriz A = {{-1},{2,-1,1},{4,1,-2}};
-	Lista B = {10,9,8,7,6,5,4,3,2,1};
-	auto t = PLU(A);
-	Matriz P = get<M_P>(t);
-	Matriz L = get<M_L>(t);
-	Matriz U = get<M_U>(t);
-	mostrarMatriz(P);
-	mostrarMatriz(L);
-	mostrarMatriz(U);
-	Matriz Q = P * A;
-	Matriz W = L * U;
-	mostrarMatriz(Q);
-	mostrarMatriz(W);
-	Lista Y = SustitucionProgresiva(matrizAumentada(L,P*B));
-	mostrarLista(Y);
-	Lista res = SustitucionRegresiva(matrizAumentada(U,Y));
-	mostrarLista(res);
-}
-*/
+#endif

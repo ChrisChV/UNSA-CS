@@ -22,12 +22,9 @@ Matriz Gauss(Matriz A, Lista &B){
 }
 
 int main(){
-	Matriz A = {{1,1,-1},{2,-1,1},{4,1,-2}};
-	Lista B = {1,2,3};
+	Matriz A = generarMatrizA();
+	Lista B = generarMatrizB();
 	Matriz AA = Gauss(A,B);
 	Lista res = SustitucionRegresiva(AA);
-	for(Num n : res){
-		cout<<n<<" ";
-	}
-	cout<<endl;
+	mostrarLista(res);
 }

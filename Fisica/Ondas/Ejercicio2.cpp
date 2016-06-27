@@ -36,10 +36,11 @@ int main()
             float y1 = Y1(k * x - w * t);
             float y2 = Y2(k * (x-5) + w * t);
             float y=y1+y2;
-            v.posicion(x,y,3);
-            v.posicion(x,y1,7);
+            if(y != y2) v.posicion(x,y,3);
+            if(y1 != 0)v.posicion(x,y1,7);
             v2.posicion(x,y2,13);
         }
+        delay(20);
         cleardevice();
     }
     closegraph();
