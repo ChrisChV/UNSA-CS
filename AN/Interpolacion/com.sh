@@ -1,1 +1,1 @@
-g++ -std=c++11 Lagranche.cpp -o run
+g++ -std=c++17 InterNewton.cpp -o newton
