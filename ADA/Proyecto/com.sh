@@ -1,1 +1,1 @@
-g++ -std=c++17 ConvexHull.cpp -o run
+g++ -std=c++11 ConvexHull.cpp -o run

@@ -161,7 +161,7 @@ int main(){
 	srand(time(NULL));
 
 	
-	//vector<Punto *> puntos;
+	vector<Punto *> puntos;
 
 	/*
 	puntos.push_back(new Punto(3,34));
@@ -171,7 +171,7 @@ int main(){
 	puntos.push_back(new Punto(31,54));
 	*/
 
-/*
+
 puntos.push_back(new Punto(22,34));
 puntos.push_back(new Punto(44,48));
 puntos.push_back(new Punto(65,50));
@@ -182,7 +182,7 @@ puntos.push_back(new Punto(53,3));
 puntos.push_back(new Punto(66,6));
 puntos.push_back(new Punto(59,55));
 puntos.push_back(new Punto(41,43));
-*/
+
 
 
 /*
@@ -297,7 +297,7 @@ puntos.push_back(new Punto(84,38));
 */
 
 	
-	vector<Punto*> puntos = generarPuntosAleatorios(50000,50000,10000);
+	//vector<Punto*> puntos = generarPuntosAleatorios(50000,50000,10000);
 	ofstream archivo("puntos.txt");
 	for(Punto* p : puntos){
 		archivo<<"puntos.push_back(new Punto("<<p->x<<","<<p->y<<"));"<<endl;
