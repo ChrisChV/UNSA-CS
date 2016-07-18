@@ -3,6 +3,8 @@
 
 using namespace std;
 
+class 
+
 int main(){
 	ifstream archivo("test.txt");
 	int a;
