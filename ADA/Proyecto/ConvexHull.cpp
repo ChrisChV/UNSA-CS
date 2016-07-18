@@ -295,8 +295,9 @@ puntos.push_back(new Punto(40,36));
 puntos.push_back(new Punto(99,93));
 puntos.push_back(new Punto(84,38));
 */
+
 	
-	vector<Punto*> puntos = generarPuntosAleatorios(5000,5000,1000);
+	vector<Punto*> puntos = generarPuntosAleatorios(50000,50000,10000);
 	ofstream archivo("puntos.txt");
 	for(Punto* p : puntos){
 		archivo<<"puntos.push_back(new Punto("<<p->x<<","<<p->y<<"));"<<endl;
@@ -310,7 +311,8 @@ puntos.push_back(new Punto(84,38));
 	//while(i != 2){
 		uniones.delaunay = true;
 		for(auto iter = uniones.vec_uniones.begin(); iter != uniones.vec_uniones.end(); ++iter){
-			uniones.verifyFlip(iter);
+			Union * u = *iter;
+			uniones.verifyFlip(u);
 			cout<<"ENDVER"<<endl;
 		}
 		i++;

@@ -11,7 +11,7 @@
 
 using namespace std;
 
-typedef float Coordenada;
+typedef long double Coordenada;
 
 class Punto{
 public:

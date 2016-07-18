@@ -212,11 +212,152 @@ class Uniones{
 		Uni map_uniones;
 		vector<Union *> vec_uniones;
 		bool delaunay;
-		void Flip(vector<Union*>::iterator uIter);
-		void verifyFlip(vector<Union*>::iterator uIter);
+		void _Flip(vector<Union*>::iterator uIter);
+		void _verifyFlip(vector<Union*>::iterator uIter);
+		void Flip(Union * u);
+		void verifyFlip(Union * u);
 };
 
-void Uniones::verifyFlip(vector<Union*>::iterator uIter){
+void Uniones::verifyFlip(Union * u){
+	cout<<"VERY"<<endl;
+	if(u == nullptr) return;
+	auto iter = map_uniones.find(make_tuple((*u)(0),(*u)(1)));
+	if(iter == map_uniones.end()) return;
+	//u->visit = true;
+	vector<Punto*> temp;
+	temp.push_back((*u)(0));
+	temp.push_back((*u)(1));
+	temp.push_back((*u)(2));
+
+	sort(temp.begin(), temp.end(), sortByX);
+	if(!((*temp[0]) < (*temp[1]))){
+		if(!((*temp[1]) < (*temp[2]))){
+			sort(temp.begin(), temp.end(), _sortByY);
+		}
+		else{
+			swap(temp[0],temp[1]);
+		}
+	}
+	HallarAngulos(temp, temp.front());
+	sort(temp.begin(), temp.end(), sortByAngulo);
+	temp.push_back((*u)(3));
+	cout<<"P1";
+	u->imprimirUnion();
+	for(int i = 0; i < 4; i++){
+		cout<<"PP1->";
+		temp[i]->imprimirPunto();
+		cout<<"->";
+	}
+	cout<<endl;
+	long det1 = Determinante(llenarMatriz(temp));
+	cout<<"A"<<endl;
+	/*
+	temp.clear();
+	temp.push_back((*u)(0));
+	temp.push_back((*u)(1));
+	temp.push_back((*u)(3));
+	sort(temp.begin(), temp.end(), sortByX);
+	HallarAngulos(temp, temp.front());
+	sort(temp.begin(), temp.end(), sortByAngulo);
+	temp.push_back((*u)(2));
+	imprimirMatriz(llenarMatriz(temp));
+	long det2 = Determinante(llenarMatriz(temp));
+	for(int i = 0; i < 4; i++){
+		cout<<"PP2->";
+		temp[i]->imprimirPunto();
+		cout<<"->";
+	}
+	cout<<endl;
+	cout<<"EEEEEEEE"<<endl;
+	u->imprimirUnion();
+	cout<<endl<<"D1->"<<det1<<endl;
+	cout<<endl<<"D2->"<<det2<<endl;
+	*/
+	cout<<"def111->"<<det1<<endl;
+	if(det1 > 0){
+		delaunay = false;
+		cout<<"detif"<<endl;
+		Flip(u);
+	}
+	cout<<"GGGG->"<<det1<<endl;
+	u->imprimirUnion();
+}
+
+void Uniones::Flip(Union * u){
+	cout<<"FLIP----------------------------------------->"<<endl;
+	Punto * a = (*u)(0);
+	Punto * b = (*u)(2);
+	Punto * c = (*u)(1);
+	Punto * d = (*u)(3);
+	auto iter = map_uniones.find(make_tuple(a,c));
+	//if(iter != map_uniones.end()) return;
+
+
+	map_uniones.erase(iter);
+	Union * nuevo;
+
+	if((*b) < (*d)){
+
+		nuevo = new Union(b,d,a,c);
+
+		nuevo->imprimirUnion();
+
+		map_uniones[make_tuple(b,d)] = nuevo;
+		cout<<vec_uniones.size()<<endl;
+		cout<<"RRR"<<endl;
+		//(*uIter) = nuevo;
+		//vec_uniones.push_back(nuevo);
+	} 
+	else{
+		cout<<"HHHH"<<endl;
+		nuevo = new Union(d,b,a,c);	
+		map_uniones[make_tuple(d,b)] = nuevo;
+		//(*uIter) = nuevo;
+		//vec_uniones.push_back(nuevo);
+	} 
+
+	nuevo->imprimirUnion();
+	//a con d;
+	auto tt1 = make_tuple(a,d);
+	if(*d < *a) tt1 = make_tuple(d,a);	
+	auto iter1 = map_uniones.find(tt1);
+	if(iter1 != map_uniones.end()) iter1->second->agregarPunto(iter1->second->buscarPunto(c),b);		
+	//a con b;
+	auto tt2 = make_tuple(a,b);
+	if(*b < *a) tt2 = make_tuple(b,a);
+	auto iter2 = map_uniones.find(tt2);
+	if(iter2 != map_uniones.end()) iter2->second->agregarPunto(iter2->second->buscarPunto(c),d);
+	//d con c;
+	auto tt3 = make_tuple(d,c);
+	if(*c < *d) tt3 = make_tuple(c,d);
+	auto iter3 = map_uniones.find(tt3);
+	if(iter3 != map_uniones.end()) iter3->second->agregarPunto(iter3->second->buscarPunto(a),b);
+	//c con b;
+	auto tt4 = make_tuple(c,b);
+	if(*b < *c) tt4 = make_tuple(b,c);
+	auto iter4 = map_uniones.find(tt4);
+	if(iter4 != map_uniones.end()) iter4->second->agregarPunto(iter4->second->buscarPunto(a),d);
+
+	
+	iter1 = map_uniones.find(tt1);
+	cout<<"II1"<<endl;
+	if(iter1 != map_uniones.end()) {cout<<"a"<<endl; verifyFlip(iter1->second);}
+	iter2 = map_uniones.find(tt2);
+	cout<<"II2"<<endl;
+	if(iter2 != map_uniones.end()) {cout<<"b"<<endl; verifyFlip(iter2->second);}
+	iter3 = map_uniones.find(tt3);
+	cout<<"II3"<<endl;
+	if(iter3 != map_uniones.end()) {cout<<"c"<<endl; verifyFlip(iter3->second);}
+	iter4 = map_uniones.find(tt4);
+	cout<<"II4"<<endl;
+	if(iter4 != map_uniones.end()) {cout<<"d"<<endl; verifyFlip(iter4->second);}
+	
+	
+	cout<<"IIIIII"<<endl;
+}
+
+
+void Uniones::_verifyFlip(vector<Union*>::iterator uIter){
 	Union * u = *uIter;
 	cout<<"VERY"<<endl;
 	if(u == nullptr) return;
@@ -276,13 +417,13 @@ void Uniones::verifyFlip(vector<Union*>::iterator uIter){
 	if(det1 > 0){
 		delaunay = false;
 		cout<<"detif"<<endl;
-		Flip(uIter);
+		_Flip(uIter);
 	}
 	cout<<"GGGG->"<<det1<<endl;
 	u->imprimirUnion();
 }
 
-void Uniones::Flip(vector<Union*>::iterator uIter){
+void Uniones::_Flip(vector<Union*>::iterator uIter){
 	Union * u = *uIter;
 	cout<<"FLIP----------------------------------------->"<<endl;
 	Punto * a = (*u)(0);
@@ -337,26 +478,10 @@ void Uniones::Flip(vector<Union*>::iterator uIter){
 	if(*b < *c) tt4 = make_tuple(b,c);
 	auto iter4 = map_uniones.find(tt4);
 	if(iter4 != map_uniones.end()) iter4->second->agregarPunto(iter4->second->buscarPunto(a),d);
-
-	/*
-	iter1 = map_uniones.find(tt1);
-	cout<<"II1"<<endl;
-	if(iter1 != map_uniones.end()) {cout<<"a"<<endl; verifyFlip(iter1->second);}
-	iter2 = map_uniones.find(tt2);
-	cout<<"II2"<<endl;
-	if(iter2 != map_uniones.end()) {cout<<"b"<<endl; verifyFlip(iter2->second);}
-	iter3 = map_uniones.find(tt3);
-	cout<<"II3"<<endl;
-	if(iter3 != map_uniones.end()) {cout<<"c"<<endl; verifyFlip(iter3->second);}
-	iter4 = map_uniones.find(tt4);
-	cout<<"II4"<<endl;
-	if(iter4 != map_uniones.end()) {cout<<"d"<<endl; verifyFlip(iter4->second);}
-	*/
+	
 	
 	cout<<"IIIIII"<<endl;
 }
-
-
 
 
 
