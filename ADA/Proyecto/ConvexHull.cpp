@@ -323,7 +323,7 @@ puntos.push_back(new Punto(84,38));
 	}
 	cout<<"TT->"<<i<<endl;
 	
-	generarGrafica("test2",puntos, get<0>(convex), uniones,false);
+	generarGrafica("test2",puntos, get<0>(convex), uniones);
 	//generarGrafica("test",puntos,get<0>(convex));
 	//generarGrafica("test",puntos);
 }

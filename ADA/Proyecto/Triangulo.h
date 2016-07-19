@@ -536,6 +536,25 @@ void generarGrafica(string fi, vector<Punto*> &all, vector<Punto*> &convex, vect
 	system(com2.c_str());
 }
 
+void generarGrafica(string fi, vector<Punto *> &all, vector<Punto *> &convex, Uniones &uniones){
+	
+	string file = fi + ".dat";
+	ofstream archivo(file.c_str());
+	
+	for(auto iter = all.begin(); iter != all.end(); ++iter){
+		archivo<<(*iter)->x<<" "<<(*iter)->y<<endl<<endl;		
+	}
+
+	auto iter = convex.begin();
+	auto iter2 = convex.begin() + 1;
+	for(;iter2 != convex.end(); ++iter,++iter2){
+		
+	}	
+
+	archivo.close();
+	
+}
+
 void generarGrafica(string fi, vector<Punto *> &all, vector<Punto *> &convex, Uniones &uniones, bool flag){
 	
 	string file = fi + ".m";
