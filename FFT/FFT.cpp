@@ -2,14 +2,14 @@
 #include <fstream>
 #include <sstream>
 #include <complex>
-#include <math.h>
+#include <cmath>
 #include <valarray>
 
 
 using namespace std;
 
 // PI constant
-const double PI = 3.14192653589793238460;
+//const double PI = 3.14192653589793238460;
 //using type complex due to the nature of the FFT function. double for higher precision
 typedef complex<double> Complex;
 //using valarray because its easier to deal with in the recursive function (creating subsets)
@@ -128,17 +128,24 @@ void fft(Complex_Array& x)
 	{
 
 		//split elements into even and odd
+		//cout<<"1->"<<N<<endl;
+		//cout<<"2->"<<N/2<<endl;
 		Complex_Array even = x[slice(0, N / 2, 2)];
+		if(N % 2 != 0){
+			//cout<<"AAAA"<<endl;
+			even = x[slice(0, (N / 2) - 1, 2)];	
+		} 
 		Complex_Array odd = x[slice(1, N / 2, 2)];
 
 		//apply the recursive function
+
 		fft(even);
 		fft(odd);
 
 		//blend both array together
 		for (size_t i = 0; i<N / 2; i++)
 		{
-			Complex t = polar(1.0, -2 * PI*i / N)*odd[i];
+			Complex t = polar(1.0, -2 * M_PI*i / N)*odd[i];
 			x[i] = even[i] + t;
 			x[i + N / 2] = even[i] - t;
 		}
@@ -163,7 +170,7 @@ void _ifft(Complex_Array& x)
 		for (size_t i = 0; i<N / 2; i++)
 		{
 			//positive angle instead of negative angle
-			Complex t = polar(1.0, 2 * PI*i / N)*odd[i];
+			Complex t = polar(1.0, 2 * M_PI*i / N)*odd[i];
 			x[i] = even[i] + t;
 			x[i + N / 2] = even[i] - t;
 		}
@@ -264,6 +271,42 @@ int main(int argc, char* argv[])
 			}
 		}
 
+		string file5 = "Real" + file2;
+		ofstream out_real(file5.c_str());
+		out_real<<"P2"<<endl;
+		out_real<<"#	Real Image"<<endl;
+		out_real<<numcols<<" "<<numrows<<endl;
+		out_real << 255 << endl;
+
+		for (int i = 0; i<numrows; i++){
+			for (int j = 0; j<numcols; j++){
+				int ttt = (int)real(all_image[i][j]);
+				out_real<<abs(ttt)<<endl;
+				//if(ttt >= 0) 
+				//else output_recon<<0<<endl;
+			}
+		}
+
+		out_real.close();
+
+		string file6 = "Imaginario" + file2;
+		ofstream out_imag(file6.c_str());
+		out_imag<<"P2"<<endl;
+		out_imag<<"#	Imaginario Image"<<endl;
+		out_imag<<numcols<<" "<<numrows<<endl;
+		out_imag << 255 << endl;
+
+		for (int i = 0; i<numrows; i++){
+			for (int j = 0; j<numcols; j++){
+				int ttt = (int)imag(all_image[i][j]);
+				out_imag<<abs(ttt)<<endl;
+				//if(ttt >= 0) 
+				//else output_recon<<0<<endl;
+			}
+		}
+
+		out_imag.close();
+
 		cout << "Finished FFT on the whole image in " << (clock() - start) << " clocks." << endl;
 
 		cout << "Status: Writing the frequency spectrum image to the hard disk." << endl;
@@ -277,7 +320,18 @@ int main(int argc, char* argv[])
 		//calculate a scaling factor for the output values
 		float scaling_factor = 255 / log(1 + max);
 
+
 		//output fourth quadrant as the first quadrant and third quadrant as second
+		/*
+		for(int i = 0; i < numrows; i++){
+			for(int j = 0; j < numcols; j++){
+				output_freq << int(scaling_factor*log(1 + abs(all_image[i][j]))) << endl;
+			}
+		}
+		*/
+
+
+		
 		for (int i = numrows / 2; i<numrows; i++)
 		{
 			for (int j = numcols / 2; j<numcols; j++)
@@ -294,23 +348,26 @@ int main(int argc, char* argv[])
 			for (int j = 0; j<numcols / 2; j++)
 				output_freq << int(scaling_factor*log(1 + abs(all_image[i][j]))) << endl;
 		}
+		
 
 		output_freq.close();
 
 		cout << "Status: Applying IFFT to reconstruct the image." << endl;
 		//apply the IFFT to reconstruct the image
 		start = clock();
-		for (col = 0; col<numcols; col++)
+
+		for (col = 0; col < numcols; col++)
 		{
 			Complex column[numrows];
-			for (int i = 0; i<numrows; i++)
+			for (int i = 0; i < numrows; i++)
 			{
 				column[i] = all_image[i][col];
 			}
 			Complex_Array x(column, numrows);
+
 			ifft(x);
 
-			for (int i = 0; i<numrows; i++)
+			for (int i = 0; i < numrows; i++)
 			{
 				all_image[i][col] = x[i];
 			}
@@ -325,9 +382,10 @@ int main(int argc, char* argv[])
 			}
 
 			Complex_Array x(single_row, numcols);
+
 			ifft(x);
 
-			for (int i = 0; i<numcols; i++)
+			for (int i = 0; i < numcols; i++)
 			{
 				all_image[row][i] = x[i];
 			}
@@ -347,10 +405,9 @@ int main(int argc, char* argv[])
 		for (int i = 0; i<numrows; i++){
 			for (int j = 0; j<numcols; j++){
 				int ttt = (int)real(all_image[i][j]);
-				if(ttt >= 0) output_recon<<ttt<<endl;
-				else output_recon<<0<<endl;
-				
-
+				output_recon<<abs(ttt)<<endl;
+				//if(ttt >= 0) 
+				//else output_recon<<0<<endl;
 			}
 		}
 		output_recon.close();

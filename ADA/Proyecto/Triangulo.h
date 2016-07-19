@@ -548,8 +548,19 @@ void generarGrafica(string fi, vector<Punto *> &all, vector<Punto *> &convex, Un
 	auto iter = convex.begin();
 	auto iter2 = convex.begin() + 1;
 	for(;iter2 != convex.end(); ++iter,++iter2){
-		
-	}	
+		archivo<<(*iter)->x<<" "<<(*iter)->y<<endl;
+		archivo<<(*iter2)->x<<" "<<(*iter2)->y<<endl<<endl;		
+	}
+
+	iter2 = convex.begin();
+
+	archivo<<(*iter)->x<<" "<<(*iter)->y<<endl;
+	archivo<<(*iter2)->x<<" "<<(*iter2)->y<<endl<<endl;		
+
+	for(auto uIter = uniones.begin(); uIter != uniones.end(); ++uIter){
+		archivo<<(*(uIter->second))(0)->x<<" "<<(*(uIter->second))(0)->y<<endl;
+		archivo<<(*(uIter->second))(1)->x<<" "<<(*(uIter->second))(1)->y<<endl<<endl;
+	}
 
 	archivo.close();
 	
