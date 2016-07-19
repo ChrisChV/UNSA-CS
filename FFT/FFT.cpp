@@ -17,7 +17,7 @@ typedef valarray<Complex> Complex_Array;
 
 typedef int Color;
 
-void loadImage(string file){
+tuple<int,int> loadImage(string file){
 	string file2;
 	for(auto iter = file.begin(); iter != file.end(); ++iter){
 		if(*iter == '.') break;
@@ -51,8 +51,11 @@ void loadImage(string file){
 	archivo.getline(linea,300);
 	ancho = stoi(a);
 	altura = stoi(b);
-	vector<vector<Color>> res(altura);
-	for(int i = 0; i < altura; i++){res[i] = vector<Color>(ancho);}
+	int two = 1;
+	while(pow(2,two) < ancho or pow(2,two) < altura) two++;
+	int tam = pow(2,two);
+	vector<vector<Color>> res(tam);
+	for(int i = 0; i < altura; i++){res[i] = vector<Color>(tam);}
 	//r * 0.2126
 	//g * 0.7152
 	//b * 0.0722
@@ -61,8 +64,8 @@ void loadImage(string file){
 	int total = 1;
 	cout<<altura<<endl;
 	cout<<ancho<<endl;
+	cout<<tam<<endl;
 	while(archivo.getline(linea,300)){
-		//cout<<"TOTAL1->"<<total<<endl;
 		string rgb(linea);
 		string r;
 		string g;
@@ -100,24 +103,42 @@ void loadImage(string file){
 		}
 		total++;
 	}
-	cout<<"termin"<<endl;
+	
 	archivo.close();
 	string file3 = tt + ".pgm";
 	ofstream archivoB(file3.c_str());
 	archivoB<<"P2"<<endl;
-	archivoB<<"# Reconstructed Image"<<endl;
+	archivoB<<"# BalckWhite Image"<<endl;
 	archivoB<<ancho<<" "<<altura<<endl;
 	archivoB<<255<<endl;
 	total = 1;
 
-	for(int i = 0; i < res.size(); i++){
-		for(int j = 0; j < res[i].size(); j++){
-			
+	for(int i = 0; i < altura; i++){
+		for(int j = 0; j < ancho; j++){
 			total ++;
 			archivoB<<res[i][j]<<endl;
 		}
 	}
 	archivoB.close();
+
+	string file4 = tt + "(2).pgm";
+	ofstream resres(file4.c_str());
+	resres<<"P2"<<endl;
+	resres<<"# Total Image"<<endl;
+	resres<<tam<<" "<<tam<<endl;
+	resres<<255<<endl;
+
+	for(int i = 0; i < res.size(); i++){
+		for(int j = 0; j < res[i].size(); j++){
+			resres<<res[i][j]<<endl;
+		}
+	}
+
+	cout<<"termin"<<endl; 
+
+	resres.close();
+
+	return make_tuple(altura,ancho);
 }
 
 //recursive function implementing the FFT based on Cooley/Tukey algorithm. in-place. input array is overwritten.
@@ -131,10 +152,6 @@ void fft(Complex_Array& x)
 		//cout<<"1->"<<N<<endl;
 		//cout<<"2->"<<N/2<<endl;
 		Complex_Array even = x[slice(0, N / 2, 2)];
-		if(N % 2 != 0){
-			//cout<<"AAAA"<<endl;
-			even = x[slice(0, (N / 2) - 1, 2)];	
-		} 
 		Complex_Array odd = x[slice(1, N / 2, 2)];
 
 		//apply the recursive function
@@ -201,15 +218,16 @@ int main(int argc, char* argv[])
 			if(*iter == '.') break;
 			else file2.push_back(*iter);
 		}
-		file2 += ".pgm";
-		loadImage(file);
+		string lon = file2 + ".pgm";
+		file2 += "(2).pgm";
+
+		auto tt = loadImage(file);
 		int row = 0, col = 0, numrows = 0, numcols = 0, max_val = 0;
 		Complex *signal;
 		Complex **all_image;
 		stringstream ss;
 		string inputLine = "";
 		double max = 0;
-
 		cout << "Status: Reading the image file." << endl;
 		ifstream infile(file2.c_str());
 
@@ -271,7 +289,7 @@ int main(int argc, char* argv[])
 			}
 		}
 
-		string file5 = "Real" + file2;
+		string file5 = "Real" + lon;
 		ofstream out_real(file5.c_str());
 		out_real<<"P2"<<endl;
 		out_real<<"#	Real Image"<<endl;
@@ -289,7 +307,7 @@ int main(int argc, char* argv[])
 
 		out_real.close();
 
-		string file6 = "Imaginario" + file2;
+		string file6 = "Imaginario" + lon;
 		ofstream out_imag(file6.c_str());
 		out_imag<<"P2"<<endl;
 		out_imag<<"#	Imaginario Image"<<endl;
@@ -310,7 +328,7 @@ int main(int argc, char* argv[])
 		cout << "Finished FFT on the whole image in " << (clock() - start) << " clocks." << endl;
 
 		cout << "Status: Writing the frequency spectrum image to the hard disk." << endl;
-		string file3 = "Frequency" + file2;
+		string file3 = "Frequency" + lon;
 		ofstream output_freq(file3.c_str());
 		output_freq << "P2" << endl;
 		output_freq << "# Frequency Image" << endl;
@@ -330,25 +348,25 @@ int main(int argc, char* argv[])
 		}
 		*/
 
-
 		
 		for (int i = numrows / 2; i<numrows; i++)
 		{
 			for (int j = numcols / 2; j<numcols; j++)
-				output_freq << int(scaling_factor*log(1 + abs(all_image[i][j]))) << endl;
+				output_freq << int(scaling_factor*log(1 + sqrt(pow(real(all_image[i][j]),2) + pow(imag(all_image[i][j]),2)))) << endl;
 			for (int j = 0; j<numcols / 2; j++)
-				output_freq << int(scaling_factor*log(1 + abs(all_image[i][j]))) << endl;
+				output_freq << int(scaling_factor*log(1 + sqrt(pow(real(all_image[i][j]),2) + pow(imag(all_image[i][j]),2)))) << endl;
 		}
 
 		//output second quadrant as the third quadrant and first quadrant as forth
 		for (int i = 0; i<numrows / 2; i++)
 		{
 			for (int j = numcols / 2; j<numcols; j++)
-				output_freq << int(scaling_factor*log(1 + abs(all_image[i][j]))) << endl;
+				output_freq << int(scaling_factor*log(1 + sqrt(pow(real(all_image[i][j]),2) + pow(imag(all_image[i][j]),2)))) << endl;
 			for (int j = 0; j<numcols / 2; j++)
-				output_freq << int(scaling_factor*log(1 + abs(all_image[i][j]))) << endl;
+				output_freq << int(scaling_factor*log(1 + sqrt(pow(real(all_image[i][j]),2) + pow(imag(all_image[i][j]),2)))) << endl;
 		}
 		
+
 
 		output_freq.close();
 
@@ -356,6 +374,8 @@ int main(int argc, char* argv[])
 		//apply the IFFT to reconstruct the image
 		start = clock();
 
+		max = 0;
+/*
 		for (col = 0; col < numcols; col++)
 		{
 			Complex column[numrows];
@@ -370,6 +390,8 @@ int main(int argc, char* argv[])
 			for (int i = 0; i < numrows; i++)
 			{
 				all_image[i][col] = x[i];
+				if (abs(x[i])>max)
+					max = abs(x[i]);
 			}
 		}
 
@@ -390,27 +412,91 @@ int main(int argc, char* argv[])
 				all_image[row][i] = x[i];
 			}
 		}
+*/		
 
+		for (row = 0; row < numrows; row++)
+		{
+			Complex single_row[numcols];
+			for (int i = 0; i < numcols; i++)
+			{
+				single_row[i] = all_image[row][i];
+			}
+
+			Complex_Array x(single_row, numcols);
+
+			ifft(x);
+
+			for (int i = 0; i < numcols; i++)
+			{
+				all_image[row][i] = x[i];
+			}
+		}
+		for (col = 0; col < numcols; col++)
+		{
+			Complex column[numrows];
+			for (int i = 0; i < numrows; i++)
+			{
+				column[i] = all_image[i][col];
+			}
+			Complex_Array x(column, numrows);
+
+			ifft(x);
+
+			for (int i = 0; i < numrows; i++)
+			{
+				all_image[i][col] = x[i];
+				if (abs(x[i])>max)
+					max = abs(x[i]);
+			}
+		}
+
+		
 		cout << "Finished IFFT on the whole image in " << (clock() - start) << " clocks." << endl;
 
 		cout << "Status: Writing the reconstructed image to the hard disk." << endl;
-		string file4 = "Reconstructed" + file2;
+		string file4 = "Reconstructed" + lon;
 		ofstream output_recon(file4.c_str());
 		output_recon << "P2" << endl;
 		output_recon << "# Reconstructed Image" << endl;
-		output_recon << numcols << " " << numrows << endl;
+		output_recon << get<1>(tt) << " " << get<0>(tt) << endl;
 		output_recon << 255 << endl;
 
 		//outut the real values only since they correspond to the actual pixel values
-		for (int i = 0; i<numrows; i++){
-			for (int j = 0; j<numcols; j++){
+		
+		for (int i = 0; i<get<0>(tt); i++){
+			for (int j = 0; j<get<1>(tt); j++){
 				int ttt = (int)real(all_image[i][j]);
-				output_recon<<abs(ttt)<<endl;
+				output_recon<<ttt<<endl;
 				//if(ttt >= 0) 
 				//else output_recon<<0<<endl;
 			}
 		}
 		output_recon.close();
+		
+
+		/*
+		scaling_factor = 255 / log(1 + max);
+
+		for (int i = numrows / 2; i<numrows; i++)
+		{
+			for (int j = numcols / 2; j<numcols; j++)
+				output_recon << int(scaling_factor*log(1 + abs(all_image[i][j]))) << endl;
+			for (int j = 0; j<numcols / 2; j++)
+				output_recon << int(scaling_factor*log(1 + abs(all_image[i][j]))) << endl;
+		}
+
+		//output second quadrant as the third quadrant and first quadrant as forth
+		for (int i = 0; i<numrows / 2; i++)
+		{
+			for (int j = numcols / 2; j<numcols; j++)
+				output_recon << int(scaling_factor*log(1 + abs(all_image[i][j]))) << endl;
+			for (int j = 0; j<numcols / 2; j++)
+				output_recon << int(scaling_factor*log(1 + abs(all_image[i][j]))) << endl;
+		}
+
+
+		output_recon.close();
+		*/
 	}
 
 	else
