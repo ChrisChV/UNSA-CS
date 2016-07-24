@@ -8,11 +8,7 @@
 
 using namespace std;
 
-// PI constant
-//const double PI = 3.14192653589793238460;
-//using type complex due to the nature of the FFT function. double for higher precision
 typedef complex<double> Complex;
-//using valarray because its easier to deal with in the recursive function (creating subsets)
 typedef valarray<Complex> Complex_Array;
 
 typedef int Color;
@@ -141,25 +137,18 @@ tuple<int,int> loadImage(string file){
 	return make_tuple(altura,ancho);
 }
 
-//recursive function implementing the FFT based on Cooley/Tukey algorithm. in-place. input array is overwritten.
 void fft(Complex_Array& x)
 {
 	size_t N = x.size();
 	if (N>1)
 	{
-
-		//split elements into even and odd
-		//cout<<"1->"<<N<<endl;
-		//cout<<"2->"<<N/2<<endl;
 		Complex_Array even = x[slice(0, N / 2, 2)];
 		Complex_Array odd = x[slice(1, N / 2, 2)];
 
-		//apply the recursive function
 
 		fft(even);
 		fft(odd);
 
-		//blend both array together
 		for (size_t i = 0; i<N / 2; i++)
 		{
 			Complex t = polar(1.0, -2 * M_PI*i / N)*odd[i];
@@ -169,24 +158,19 @@ void fft(Complex_Array& x)
 	}
 }
 
-//concealed recursive function implementing the IFFT based on Cooley/Tukey algorithm. in-place. input array is overwritten.
 void _ifft(Complex_Array& x)
 {
 	size_t N = x.size();
 	if (N>1)
 	{
-		//split elements into even and odd
 		Complex_Array even = x[slice(0, N / 2, 2)];
 		Complex_Array odd = x[slice(1, N / 2, 2)];
 
-		//apply the recursive function
 		_ifft(even);
 		_ifft(odd);
 
-		//blend both array together
 		for (size_t i = 0; i<N / 2; i++)
 		{
-			//positive angle instead of negative angle
 			Complex t = polar(1.0, 2 * M_PI*i / N)*odd[i];
 			x[i] = even[i] + t;
 			x[i + N / 2] = even[i] - t;
@@ -196,11 +180,9 @@ void _ifft(Complex_Array& x)
 
 void ifft(Complex_Array& x)
 {
-	//call the concealed _ifft function
 	_ifft(x);
 
 	size_t N = x.size();
-	//loop and divide all elements by N
 	for (size_t i = 0; i<N; i++)
 	{
 		x[i] = x[i] / (double)N;
@@ -231,21 +213,16 @@ int main(int argc, char* argv[])
 		cout << "Status: Reading the image file." << endl;
 		ifstream infile(file2.c_str());
 
-		//read version line
 		getline(infile, inputLine);
 
-		//read the comment
 		getline(infile, inputLine);
 
-		//dump the contents into the stringstream
 		ss << infile.rdbuf();
 		infile.close();
 
-		//get image dimensions
 		ss >> numcols >> numrows;
 		ss >> max_val;
 
-		//initialze arrays
 
 		signal = new Complex[numcols];
 		all_image = new Complex*[numrows];
@@ -253,7 +230,7 @@ int main(int argc, char* argv[])
 			all_image[i] = new Complex[numcols];
 
 		cout << "Status: Applying FFT to the image." << endl;
-		// apply FFT on every row
+
 		size_t start = clock();
 		for (row = 0; row < numrows; row++)
 		{
@@ -335,7 +312,6 @@ int main(int argc, char* argv[])
 		output_freq << numcols << " " << numrows << endl;
 		output_freq << 255 << endl;
 
-		//calculate a scaling factor for the output values
 		float scaling_factor = 255 / log(1 + max);
 
 
@@ -357,7 +333,6 @@ int main(int argc, char* argv[])
 				output_freq << int(scaling_factor*log(1 + sqrt(pow(real(all_image[i][j]),2) + pow(imag(all_image[i][j]),2)))) << endl;
 		}
 
-		//output second quadrant as the third quadrant and first quadrant as forth
 		for (int i = 0; i<numrows / 2; i++)
 		{
 			for (int j = numcols / 2; j<numcols; j++)
@@ -371,7 +346,6 @@ int main(int argc, char* argv[])
 		output_freq.close();
 
 		cout << "Status: Applying IFFT to reconstruct the image." << endl;
-		//apply the IFFT to reconstruct the image
 		start = clock();
 
 		max = 0;
@@ -461,7 +435,6 @@ int main(int argc, char* argv[])
 		output_recon << get<1>(tt) << " " << get<0>(tt) << endl;
 		output_recon << 255 << endl;
 
-		//outut the real values only since they correspond to the actual pixel values
 		
 		for (int i = 0; i<get<0>(tt); i++){
 			for (int j = 0; j<get<1>(tt); j++){
