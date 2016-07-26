@@ -4,6 +4,7 @@
 #include <complex>
 #include <cmath>
 #include <valarray>
+#include <tuple>
 
 
 using namespace std;
@@ -117,6 +118,7 @@ tuple<int,int> loadImage(string file){
 	}
 	archivoB.close();
 
+
 	string file4 = tt + "(2).pgm";
 	ofstream resres(file4.c_str());
 	resres<<"P2"<<endl;
@@ -190,11 +192,8 @@ void ifft(Complex_Array& x)
 }
 
 
-int main(int argc, char* argv[])
-{
-	if (argc == 2)
-	{
-		string file(argv[1]);
+void generarTransformada(string file){
+	cout<<"Status: Generando Transformada"<<endl;
 		string file2;
 		for(auto iter = file.begin(); iter != file.end(); ++iter){
 			if(*iter == '.') break;
@@ -266,6 +265,7 @@ int main(int argc, char* argv[])
 			}
 		}
 
+
 		string file5 = "Real" + lon;
 		ofstream out_real(file5.c_str());
 		out_real<<"P2"<<endl;
@@ -276,7 +276,7 @@ int main(int argc, char* argv[])
 		for (int i = 0; i<numrows; i++){
 			for (int j = 0; j<numcols; j++){
 				int ttt = (int)real(all_image[i][j]);
-				out_real<<abs(ttt)<<endl;
+				out_real<<ttt<<endl;
 				//if(ttt >= 0) 
 				//else output_recon<<0<<endl;
 			}
@@ -294,7 +294,7 @@ int main(int argc, char* argv[])
 		for (int i = 0; i<numrows; i++){
 			for (int j = 0; j<numcols; j++){
 				int ttt = (int)imag(all_image[i][j]);
-				out_imag<<abs(ttt)<<endl;
+				out_imag<<ttt<<endl;
 				//if(ttt >= 0) 
 				//else output_recon<<0<<endl;
 			}
@@ -341,103 +341,139 @@ int main(int argc, char* argv[])
 				output_freq << int(scaling_factor*log(1 + sqrt(pow(real(all_image[i][j]),2) + pow(imag(all_image[i][j]),2)))) << endl;
 		}
 		
-
-
 		output_freq.close();
+}
+
+
+void reconstruir(string fileI, string fileR, string spectre){
+	cout<<"Status: Reconstruyendo"<<endl;
+	string file2;
+	for(auto iter = fileI.begin(); iter != fileI.end(); ++iter){
+			if(*iter == '.') break;
+			else file2.push_back(*iter);
+	}
+		string lon = file2 + ".pgm";
+
+		auto tt = loadImage(spectre);
+		int row = 0, col = 0, numrows = 0, numcols = 0, max_val = 0;
+		Complex *signal;
+		Complex **all_image;
+		stringstream img;
+		stringstream sReal;
+		stringstream sSpectre;
+		string inputLine = "";
+		double max = 0;
+		cout << "Status: Reading the image file." << endl;
+
+		ifstream infile(fileI.c_str());
+		ifstream infile2(fileR.c_str());
+		ifstream infile3(spectre.c_str());
+
+		getline(infile, inputLine);
+
+		getline(infile, inputLine);
+
+		getline(infile2, inputLine);
+
+		getline(infile2, inputLine);
+
+		getline(infile3, inputLine);
+
+		getline(infile3, inputLine);
+
+		img << infile.rdbuf();
+		sReal << infile2.rdbuf();
+		sSpectre << infile3.rdbuf();
+
+		infile.close();
+		infile2.close();
+		infile3.close();
+
+		img >> numcols >> numrows;
+		img >> max_val;
+
+		sReal >> numcols >> numrows;
+		sReal >>max_val;
+
+		sSpectre >> numcols >> numrows;
+		sSpectre >>max_val;		
+
+		signal = new Complex[numcols];
+		all_image = new Complex*[numrows];
+		for (int i = 0; i < numrows; i++)
+			all_image[i] = new Complex[numcols];
+
+		double a;
+		double b;
+		for(int i = 0; i < numrows; i++){
+			for(int j = 0; j < numcols; j++){
+				img >> a;
+				sReal >> b;		
+				all_image[i][j] = complex<double>(b,a);
+			}
+		}
+
+		int total = 20;
+		int color;
+		for(int i = 0; i < numrows; i++){
+			for(int j = 0; j < numcols; j++){
+				sSpectre >> color;
+				if(color<=total){
+					all_image[i][j] = complex<double>(0,0);
+				}
+			}
+		}
 
 		cout << "Status: Applying IFFT to reconstruct the image." << endl;
-		start = clock();
 
 		max = 0;
-/*
-		for (col = 0; col < numcols; col++)
-		{
-			Complex column[numrows];
-			for (int i = 0; i < numrows; i++)
-			{
-				column[i] = all_image[i][col];
-			}
-			Complex_Array x(column, numrows);
-
-			ifft(x);
-
-			for (int i = 0; i < numrows; i++)
-			{
-				all_image[i][col] = x[i];
-				if (abs(x[i])>max)
-					max = abs(x[i]);
-			}
-		}
-
-		for (row = 0; row < numrows; row++)
-		{
-			Complex single_row[numcols];
-			for (int i = 0; i < numcols; i++)
-			{
-				single_row[i] = all_image[row][i];
-			}
-
-			Complex_Array x(single_row, numcols);
-
-			ifft(x);
-
-			for (int i = 0; i < numcols; i++)
-			{
-				all_image[row][i] = x[i];
-			}
-		}
-*/		
-
-		for (row = 0; row < numrows; row++)
-		{
-			Complex single_row[numcols];
-			for (int i = 0; i < numcols; i++)
-			{
-				single_row[i] = all_image[row][i];
-			}
-
-			Complex_Array x(single_row, numcols);
-
-			ifft(x);
-
-			for (int i = 0; i < numcols; i++)
-			{
-				all_image[row][i] = x[i];
-			}
-		}
-		for (col = 0; col < numcols; col++)
-		{
-			Complex column[numrows];
-			for (int i = 0; i < numrows; i++)
-			{
-				column[i] = all_image[i][col];
-			}
-			Complex_Array x(column, numrows);
-
-			ifft(x);
-
-			for (int i = 0; i < numrows; i++)
-			{
-				all_image[i][col] = x[i];
-				if (abs(x[i])>max)
-					max = abs(x[i]);
-			}
-		}
-
 		
-		cout << "Finished IFFT on the whole image in " << (clock() - start) << " clocks." << endl;
+
+		for (row = 0; row < numrows; row++)
+		{
+			Complex single_row[numcols];
+			for (int i = 0; i < numcols; i++)
+			{
+				single_row[i] = all_image[row][i];
+			}
+
+			Complex_Array x(single_row, numcols);
+
+			ifft(x);
+
+			for (int i = 0; i < numcols; i++)
+			{
+				all_image[row][i] = x[i];
+			}
+		}
+		for (col = 0; col < numcols; col++)
+		{
+			Complex column[numrows];
+			for (int i = 0; i < numrows; i++)
+			{
+				column[i] = all_image[i][col];
+			}
+			Complex_Array x(column, numrows);
+
+			ifft(x);
+
+			for (int i = 0; i < numrows; i++)
+			{
+				all_image[i][col] = x[i];
+			}
+		}
 
 		cout << "Status: Writing the reconstructed image to the hard disk." << endl;
 		string file4 = "Reconstructed" + lon;
 		ofstream output_recon(file4.c_str());
 		output_recon << "P2" << endl;
 		output_recon << "# Reconstructed Image" << endl;
-		output_recon << get<1>(tt) << " " << get<0>(tt) << endl;
+		output_recon << numcols << " " << numrows << endl;
 		output_recon << 255 << endl;
 
 		
-		for (int i = 0; i<get<0>(tt); i++){
-			for (int j = 0; j<get<1>(tt); j++){
+		for (int i = 0; i<numrows; i++){
+			for (int j = 0; j<numcols; j++){
 				int ttt = (int)real(all_image[i][j]);
 				output_recon<<ttt<<endl;
 				//if(ttt >= 0) 
@@ -445,36 +481,25 @@ int main(int argc, char* argv[])
 			}
 		}
 		output_recon.close();
-		
+}
 
-		/*
-		scaling_factor = 255 / log(1 + max);
-
-		for (int i = numrows / 2; i<numrows; i++)
-		{
-			for (int j = numcols / 2; j<numcols; j++)
-				output_recon << int(scaling_factor*log(1 + abs(all_image[i][j]))) << endl;
-			for (int j = 0; j<numcols / 2; j++)
-				output_recon << int(scaling_factor*log(1 + abs(all_image[i][j]))) << endl;
+int main(int argc, char* argv[])
+{
+	if (argc == 3 or argc == 5)
+	{
+		string tipo(argv[1]);
+		string file(argv[2]);
+		if(argc == 5){
+			string file2(argv[3]);
+			string file3(argv[4]);
+			if(tipo == "-r") reconstruir(file,file2,file3);
 		}
-
-		//output second quadrant as the third quadrant and first quadrant as forth
-		for (int i = 0; i<numrows / 2; i++)
-		{
-			for (int j = numcols / 2; j<numcols; j++)
-				output_recon << int(scaling_factor*log(1 + abs(all_image[i][j]))) << endl;
-			for (int j = 0; j<numcols / 2; j++)
-				output_recon << int(scaling_factor*log(1 + abs(all_image[i][j]))) << endl;
-		}
-
-
-		output_recon.close();
-		*/
+		if(tipo == "-f") generarTransformada(file);
 	}
 
 	else
 	{
-		cout << "ERROR->La sintaxis es la siguiente: ./run <image>" << endl;
+		cout << "ERROR->La sintaxis es la siguiente: ./run <tipo> <image>" << endl;
 		
 	}
 	return 0;

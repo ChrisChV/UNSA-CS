@@ -34,7 +34,7 @@ void myFilter()
 	CImg<float> img("1.pgm");
 	CImgList<float> myfft = img.get_FFT();
     cimglist_apply(myfft,shift)(img.width()/2,img.height()/2,0,0,2);
-    
+        
     CImg<unsigned char> spec("spectrum.png");
     
     for (int ii=0;ii<img.height();ii++)
