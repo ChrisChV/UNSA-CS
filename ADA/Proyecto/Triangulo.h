@@ -562,6 +562,9 @@ void generarGrafica(string fi, vector<Punto *> &all, vector<Punto *> &convex, Un
 		archivo<<(*(uIter->second))(1)->x<<" "<<(*(uIter->second))(1)->y<<endl<<endl;
 	}
 
+	string comand = "gnuplot -e \"plot '" + file + "' w l; pause -1;\"";
+	system(comand.c_str());
+
 	archivo.close();
 	
 }

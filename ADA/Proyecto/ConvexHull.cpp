@@ -163,141 +163,9 @@ int main(){
 	
 	///vector<Punto *> puntos;
 
-	/*
-	puntos.push_back(new Punto(3,34));
-	puntos.push_back(new Punto(45,12));
-	puntos.push_back(new Punto(20,65));
-	puntos.push_back(new Punto(19,7)); // 5
-	puntos.push_back(new Punto(31,54));
-	*/
-
-/*
-puntos.push_back(new Punto(22,34));
-puntos.push_back(new Punto(44,48));
-puntos.push_back(new Punto(65,50));
-puntos.push_back(new Punto(37,43));
-puntos.push_back(new Punto(4,9));
-puntos.push_back(new Punto(64,22));
-puntos.push_back(new Punto(53,3));
-puntos.push_back(new Punto(66,6));
-puntos.push_back(new Punto(59,55));
-puntos.push_back(new Punto(41,43));
-*/
-
-
-/*
-puntos.push_back(new Punto(10,2));
-puntos.push_back(new Punto(3,4));
-puntos.push_back(new Punto(15,6));
-puntos.push_back(new Punto(7,8));
-puntos.push_back(new Punto(8,5));
-puntos.push_back(new Punto(13,4));
-puntos.push_back(new Punto(4,7));
-puntos.push_back(new Punto(14,8));
-puntos.push_back(new Punto(5,2));
-puntos.push_back(new Punto(11,6));
-*/
-
-/*
-puntos.push_back(new Punto(5,54));
-puntos.push_back(new Punto(77,51));
-puntos.push_back(new Punto(77,20));
-puntos.push_back(new Punto(80,62));
-puntos.push_back(new Punto(50,41));
-puntos.push_back(new Punto(53,75));
-puntos.push_back(new Punto(80,19));
-puntos.push_back(new Punto(32,58));
-puntos.push_back(new Punto(54,39));
-puntos.push_back(new Punto(60,82));
-puntos.push_back(new Punto(51,50));
-puntos.push_back(new Punto(24,3));
-puntos.push_back(new Punto(42,4));
-puntos.push_back(new Punto(41,63));
-puntos.push_back(new Punto(30,100));
-puntos.push_back(new Punto(33,34));
-puntos.push_back(new Punto(53,62));
-puntos.push_back(new Punto(36,81));
-puntos.push_back(new Punto(81,68));
-puntos.push_back(new Punto(43,83));
-puntos.push_back(new Punto(8,47));
-puntos.push_back(new Punto(9,40));
-puntos.push_back(new Punto(66,40));
-puntos.push_back(new Punto(97,71));
-puntos.push_back(new Punto(30,56));
-puntos.push_back(new Punto(53,80));
-puntos.push_back(new Punto(57,76));
-puntos.push_back(new Punto(34,99));
-puntos.push_back(new Punto(79,27));
-puntos.push_back(new Punto(61,60));
-*/
-
-/*
-puntos.push_back(new Punto(80,100));
-puntos.push_back(new Punto(40,98));
-puntos.push_back(new Punto(64,48));
-puntos.push_back(new Punto(95,81));
-puntos.push_back(new Punto(23,97));
-puntos.push_back(new Punto(8,7));
-puntos.push_back(new Punto(91,55));
-puntos.push_back(new Punto(17,53));
-puntos.push_back(new Punto(46,58));
-puntos.push_back(new Punto(21,97));
-puntos.push_back(new Punto(60,12));
-puntos.push_back(new Punto(71,86));
-puntos.push_back(new Punto(65,20));
-puntos.push_back(new Punto(7,57));
-puntos.push_back(new Punto(58,39));
-puntos.push_back(new Punto(68,89));
-puntos.push_back(new Punto(38,59));
-puntos.push_back(new Punto(38,1));
-puntos.push_back(new Punto(58,85));
-puntos.push_back(new Punto(33,80));
-puntos.push_back(new Punto(33,92));
-puntos.push_back(new Punto(39,23));
-puntos.push_back(new Punto(98,7));
-puntos.push_back(new Punto(28,95));
-puntos.push_back(new Punto(64,100));
-puntos.push_back(new Punto(92,75));
-puntos.push_back(new Punto(12,14));
-puntos.push_back(new Punto(60,76));
-puntos.push_back(new Punto(34,18));
-puntos.push_back(new Punto(84,43));
-*/
-
-/*
-puntos.push_back(new Punto(78,22));
-puntos.push_back(new Punto(2,74));
-puntos.push_back(new Punto(60,38));
-puntos.push_back(new Punto(61,98));
-puntos.push_back(new Punto(75,96));
-puntos.push_back(new Punto(82,95));
-puntos.push_back(new Punto(96,70));
-puntos.push_back(new Punto(65,26));
-puntos.push_back(new Punto(83,77));
-puntos.push_back(new Punto(40,33));
-puntos.push_back(new Punto(14,97));
-puntos.push_back(new Punto(14,74));
-puntos.push_back(new Punto(2,49));
-puntos.push_back(new Punto(87,56));
-puntos.push_back(new Punto(70,73));
-puntos.push_back(new Punto(57,99));
-puntos.push_back(new Punto(94,10));
-puntos.push_back(new Punto(73,5));
-puntos.push_back(new Punto(47,85));
-puntos.push_back(new Punto(2,22));
-puntos.push_back(new Punto(80,83));
-puntos.push_back(new Punto(68,27));
-puntos.push_back(new Punto(5,32));
-puntos.push_back(new Punto(53,39));
-puntos.push_back(new Punto(61,92));
-puntos.push_back(new Punto(71,26));
-puntos.push_back(new Punto(40,36));
-puntos.push_back(new Punto(99,93));
-puntos.push_back(new Punto(84,38));
-*/
 
 	
-	vector<Punto*> puntos = generarPuntosAleatorios(1000,1000,1000);
+	vector<Punto*> puntos = generarPuntosAleatorios(500,500,1000);
 	ofstream archivo("puntos.txt");
 	for(Punto* p : puntos){
 		archivo<<"puntos.push_back(new Punto("<<p->x<<","<<p->y<<"));"<<endl;
@@ -322,8 +190,10 @@ puntos.push_back(new Punto(84,38));
 		iter->second->imprimirUnion();
 	}
 	cout<<"TT->"<<i<<endl;
-	
-	generarGrafica("test2",puntos, get<0>(convex), uniones);
-	//generarGrafica("test",puntos,get<0>(convex));
 	//generarGrafica("test",puntos);
+	//generarGrafica("test",puntos,get<0>(convex));
+	//generarGrafica("test",puntos,get<0>(convex),get<1>(convex));
+	generarGrafica("test2",puntos, get<0>(convex), uniones);
+	
+	
 }
