@@ -1,4 +1,0 @@
-"i","ri","f(ri)","f'(r1)","ri+1"
-0,0,2,0,-inf
-1,-inf,-nan,inf,-nan
-"Resultado actual",-nan
