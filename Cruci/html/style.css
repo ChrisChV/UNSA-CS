@@ -1,0 +1,190 @@
+/**
+* Wordfind.js 0.0.1
+* (c) 2012 Bill, BunKat LLC.
+* Wordfind is freely distributable under the MIT license.
+* For all details and documentation:
+*     http://github.com/bunkat/wordfind
+*/
+
+
+p {
+  font: 22pt sans-serif;
+  margin: 20px 20px 0px 20px;
+}
+
+/**
+* Styles for the puzzle
+*/
+#puzzle {
+  border: 1px solid black;
+  padding: 20px;
+  float: left;
+  margin: 30px 20px;
+}
+
+#puzzle div {
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* style for each square in the puzzle */
+#puzzle .puzzleSquare {
+  height: 30px;
+  width: 30px;
+  text-transform: uppercase;
+  background-color: white;
+  border: 0;
+  font: 1em sans-serif;
+}
+
+button::-moz-focus-inner {
+  border: 0;
+}
+
+/* indicates when a square has been selected */
+#puzzle .selected {
+  background-color: orange;
+}
+
+/* indicates that the square is part of a word that has been found */ 
+#puzzle .found {
+  background-color: blue;
+  color: white;
+}
+
+#puzzle .solved {
+  background-color: purple;
+  color: white;
+}
+
+/* indicates that all words have been found */
+#puzzle .complete {
+  background-color: green;
+}
+
+/**
+* Styles for the word list
+*/
+#words {
+  padding-top: 20px;
+  -moz-column-count: 1;
+  -moz-column-gap: 20px;
+  -webkit-column-count: 2;
+  -webkit-column-gap: 20px;
+  column-count: 1;
+  column-gap: 20px;
+  width: 360px;
+}
+
+#words ul {
+  list-style-type: none;
+}
+
+#words li {
+  padding: 3px 0;
+  font: 1em sans-serif;
+}
+
+/* indicates that the word has been found */
+#words .wordFound {
+  text-decoration: line-through;
+  color: gray;
+}
+
+
+
+/**
+* Styles for the button
+*/
+#solve {
+  margin: 0 30px;
+}
+
+.tip { position: relative;
+z-index: 0;
+}
+.tip:hover { background-color: transparent;
+z-index: 1;
+}
+.tip span { border: 1px solid rgb(255, 102, 0);
+padding: 5px;
+position: absolute;
+text-decoration: none;
+background-color: rgb(255, 204, 153);
+color: rgb(77, 38, 0);
+width: 25em;
+text-align: center;
+visibility: hidden;
+font-size: 0.7em;
+line-height: 10px;
+}
+.tip:hover span { visibility: visible;
+top: 30px;
+left: 25px;
+}
+
+
+
+
+body {
+    background: darkgrey;    
+}
+ 
+.contenedor{
+    width: 1080px;
+    margin: auto;
+    background: black;
+    color: bisque;
+    padding: 20px 15px 50px 50px;
+    border-radius: 10px;
+    box-shadow: 0 10px 10px 0px rgba(0, 0, 0, 0.8);
+}
+ 
+.contenedor .titulo{
+    font-size: 3.5ex;
+    font-weight: bold;
+    margin-left: 10px;
+    margin-bottom: 10px;
+}
+ 
+#pestanas {
+    float: top;
+    font-size: 3ex;
+    font-weight: bold;
+}
+ 
+#pestanas ul{
+    margin-left: -40px;    
+}
+ 
+#pestanas li{
+    list-style-type: none;
+    float: left;
+    text-align: center;
+    margin: 0px 2px -2px -0px;
+    background: darkgrey;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border: 2px solid bisque;
+    border-bottom: dimgray;
+    padding: 0px 20px 0px 20px;
+}
+ 
+#pestanas a:link{
+    text-decoration: none;
+    color: bisque;
+}
+ 
+#contenidopestanas{
+    clear: both;  
+    background: dimgray;
+    padding: 20px 0px 20px 20px;
+    border-radius: 5px;
+    border-top-left-radius: 0px;
+    border: 2px solid bisque;
+    width: 1025px;
+}
+
+iframe{
+  margin-left: 22%;
+}

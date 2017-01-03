@@ -1,0 +1,21 @@
+digraph{graph [];node [fontsize = "16"shape = "record"];edge [];
+nodo20 [label = "<c0> R1 |<c1> R2 "];
+nodo20:c0 -> nodo18;
+nodo20:c1 -> nodo19;
+nodo18 [label = "<c0> R3 "];
+nodo18:c0 -> nodo10;
+nodo19 [label = "<c0> R4 |<c1> R5 "];
+nodo19:c0 -> nodo16;
+nodo19:c1 -> nodo17;
+nodo10 [label = "<c0> R6 "];
+nodo10:c0 -> nodo4;
+nodo16 [label = "<c0> R7 "];
+nodo16:c0 -> nodo8;
+nodo17 [label = "<c0> R8 |<c1> R9 "];
+nodo17:c0 -> nodo14;
+nodo17:c1 -> nodo15;
+nodo4 [label = "<c0> (2.000000,4.000000;2.000000,4.000000) |<c1> (14.000000,6.000000;14.000000,6.000000) "];
+nodo8 [label = "<c0> (4.000000,2.000000;4.000000,2.000000) |<c1> (10.000000,2.000000;10.000000,2.000000) "];
+nodo14 [label = "<c0> (6.000000,6.000000;6.000000,6.000000) "];
+nodo15 [label = "<c0> (8.000000,6.000000;8.000000,6.000000) |<c1> (10.000000,10.000000;10.000000,10.000000) "];
+}
