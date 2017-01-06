@@ -1,4 +1,5 @@
 digraph{graph [];node [fontsize = "16"shape = "record"];edge [];
+//dsadasdsa_->dmaskdj<|}
 nodo20 [label = "<c0> R1 |<c1> R2 "];
 nodo20:c0 -> nodo18;
 nodo20:c1 -> nodo19;
