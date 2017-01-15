@@ -1247,3 +1247,7 @@
 127.0.0.1 - - [29/Dec/2016:23:53:03 -0500] "GET /style.css HTTP/1.1" 200 1482 "http://localhost/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:50.0) Gecko/20100101 Firefox/50.0"
 127.0.0.1 - - [29/Dec/2016:23:53:03 -0500] "GET /wordfind.js HTTP/1.1" 200 4733 "http://localhost/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:50.0) Gecko/20100101 Firefox/50.0"
 127.0.0.1 - - [29/Dec/2016:23:53:03 -0500] "GET /wordfindgame.js HTTP/1.1" 200 6008 "http://localhost/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:50.0) Gecko/20100101 Firefox/50.0"
+192.168.1.53 - - [14/Jan/2017:20:15:15 -0500] "GET / HTTP/1.1" 200 6356 "-" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:50.0) Gecko/20100101 Firefox/50.0"
+192.168.1.53 - - [14/Jan/2017:20:15:16 -0500] "GET /wordfindgame.js HTTP/1.1" 200 6008 "http://192.168.1.53/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:50.0) Gecko/20100101 Firefox/50.0"
+192.168.1.53 - - [14/Jan/2017:20:15:16 -0500] "GET /style.css HTTP/1.1" 200 1482 "http://192.168.1.53/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:50.0) Gecko/20100101 Firefox/50.0"
+192.168.1.53 - - [14/Jan/2017:20:15:16 -0500] "GET /wordfind.js HTTP/1.1" 200 4733 "http://192.168.1.53/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:50.0) Gecko/20100101 Firefox/50.0"
