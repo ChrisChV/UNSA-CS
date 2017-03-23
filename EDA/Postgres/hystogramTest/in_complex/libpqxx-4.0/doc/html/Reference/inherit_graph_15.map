@@ -1,0 +1,16 @@
+<map id="G" name="G">
+<area shape="rect" id="node1" href="$a00059.html" title="pqxx::internal::namedclass" alt="" coords="5,164,184,193"/>
+<area shape="rect" id="node3" href="$a00105.html" title="pqxx::internal::transactionfocus" alt="" coords="233,124,436,153"/>
+<area shape="rect" id="node15" href="$a00104.html" title="pqxx::transaction_base" alt="" coords="256,203,413,232"/>
+<area shape="rect" id="node5" href="$a00068.html" title="Processes several queries in FIFO manner, optimized for high throughput." alt="" coords="507,149,608,179"/>
+<area shape="rect" id="node7" href="$a00096.html" title="&quot;Transaction&quot; nested within another transaction" alt="" coords="705,125,847,155"/>
+<area shape="rect" id="node9" href="$a00099.html" title="pqxx::tablestream" alt="" coords="495,45,620,75"/>
+<area shape="rect" id="node11" href="$a00098.html" title="pqxx::tablereader" alt="" coords="715,59,837,88"/>
+<area shape="rect" id="node13" href="$a00100.html" title="pqxx::tablewriter" alt="" coords="717,5,835,35"/>
+<area shape="rect" id="node17" href="$a00032.html" title="pqxx::dbtransaction" alt="" coords="489,256,625,285"/>
+<area shape="rect" id="node28" href="$a00060.html" title="pqxx::nontransaction" alt="" coords="487,203,628,232"/>
+<area shape="rect" id="node19" href="$a00011.html" title="pqxx::basic_robusttransaction" alt="" coords="679,257,873,287"/>
+<area shape="rect" id="node23" href="$a00012.html" title="pqxx::basic_transaction" alt="" coords="696,204,856,233"/>
+<area shape="rect" id="node21" href="$a00083.html" title="Slightly slower, better&#45;fortified version of transaction." alt="" coords="951,257,1244,287"/>
+<area shape="rect" id="node25" href="$a00103.html" title="Standard back&#45;end transaction, templatized on isolation level." alt="" coords="924,204,1271,233"/>
+</map>

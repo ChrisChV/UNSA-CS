@@ -7,21 +7,21 @@ program qr
 	call zeros(R,n)
 
 	A(1,1) = 3
-	A(1,2) = 8
-	A(1,3) = 1
+	A(1,2) = -1
+	A(1,3) = 0
 
-	A(2,1) = 2
-	A(2,2) = 3
-	A(2,3) = 8
+	A(2,1) = -1
+	A(2,2) = 2
+	A(2,3) = -1
 
 	A(3,1) = 0
-	A(3,2) = 2
-	A(3,3) = 1
+	A(3,2) = -1
+	A(3,3) = 3
 
-	iter = 10
+	iteraciones = 5
 
 	D = A
-	do i = 1,iter
+	do i = 1,iteraciones
 		call qrDesc(D,n,Q,R)
 		call mulMatriz(R,Q,n,D)
 		call printMatriz(D,n,n)

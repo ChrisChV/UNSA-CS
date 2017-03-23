@@ -1,0 +1,9 @@
+<map id="G" name="G">
+<area shape="rect" id="node7" href="$a00011.html" title="pqxx::basic_robusttransaction" alt="" coords="623,5,817,35"/>
+<area shape="rect" id="node11" href="$a00012.html" title="pqxx::basic_transaction" alt="" coords="640,59,800,88"/>
+<area shape="rect" id="node15" href="$a00096.html" title="&quot;Transaction&quot; nested within another transaction" alt="" coords="649,112,791,141"/>
+<area shape="rect" id="node2" href="$a00104.html" title="pqxx::transaction_base" alt="" coords="232,59,389,88"/>
+<area shape="rect" id="node4" href="$a00059.html" title="pqxx::internal::namedclass" alt="" coords="5,59,184,88"/>
+<area shape="rect" id="node9" href="$a00083.html" title="Slightly slower, better&#45;fortified version of transaction." alt="" coords="895,5,1188,35"/>
+<area shape="rect" id="node13" href="$a00103.html" title="Standard back&#45;end transaction, templatized on isolation level." alt="" coords="868,59,1215,88"/>
+</map>

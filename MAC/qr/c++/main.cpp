@@ -1,5 +1,5 @@
 #include <iostream>
-#include <tuple>
+	#include <tuple>
 #include "OperacionesMatriz.h"
 
 using namespace std;
@@ -61,8 +61,7 @@ int main(int argc, char * argv[]){
 	}
 	string temp(argv[1]);
 	int n = stoi(temp);
-	Matriz A = {{3,8,1},{2,3,8},{0,2,1}};
-	//Matriz A = {{1,1,0},{1,0,1},{0,1,1}};
+	Matriz A = {{18,40},{-12,26}};
 	cout<<"Matriz Original:"<<endl;
 	mostrarMatriz(A);
 	for(int i = 0; i < n; i++){
@@ -74,3 +73,5 @@ int main(int argc, char * argv[]){
 		mostrarMatriz(A);
 	}
 }
+
+

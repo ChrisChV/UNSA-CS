@@ -33,7 +33,7 @@ int main(int argc, char * argv[]){
 	}
 	string temp(argv[1]);
 	int it = stoi(temp);
-	Matriz m = {{3,-1,0},{-1,2,-1},{0,-1,3}};
-	Lista ini = {1,1,1};
+	Matriz m = {{18,40},{-12,26}};
+	Lista ini = {1,1};
 	MetodoPotencias(it,m,ini);
 }

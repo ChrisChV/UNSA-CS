@@ -1,0 +1,6 @@
+<map id="G" name="G">
+<area shape="rect" id="node3" href="$a00019.html" title="Asynchronous connection policy; connects &quot;in the background&quot;." alt="" coords="5,83,152,112"/>
+<area shape="rect" id="node5" href="$a00020.html" title="Connection policy; creates an immediate connection to a database." alt="" coords="176,83,317,112"/>
+<area shape="rect" id="node7" href="$a00021.html" title="Lazy connection policy; causes connection to be deferred until first use." alt="" coords="341,83,475,112"/>
+<area shape="rect" id="node9" href="$a00022.html" title="Nonfunctional, always&#45;down connection policy for testing/debugging purposes." alt="" coords="499,83,629,112"/>
+</map>

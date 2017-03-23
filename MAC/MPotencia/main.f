@@ -3,7 +3,7 @@ program potencias
 	integer :: i = 0
 	integer :: j = 0
 	integer :: m = 2
-	integer :: n = 2
+	integer :: n = 3
 	real(16), dimension(3,3) :: matrix
 	real(16), dimension(3) :: ini
 
@@ -23,9 +23,7 @@ program potencias
 	ini(2) = 1
 	ini(3) = 1
 
-	call Mpotencias(matrix,ini,3,10)
-
-	
+	call Mpotencias(matrix,ini,n,5)
 
 end program	potencias
 
@@ -42,8 +40,6 @@ subroutine Mpotencias(M,ini,N,iter)
 		call mayor(u,N,dominante)
 		temp = 1.0 / dominante
 		call mulnum(u,temp,N,v)
-		call printMatriz(u,N,1)
-		write(*,*)
 		call printMatriz(v,N,1)
 		write(*,*)
 	end do

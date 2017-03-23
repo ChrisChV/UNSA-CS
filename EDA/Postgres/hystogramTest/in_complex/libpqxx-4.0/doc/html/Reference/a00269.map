@@ -1,0 +1,12 @@
+<map id="G" name="G">
+<area shape="rect" id="node13" href="$a00018.html" title="pqxx::check_violation" alt="" coords="943,5,1089,35"/>
+<area shape="rect" id="node15" href="$a00042.html" title="pqxx::foreign_key_violation" alt="" coords="927,59,1105,88"/>
+<area shape="rect" id="node17" href="$a00061.html" title="pqxx::not_null_violation" alt="" coords="937,112,1095,141"/>
+<area shape="rect" id="node19" href="$a00081.html" title="pqxx::restrict_violation" alt="" coords="940,165,1092,195"/>
+<area shape="rect" id="node21" href="$a00112.html" title="pqxx::unique_violation" alt="" coords="941,219,1091,248"/>
+<area shape="rect" id="node2" href="$a00086.html" title="Exception class for failed queries." alt="" coords="497,112,604,141"/>
+<area shape="rect" id="node4" href="$a00038.html" title="Run&#45;time failure encountered by libpqxx, similar to std::runtime_error." alt="" coords="355,112,448,141"/>
+<area shape="rect" id="node6" href="$a00074.html" title="Mixin base class to identify libpqxx&#45;specific exception types." alt="" coords="157,85,307,115"/>
+<area shape="rect" id="node8" title="STL class." alt="" coords="171,139,293,168"/>
+<area shape="rect" id="node10" title="STL class." alt="" coords="5,139,109,168"/>
+</map>
