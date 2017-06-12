@@ -1,0 +1,9 @@
+<% @title = "Transfer Success" %>
+
+<h3>Transfer Bitbars</h3>
+
+<p>Successfully transferred <%= @quantity %> bitbars from <%= @source_user.username %> to <%= @destination_user.username %>. 
+    
+<p>You now have <%= @source_user.bitbars %> bitbars.</p>
+
+<p><%= @destination_user.username %> now has <%= @destination_user.bitbars %> bitbars.</p>

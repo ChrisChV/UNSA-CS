@@ -1,0 +1,12 @@
+<% @title = "Home" %>
+<h3>Home</h3>
+
+<p>You have <strong><%= @logged_in_user.bitbars %></strong> bitbars.</p>
+
+<form class="pure-form pure-form-stacked" action="set_profile" method="post">
+
+  <label for="new_profile">Your profile text</label>
+  <textarea name="new_profile" rows="8" cols="50"><%= @logged_in_user.profile %></textarea>
+
+  <p><input class="pure-button" type="submit" value="Update profile"></p>
+</form>

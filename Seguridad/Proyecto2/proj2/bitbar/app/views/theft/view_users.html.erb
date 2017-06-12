@@ -1,0 +1,15 @@
+<h3>Active user accounts</h3>
+
+<table class="view-users-table">
+<tr>
+  <th>username</th>
+  <th>bitbars</th>
+</tr>
+<% @users.each do |user| %>
+<tr>
+  <td><%= user.username %></td>
+  <td><%= user.bitbars %></td>
+</tr>
+<% end %>
+
+</table>
