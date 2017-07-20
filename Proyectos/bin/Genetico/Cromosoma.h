@@ -12,6 +12,9 @@ using namespace std;
 class Cromosoma{
 	public:
 		Cromosoma();
+		void del(){
+			delete[] vector;
+		}
 		Cromosoma(int size);
 		Cromosoma(int size, char * a1, char * a2);
 		int binaryToDecimal();

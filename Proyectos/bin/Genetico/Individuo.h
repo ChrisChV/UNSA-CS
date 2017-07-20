@@ -16,6 +16,14 @@ typedef function<Val(Val*)> FunFitness;
 class Individuo{
 public:
 	Individuo();
+	void del(){
+		for(int i = 0; i < nCrom; i++){
+			cromosomas[i].del();
+		}
+		delete[] cromosomas;
+		delete[] fenotipos;
+		
+	}
 	Individuo(vector<int> cromSizes, int nFen, FunFenotipos funFen, FunFitness funFit);
 	Individuo(Cromosoma * cromosomas, int nCrom, int nFen, FunFenotipos funFen, FunFitness funFit);
 	void evaluar(FunFenotipos funFen, FunFitness funFit);

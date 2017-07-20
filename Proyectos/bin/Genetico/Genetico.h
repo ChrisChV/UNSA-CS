@@ -97,7 +97,13 @@ void Genetico::masacre(vector<Individuo> &nextGeneration){
 	sort(nextGeneration.begin(), nextGeneration.end(), funSortIn);
 	auto ini = nextGeneration.begin();
 	auto end = nextGeneration.begin() + sizePoblacion;
+	for(Individuo i : poblacion){
+		i.del();
+	}
 	poblacion = vector<Individuo>(ini,end);
+	for(int i = sizePoblacion; i < nextGeneration.size(); i++){
+		nextGeneration[i].del();
+	}
 }
 
 void Genetico::selection(){
@@ -117,6 +123,9 @@ void Genetico::selection(){
 		int padre = 0;
 		int madre = 0;
 		tie(madre,padre) = emparejar();
+//		cout<<"MP->"<<madre<<"->"<<padre<<endl;
+		if(madre == sizePoblacion) madre = sizePoblacion - 1;
+		if(padre == sizePoblacion) padre = sizePoblacion - 1;
 		hijos = funCross(poblacion[madre],poblacion[padre]);
 		for(Individuo in : hijos){
 			nextGeneration.push_back(in);
@@ -131,6 +140,7 @@ Individuo Genetico::run(int iteraciones){
 	for(int i = 0; i < iteraciones; i++){
 		selection();
 	}
+
 	return poblacion[0];
 }
 
