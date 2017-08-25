@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.8.9)  23 AUG 2017 20:04
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.8.9)  23 AUG 2017 23:12
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -506,6 +506,14 @@ LaTeX Info: Redefining \datespanish on input line 85.
 \dt@a=\toks22
 \dt@b=\toks23
 )
+(/usr/share/texlive/texmf-dist/tex/latex/float/float.sty
+Package: float 2001/11/08 v1.3d Float enhancements (AL)
+\c@float@type=\count125
+\float@exts=\toks24
+\float@box=\box28
+\@float@everytoks=\toks25
+\@floatcapt=\box29
+)
 (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf.sty
 Package: epstopdf 2010/02/09 v2.5 Conversion with epstopdf on the fly (HO)
 
@@ -558,67 +566,126 @@ G,.JBIG2,.JB2,.eps]
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 )))
-(./doc.aux
-LaTeX Info: Redefining \. on input line 6.
-LaTeX Info: Redefining \% on input line 6.
+(/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
+File: lstlang1.sty 2015/06/04 1.6 listings language file
+)
+(/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
+File: lstlang1.sty 2015/06/04 1.6 listings language file
+)
+(/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
+File: lstlang1.sty 2015/06/04 1.6 listings language file
+)
+(/usr/share/texlive/texmf-dist/tex/latex/listings/lstmisc.sty
+File: lstmisc.sty 2015/06/04 1.6 (Carsten Heinz)
+) (./doc.aux
+LaTeX Info: Redefining \. on input line 10.
+LaTeX Info: Redefining \% on input line 10.
 )
 \openout1 = `doc.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 30.
-LaTeX Font Info:    ... okay on input line 30.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 30.
-LaTeX Font Info:    ... okay on input line 30.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 30.
-LaTeX Font Info:    ... okay on input line 30.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 30.
-LaTeX Font Info:    ... okay on input line 30.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 30.
-LaTeX Font Info:    ... okay on input line 30.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 30.
-LaTeX Font Info:    ... okay on input line 30.
-LaTeX Info: Redefining \. on input line 30.
-LaTeX Info: Redefining \% on input line 30.
- (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
-[Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count125
-\scratchdimen=\dimen114
-\scratchbox=\box28
-\nofMPsegments=\count126
-\nofMParguments=\count127
-\everyMPshowfont=\toks24
-\MPscratchCnt=\count128
-\MPscratchDim=\dimen115
-\MPnumerator=\count129
-\makeMPintoPDFobject=\count130
-\everyMPtoPDFconversion=\toks25
-)
-\c@lstlisting=\count131
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <14.4> on input line 39.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 39.
- [1
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 54.
+LaTeX Font Info:    ... okay on input line 54.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 54.
+LaTeX Font Info:    ... okay on input line 54.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 54.
+LaTeX Font Info:    ... okay on input line 54.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 54.
+LaTeX Font Info:    ... okay on input line 54.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 54.
+LaTeX Font Info:    ... okay on input line 54.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 54.
+LaTeX Font Info:    ... okay on input line 54.
+LaTeX Info: Redefining \. on input line 54.
+LaTeX Info: Redefining \% on input line 54.
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2] (./doc.aux
-LaTeX Info: Redefining \. on input line 6.
-LaTeX Info: Redefining \% on input line 6.
+(/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count126
+\scratchdimen=\dimen114
+\scratchbox=\box30
+\nofMPsegments=\count127
+\nofMParguments=\count128
+\everyMPshowfont=\toks26
+\MPscratchCnt=\count129
+\MPscratchDim=\dimen115
+\MPnumerator=\count130
+\makeMPintoPDFobject=\count131
+\everyMPtoPDFconversion=\toks27
+)
+\c@lstlisting=\count132
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <14.4> on input line 64.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <7> on input line 64.
+ <imagenes/2.png, id=1, 371.3875pt x 129.48375pt>
+File: imagenes/2.png Graphic file (type png)
+ <use imagenes/2.png>
+Package pdftex.def Info: imagenes/2.png used on input line 86.
+(pdftex.def)             Requested size: 222.83421pt x 77.69083pt.
+
+[1
+
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./imagenes/2.png>]
+<imagenes/1.png, id=12, 288.07625pt x 142.5325pt>
+File: imagenes/1.png Graphic file (type png)
+ <use imagenes/1.png>
+Package pdftex.def Info: imagenes/1.png used on input line 108.
+(pdftex.def)             Requested size: 172.84708pt x 85.52014pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 124--127
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 128--132
+
+ []
+
+[2 <./imagenes/1.png>] <imagenes/3.png, id=16, 424.58624pt x 431.6125pt>
+File: imagenes/3.png Graphic file (type png)
+
+<use imagenes/3.png>
+Package pdftex.def Info: imagenes/3.png used on input line 156.
+(pdftex.def)             Requested size: 169.83148pt x 172.64194pt.
+ <imagenes/4.png, id=17, 419.5675pt x 471.7625pt>
+File: imagenes/4.png Graphic file (type png)
+
+<use imagenes/4.png>
+Package pdftex.def Info: imagenes/4.png used on input line 163.
+(pdftex.def)             Requested size: 167.82402pt x 188.70164pt.
+ <imagenes/5.png, id=18, 430.60875pt x 443.6575pt>
+File: imagenes/5.png Graphic file (type png)
+
+<use imagenes/5.png>
+Package pdftex.def Info: imagenes/5.png used on input line 170.
+(pdftex.def)             Requested size: 172.24043pt x 177.45984pt.
+ [3 <./imagenes/3.png> <./imagenes/4.png>]
+<imagenes/6.png, id=22, 399.4925pt x 572.1375pt>
+File: imagenes/6.png Graphic file (type png)
+ <use imagenes/6.png>
+Package pdftex.def Info: imagenes/6.png used on input line 188.
+(pdftex.def)             Requested size: 239.69734pt x 343.28514pt.
+ [4 <./imagenes/5.png>] [5 <./imagenes/6.png>] (./doc.aux
+LaTeX Info: Redefining \. on input line 10.
+LaTeX Info: Redefining \% on input line 10.
 ) ) 
 Here is how much of TeX's memory you used:
- 5274 strings out of 493029
- 71679 string characters out of 6136235
- 162006 words of memory out of 5000000
- 8725 multiletter control sequences out of 15000+600000
- 5757 words of font info for 21 fonts, out of 8000000 for 9000
+ 5471 strings out of 493029
+ 74784 string characters out of 6136235
+ 191966 words of memory out of 5000000
+ 8899 multiletter control sequences out of 15000+600000
+ 7017 words of font info for 25 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 42i,7n,35p,1043b,384s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 59i,7n,122p,1033b,384s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></u
 sr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/shar
 e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texli
-ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb>
-Output written on doc.pdf (2 pages, 56877 bytes).
+ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texm
+f-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb>
+Output written on doc.pdf (5 pages, 367946 bytes).
 PDF statistics:
- 27 PDF objects out of 1000 (max. 8388607)
- 18 compressed objects within 1 object stream
+ 46 PDF objects out of 1000 (max. 8388607)
+ 27 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 31 words of extra memory for PDF output out of 10000 (max. 10000000)
 
