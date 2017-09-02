@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.8.24)  24 AUG 2017 22:18
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.8.24)  31 AUG 2017 18:57
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -506,6 +506,14 @@ LaTeX Info: Redefining \datespanish on input line 85.
 \dt@a=\toks22
 \dt@b=\toks23
 )
+(/usr/share/texlive/texmf-dist/tex/latex/float/float.sty
+Package: float 2001/11/08 v1.3d Float enhancements (AL)
+\c@float@type=\count125
+\float@exts=\toks24
+\float@box=\box28
+\@float@everytoks=\toks25
+\@floatcapt=\box29
+)
 (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf.sty
 Package: epstopdf 2010/02/09 v2.5 Conversion with epstopdf on the fly (HO)
 
@@ -580,52 +588,98 @@ LaTeX Info: Redefining \. on input line 30.
 LaTeX Info: Redefining \% on input line 30.
  (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count125
+\scratchcounter=\count126
 \scratchdimen=\dimen114
-\scratchbox=\box28
-\nofMPsegments=\count126
-\nofMParguments=\count127
-\everyMPshowfont=\toks24
-\MPscratchCnt=\count128
+\scratchbox=\box30
+\nofMPsegments=\count127
+\nofMParguments=\count128
+\everyMPshowfont=\toks26
+\MPscratchCnt=\count129
 \MPscratchDim=\dimen115
-\MPnumerator=\count129
-\makeMPintoPDFobject=\count130
-\everyMPtoPDFconversion=\toks25
+\MPnumerator=\count130
+\makeMPintoPDFobject=\count131
+\everyMPtoPDFconversion=\toks27
 )
-\c@lstlisting=\count131
+\c@lstlisting=\count132
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <14.4> on input line 39.
+(Font)              <14.4> on input line 40.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 39.
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 66.
- (/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
+(Font)              <7> on input line 40.
+ <imagenes/1.png, id=1, 476.78125pt x 337.26pt>
+File: imagenes/1.png Graphic file (type png)
+ <use imagenes/1.png>
+Package pdftex.def Info: imagenes/1.png used on input line 46.
+(pdftex.def)             Requested size: 286.07095pt x 202.35756pt.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <12> on input line 54.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <8> on input line 54.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <6> on input line 54.
+ [1
+
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./imagenes/1.png>]
+<imagenes/2.png, id=13, 288.07625pt x 142.5325pt>
+File: imagenes/2.png Graphic file (type png)
+ <use imagenes/2.png>
+Package pdftex.def Info: imagenes/2.png used on input line 82.
+(pdftex.def)             Requested size: 115.22844pt x 57.01198pt.
+
+<imagenes/3.png, id=14, 371.3875pt x 129.48375pt>
+File: imagenes/3.png Graphic file (type png)
+ <use imagenes/3.png>
+Package pdftex.def Info: imagenes/3.png used on input line 86.
+(pdftex.def)             Requested size: 148.55235pt x 51.79257pt.
+
+<imagenes/4.png, id=15, 424.58624pt x 431.6125pt>
+File: imagenes/4.png Graphic file (type png)
+ <use imagenes/4.png>
+Package pdftex.def Info: imagenes/4.png used on input line 102.
+(pdftex.def)             Requested size: 169.83148pt x 172.64194pt.
+ [2 <./imagenes/2.png> <./imagenes/3.png>]
+<imagenes/5.png, id=19, 419.5675pt x 471.7625pt>
+File: imagenes/5.png Graphic file (type png)
+ <use imagenes/5.png>
+Package pdftex.def Info: imagenes/5.png used on input line 106.
+(pdftex.def)             Requested size: 167.82402pt x 188.70164pt.
+
+<imagenes/6.png, id=20, 430.60875pt x 443.6575pt>
+File: imagenes/6.png Graphic file (type png)
+ <use imagenes/6.png>
+Package pdftex.def Info: imagenes/6.png used on input line 110.
+(pdftex.def)             Requested size: 172.24043pt x 177.45984pt.
+ [3 <./imagenes/4.png> <./imagenes/5.png>] [4 <./imagenes/6.png>]
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 151.
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 66.
- [1
-
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2] (./doc.aux
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 151.
+ [5] [6] (./doc.aux
 LaTeX Info: Redefining \. on input line 6.
 LaTeX Info: Redefining \% on input line 6.
 ) ) 
 Here is how much of TeX's memory you used:
- 5300 strings out of 493029
- 72087 string characters out of 6136234
- 162011 words of memory out of 5000000
- 8748 multiletter control sequences out of 15000+600000
- 6014 words of font info for 22 fonts, out of 8000000 for 9000
+ 5404 strings out of 493029
+ 73461 string characters out of 6136234
+ 164396 words of memory out of 5000000
+ 8833 multiletter control sequences out of 15000+600000
+ 9148 words of font info for 32 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 42i,7n,35p,1043b,384s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 42i,8n,35p,1033b,384s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></u
-sr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/shar
-e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texli
-ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texm
-f-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
-Output written on doc.pdf (2 pages, 67666 bytes).
+sr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/sha
+re/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texl
+ive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/tex
+mf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist
+/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts
+/type1/public/amsfonts/cm/cmti12.pfb>
+Output written on doc.pdf (6 pages, 306677 bytes).
 PDF statistics:
- 31 PDF objects out of 1000 (max. 8388607)
- 21 compressed objects within 1 object stream
+ 57 PDF objects out of 1000 (max. 8388607)
+ 35 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 31 words of extra memory for PDF output out of 10000 (max. 10000000)
 
