@@ -1,0 +1,76 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{color}
+\usepackage{parskip}
+\usepackage{graphicx}
+\usepackage{multirow}
+\usepackage{listings}
+\usepackage{vmargin}
+\usepackage{datetime}
+\newdate{date}{5}{09}{2017}
+\graphicspath{ {imagenes/} }
+\definecolor{mygreen}{rgb}{0,0.6,0}
+\definecolor{lbcolor}{rgb}{0.9,0.9,0.9}
+\usepackage{epstopdf}
+
+
+\setpapersize{A4}
+\setmargins{2.5cm}       % margen izquierdo
+{1.5cm}                        % margen superior
+{16.5cm}                      % anchura del texto
+{23.42cm}                    % altura del texto
+{10pt}                           % altura de los encabezados
+{1cm}                           % espacio entre el texto y los encabezados
+{0pt}                             % altura del pie de página
+{2cm}     
+
+
+
+\begin{document}
+\title{Resumen NTP-ISO/IEC 29110}
+\author{
+Christofer Fabián Chávez Carazas \\
+\small{Universidad Nacional de San Agustín de Arequipa} \\
+\small{Escuela Profesional de Ciencia de la Computación} \\
+\small{Calidad de Software}
+}
+\date{\displaydate{date}}
+
+\maketitle
+
+\begin{enumerate}
+ \item \textbf{Alcance}
+ 
+ La NTP-ISO/IEC 29110 es aplicable a las Pequeñas Organizaciones (PO). Las PO son empresas, organizaciones, departamentos o proyectos de hasta 25 personas.
+ La ISO no pretende excluir a organizaciones grandes, ya que estas se pueden dividir en muchas POs. La ISO proporciona una Guía de Gestión e Ingeniería para el Perfil Básico.
+ El Perfil Básico describe el desarrollo de software de una sola aplicación por un sólo equipo de proyecto sin ningún riesgo especial o factores situacionales.
+ Esta parte está diseñada para ser utilizada con cualquiera de los procesos, técnicas y métodos que mejoren la satisfacción y la productividad de los clientes de la PO.
+ 
+ \item \textbf{Visión general}
+ 
+ La ISO está destinada para ser usada por la PO para establecer procesos para implementar cualquier enfoque o metodología de desarrollo, incluyendo, por ejemplo, ágil, evolutivo,
+ incremental, desarrollo dirigido por pruebas. La PO puede obtener los siguientes beneficios:
+ \begin{itemize}
+  \item Un conjunto acordado de requisitos del proyecto y productos esperados.
+  \item Un proceso de gestión disciplinado.
+  \item Un proceso sistemático de implementación de Software que satisfaga las necesidades del Cliente.
+ \end{itemize}
+ Para el uso de la guía se necesita que el enunciado de Trabajo del proyecto esté documentado, la viabilidad del proyecto fue realizada antes de su inicio y el equipo del proyecto está asignado
+ y entrenado.
+  
+ \item \textbf{Proceso de Gestión del proyecto}
+ 
+ El propósito del proceso Gestión del Proyecto es establecer y llevar a cabo de manera sistemática las Tareas de un proyecto de implementación de Software, que permitan cumplir
+ con los Objetivos del proyecto en calidad, tiempo y costos esperados. Los objetivos para el proceso Gestión del Proyecto son los siguientes:
+ \begin{itemize}
+  \item 
+ \end{itemize}
+
+ 
+  
+\end{enumerate}
+
+
+\end{document}
+
