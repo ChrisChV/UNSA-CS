@@ -1,0 +1,26 @@
+Automata de l.(l|d)*
+Estados
+10
+0 1 2 3 4 5 6 7 8 9 
+Inicial
+0
+Aceptacion
+1
+9 
+Entradas
+2
+d l 
+Transiciones
+12
+0 l 1
+2 l 3
+4 d 5
+3 ~ 7
+5 ~ 7
+6 ~ 2
+6 ~ 4
+7 ~ 9
+7 ~ 6
+8 ~ 6
+8 ~ 9
+1 ~ 8
