@@ -3,7 +3,7 @@
 
 using namespace std;
 
-GLsizei winWidth = 600, winHeight = 500;
+GLsizei winWidth = 1200, winHeight = 800;
 int primitiva = -1;
 
 enum Primitivas {POINTS = 1, LINES, STRIP, LINE_LOOP, POLYGON, TRIANGLE_STRIP, TRIANGLES, TRIANGLE_FAN, QUADS, QUAD_STRIP};
@@ -11,9 +11,128 @@ enum Primitivas {POINTS = 1, LINES, STRIP, LINE_LOOP, POLYGON, TRIANGLE_STRIP, T
 void init(void){
     glClearColor(1.0,1.0,1.0,1.0);
     glMatrixMode(GL_PROJECTION);
-    gluOrtho2D(0.0, 600.0, 0.0, 500.0);
+    gluOrtho2D(0.0, 1200.0, 0.0, 800.0);
 }
 
+void drawString(string s, int x, int y){
+	glColor3f(0.0, 0.0, 0.0);
+	glRasterPos2i(x,y);
+	for(char c : s){
+		glutBitmapCharacter(GLUT_BITMAP_HELVETICA_12,c);
+	}
+	glColor3f(1.0, 0.0, 0.0);
+}
+
+void display(void){
+	glClear(GL_COLOR_BUFFER_BIT);
+    glColor3f(1.0, 0.0, 0.0);
+    glPointSize(5);
+    glBegin(GL_POINTS);
+    	glVertex2i(70,770);
+    	glVertex2i(90,770);
+    	glVertex2i(80,750);
+    	glVertex2i(90,760);
+    glEnd();
+    drawString("GL_POINTS", 50, 730);
+    glBegin(GL_LINES);
+    	glVertex2i(200, 730);
+    	glVertex2i(250, 800);
+    	glVertex2i(240, 760);
+    	glVertex2i(270, 730);
+    glEnd();
+    drawString("GL_LINES", 205, 700);
+    glBegin(GL_LINE_STRIP);
+    	glVertex2i(500, 700);
+    	glVertex2i(400, 780);
+    	glVertex2i(350, 740);
+    	glVertex2i(600, 760);
+    	glVertex2i(500, 780);
+    	glVertex2i(560, 670);
+    	glVertex2i(450, 650);
+    glEnd();
+    drawString("GL_LINE_STRIP", 450, 620);
+    glBegin(GL_LINE_LOOP);
+    	glVertex2i(700, 750);
+    	glVertex2i(800, 790);
+    	glVertex2i(750, 780);
+    	glVertex2i(750, 730);
+    	glVertex2i(790, 720);
+    	glVertex2i(740, 670);
+    glEnd();
+    drawString("GL_LINE_LOOP", 700, 640);
+    glBegin(GL_POLYGON);
+    	glVertex2i(900, 750);
+    	glVertex2i(950, 800);
+    	glVertex2i(1000, 750);
+    	glVertex2i(1000, 700);
+    	glVertex2i(950, 650);
+    	glVertex2i(900, 700);
+    glEnd();
+    drawString("GL_POLYGON", 910, 620);
+    glBegin(GL_TRIANGLE_STRIP);
+    	glVertex2i(100, 550);
+    	glVertex2i(250, 540);
+    	glVertex2i(130, 450);
+    	glColor3f(0.0, 1.0, 0.0);
+    	glVertex2i(220, 460);
+    	glVertex2i(110, 400);
+    	glColor3f(0.0, 0.0, 1.0);
+    	glVertex2i(210, 390);
+    	glVertex2i(150, 350);
+    	glColor3f(0.0, 0.0, 0.0);
+    	glVertex2i(220, 360);
+    glEnd();
+    drawString("GL_TRIANGLE_STRIP", 120, 320);
+    glBegin(GL_TRIANGLES);
+    	glVertex2i(350, 500);
+    	glVertex2i(400, 550);
+    	glVertex2i(420, 490);
+    	glVertex2i(460, 470);
+    	glVertex2i(480, 520);
+    	glVertex2i(550, 470);
+    glEnd();
+    drawString("GL_TRIANGLES", 390, 450);
+    glBegin(GL_TRIANGLE_FAN);
+    	glVertex2i(400, 340);
+    	glVertex2i(420, 400);
+    	glVertex2i(500, 405);
+    	glColor3f(0.0, 1.0, 0.0);
+    	glVertex2i(520, 370);
+    	glColor3f(0.0, 0.0, 1.0);
+    	glVertex2i(570, 350);
+    	glColor3f(0.0, 0.0, 0.0);
+    	glVertex2i(520, 320);
+    glEnd();
+    drawString("GL_TRIANGLE_FAN", 400, 300);
+    glBegin(GL_QUADS);
+    	glVertex2i(650, 520);
+    	glVertex2i(660, 570);
+    	glVertex2i(720, 550);
+    	glVertex2i(690, 500);
+    	glVertex2i(650, 450);
+    	glVertex2i(730, 450);
+    	glVertex2i(720, 420);
+    	glVertex2i(630, 380);
+    glEnd();
+    drawString("GL_QUADS", 650, 350);
+    glBegin(GL_QUAD_STRIP);
+    	glVertex2i(800, 570);
+    	glVertex2i(900, 580);
+    	glVertex2i(820, 500);
+    	glVertex2i(880, 510);
+    	glColor3f(0.0, 1.0, 0.0);
+    	glVertex2i(810, 460);
+    	glVertex2i(875, 440);
+    	glColor3f(0.0, 0.0, 1.0);
+    	glVertex2i(850, 400);
+    	glVertex2i(900, 420);
+    glEnd();
+    drawString("GL_QUAD_STRIP", 800, 380);
+
+    glFlush();
+}
+
+/*
 void display(void){
     glClear(GL_COLOR_BUFFER_BIT);
     glColor3f(1.0, 0.0, 0.0);
@@ -132,6 +251,7 @@ void display(void){
     }
     glFlush();
 }
+*/
 
 int main(int argc, char **argv){
     glutInit(&argc, argv);
@@ -140,6 +260,7 @@ int main(int argc, char **argv){
     glutInitWindowPosition(100, 100);
     glutCreateWindow("Programa Primitivas");
     init();
+    /*
     cout<<"Seleccione primitiva a dibujar:"<<endl;
     cout<<"1->Puntos"<<endl;
     cout<<"2->Líneas"<<endl;
@@ -153,6 +274,7 @@ int main(int argc, char **argv){
     cout<<"10->Conjunto de Cuadrilateros"<<endl;
     cout<<"Respuesta->";
     cin>>primitiva;
+    */
 
 
     glutDisplayFunc(display);
