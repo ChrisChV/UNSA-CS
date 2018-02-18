@@ -1,0 +1,104 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{color}
+\usepackage{parskip}
+\usepackage{graphicx}
+\usepackage{multirow}
+\usepackage{listings}
+\usepackage{vmargin}
+\usepackage{datetime}
+\newdate{date}{28}{12}{2017}
+\graphicspath{ {imagenes/} }
+\definecolor{mygreen}{rgb}{0,0.6,0}
+\definecolor{lbcolor}{rgb}{0.9,0.9,0.9}
+\usepackage{epstopdf}
+\usepackage{float}
+
+
+\setpapersize{A4}
+\setmargins{2.5cm}       % margen izquierdo
+{1.5cm}                        % margen superior
+{16.5cm}                      % anchura del texto
+{23.42cm}                    % altura del texto
+{10pt}                           % altura de los encabezados
+{1cm}                           % espacio entre el texto y los encabezados
+{0pt}                             % altura del pie de página
+{2cm}     
+
+\lstset{
+backgroundcolor=\color{lbcolor},
+    tabsize=4,    
+%   rulecolor=,
+    language=[GNU]C++,
+        basicstyle=\tiny,
+        aboveskip={1.5\baselineskip},
+        columns=fixed,
+        showstringspaces=false,
+        extendedchars=false,
+        breaklines=true,
+        prebreak = \raisebox{0ex}[0ex][0ex]{\ensuremath{\hookleftarrow}},
+        frame=single,
+        showtabs=false,
+        showspaces=false,
+        showstringspaces=false,
+        identifierstyle=\ttfamily,
+        keywordstyle=\color[rgb]{0,0,1},
+        commentstyle=\color[rgb]{0.026,0.112,0.095},
+        stringstyle=\color{red},
+        numberstyle=\color[rgb]{0.205, 0.142, 0.73},
+%        \lstdefinestyle{C++}{language=C++,style=numbers}’.
+}
+
+
+\begin{document}
+\title{Examen Final}
+\author{
+Christofer Fabián Chávez Carazas \\
+\small{Universidad Nacional de San Agustín de Arequipa} \\
+\small{Escuela Profesional de Ciencia de la Computación} \\
+\small{Aspectos Sociales de la Computación}
+}
+\date{\displaydate{date}}
+
+\maketitle
+
+\begin{enumerate}
+ \item \textbf{Opinión sobre la carta abierta en contra de ciertos desarrollo de la inteligencia artificial.}
+ 
+ \textit{Kill Command} es una película británica del 2016, la historia gira en torno a un grupo de soldados que van a un campo de entrenamiento aislado a ser testigos del funcionamiento
+ de una nueva arma. Lo que ellos no saben es que la nueva arma aprende las tácticas utilizadas por ellos y las mejora. La nueva arma se llama SAR (\textit{Study Analise Reprogram}),
+ una inteligencia artificial que estudia y aprende tácticas de guerra. Una de las razones por las que crearon el SAR es porque iba a salvar las vidas de
+ los soldados en batalla, ya que ya no tendrían que ir a la guerra. Pero un error de programación ocasiona que el SAR se salga de control y empiece a matar al grupo de
+ soldados para poder ``aprender'' más tácticas de guerra. En este ejemplo la IA no adquiere conciencia y quiere matar a toda la humanidad, sino que simplemente el programador
+ se equivoca en la programación y la IA empieza a matar descontroladamente para aprender. \\
+ Actualmente el estado del arte de la inteligencia artificial todavía esta en una etapa temprana con factores que aún no sabemos cómo controlar, como por ejemplo la seguridad. En la película
+ \textit{Automata} una IA superdesarrollada programa el sistema de seguridad de las IAs para protegerlas de la gente. Una IA armada no esta libre de ser hackeada
+ y utilizada para fines diferentes a los que fue creada.
+ En resumen, factores como el error humano, el no saber el alcance de la inteligencia de una IA, la falta de seguridad computacional para IAs, hacen ver que 
+ aún no estamos preparados para crear inteligencia artificial avanzada.
+ 
+ \item \textbf{¿A favor o en contra de la neutralidad en la Red?}
+ 
+ Aunque aún no suframos los efectos de la eliminación de la neutralidad de la red, para nosotros los usuarios puede ser algo perjudicial. Las grandes empresas de
+ comunicaciones pueden manejar el flujo de internet a su antojo. Por ejemplo, llevado a nivel de Perú, la empresa Claro 
+ Para nosotros los Científicos de Computación eliminar, la neutralidad de la red puede ser algo que no nos beneficie, más si queremos emprender nuestra propia empresa.
+ En el ámbito del software, las empresas casi siempre empiezan como start ups con pocos recursos. Si su idea de software es original e interesante, pero necesita de un servidor
+ e internet para ofrecer sus servicios, entonces va a tener muchos problemas para mantenerse y prosperar, como los tuvo Facebook en sus inicios. Otro posible contra que puede
+ surgir al eliminar la neutralidad de la red es un posible monopolio. Por ejemplo, si una empresa de software en surgimiento con una buena aplicación que pueda hacerle la
+ competencia a otra empresa más grande, la empresa grande puede pagarle a las grandes empresas de telecomunicaciones para que, prácticamente, bloqueen o limiten los datos
+ enviados y recibidos por la aplicación en surgimiento.
+ Hoy por hoy existe una economía que se está formando en base a la internet: las criptomonedas. Explicado de forma general, las criptomonedas son formas de cambio por 
+ procesamiento computacional, y su costo es muy volátil a tal punto que puedes duplicar el dinero invertido en cuestión de semanas. Eliminar la neutralidad de la red
+ crearía un cambio importante en esta economía haciendo que, tal vez, suban su valor hasta límites inimaginables o que simplemente se desplomen hasta el suelo hasta su extinción.
+ 
+ \item \textbf{¿Protección y privacidad de datos o vigilancia? El caso de Tor.}
+ 
+ 
+ 
+\end{enumerate}
+
+
+
+\end{document}
+

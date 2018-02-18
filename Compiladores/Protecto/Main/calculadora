@@ -1,0 +1,58 @@
+float suma(float a, float b){
+	return a + b;
+}
+
+float resta(float a, float b){
+	return  a - b;
+}
+
+float multi(float a, float b){
+	return a * b;
+}
+
+float div(float a, float b){
+	if(a == 0){
+		return 0;
+	}
+	return a / b;
+}
+
+float elevar(float a, float b){
+	return a^b;
+}
+
+float modulo(float a, float b){
+	return a % b;
+}
+
+int main(){
+	float a1, a2, op, res;
+	bool flag = true;
+	while(flag == true){
+		in a1;
+		in a2;
+		in op;
+		if((a1 == 0) and (a2 == 0)){
+			flag = false;
+		}
+		if(op == 0){
+			res = suma(a1, a2);
+		}
+		else if(op == 1){
+			res = resta(a1, a2);
+		}
+		else if(op == 2){
+			res = multi(a1, a2);
+		}
+		else if(op == 3){
+			res = div(a1, a2);
+		}
+		else if(op == 4){
+			res = elevar(a1, a2);
+		}
+		else if(op == 5){
+			res = modulo(a1, a2);
+		}
+		print res;
+	}
+}

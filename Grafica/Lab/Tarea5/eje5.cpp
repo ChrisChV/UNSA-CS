@@ -7,7 +7,6 @@
 using namespace std;
 
 GLsizei winWidth = 1200, winHeight = 800;
-typedef tuple<float,float,float> Color;
 enum COLORES {ROJO, VERDE, AZUL, BLANCO, NEGRO, GRIS_CLARO, CORAL, ORO, CELESTE, NARANJA, ROSADO, CELESTE2, VIOLETA, AMARILLO,
             CYAN, MAGENTA};
 
