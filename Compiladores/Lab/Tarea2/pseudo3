@@ -1,6 +1,0 @@
-Inicio
-variables a,b,c:real
-Leer e
-Leer b
-c<-a+b
-Escribir c
