@@ -3,6 +3,11 @@
 
 using namespace std;
 
+vector<int> profits = {6,5,8,9,6,7,3};
+vector<int> pesos = {2,3,6,7,5,9,4};
+int pesoMaximo = 9;
+
+
 bool sortFun(Cromosoma a, Cromosoma b){
 	return a.fit > b.fit;
 }
@@ -21,15 +26,25 @@ Cromosoma getMayor(vector<Cromosoma> contrincantes){
 }
 
 FitVal funcFitness(Cromosoma crom){
-	FitVal res = 0;
-	int num = crom.bin_to_int();
-	res = (float) pow(-num,2) / 10.0  + 3 * num;
+	FitVal res = 0;	
+	int x = 0;
+	int sumaPesos = 0;
+	int penalty = 0;
+	for(int i = 0; i < crom.crom.size(); i++){
+		if(crom.crom[i] == '0') x = 0;
+		else x = 1;
+		sumaPesos += pesos[i];
+		res += x * profits[i];
+		penalty += x * pesos[i];
+	}
+	penalty = sumaPesos * abs(penalty - pesoMaximo);
+	res = res - penalty;
 	return res;
 }
 
 vector<ParCromo> funcTournamentSelect(Poblacion pobl, int n){
 	cout<<"Seleccion de padres metodo torneo"<<endl;
-	int tamTorneo = 2;
+	int tamTorneo = 3;
 	cout<<"Tam de torneo: "<<tamTorneo<<endl;
 	vector<ParCromo> res;
 	vector<Cromosoma> contrincantes;
@@ -53,14 +68,13 @@ vector<ParCromo> funcTournamentSelect(Poblacion pobl, int n){
 	return res;
 }
 
-int funcCrossTwoPoints(vector<ParCromo> padres, float probCruz, Poblacion & resPobl){
+int funcCrossOnePoint(vector<ParCromo> padres, float probCruz, Poblacion & resPobl){
 	int faltantes = 0;
+	int numRandom = 0;
+	int puntoRandom = 0;
 	int realProbCruz = probCruz * 100;
 	Cromosoma padre;
 	Cromosoma madre;
-	int point1 = 0;
-	int point2 = 0;
-	int numRandom = 0;
 	string newCromA = "";
 	string newCromB = "";
 	for(ParCromo par : padres){
@@ -74,17 +88,21 @@ int funcCrossTwoPoints(vector<ParCromo> padres, float probCruz, Poblacion & resP
 			faltantes++;
 			continue;	
 		} 
-		cout<<"Cruzamiento de dos puntos"<<endl;
-		point1 = rand() % padre.crom.size();
-		cout<<"Punto de corte 1: "<<point1<<endl;
-		if(point1 == 0) point2 = rand() % (padre.crom.size() - 1) + 1;
-		else point2 = rand() % (padre.crom.size() - point1) + (point1 + 1);
-		
-		cout<<"Punto de corte 2: "<<point2<<endl;
-		newCromA = padre.crom;
-		newCromB = madre.crom;
-		for(int i = point1; i < point2; i++){
-			swap(newCromA[i], newCromB[i]);
+		cout<<"Cruzamiento de un Punto"<<endl;
+		puntoRandom = rand() % (padre.crom.size() - 1) + 1;
+		cout<<"Punto de corte: "<<puntoRandom<<endl;
+		newCromA.clear();
+		newCromB.clear();
+		if(padre.crom == madre. crom){
+			newCromA = padre.crom;
+			newCromB.insert(newCromB.end(), newCromA.begin() + puntoRandom, newCromA.end());
+			newCromB.insert(newCromB.end(), newCromA.begin(), newCromA.begin() + puntoRandom);
+		}
+		else{
+			newCromA.insert(newCromA.end(), padre.crom.begin(), padre.crom.begin() + puntoRandom);
+			newCromA.insert(newCromA.end(), madre.crom.begin() + puntoRandom, madre.crom.end());
+			newCromB.insert(newCromB.end(), madre.crom.begin(), madre.crom.begin() + puntoRandom);
+			newCromB.insert(newCromB.end(), padre.crom.begin() + puntoRandom, padre.crom.end());	
 		}
 		cout<<newCromA<<endl;
 		cout<<newCromB<<endl;
@@ -122,17 +140,16 @@ Poblacion nextGen(Poblacion pobl){
 
 int main(int argc, char ** argv){
 	srand(time(NULL));
-	if(argc != 6){
-		cout<<"Argumentos <Tam poblacion> <Tam cromososma> <Iteraciones> <Prob Cross> <Prob Mut>"<<endl;
+	if(argc != 5){
+		cout<<"Argumentos <Tam poblacion> <Iteraciones> <Prob Cross> <Prob Mut>"<<endl;
 		return 0;
 	}
 	string sTamP(argv[1]);
-	string sTamCrom(argv[2]);
-	string sNumIter(argv[3]);
- 	string sProbCruz(argv[4]);
-	string sProbMut(argv[5]);
+	string sNumIter(argv[2]);
+ 	string sProbCruz(argv[3]);
+	string sProbMut(argv[4]);
 	int tamP = stoi(sTamP);
-	int tamCrom = stoi(sTamCrom);
+	int tamCrom = profits.size();
 	int numIter = stoi(sNumIter);
 	float probCruz = stof(sProbCruz);
 	float probMut = stof(sProbMut);
@@ -143,6 +160,6 @@ int main(int argc, char ** argv){
 	cout<<"Probabilidad de cruzamiento: "<<probCruz<<endl;
 	cout<<"Probabilidad de Mutacion: "<<probMut<<endl<<endl;
 
-	AlgoGen ag(tamP, tamCrom, numIter, probCruz, probMut, funcFitness, funcTournamentSelect, funcCrossTwoPoints, mutFunc, nextGen);
+	AlgoGen ag(tamP, tamCrom, numIter, probCruz, probMut, funcFitness, funcTournamentSelect, funcCrossOnePoint, mutFunc, nextGen);
 	ag.run();
 }

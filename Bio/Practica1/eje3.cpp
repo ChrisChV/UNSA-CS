@@ -41,8 +41,8 @@ FitVal funcFitness(Cromosoma crom){
 	bool flag = false;
 	for(int i = 0; i < crom.crom.size(); i++){
 		if(i == crom.crom.size() / 2) flag = true;
-		if(flag == false) sNum1.insert(sNum1.begin(), crom.crom[i]);
-		else sNum2.insert(sNum2.begin(), crom.crom[i]);
+		if(flag == false) sNum1.push_back(crom.crom[i]);
+		else sNum2.push_back(crom.crom[i]);
 	}
 	num1 = to_int(sNum1);
 	num2 = to_int(sNum2);
@@ -128,7 +128,7 @@ void mutFunc(Poblacion & pobl, float probMut){
 	int posRandom = 0;
 	for(int i = 0; i < pobl.size(); i++){
 		numRandom = rand() % 101;
-		if(numRandom > probMut) continue;
+		if(numRandom > realProbMut) continue;
 		cout<<"Mutacion "<<pobl[i].crom<<" -> ";
 		posRandom = rand() % pobl.front().crom.size();
 		if(pobl[i].crom[posRandom] == '0') pobl[i].crom[posRandom] = '1';

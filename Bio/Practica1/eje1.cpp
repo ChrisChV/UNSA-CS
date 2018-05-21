@@ -46,7 +46,7 @@ vector<ParCromo> funcRouleteSelect(Poblacion pobl, int n){
 			for(int k = 0; k < probabilidades.size(); k++){
 				if(probabilidades[k] >= numRandom){
 					padres[j] = pobl[k];
-					break;	
+					break;
 				}
 			}
 		}
@@ -80,7 +80,7 @@ int funcCrossOnePoint(vector<ParCromo> padres, float probCruz, Poblacion & resPo
 		cout<<"Punto de corte: "<<puntoRandom<<endl;
 		newCromA.clear();
 		newCromB.clear();
-		if(padre.crom == madre. crom){
+		if(padre.crom == madre.crom){
 			newCromA = padre.crom;
 			newCromB.insert(newCromB.end(), newCromA.begin() + puntoRandom, newCromA.end());
 			newCromB.insert(newCromB.end(), newCromA.begin(), newCromA.begin() + puntoRandom);
@@ -107,7 +107,7 @@ void mutFunc(Poblacion & pobl, float probMut){
 	int posRandom = 0;
 	for(int i = 0; i < pobl.size(); i++){
 		numRandom = rand() % 101;
-		if(numRandom > probMut) continue;
+		if(numRandom > realProbMut) continue;
 		cout<<"Mutacion "<<pobl[i].crom<<" -> ";
 		posRandom = rand() % pobl.front().crom.size();
 		if(pobl[i].crom[posRandom] == '0') pobl[i].crom[posRandom] = '1';
