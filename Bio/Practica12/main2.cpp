@@ -17,7 +17,7 @@ matrix costos = 			  {{ 0, 12,  3, 23,  1,  5, 23, 56, 12, 11}, //A
 int main(){
 	srand(time(NULL));
 	double femIni = 10;
-	int numH = 4;
+	int numH = 10;
 	int numIter = 1000;
 
 	double alfa = 1;

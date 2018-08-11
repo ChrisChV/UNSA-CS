@@ -5,30 +5,31 @@
 #include <thread>
 #include <cstdlib>
 #include <ctime>
-#include "Hormiga.h"
+#include "Hormiga1.h"
 
 using namespace std;
 
 class AS{
 	public:
 		AS(){}
-		AS(matrix & costos, double femIni, double alfa, double delta, double Q, 
-			int W , int numH, int numIter);
+		AS(matrix & costos, double femIni, double alfa, double delta, double Q ,double evaporacion
+			, int numH, int numIter, int nBL);
 		void run();
 		matrix costos;
 		matrix distancias;
 		matrix feromonas;
 		int numH;
 		int numIter;
+		int nBL;
+		double evaporacion;
 		double alfa;
-		double delta;
+		double beta;
 		double Q;
-		int W;
 		Hormiga * mejorGlobal;
 };
 
-AS::AS(matrix & costos, double femIni, double alfa, double delta, double Q,
-		 	int W , int numH, int numIter){
+AS::AS(matrix & costos, double femIni, double alfa, double delta, double Q ,double evaporacion , 
+			int numH, int numIter, int nBL){
 	this->costos = costos;
 	feromonas = matrix(costos.size());
 	for(int i = 0; i < costos.size(); i++){
@@ -36,10 +37,11 @@ AS::AS(matrix & costos, double femIni, double alfa, double delta, double Q,
 	}
 	this->numH = numH;
 	this->numIter = numIter;
+	this->nBL = nBL;
+	this->evaporacion = evaporacion;
 	this->alfa = alfa;
-	this->delta = delta;
+	this->beta = delta;
 	this->Q = Q;
-	this->W = W;
 }
 
 void parallelHormiga(Hormiga * hormiga, matrix * distancias, matrix * feromonas, matrix * costos,
@@ -62,18 +64,22 @@ void AS::run(){
 	vector<Hormiga *> hormigas(numH);
 	matrix newFeromonas;
 	Hormiga * actualHormiga = nullptr;
-	int estadoAns = -1;
 	mejorGlobal = nullptr;
+	int estadoAns = -1;
 
 	for(int i = 0; i < numIter; i++){
 		cout<<"Iteracion "<<i<<endl;
 		for(int j = 0; j < numH; j++){
+			cout<<"Hormiga "<<j<<endl;
 			hormigas[j] = new Hormiga();
-			threads[j] = thread(parallelHormiga, hormigas[j], &distancias, &feromonas, &costos, alfa, delta, Q);
+			hormigas[j]->getCamino(distancias, feromonas, alfa, beta);
+			hormigas[j]->setCosto(costos, Q);
 		}
-		for(int j = 0; j < numH; j++){
-			threads[j].join();
+
+		for(auto iter = hormigas.begin(); iter != hormigas.end(); ++iter){
+			(*iter)->busquedaLocal(costos, Q, nBL);
 		}
+
 		sort(hormigas.begin(), hormigas.end(), []	(Hormiga * a, Hormiga * b){
 			return a->costo < b->costo;
 		});
@@ -90,38 +96,25 @@ void AS::run(){
 		for(int j = 0; j < costos.size(); j++){
 			newFeromonas[j] = vector<double>(costos.size(), 0);
 		}
-		int rank = 0;
 		for(auto iter = hormigas.begin(); iter != hormigas.end(); ++iter){
 			actualHormiga = (*iter);
 			actualHormiga->print();
-			rank++;
 			estadoAns = -1;
-			if(rank >= W) continue;
+			
 			for(auto iter2 = actualHormiga->res.begin(); iter2 != actualHormiga->res.end(); ++iter2){
 				if(estadoAns == -1) {
 					estadoAns = (*iter2);
 					continue;
 				}
-				newFeromonas[estadoAns][(*iter2)] += actualHormiga->ferCosto * (W - rank);
-				newFeromonas[(*iter2)][estadoAns] += actualHormiga->ferCosto * (W - rank);
+				newFeromonas[estadoAns][(*iter2)] += actualHormiga->ferCosto;
+				newFeromonas[(*iter2)][estadoAns] += actualHormiga->ferCosto;
 				estadoAns = (*iter2);
 			}
 		}
-		estadoAns = -1;
-		for(auto iter = mejorGlobal->res.begin(); iter != mejorGlobal->res.end(); ++iter){
-			if(estadoAns == -1){
-				estadoAns = (*iter);
-				continue;
-			}			
-			newFeromonas[estadoAns][(*iter)] += mejorGlobal->ferCosto * W;
-			newFeromonas[(*iter)][estadoAns] += mejorGlobal->ferCosto * W;
-			estadoAns = (*iter);
-		}
-
 		for(int j = 0; j < feromonas.size(); j++){
 			for(int k = 0; k < feromonas.size(); k++){
 				if(k == j) continue;
-				feromonas[j][k] = feromonas[j][k] + newFeromonas[j][k];
+				feromonas[j][k] = feromonas[j][k] * evaporacion + newFeromonas[j][k];
 			}
 		}
 		cout<<"Matrix de feromonas"<<endl;

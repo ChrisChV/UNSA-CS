@@ -12,40 +12,46 @@ using namespace std;
 class AS{
 	public:
 		AS(){}
-		AS(matrix & costos, double femIni, double alfa, double delta, double Q, 
-			int W , int numH, int numIter);
+		AS(matrix & costos, matrix & flujos, double alfa, double delta, double Q ,double evaporacion,
+			double ferMax, double ferMin, int numH, int numIter);
 		void run();
 		matrix costos;
+		matrix flujos;
 		matrix distancias;
 		matrix feromonas;
 		int numH;
 		int numIter;
+		double evaporacion;
 		double alfa;
 		double delta;
 		double Q;
-		int W;
+		double ferMax;
+		double ferMin;
 		Hormiga * mejorGlobal;
 };
 
-AS::AS(matrix & costos, double femIni, double alfa, double delta, double Q,
-		 	int W , int numH, int numIter){
+AS::AS(matrix & costos, matrix & flujos, double alfa, double delta, double Q ,double evaporacion, 
+			double ferMax, double ferMin, int numH, int numIter){
 	this->costos = costos;
+	this->flujos = flujos;
 	feromonas = matrix(costos.size());
 	for(int i = 0; i < costos.size(); i++){
-		feromonas[i] = vector<double>(costos.size(), femIni);
+		feromonas[i] = vector<double>(costos.size(), ferMax);
 	}
 	this->numH = numH;
 	this->numIter = numIter;
+	this->evaporacion = evaporacion;
 	this->alfa = alfa;
 	this->delta = delta;
 	this->Q = Q;
-	this->W = W;
+	this->ferMax = ferMax;
+	this->ferMin = ferMin;
 }
 
-void parallelHormiga(Hormiga * hormiga, matrix * distancias, matrix * feromonas, matrix * costos,
+void parallelHormiga(Hormiga * hormiga, matrix * distancias, matrix * feromonas, matrix * costos, matrix * flujos,
 						 double alfa, double beta, double Q){
 	hormiga->getCamino(*distancias, *feromonas, alfa, beta);
-	hormiga->setCosto(*costos, Q);
+	hormiga->setCosto(*costos, *flujos, Q);
 }
 
 void AS::run(){
@@ -53,8 +59,10 @@ void AS::run(){
 	for(int i = 0; i < costos.size(); i++){
 		distancias[i] = vector<double>(costos.size(), 0);
 		for(int j = 0; j < costos.size(); j++){
-			if(i == j) continue;
-			distancias[i][j] = 1.0 / costos[i][j];
+			for(int k = 0; k < costos.size(); k++){
+				distancias[i][j] += costos[i][k] * flujos[k][j];
+			}
+			distancias[i][j] = 1.0 / distancias[i][j];
 		}
 	}
 
@@ -69,7 +77,7 @@ void AS::run(){
 		cout<<"Iteracion "<<i<<endl;
 		for(int j = 0; j < numH; j++){
 			hormigas[j] = new Hormiga();
-			threads[j] = thread(parallelHormiga, hormigas[j], &distancias, &feromonas, &costos, alfa, delta, Q);
+			threads[j] = thread(parallelHormiga, hormigas[j], &distancias, &feromonas, &costos, &flujos, alfa, delta, Q);
 		}
 		for(int j = 0; j < numH; j++){
 			threads[j].join();
@@ -86,42 +94,30 @@ void AS::run(){
 		}
 		cout<<"Mejor global: ";
 		mejorGlobal->print();
+		for(auto iter = hormigas.begin(); iter != hormigas.end(); ++iter){
+			(*iter)->print();
+		}
 		newFeromonas = matrix(costos.size());
 		for(int j = 0; j < costos.size(); j++){
 			newFeromonas[j] = vector<double>(costos.size(), 0);
 		}
-		int rank = 0;
-		for(auto iter = hormigas.begin(); iter != hormigas.end(); ++iter){
-			actualHormiga = (*iter);
-			actualHormiga->print();
-			rank++;
-			estadoAns = -1;
-			if(rank >= W) continue;
-			for(auto iter2 = actualHormiga->res.begin(); iter2 != actualHormiga->res.end(); ++iter2){
-				if(estadoAns == -1) {
-					estadoAns = (*iter2);
-					continue;
-				}
-				newFeromonas[estadoAns][(*iter2)] += actualHormiga->ferCosto * (W - rank);
-				newFeromonas[(*iter2)][estadoAns] += actualHormiga->ferCosto * (W - rank);
-				estadoAns = (*iter2);
-			}
-		}
 		estadoAns = -1;
-		for(auto iter = mejorGlobal->res.begin(); iter != mejorGlobal->res.end(); ++iter){
+		for(auto iter = hormigas.front()->res.begin(); iter != hormigas.front()->res.end(); ++iter){
 			if(estadoAns == -1){
 				estadoAns = (*iter);
 				continue;
-			}			
-			newFeromonas[estadoAns][(*iter)] += mejorGlobal->ferCosto * W;
-			newFeromonas[(*iter)][estadoAns] += mejorGlobal->ferCosto * W;
+			}
+			newFeromonas[estadoAns][(*iter)] += hormigas.front()->ferCosto;
+			newFeromonas[(*iter)][estadoAns] += hormigas.front()->ferCosto;
 			estadoAns = (*iter);
 		}
 
 		for(int j = 0; j < feromonas.size(); j++){
 			for(int k = 0; k < feromonas.size(); k++){
 				if(k == j) continue;
-				feromonas[j][k] = feromonas[j][k] + newFeromonas[j][k];
+				feromonas[j][k] = feromonas[j][k] * evaporacion + newFeromonas[j][k];
+				if(feromonas[j][k] < ferMin) feromonas[j][k] = ferMin;
+				else if(feromonas[j][k] > ferMax) feromonas[j][k] = ferMax;
 			}
 		}
 		cout<<"Matrix de feromonas"<<endl;

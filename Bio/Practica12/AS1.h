@@ -117,7 +117,6 @@ void AS::run(){
 			newFeromonas[(*iter)][estadoAns] += mejorGlobal->ferCosto * E;
 			estadoAns = (*iter);
 		}
-
 		for(int j = 0; j < feromonas.size(); j++){
 			for(int k = 0; k < feromonas.size(); k++){
 				if(k == j) continue;
