@@ -1,0 +1,65 @@
+mtype = {saludo1, saludo2, pedido, comidaLista, pedirCuenta, cuenta, dinero, despedida1, despedida2};
+
+typedef Plato{
+	byte lista
+};
+
+chan cl_to_cam = [2] of {mtype};
+chan cam_to_cl = [2] of {mtype};
+chan cam_to_coc = [2] of {mtype};
+chan coc_to_cam = [2] of {mtype};
+
+Plato comida;
+
+proctype cliente()
+{
+	int recurso1
+	cl_to_cam!saludo1;
+	cam_to_cl?saludo2;
+	cl_to_cam!pedido;
+	cam_to_cl?comidaLista;
+	do
+	:: (recurso1 == 1000000) -> break
+	:: else -> recurso1++
+	od
+	comida.lista = 0;
+	cl_to_cam!pedirCuenta;
+	cam_to_cl?cuenta;
+	cl_to_cam!dinero;
+	cam_to_cl?despedida1;
+	cl_to_cam!despedida2;
+}
+
+proctype camarera(){
+	again:	cl_to_cam?saludo1;
+			cam_to_cl!saludo2;
+			cl_to_cam?pedido;
+			cam_to_coc!pedido;
+			coc_to_cam?comidaLista;
+			cam_to_cl!comidaLista;
+			cl_to_cam?pedirCuenta;
+			cam_to_cl!cuenta;
+			cl_to_cam?dinero;
+			cam_to_cl!despedida1;
+			cl_to_cam?despedida2;
+			goto again
+}
+
+proctype cocinero(){
+	int recurso2
+	again: 	cam_to_coc?pedido;
+			do
+			:: (recurso2 == 1000000) -> break
+			:: else -> recurso2++	
+			od
+			recurso2 = 0;
+			comida.lista = 1;
+			coc_to_cam!comidaLista;
+			goto again
+}
+
+init {
+	run cocinero()
+	run camarera()
+	run cliente()
+}

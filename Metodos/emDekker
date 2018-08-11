@@ -1,0 +1,32 @@
+bit turn;
+bool flag[2];
+byte cnt;
+
+active [2] proctype mutex()
+{ 
+    pid i, j;
+    i = _pid;
+    j = 1 - _pid;
+    again:
+        flag[i] = true;
+        do
+        :: flag[j] ->
+            if
+            :: turn == j ->
+                flag[i] = false;
+                (turn != j) -> /* wait until true */
+                flag[i] = true
+            :: else ->
+                skip /* do nothing */
+            fi
+        :: else ->
+            break /* break from loop */
+        od;
+    cnt++;
+    assert(cnt == 1); /* critical section */
+    cnt--;
+    
+    turn = j;
+    flag[i] = false;
+    goto again
+}
