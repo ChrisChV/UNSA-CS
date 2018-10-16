@@ -1,0 +1,4 @@
+curl -H "Content-Type: application/json" \
+     -H "Authorization: Bearer 5F1B8A4E5C4AFC45C4AA261FB76E1C0AFECE369E3ACC15607D0A37208897ED6C" \
+     -X POST "https://afc70062-d150-47ac-8369-ccb02c0fa5f9.pushnotifications.pusher.com/publish_api/v1/instances/afc70062-d150-47ac-8369-ccb02c0fa5f9/publishes" \
+     -d '{"interests":["hello"],"fcm":{"notification":{"title":"Hello","body":"Hello, world!"}}}'
