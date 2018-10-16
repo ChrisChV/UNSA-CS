@@ -5,11 +5,15 @@ import java.io.ByteArrayOutputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
 
 import android.Manifest;
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.IntentSender;
 import android.content.pm.PackageManager;
@@ -20,19 +24,31 @@ import android.graphics.Color;
 import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.PointF;
+import android.graphics.drawable.Drawable;
 import android.hardware.Camera;
 import android.media.FaceDetector;
+import android.media.Image;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
+import android.support.design.widget.NavigationView;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ImageView;
 
+import com.facebook.Profile;
+import com.facebook.share.Sharer;
+import com.facebook.share.model.SharePhoto;
+import com.facebook.share.model.SharePhotoContent;
+import com.facebook.share.widget.ShareDialog;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 
@@ -41,8 +57,24 @@ import com.google.android.gms.drive.Drive;
 import com.google.android.gms.drive.DriveApi;
 import com.google.android.gms.drive.MetadataChangeSet;
 
+import com.facebook.AccessToken;
+import com.facebook.CallbackManager;
+import com.facebook.FacebookCallback;
+import com.facebook.FacebookException;
+import com.facebook.FacebookSdk;
+import com.facebook.GraphRequest;
+import com.facebook.GraphResponse;
+import com.facebook.login.LoginResult;
+import com.facebook.login.widget.LoginButton;
+import com.squareup.picasso.Picasso;
+import com.squareup.picasso.Target;
+
+import android.support.v7.widget.Toolbar;
+import android.widget.Toast;
 
 
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import static android.content.ContentValues.TAG;
 
@@ -58,22 +90,64 @@ public class MainActivity extends Activity implements GoogleApiClient.Connection
     private static final int MY_PERMISSIONS_REQUEST_WRITE = 12;
 
     private ImageView mCameraImageView;
+    private ImageView imageAvatar;
+    private ImageView mCoverImage;
     private Bitmap mCameraBitmap;
     private static Bitmap mCameraWithFacesBitmap = null;
     private Button mSaveImageButton;
     private GoogleApiClient mGoogleApiClient;
+    private NavigationView navigationView;
+    private View navHeader;
+    private DrawerLayout drawer;
+    private Toolbar toolbar;
+    private LoginButton loginButton;
 
     private int cameraPermissions;
     private int internetPermissions;
     private int writePermissions;
     private int currentCameraId;
 
+    private String facebookUserID;
     private String pathPthotoFile;
+
+    private CallbackManager callbackManager;
+    private ProgressDialog mDialog;
+    private ShareDialog shareDialog;
 
     private Drive drive;
 
     private float backCameraDegressRotate = 90;
     private float frontCameraDegressRotate = -90;
+
+    /*private Target target = new Target() {
+
+        @Override
+        public void onBitmapLoaded(Bitmap bitmap, Picasso.LoadedFrom from) {
+
+            SharePhoto sharePhoto = new SharePhoto.Builder()
+                    .setBitmap(bitmap)
+                    .build();
+
+            if(ShareDialog.canShow(SharePhotoContent.class)){
+                SharePhotoContent content = new SharePhotoContent.Builder()
+                        .addPhoto(sharePhoto)
+                        .build();
+
+                shareDialog.show(content);
+            }
+        }
+
+        @Override
+        public void onBitmapFailed(Drawable errorDrawable) {
+
+        }
+
+        @Override
+        public void onPrepareLoad(Drawable placeHolderDrawable) {
+
+        }
+    };*/
+
 
     public void getPermissions(){
         cameraPermissions = ContextCompat.checkSelfPermission(this,
@@ -298,6 +372,17 @@ public class MainActivity extends Activity implements GoogleApiClient.Connection
     };
 
     @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+
+        // show menu only when home fragment is selected
+
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+
+        return true;
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
@@ -305,13 +390,93 @@ public class MainActivity extends Activity implements GoogleApiClient.Connection
 
         setContentView(R.layout.activity_main);
 
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+
+
+        drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navHeader = navigationView.getHeaderView(0);
+
         mCameraImageView = (ImageView) findViewById(R.id.camera_image_view);
+        imageAvatar = (ImageView) navHeader.findViewById(R.id.img_profile);
+        mCoverImage = (ImageView) navHeader.findViewById(R.id.img_header_bg);
+
+        shareDialog = new ShareDialog(this);
 
         findViewById(R.id.capture_image_button).setOnClickListener(mCaptureImageButtonClickListener);
 
-        mSaveImageButton = (Button) findViewById(R.id.save_image_button);
-        mSaveImageButton.setOnClickListener(mSaveImageButtonClickListener);
-        mSaveImageButton.setEnabled(false);
+        loginButton = (LoginButton) navHeader.findViewById(R.id.login_button);
+        loginButton.setReadPermissions(Arrays.asList("public_profile","email","user_birthday","user_friends"));
+        callbackManager = CallbackManager.Factory.create();
+
+
+        loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
+            @Override
+            public void onSuccess(LoginResult loginResult) {
+                mDialog = new ProgressDialog(MainActivity.this);
+                mDialog.setMessage("Retrieving data...");
+                mDialog.show();
+
+                String accesstoken = loginResult.getAccessToken().getToken();
+                GraphRequest request = GraphRequest.newMeRequest(loginResult.getAccessToken(), new GraphRequest.GraphJSONObjectCallback() {
+                    @Override
+                    public void onCompleted(JSONObject object, GraphResponse response) {
+                        mDialog.dismiss();
+
+                        Log.d("response",response.toString());
+
+                        getData(object);
+                        //Bundle facebookData = getFacebookData(object);
+                    }
+                });
+
+                //Request Graph API
+
+                Bundle parameters = new Bundle();
+                parameters.putString("fields","id,email,birthday,friends,cover");
+                request.setParameters(parameters);
+                request.executeAsync();
+
+            }
+
+            @Override
+            public void onCancel() {
+
+            }
+
+            @Override
+            public void onError(FacebookException error) {
+
+            }
+        });
+
+
+        //if already login
+        try{
+            if(AccessToken.getCurrentAccessToken() != null ) {
+                facebookUserID = Profile.getCurrentProfile().getId();
+                String token = AccessToken.getCurrentAccessToken().getUserId();
+                URL profile_picture = new URL("https://graph.facebook.com/" + token +"/picture?width=250&height=250");
+                URL cover_picture = new URL("https://graph.facebook.com/" + facebookUserID + "?fields=cover&access_token=" + token);
+                Picasso.with(this).load(profile_picture.toString()).into(imageAvatar);
+                Picasso.with(this).load(cover_picture.toString()).into(mCoverImage);
+            }
+        } catch (MalformedURLException e) {
+            Log.d("error","MAL PARSE");
+
+            //e.printStackTrace();
+        }
+
+
+
+
+
+
+
+        //mSaveImageButton = (Button) findViewById(R.id.save_image_button);
+        //mSaveImageButton.setOnClickListener(mSaveImageButtonClickListener);
+        //
+        // mSaveImageButton.setEnabled(false);
 
         if (mGoogleApiClient == null) {
             // Create the API client and bind it to an instance variable.
@@ -328,11 +493,12 @@ public class MainActivity extends Activity implements GoogleApiClient.Connection
 
         if(mCameraWithFacesBitmap != null){
             mCameraImageView.setImageBitmap(mCameraWithFacesBitmap);
-            mSaveImageButton.setEnabled(true);
+            //mSaveImageButton.setEnabled(true);
         }
 
         // Connect the client. Once connected, the camera is launched.
         mGoogleApiClient.connect();
+        setUpNavigationView();
     }
 
     @Override
@@ -386,12 +552,12 @@ public class MainActivity extends Activity implements GoogleApiClient.Connection
                     mCameraBitmap = rotateBitmap(mCameraBitmap);
                     detectFaces();
                     mCameraImageView.setImageBitmap(mCameraWithFacesBitmap);
-                    mSaveImageButton.setEnabled(true);
+                    //mSaveImageButton.setEnabled(true);
                     saveFileToLocal();
                 }
             } else {
                 mCameraBitmap = null;
-                mSaveImageButton.setEnabled(false);
+                //mSaveImageButton.setEnabled(false);
             }
         }
         else if(requestCode == REQUEST_CODE_CREATOR){
@@ -399,6 +565,11 @@ public class MainActivity extends Activity implements GoogleApiClient.Connection
                 Log.i("SAVED", "Image successfully saved.");
                 // Just start the camera again for another photo.
             }
+        }
+        else{
+            super.onActivityResult(requestCode,resultCode,data);
+
+            callbackManager.onActivityResult(requestCode,resultCode,data);
         }
     }
 
@@ -420,6 +591,112 @@ public class MainActivity extends Activity implements GoogleApiClient.Connection
     @Override
     public void onConnectionSuspended(int cause) {
         Log.i(TAG, "GoogleApiClient connection suspended");
+    }
+
+    private void setUpNavigationView(){
+        navigationView.bringToFront();
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(MenuItem menuItem) {
+                Log.e("GG", Integer.toString(menuItem.getItemId()));
+                switch (menuItem.getItemId()){
+                    case R.id.nav_share:
+                        sharePhoto();
+                        break;
+                    case R.id.nav_drive:
+                        saveFileToDrive();
+                        break;
+                }
+                menuItem.setChecked(false);
+                return true;
+            }
+        });
+
+        ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.openDrawer, R.string.closeDrawer) {
+
+            @Override
+            public void onDrawerClosed(View drawerView) {
+                // Code here will be triggered once the drawer closes as we dont want anything to happen so we leave this blank
+                super.onDrawerClosed(drawerView);
+            }
+
+            @Override
+            public void onDrawerOpened(View drawerView) {
+                // Code here will be triggered once the drawer open as we dont want anything to happen so we leave this blank
+                super.onDrawerOpened(drawerView);
+            }
+        };
+
+        //Setting the actionbarToggle to drawer layout
+        drawer.setDrawerListener(actionBarDrawerToggle);
+
+        //calling sync state is necessary or else your hamburger icon wont show up
+        actionBarDrawerToggle.syncState();
+    }
+
+    private void sharePhoto(){
+        Log.e("FAC","SHARE");
+        shareDialog.registerCallback(callbackManager, new FacebookCallback<Sharer.Result>() {
+            @Override
+            public void onSuccess(Sharer.Result result) {
+                Toast.makeText(MainActivity.this, "Share successful", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onCancel() {
+                Toast.makeText(MainActivity.this, "Share cancel", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onError(FacebookException error) {
+                Toast.makeText(MainActivity.this, error.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+
+
+
+        SharePhoto photo = new SharePhoto.Builder()
+                .setBitmap(mCameraBitmap)
+                .build();
+
+        if(ShareDialog.canShow(SharePhotoContent.class)){
+            SharePhotoContent content = new SharePhotoContent.Builder()
+                    .addPhoto(photo)
+                    .build();
+
+            shareDialog.show(content);
+        }
+    }
+
+    private void getData(JSONObject object) {
+
+        try{
+            facebookUserID = Profile.getCurrentProfile().getId();
+            String token = AccessToken.getCurrentAccessToken().getUserId();
+            Log.e("ID", facebookUserID);
+            Log.e("token", token);
+            URL profile_picture = new URL("https://graph.facebook.com/"+object.getString("id")+"/picture?width=250&height=250");
+
+            URL cover_picture = new URL("https://graph.facebook.com/" + facebookUserID + "?fields=cover&access_token=" + token);
+            Picasso.with(this).load(profile_picture.toString()).into(imageAvatar);
+            Picasso.with(this).load(cover_picture.toString()).into(mCoverImage);
+
+            //txtEmail.setText(object.getString("email"));
+            //txtBirthday.setText(object.getString("birthday"));
+
+            //txtFriends.setText("Friends: "+object.getJSONObject("friends").getJSONObject("summary").getString("total_count")); 182091486038622
+
+
+        } catch (MalformedURLException e) {
+            Log.d("error","MAL PARSE");
+
+            //e.printStackTrace();
+        } catch (JSONException e) {
+            Log.d("error","MAL PARSE2");
+            //e.printStackTrace();
+        }
+
+
     }
 
 }
