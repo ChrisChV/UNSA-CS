@@ -11,7 +11,7 @@
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="@dimen/logo_height"
-            android:background="@drawable/immacbytes"/>
+            android:background="@drawable/horus_logo4"/>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -102,7 +102,7 @@
         android:gravity="center"
         android:textAlignment="center"
         android:padding="14dp"
-        android:text="Creat account"
+        android:text="Create account"
         android:textSize="16dp"
         android:textColor="#fff"
         />

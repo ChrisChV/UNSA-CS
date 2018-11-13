@@ -11,6 +11,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.xnpio.myface.retrofit.Api;
 import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
@@ -37,6 +38,12 @@ import org.w3c.dom.Text;
 
 import java.util.Arrays;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
+
 public class SingUpPage extends AppCompatActivity {
 
     private TextView loginText;
@@ -45,6 +52,8 @@ public class SingUpPage extends AppCompatActivity {
     private LoginButton loginButton;
     private CallbackManager callbackManager;
     private ProgressDialog mDialog;
+    private Retrofit retrofit;
+    private Api api;
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
@@ -53,6 +62,14 @@ public class SingUpPage extends AppCompatActivity {
         loginText = (TextView) findViewById(R.id.sin);
         createButton = (TextView) findViewById(R.id.createButton);
         mAuth = FirebaseAuth.getInstance();
+
+        retrofit = new Retrofit.Builder()
+                .baseUrl("https://myface-cf337.firebaseio.com")//url of firebase app
+                .addConverterFactory(GsonConverterFactory.create())//use for convert JSON file into object
+                .build();
+
+        api = retrofit.create(Api.class);
+
         /*
         loginButton = (LoginButton) findViewById(R.id.signup_fac_button);
         loginButton.setReadPermissions(Arrays.asList("public_profile","email","user_birthday","user_friends"));
@@ -121,11 +138,10 @@ public class SingUpPage extends AppCompatActivity {
 
     private void createUser(){
         EditText emailET = (EditText) findViewById(R.id.sup_mail);
-        EditText userET = (EditText) findViewById(R.id.sup_user);
         EditText passET = (EditText) findViewById(R.id.sup_pass);
         String email = emailET.getText().toString();
-        String userName = userET.getText().toString();
         String password = passET.getText().toString();
+
         mAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
@@ -141,14 +157,30 @@ public class SingUpPage extends AppCompatActivity {
                             if(f_user != null){
                                 Intent it = new Intent(SingUpPage.this, MainPage.class);
                                 //User user = new User(f_user.getDisplayName(), f_user.getEmail());
-                                User user = new User(f_user.getUid(), f_user.getDisplayName(), f_user.getEmail());
+                                EditText userET = (EditText) findViewById(R.id.sup_user);
+                                String userName = userET.getText().toString();
+                                User user = new User(f_user.getUid(), userName, f_user.getEmail());
+                                Call<User> call1=api.setDataWithoutRandomness(user.getUid(), user);
+                                call1.enqueue(new Callback<User>() {
+                                    @Override
+                                    public void onResponse(Call<User> call, Response<User> response) {
+                                        Toast.makeText(SingUpPage.this, "Cuenta creada con éxito",
+                                                Toast.LENGTH_SHORT).show();
+                                        //t1.setText("Success "+response.body().getName());
+                                    }
+
+                                    @Override
+                                    public void onFailure(Call<User> call, Throwable t) {
+                                        //t1.setText("fail");
+                                        Toast.makeText(SingUpPage.this, "Cuenta creada sin EXITO",
+                                                Toast.LENGTH_SHORT).show();
+                                    }
+                                });
                                 Gson gson = new Gson();
                                 String userInJson = gson.toJson(user);
                                 it.putExtra("userString", userInJson);
                                 startActivity(it);
                             }
-                            Toast.makeText(SingUpPage.this, "Cuenta creada con éxito",
-                                    Toast.LENGTH_SHORT).show();
                             //updateUI(user);
                         } else {
                             // If sign in fails, display a message to the user.

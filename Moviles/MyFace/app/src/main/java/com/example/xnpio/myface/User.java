@@ -8,10 +8,20 @@ public class User {
 
     private String email;
 
+    private int actualImageId;
+
     public User(String uid, String userName, String email){
         this.uid = uid;
         this.userName = userName;
         this.email = email;
+        actualImageId = 0;
+    }
+
+    public User(String uid, String userName, String email, int actualImageId){
+        this.uid = uid;
+        this.userName = userName;
+        this.email = email;
+        this.actualImageId = actualImageId;
     }
 
     public void setUid(String uid){
@@ -36,6 +46,14 @@ public class User {
 
     public String getEmail(){
         return email;
+    }
+
+    public void setActualImageId(int actualImageId){
+        this.actualImageId = actualImageId;
+    }
+
+    public int getActualImageId(){
+        return actualImageId;
     }
 
 }
