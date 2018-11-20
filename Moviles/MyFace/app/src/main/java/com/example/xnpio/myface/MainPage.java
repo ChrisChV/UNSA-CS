@@ -36,7 +36,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.example.xnpio.myface.fragments.FriendListFragment;
 import com.example.xnpio.myface.fragments.MainPageFragment;
+import com.example.xnpio.myface.fragments.SearchFragment;
 import com.example.xnpio.myface.fragments.WallFragment;
 import com.example.xnpio.myface.grid.GridViewAdapter;
 import com.example.xnpio.myface.grid.ImageItem;
@@ -71,7 +73,7 @@ public class MainPage extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     //private FirebaseUser f_user;
-    private User user;
+    private static User user;
     private TextView userName;
     private TextView email;
     private FirebaseStorage storage;
@@ -220,14 +222,22 @@ public class MainPage extends AppCompatActivity
 
         if (id == R.id.nav_camera) {
             actualFragment = "Wall";
-            fragmentManager.beginTransaction().replace(R.id.frame, WallFragment.newInstance(user), actualFragment).commit();
+            fragmentManager.beginTransaction().replace(R.id.frame, WallFragment.newInstance(user, WallFragment.MY_WALL, user), actualFragment).commit();
 
 
-        } else if (id == R.id.nav_gallery) {
+        } else if (id == R.id.nav_friends) {
+            actualFragment = "Friends";
+            fragmentManager.beginTransaction().replace(R.id.frame, FriendListFragment.newInstance(user, FriendListFragment.FRIEND_VAR), actualFragment).commit();
 
-        } else if (id == R.id.nav_slideshow) {
 
-        } else if (id == R.id.nav_manage) {
+        } else if (id == R.id.nav_search) {
+            actualFragment = "Search";
+            fragmentManager.beginTransaction().replace(R.id.frame, SearchFragment.newInstance(user), actualFragment).commit();
+
+        } else if (id == R.id.nav_pendings_response) {
+            actualFragment = "PendingsResponse";
+            fragmentManager.beginTransaction().replace(R.id.frame, FriendListFragment.newInstance(user, FriendListFragment.PENDING_RESPONSE), actualFragment).commit();
+
 
         } else if (id == R.id.nav_share) {
 
@@ -332,7 +342,7 @@ public class MainPage extends AppCompatActivity
                             user.setActualImageId(user.getActualImageId() + 1);
                             updateUser();
                             if(actualFragment == "Wall"){
-                                fragmentManager.beginTransaction().replace(R.id.frame, WallFragment.newInstance(user), actualFragment).commit();
+                                fragmentManager.beginTransaction().replace(R.id.frame, WallFragment.newInstance(user, WallFragment.MY_WALL, user), actualFragment).commit();
                             }
                             //Toast.makeText(LoginPage.this, "Uploaded File", Toast.LENGTH_SHORT).show();
                         }
@@ -399,6 +409,10 @@ public class MainPage extends AppCompatActivity
                         //Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    public static void setUser(User nUser){
+        user = nUser;
     }
 
 }

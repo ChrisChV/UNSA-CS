@@ -78,6 +78,7 @@ public class LoginPage extends AppCompatActivity {
     private StorageReference storageReference;
     private String firebaseUid;
 
+    private ProgressDialog progressDialogIng;
 
     private Target target = new Target() {
         @Override
@@ -126,9 +127,9 @@ public class LoginPage extends AppCompatActivity {
         singInButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                final ProgressDialog progressDialog = new ProgressDialog(LoginPage.this);
-                progressDialog.setTitle("Ingresando...");
-                progressDialog.show();
+                progressDialogIng = new ProgressDialog(LoginPage.this);
+                progressDialogIng.setTitle("Ingresando...");
+                progressDialogIng.show();
                 autenticate();
             }
         });
@@ -251,6 +252,7 @@ public class LoginPage extends AppCompatActivity {
                             Log.w("Login", "signInWithEmail:failure", task.getException());
                             Toast.makeText(LoginPage.this, "Authentication failed.",
                                     Toast.LENGTH_SHORT).show();
+                            progressDialogIng.dismiss();
                             //updateUI(null);
                         }
 

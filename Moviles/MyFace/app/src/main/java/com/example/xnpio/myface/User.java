@@ -1,5 +1,10 @@
 package com.example.xnpio.myface;
 
+import com.example.xnpio.myface.fragments.WallFragment;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class User {
 
     private String uid;
@@ -10,11 +15,31 @@ public class User {
 
     private int actualImageId;
 
+    private List<String> friends;
+
+    private List<String> pendings;
+
+    private List<String> pendingsResponse;
+
+    public User(){
+        uid = "";
+        userName = "";
+        email = "";
+        actualImageId = 0;
+        friends = new ArrayList<String>();
+        pendings = new ArrayList<String>();
+        pendingsResponse = new ArrayList<String>();
+    }
+
     public User(String uid, String userName, String email){
         this.uid = uid;
         this.userName = userName;
         this.email = email;
         actualImageId = 0;
+        friends = new ArrayList<String>();
+        //friends.add("5su0NSJCa1cT7WXh2zx2cC3g7oB3");
+        pendings = new ArrayList<String>();
+        pendingsResponse = new ArrayList<String>();
     }
 
     public User(String uid, String userName, String email, int actualImageId){
@@ -22,6 +47,9 @@ public class User {
         this.userName = userName;
         this.email = email;
         this.actualImageId = actualImageId;
+        friends = new ArrayList<String>();
+        pendings = new ArrayList<String>();
+        pendingsResponse = new ArrayList<String>();
     }
 
     public void setUid(String uid){
@@ -55,5 +83,38 @@ public class User {
     public int getActualImageId(){
         return actualImageId;
     }
+
+    public void setFriends(List<String> friends){
+        this.friends = friends;
+    }
+
+    public List<String> getFriends(){
+        return friends;
+    }
+
+    public void setPendings(List<String> pendings){
+        this.pendings = pendings;
+    }
+
+    public List<String> getPendings(){
+        return pendings;
+    }
+
+    public void setPendingsResponse(List<String> pendingsResponse){
+        this.pendingsResponse = pendingsResponse;
+    }
+
+    public List<String> getPendingsResponse(){
+        return pendingsResponse;
+    }
+
+
+    public int verifyFiendship(String uid){
+        if(friends.contains(uid)) return WallFragment.FRIEND_WALL;
+        if(pendings.contains(uid)) return WallFragment.PENDING_FRIEND_WALL;
+        if(pendingsResponse.contains(uid)) return WallFragment.PENDING_RESPONSE_FRIEND_WALL;
+        return WallFragment.NO_FRIEND_WALL;
+    }
+
 
 }

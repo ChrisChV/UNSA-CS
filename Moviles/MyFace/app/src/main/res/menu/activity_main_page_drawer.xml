@@ -9,17 +9,17 @@
             android:icon="@drawable/ic_menu_gallery"
             android:title="Mi muro" />
         <item
-            android:id="@+id/nav_gallery"
+            android:id="@+id/nav_friends"
             android:icon="@drawable/ic_menu_gallery"
-            android:title="Gallery" />
+            android:title="Amigos" />
         <item
-            android:id="@+id/nav_slideshow"
+            android:id="@+id/nav_search"
             android:icon="@drawable/ic_menu_slideshow"
-            android:title="Slideshow" />
+            android:title="Buscar Amigos" />
         <item
-            android:id="@+id/nav_manage"
+            android:id="@+id/nav_pendings_response"
             android:icon="@drawable/ic_menu_manage"
-            android:title="Tools" />
+            android:title="Pendientes de Responder" />
     </group>
 
     <item android:title="Communicate">
