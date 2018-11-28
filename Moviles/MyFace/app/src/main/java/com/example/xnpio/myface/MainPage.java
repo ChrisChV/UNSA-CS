@@ -62,6 +62,7 @@ import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -111,8 +112,6 @@ public class MainPage extends AppCompatActivity
         //mAuth = FirebaseAuth.getInstance();
         //f_user = mAuth.getCurrentUser();
 
-        fragmentManager = getSupportFragmentManager();
-        fragmentManager.beginTransaction().add(R.id.frame, new MainPageFragment()).commit();
 
         retrofit = new Retrofit.Builder()
                 .baseUrl("https://myface-cf337.firebaseio.com")//url of firebase app
@@ -178,6 +177,10 @@ public class MainPage extends AppCompatActivity
                 //Toast.makeText(MainPage.this, "Fail Cover" + exception.toString(), Toast.LENGTH_SHORT).show();
             }
         });
+
+        fragmentManager = getSupportFragmentManager();
+        fragmentManager.beginTransaction().add(R.id.frame, MainPageFragment.newInstance(user)).commit();
+
     }
 
     @Override
@@ -220,7 +223,10 @@ public class MainPage extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
+        if(id == R.id.nav_home){
+            actualFragment = "Home";
+            fragmentManager.beginTransaction().replace(R.id.frame, MainPageFragment.newInstance(user), actualFragment).commit();
+        } else if (id == R.id.nav_camera) {
             actualFragment = "Wall";
             fragmentManager.beginTransaction().replace(R.id.frame, WallFragment.newInstance(user, WallFragment.MY_WALL, user), actualFragment).commit();
 
@@ -339,6 +345,9 @@ public class MainPage extends AppCompatActivity
                         @Override
                         public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                             progressDialog.dismiss();
+                            List<FirebasePublication> temp = user.getPublications();
+                            temp.add(new FirebasePublication(user.getUid() + ":" + Integer.toString(user.getActualImageId())));
+                            user.setPublications(temp);
                             user.setActualImageId(user.getActualImageId() + 1);
                             updateUser();
                             if(actualFragment == "Wall"){

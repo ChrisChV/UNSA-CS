@@ -9,6 +9,8 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,6 +22,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.xnpio.myface.MainPage;
+import com.example.xnpio.myface.Publication;
 import com.example.xnpio.myface.R;
 import com.example.xnpio.myface.User;
 import com.example.xnpio.myface.grid.GridViewAdapter;
@@ -213,12 +216,13 @@ public class WallFragment extends Fragment {
             gridAdapter = new GridViewAdapter(getContext(), R.layout.grid_item , data);
             gridView.setAdapter(gridAdapter);
             progressDialog.dismiss();
-            /*gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
                     ImageItem item = (ImageItem) parent.getItemAtPosition(position);
-
-                    }
-                    */
+                    FragmentManager fragmentManager = ((AppCompatActivity)getContext()).getSupportFragmentManager();
+                    fragmentManager.beginTransaction().replace(R.id.frame, DetailsFragment.newInstance(new Publication(user, item.getImage()),actualUser)).commit();
+                }
+            });
         }
         storageReference.child(user.getUid() + "/images/" + Integer.toString(actualI)).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
             @Override

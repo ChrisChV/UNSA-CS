@@ -21,6 +21,8 @@ public class User {
 
     private List<String> pendingsResponse;
 
+    private List<FirebasePublication> publications;
+
     public User(){
         uid = "";
         userName = "";
@@ -29,6 +31,7 @@ public class User {
         friends = new ArrayList<String>();
         pendings = new ArrayList<String>();
         pendingsResponse = new ArrayList<String>();
+        publications = new ArrayList<FirebasePublication>();
     }
 
     public User(String uid, String userName, String email){
@@ -40,6 +43,7 @@ public class User {
         //friends.add("5su0NSJCa1cT7WXh2zx2cC3g7oB3");
         pendings = new ArrayList<String>();
         pendingsResponse = new ArrayList<String>();
+        publications = new ArrayList<FirebasePublication>();
     }
 
     public User(String uid, String userName, String email, int actualImageId){
@@ -50,6 +54,7 @@ public class User {
         friends = new ArrayList<String>();
         pendings = new ArrayList<String>();
         pendingsResponse = new ArrayList<String>();
+        publications = new ArrayList<FirebasePublication>();
     }
 
     public void setUid(String uid){
@@ -108,12 +113,27 @@ public class User {
         return pendingsResponse;
     }
 
+    public void setPublications(List<FirebasePublication> publications){
+        this.publications = publications;
+    }
+
+    public List<FirebasePublication> getPublications(){
+        return publications;
+    }
 
     public int verifyFiendship(String uid){
+        if(this.uid.equals(uid)) return WallFragment.MY_WALL;
         if(friends.contains(uid)) return WallFragment.FRIEND_WALL;
         if(pendings.contains(uid)) return WallFragment.PENDING_FRIEND_WALL;
         if(pendingsResponse.contains(uid)) return WallFragment.PENDING_RESPONSE_FRIEND_WALL;
         return WallFragment.NO_FRIEND_WALL;
+    }
+
+    public int findPublication(String publicationID){
+        for(int i = 0; i < publications.size(); i++){
+            if(publications.get(i).getPublicationID().equals(publicationID)) return i;
+        }
+        return -1;
     }
 
 
