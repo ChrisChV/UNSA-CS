@@ -59,6 +59,7 @@ public class WallFragment extends Fragment {
     private View view;
     private ProgressDialog progressDialog;
     private Button friendsBtn;
+    private Button chatBtn;
     private TextView nameText;
     private ImageView coverImage;
     private Retrofit retrofit;
@@ -130,6 +131,7 @@ public class WallFragment extends Fragment {
         nameText = (TextView) view.findViewById(R.id.nameText);
         nameText.setText(user.getUserName());
         friendsBtn = (Button) view.findViewById(R.id.friendBtn);
+        chatBtn = (Button) view.findViewById(R.id.chatBtn);
         coverImage = (ImageView) view.findViewById(R.id.cover);
 
         storageReference.child(user.getUid() + "/coverImage50x50").getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
@@ -201,6 +203,16 @@ public class WallFragment extends Fragment {
                 }
             });
         }
+
+
+        chatBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FragmentManager fragmentManager = ((AppCompatActivity)getContext()).getSupportFragmentManager();
+                fragmentManager.beginTransaction().replace(R.id.frame, CommentsFragment.newInstance(user,actualUser)).commit();
+            }
+        });
+
         return view;
     }
 

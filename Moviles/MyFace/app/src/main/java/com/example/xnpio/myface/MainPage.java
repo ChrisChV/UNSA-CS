@@ -43,6 +43,9 @@ import com.example.xnpio.myface.fragments.WallFragment;
 import com.example.xnpio.myface.grid.GridViewAdapter;
 import com.example.xnpio.myface.grid.ImageItem;
 import com.example.xnpio.myface.retrofit.Api;
+import com.example.xnpio.myface.room.AppDatabase;
+import com.example.xnpio.myface.room.OfflineModeClass;
+import com.example.xnpio.myface.room.UserEntity;
 import com.facebook.login.LoginManager;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -120,6 +123,9 @@ public class MainPage extends AppCompatActivity
 
         api = retrofit.create(Api.class);
 
+
+
+
         storage = FirebaseStorage.getInstance();
         storageReference = storage.getReference();
 
@@ -155,6 +161,31 @@ public class MainPage extends AppCompatActivity
         String userInJson = getIntent().getStringExtra("userString");
         user = gson.fromJson(userInJson, User.class);
 
+        /*String test = gson.toJson(user);
+        //Log.e("TESTJSON", test);
+        AppDatabase db = AppDatabase.getAppDatabase(this);
+        UserEntity nu = new UserEntity();
+        nu.setUid(user.getUid());
+        nu.setJsonUser(test);
+        db.userDao().updateUser(nu);
+        UserEntity nu2 = db.userDao().getByUid(user.getUid());
+        if(nu2 == null){
+            Log.e("TESTTTT", "NULL");
+        }
+        else{
+            Log.e("TESTTT", nu2.getUid());
+            Log.e("TESTTT", nu2.getJsonUser());
+            db.userDao().delete(nu2);
+        }*/
+
+
+        //UserEntity nu = new UserEntity();
+        //nu.setUid(user.getUid());
+        //nu.setJsonUser(test);
+        //db.userDao().insertAll(nu);
+
+
+
         userName.setText(user.getUserName());
         email.setText(user.getEmail());
 
@@ -180,6 +211,10 @@ public class MainPage extends AppCompatActivity
 
         fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction().add(R.id.frame, MainPageFragment.newInstance(user)).commit();
+
+        if(OfflineModeClass.isOnline(this)){
+            OfflineModeClass.verifyUsers(this);
+        }
 
     }
 

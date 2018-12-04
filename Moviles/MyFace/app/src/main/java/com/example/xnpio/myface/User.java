@@ -23,6 +23,8 @@ public class User {
 
     private List<FirebasePublication> publications;
 
+    private List<Chat> chats;
+
     public User(){
         uid = "";
         userName = "";
@@ -32,6 +34,7 @@ public class User {
         pendings = new ArrayList<String>();
         pendingsResponse = new ArrayList<String>();
         publications = new ArrayList<FirebasePublication>();
+        chats = new ArrayList<Chat>();
     }
 
     public User(String uid, String userName, String email){
@@ -44,6 +47,7 @@ public class User {
         pendings = new ArrayList<String>();
         pendingsResponse = new ArrayList<String>();
         publications = new ArrayList<FirebasePublication>();
+        chats = new ArrayList<Chat>();
     }
 
     public User(String uid, String userName, String email, int actualImageId){
@@ -55,6 +59,7 @@ public class User {
         pendings = new ArrayList<String>();
         pendingsResponse = new ArrayList<String>();
         publications = new ArrayList<FirebasePublication>();
+        chats = new ArrayList<Chat>();
     }
 
     public void setUid(String uid){
@@ -121,6 +126,14 @@ public class User {
         return publications;
     }
 
+    public void setChats(List<Chat> chats){
+        this.chats = chats;
+    }
+
+    public List<Chat> getChats(){
+        return chats;
+    }
+
     public int verifyFiendship(String uid){
         if(this.uid.equals(uid)) return WallFragment.MY_WALL;
         if(friends.contains(uid)) return WallFragment.FRIEND_WALL;
@@ -136,5 +149,10 @@ public class User {
         return -1;
     }
 
-
+    public int findChat(String userId){
+        for(int i = 0; i < chats.size(); i++){
+            if(chats.get(i).getUserId().equals(userId)) return i;
+        }
+        return -1;
+    }
 }

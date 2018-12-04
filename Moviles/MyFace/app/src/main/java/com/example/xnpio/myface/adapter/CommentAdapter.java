@@ -29,9 +29,6 @@ import org.w3c.dom.Text;
 
 import java.util.List;
 
-
-
-
 public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.ViewHolder> {
 
     public Context context;

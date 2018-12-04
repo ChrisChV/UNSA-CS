@@ -1,11 +1,14 @@
 package com.example.xnpio.myface.adapter;
 
 import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,12 +26,14 @@ import com.example.xnpio.myface.User;
 import com.example.xnpio.myface.fragments.DetailsFragment;
 import com.example.xnpio.myface.fragments.WallFragment;
 import com.example.xnpio.myface.retrofit.Api;
+import com.example.xnpio.myface.room.OfflineModeClass;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -45,6 +50,7 @@ public class PublicationsAdapter extends RecyclerView.Adapter<PublicationsAdapte
     private StorageReference storageReference;
     private Retrofit retrofit;
     private Api api;
+    private List<Button> btns;
 
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
@@ -75,6 +81,10 @@ public class PublicationsAdapter extends RecyclerView.Adapter<PublicationsAdapte
         this.publications = publications;
         this.context = context;
         this.actualUser = actualUser;
+        this.btns = new ArrayList<Button>();
+        for(int i = 0; i < publications.size(); i++){
+            btns.add(null);
+        }
         retrofit = new Retrofit.Builder()
                 .baseUrl("https://myface-cf337.firebaseio.com")//url of firebase app
                 .addConverterFactory(GsonConverterFactory.create())//use for convert JSON file into object
@@ -144,7 +154,8 @@ public class PublicationsAdapter extends RecyclerView.Adapter<PublicationsAdapte
             }
         });
 
-        Button likeBtn = (Button) viewHolder.likeBtn;
+
+        final Button likeBtn = (Button) viewHolder.likeBtn;
 
         int fbIndex = publications.get(position).getUser().findPublication(publications.get(position).getImageId());
         FirebasePublication fb = publications.get(position).getUser().getPublications().get(fbIndex);
@@ -157,6 +168,7 @@ public class PublicationsAdapter extends RecyclerView.Adapter<PublicationsAdapte
             @Override
             public void onClick(View view) {
                 view.setEnabled(false);
+               // likeBtn.setText("Unlike");
                 User tempUser = publications.get(position).getUser();
                 int index = tempUser.findPublication(publications.get(position).getImageId());
                 FirebasePublication tempP = tempUser.getPublications().get(index);
@@ -187,7 +199,15 @@ public class PublicationsAdapter extends RecyclerView.Adapter<PublicationsAdapte
                     List<FirebasePublication>  tempL = tempUser.getPublications();
                     tempL.set(index,tempP);
                     tempUser.setPublications(tempL);
-                    updateUser(tempUser);
+                    if(OfflineModeClass.isOnline(context)){
+                        updateUser(tempUser);
+                    }
+                    else{
+                        Log.e("OFFLINE", "OFFLINE");
+                        OfflineModeClass.insertuser(context, tempUser);
+                    }
+
+
                     Toast.makeText(context, "Comentario realizado con exito",
                             Toast.LENGTH_SHORT).show();
                     commentText.setText("");
@@ -222,4 +242,6 @@ public class PublicationsAdapter extends RecyclerView.Adapter<PublicationsAdapte
             }
         });
     }
+
+
 }
