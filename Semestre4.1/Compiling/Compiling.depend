@@ -1,0 +1,55 @@
+# depslib dependency file v1.0
+1451098624 source:/home/chris/Documentos/Semestre/Semestre4/Compiling/main.cpp
+	<iostream>
+	"fstream"
+	"list"
+	"vector"
+	"fstream"
+	"Hombresito.h"
+
+1449018041 source:/home/chris/Documentos/Semestre/Semestre4/Compiling/src/Hombresito.cpp
+
+1451092217 /home/chris/Documentos/Semestre/Semestre4/Compiling/include/Hombresito.h
+	<iostream>
+
+1454735814 source:/home/xnpio/Documentos/Semestre/Semestre4/Compiling/src/Hombresito.cpp
+
+1456101674 source:/home/xnpio/Documentos/Semestre/Semestre4/Compiling/main.cpp
+	<iostream>
+	"fstream"
+	"list"
+	"vector"
+	"fstream"
+	"map"
+	"time.h"
+	"math.h"
+	"mysql/mysql.h"
+
+1454735814 /home/xnpio/Documentos/Semestre/Semestre4/Compiling/include/Hombresito.h
+	<iostream>
+
+1447666685 /home/xnpio/Documentos/Semestre/Semestre4/Compiling/mysql/mysql.h
+	<standards.h>
+	<sys/types.h>
+	<winsock2.h>
+	"mysql_version.h"
+	"mysql_com.h"
+	"mysql_time.h"
+	"my_list.h"
+	"typelib.h"
+	"my_alloc.h"
+
+1453737101 /home/xnpio/Documentos/Semestre/Semestre4/Compiling/mysql/mysql_version.h
+	<custom_conf.h>
+
+1447666685 /home/xnpio/Documentos/Semestre/Semestre4/Compiling/mysql/mysql_com.h
+
+1447666685 /home/xnpio/Documentos/Semestre/Semestre4/Compiling/mysql/mysql_time.h
+
+1447666685 /home/xnpio/Documentos/Semestre/Semestre4/Compiling/mysql/my_list.h
+
+1447666685 /home/xnpio/Documentos/Semestre/Semestre4/Compiling/mysql/typelib.h
+	"my_alloc.h"
+
+1447666685 /home/xnpio/Documentos/Semestre/Semestre4/Compiling/mysql/my_alloc.h
+

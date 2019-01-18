@@ -1,0 +1,17 @@
+# depslib dependency file v1.0
+1445894541 source:/home/chris/Documentos/Semestre/Semestre4/AED YUBER/ExamenPractico/src/Grafo.cpp
+
+1446429518 source:/home/chris/Documentos/Semestre/Semestre4/AED YUBER/ExamenPractico/main.cpp
+	<iostream>
+	"list"
+	"map"
+	"algorithm"
+	"vector"
+	"fstream"
+	"tuple"
+
+1445895643 /home/chris/Documentos/Semestre/Semestre4/AED YUBER/ExamenPractico/include/Grafo.h
+	"vector"
+
+1447564932 source:/home/chris/Documentos/Semestre/Semestre4/AED YUBER/EXAMALE/src/Grafo.cpp
+

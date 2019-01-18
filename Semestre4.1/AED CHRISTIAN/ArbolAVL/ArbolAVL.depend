@@ -1,0 +1,15 @@
+# depslib dependency file v1.0
+1445757513 source:/home/chris/Documentos/Semestre/Semestre4/AED CHRISTIAN/ArbolAVL/main.cpp
+	<iostream>
+	"AVL.h"
+	"stdlib.h"
+	"time.h"
+
+1446503248 /home/chris/Documentos/Semestre/Semestre4/AED CHRISTIAN/ArbolAVL/include/AVL.h
+	"algorithm"
+	"fstream"
+	"iostream"
+	"list"
+
+1443587095 source:/home/chris/Documentos/Semestre/Semestre4/AED CHRISTIAN/ArbolAVL/src/AVL.cpp
+

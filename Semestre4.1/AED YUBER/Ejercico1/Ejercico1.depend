@@ -1,0 +1,16 @@
+# depslib dependency file v1.0
+1443919219 source:/home/chris/Documentos/Semestre/Semestre4/AED YUBER/Ejercico1/src/ColaTareas.cpp
+
+1443923211 source:/home/chris/Documentos/Semestre/Semestre4/AED YUBER/Ejercico1/main.cpp
+	<iostream>
+	"ListaEmpleados.h"
+
+1443923493 /home/chris/Documentos/Semestre/Semestre4/AED YUBER/Ejercico1/include/ListaEmpleados.h
+	"ColaTareas.h"
+	"iostream"
+
+1443923513 /home/chris/Documentos/Semestre/Semestre4/AED YUBER/Ejercico1/include/ColaTareas.h
+	"iostream"
+
+1443920520 source:/home/chris/Documentos/Semestre/Semestre4/AED YUBER/Ejercico1/src/ListaEmpleados.cpp
+
