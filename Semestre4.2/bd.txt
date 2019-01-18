@@ -1,0 +1,12 @@
+NO DEPENDEN DE NADIE			PANTALLAS	
+	Departamento			Menus
+	Classroom			Departamento(Nuevo, Borrar, Editar, Buscar) Departamento(String),Edificio(String), Presupuesto(String)
+	TimeSlot					Flechitas
+	
+	Course
+	Student
+	Profesor
+
+
+AKS SPA
+

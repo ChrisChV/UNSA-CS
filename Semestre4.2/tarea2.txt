@@ -1,0 +1,2 @@
+Leer 2 archivos de texto y unirlos en un tercer archivo por medio de la linea de comandos
+Ejemplo >prueba texto1.txt texto2.txt texto3.txt
