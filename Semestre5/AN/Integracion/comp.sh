@@ -1,0 +1,1 @@
+g++ -std=c++11 integracion.cpp -o run

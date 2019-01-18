@@ -1,0 +1,85 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{color}
+\usepackage{parskip}
+\usepackage{graphicx}
+\usepackage{multirow}
+\usepackage{listings}
+\usepackage{vmargin}
+\graphicspath{ {imagenes/} }
+\definecolor{mygreen}{rgb}{0,0.6,0}
+\definecolor{lbcolor}{rgb}{0.9,0.9,0.9}
+\usepackage{epstopdf}
+
+
+\setpapersize{A4}
+\setmargins{2.5cm}       % margen izquierdo
+{1.5cm}                        % margen superior
+{16.5cm}                      % anchura del texto
+{23.42cm}                    % altura del texto
+{10pt}                           % altura de los encabezados
+{1cm}                           % espacio entre el texto y los encabezados
+{0pt}                             % altura del pie de página
+{2cm}     
+
+\lstset{
+backgroundcolor=\color{lbcolor},
+    tabsize=4,    
+%   rulecolor=,
+    language=[GNU]C++,
+        basicstyle=\tiny,
+        aboveskip={1.5\baselineskip},
+        columns=fixed,
+        showstringspaces=false,
+        extendedchars=false,
+        breaklines=true,
+        prebreak = \raisebox{0ex}[0ex][0ex]{\ensuremath{\hookleftarrow}},
+        frame=single,
+        showtabs=false,
+        showspaces=false,
+        showstringspaces=false,
+        identifierstyle=\ttfamily,
+        keywordstyle=\color[rgb]{0,0,1},
+        commentstyle=\color[rgb]{0.026,0.112,0.095},
+        stringstyle=\color{red},
+        numberstyle=\color[rgb]{0.205, 0.142, 0.73},
+%        \lstdefinestyle{C++}{language=C++,style=numbers}’.
+}
+
+\begin{document}
+  \begin{LARGE}
+   CHRISTOFER FABIÁN CHÁVEZ CARAZAR
+  \end{LARGE}
+  
+  \begin{Large}
+   \textbf{Resumen}
+  \end{Large}
+
+  Para poder ver la similitud semántica entre palabras, se utiliza el word-space model.
+  Según Hinrich Schuze, el word-space se define como: Las parabras semanticamente relacionadas se
+  ecunetran cerca, y las no relacionadas se encuentran distantes. \\
+  Geométricamente, el word-space model es una representación de significados de palabras, que puede ser
+  representado en un espacio de $n$ dimensiones, donde $n = \{1,2,3...\infty \}$. Nosotros, por nuestra capacidad física,
+  no se nos hace posible visualizar espacios de gran dimensión. Un buen ejemplo para mostrar serían los espacions de 1
+  y dos dimensiones. Para una dimensión las palabras serían puntos en una recta, y para dos dimensiones las palabras serían
+  puntos en un plano. En cualquiera de estos dos casos, la proximidad entre dos palabras indica cuan similar son sus
+  significados. \\
+  Existen metáforas para obtener la similitud semántica. La similarity-is-proximity, que dice que más cerca esten las palabras,
+  más similares son. La entities-are-locations, que dice que a fin de que dos palabras estan cerca, tienen que poseer la espacialidad;
+  que necesitan para ocupar lugares en un espacio conceptual. Estas dos básicas metáforas constituyen la geometric metaphor of meaning,
+  que dice que los significados entán ubicados en un espacio semántico, y la similitud emantica es la proximidad entre dos ubicaciones.
+  El word-space model usa estadisticas sobre las propiedades distributivas de las palabras. De esta idea se genera la hipótesis
+  distributiva, que dice que si dos palabras tienen propiedades distributivas, entonces tienen significados similares. \par
+  Para poder transformar las estadisticas a la geometría usaremos vectores de $n$ dimensiones. Cuando tenemos un conjunto de palabras,
+  generalmente en una oración, lo que tenmos que hacer es obtener el contexto de cada una de las palabras. Se forma una matriz cuadrada
+  de la forma palabra$*$palabra y cada posición de la matriz toma una valor de 1 o 0 dependiendo si las palabras tienen relación o no. \\
+  Para hallar la similitud entre dos palabras, simplemente tenemos que calcular la inverse de la distancia entre los dos puntos.
+  Otra forma de hallar la similitud es hallar la distancia Euclidiana entre los dos puntos. \par
+  Cuando implementamos un word space, nos encontramos con varios problemas, uno de ellos es manejar las dimensiones altas que haría
+  que la matriz resultante sea demasiado enorme. Otro problema que encontramos es la escasez de datos, ya que la mayoría de los datos
+  son 0s.\\
+  En el libro mensionan el algoritmo LSA que resuelve estos problemas. Este algoritmo utiliza una matriz words-by-documents, los datos son
+  obtenidos por una fórmula indicada en el libro y utiliza el algoritmo SVD para reducir y reestructurar la dimencionalidad.
+  
+\end{document}

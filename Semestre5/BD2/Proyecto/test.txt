@@ -1,0 +1,14 @@
+
+<VirtualHost *:80>
+  ServerName BDgoogle
+
+  DocumentRoot /home/xnpio/Documentos/Xnpio/BD2/Proyecto/APP/html
+  WSGIScriptAlias / /home/xnpio/Documentos/Xnpio/BD2/Proyecto/APP/pythonapp/contro$
+  ErrorLog /home/xnpio/Documentos/Xnpio/BD2/Proyecto/APP/logs/errors.log
+  CustomLog /home/xnpio/Documentos/Xnpio/BD2/Proyecto/APP/logs/access.log combined
+
+  <Directory />
+    Options FollowSymLinks
+    AllowOverride All
+  </Directory>
+</VirtualHost>

@@ -1,0 +1,67 @@
+# depslib dependency file v1.0
+1441171844 source:d:\unsa\4to semestre\aed\lista_simplemente_enlazada\listse\main.cpp
+	<iostream>
+	"List.h"
+
+1441172405 
+
+1441172405 d:\unsa\4to semestre\aed\lista_simplemente_enlazada\listse\list.h
+	<iostream>
+	"Nodo.h"
+
+1441164677 d:\unsa\4to semestre\aed\lista_simplemente_enlazada\listse\nodo.h
+
+1441172524 source:/home/julio/Desktop/ListSE/main.cpp
+	<iostream>
+	"List.h"
+
+1441217261 /home/julio/Desktop/ListSE/List.h
+	<iostream>
+	"Nodo.h"
+
+1441164678 /home/julio/Desktop/ListSE/Nodo.h
+
+1441226442 source:/home/cs-unsa_lab10/Escritorio/ListSE/main.cpp
+	<iostream>
+	"List.h"
+
+1441657696 /home/cs-unsa_lab10/Escritorio/ListSE/List.h
+	<iostream>
+	"Nodo.h"
+
+1441164678 /home/cs-unsa_lab10/Escritorio/ListSE/Nodo.h
+
+1441889069 source:/home/julio/Desktop/Lista_Simplemente_Enlazada/ListSE/main.cpp
+	<iostream>
+	"Table.h"
+
+1441890715 /home/julio/Desktop/Lista_Simplemente_Enlazada/ListSE/Table.h
+	"List.h"
+	<fstream>
+	<cstring>
+	<iostream>
+
+1441890404 /home/julio/Desktop/Lista_Simplemente_Enlazada/ListSE/List.h
+	<iostream>
+	<cstring>
+	"Nodo.h"
+
+1441164678 /home/julio/Desktop/Lista_Simplemente_Enlazada/ListSE/Nodo.h
+
+1441915248 source:c:\users\christofer\documents\semestre4\listse\main.cpp
+	<iostream>
+	"Table.h"
+
+1441915267 c:\users\christofer\documents\semestre4\listse\table.h
+	"List.h"
+	<fstream>
+	<cstring>
+	<iostream>
+
+1441890404 c:\users\christofer\documents\semestre4\listse\list.h
+	<iostream>
+	<cstring>
+	"Nodo.h"
+
+1441164678 c:\users\christofer\documents\semestre4\listse\nodo.h
+
