@@ -1,0 +1,11 @@
+# depslib dependency file v1.0
+1441676096 source:c:\users\christofer\documents\semestre4\pilaaedchris\src\pila.cpp
+
+1441679016 source:c:\users\christofer\documents\semestre4\pilaaedchris\main.cpp
+	<iostream>
+	<Pila.h>
+	<stack>
+
+1441679966 c:\users\christofer\documents\semestre4\pilaaedchris\include\pila.h
+	"iostream"
+

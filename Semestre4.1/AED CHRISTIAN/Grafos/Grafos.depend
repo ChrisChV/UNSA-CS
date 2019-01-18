@@ -1,0 +1,33 @@
+# depslib dependency file v1.0
+1451753331 source:/home/chris/Documentos/Semestre/Semestre4/AED CHRISTIAN/Grafos/main.cpp
+	<iostream>
+	"map"
+	"vector"
+	"algorithm"
+	"fstream"
+	"Grafo.h"
+
+1447007646 source:/home/chris/Documentos/Semestre/Semestre4/AED CHRISTIAN/Grafos/src/Grafo.cpp
+
+1451753511 /home/chris/Documentos/Semestre/Semestre4/AED CHRISTIAN/Grafos/include/Grafo.h
+	"map"
+	"list"
+	"fstream"
+	"iostream"
+	"FibonacciHeap.h"
+	"stack"
+	"queue"
+
+1447044294 /home/chris/Documentos/Semestre/Semestre4/AED CHRISTIAN/Grafos/include/FibonacciHeap.h
+	"list"
+	"map"
+	"fstream"
+	"iostream"
+
+1446830203 source:/home/chris/Documentos/Semestre/Semestre4/AED CHRISTIAN/Grafos/include/Grafo.h
+	"map"
+	"list"
+	"fstream"
+	"iostream"
+	"FibonacciHeap.h"
+
