@@ -1,0 +1,22 @@
+vector<Punto> vec;
+	vec.push_back(Punto(0,2));
+	vec.push_back(Punto(1,5));
+	vec.push_back(Punto(2,0));
+	vec.push_back(Punto(2,7));
+	vec.push_back(Punto(2,4));
+	vec.push_back(Punto(3,3));
+	vec.push_back(Punto(3,2));
+	vec.push_back(Punto(4,7));
+	vec.push_back(Punto(4,3));
+	vec.push_back(Punto(5,9));
+	vec.push_back(Punto(6,3));
+	vec.push_back(Punto(7,9));
+	vec.push_back(Punto(7,0));
+	vec.push_back(Punto(8,6));
+	vec.push_back(Punto(8,3));
+
+	vec.push_back(Punto(9,2));
+	vec.push_back(Punto(9,3));
+	vec.push_back(Punto(9,4));
+	vec.push_back(Punto(9,9));
+	vec.push_back(Punto(9,7));

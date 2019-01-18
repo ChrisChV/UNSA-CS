@@ -1,0 +1,57 @@
+Diez palabras
+	Milagroso	Bondadoso	Creador	Todopoderos Indio
+Dios	35			41			28		71		0
+Buda	41			31			0		0		28
+Hamburguesa
+
+n -> las filas
+m -> depende de la cantidad de palabras con las que se relacionan las n's
+
+Con cada palabra se va aumentando en las columnas las palabras que se relacionan.
+
+w = TF * IDF
+TF -> Term Freq. Frecuencia normalizada.
+IDF -> Inverse Document Freq. Importancia de la palabra tomando en cuenta la relacion con als otras
+
+IDF->log(N/m)
+
+N-> numero de palabras que existan en el sistemas)
+IDF(milagroso) = log(4/4) = 0
+IDF(creador) = log(4/1) = 
+
+Calcular la similitud semantica
+
+Dios(1,2,3,4,5,6,7,8,9);
+Buda()
+Hambuerguesa()
+Pizza()
+
+DIos producto Cruz Buda / Dios Producto Punto Buda
+Coseno de dos angulos valor entre 0 y 1
+
+God
+Buddha
+Ala
+Lion
+Tiger
+Cat
+Hamburguer
+Pizza
+Pen
+Notebook
+
+englis stop words list
+
+Si dios aparece en la primera y en la segunda columna entonces se agraga con dio en la primera columna. 
+
+Sumar los dos vectores iguales.
+
+
+
+Utilizar base de datos relacionales.
+La comparacion de los vectores se hace cuando se hace click en el boton(Ejecucion)
+CUando buscamos en los ficheros (stockword, contentwords)
+
+Dios concurre más con Todo poderosos -> 71
+Todo lo divides por 71.
+
