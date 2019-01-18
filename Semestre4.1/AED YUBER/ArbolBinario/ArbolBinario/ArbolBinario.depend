@@ -1,0 +1,11 @@
+# depslib dependency file v1.0
+1444076981 source:/home/chris/Documentos/Semestre/Semestre4/AED YUBER/ArbolBinario/ArbolBinario/src/ArbolBinario.cpp
+
+1444080450 source:/home/chris/Documentos/Semestre/Semestre4/AED YUBER/ArbolBinario/ArbolBinario/main.cpp
+	<iostream>
+	"ArbolBinario.h"
+
+1444080481 /home/chris/Documentos/Semestre/Semestre4/AED YUBER/ArbolBinario/ArbolBinario/include/ArbolBinario.h
+	"iostream"
+	"list"
+

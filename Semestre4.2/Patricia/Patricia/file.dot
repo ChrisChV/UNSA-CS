@@ -1,0 +1,12 @@
+digraph{ graph [ splines=polyline]0 [label = "Juan" color ="red"];
+0 :ne->1:se  [ color = "green"];
+1 [label = "Pedro" color ="red"];
+1 :ne->2:se  [ color = "green"];
+2 [label = "mundo" color ="red"];
+2:nw ->3:sw [  color = "green"];
+3 [label = "h" color ="black"];
+3:se->4:sw [ color = "blue"];
+4 [label = "alo" color ="red"];
+4 :ne->5:se  [ color = "green"];
+5 [label = "ola_mundo" color ="red"];
+}

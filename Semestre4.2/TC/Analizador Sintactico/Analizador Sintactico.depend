@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1446154754 source:/home/chris/Documentos/Semestre/Semestre4/TC/Analizador Sintactico/main.cpp
+	<iostream>
+	<stdio.h>
+	<ctype.h>
+

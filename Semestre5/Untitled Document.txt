@@ -1,0 +1,6 @@
+https://inforlife.wordpress.com/2009/04/27/apagar-y-encender-equipos-remotamente-con-ssh-ethtool-y-wakeonlan/
+sudo aptitude install ssh ethtool wakeonlan
+ifconfig
+sudo ethtool -s eth1 wol g
+ssh usuario@IP
+sudo halt 

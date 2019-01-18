@@ -1,0 +1,5 @@
+digraph{
+10 [label = "hola", color = "red",  ] /*12-23-23*/
+11 [label = "adios" color = "green" ] /*12-23-23*/
+10->11
+}

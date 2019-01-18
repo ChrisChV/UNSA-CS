@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<hotpot-jcross-file>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description rdf:about="">
+</rdf:Description>
+</rdf:RDF>
+<version>6</version>
+<data>
+<title></title>
+<timer>
+<include-timer>0</include-timer>
+<seconds>59</seconds>
+</timer>
+<reading>
+<reading-text></reading-text>
+<include-reading>0</include-reading>
+<reading-title></reading-title>
+</reading>
+<crossword>
+<grid>
+<row><cell>C</cell><cell>O</cell><cell>B</cell><cell>A</cell><cell>Y</cell><cell>O</cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell>J</cell><cell>A</cell><cell>B</cell><cell>A</cell><cell>L</cell><cell>I</cell><cell></cell></row>
+<row><cell></cell><cell>V</cell><cell></cell><cell></cell><cell></cell><cell></cell><cell>C</cell><cell>O</cell><cell>L</cell><cell>I</cell><cell>B</cell><cell>R</cell><cell>I</cell><cell></cell><cell></cell><cell>R</cell><cell></cell><cell></cell><cell></cell></row>
+<row><cell>L</cell><cell>E</cell><cell>O</cell><cell>N</cell><cell></cell><cell>C</cell><cell></cell><cell></cell><cell></cell><cell></cell><cell>A</cell><cell></cell><cell>R</cell><cell>A</cell><cell>T</cell><cell>A</cell><cell></cell><cell></cell><cell></cell></row>
+<row><cell></cell><cell>J</cell><cell></cell><cell></cell><cell></cell><cell>O</cell><cell></cell><cell>S</cell><cell></cell><cell></cell><cell>L</cell><cell></cell><cell>A</cell><cell></cell><cell></cell><cell>&#x00d1;</cell><cell></cell><cell></cell><cell></cell></row>
+<row><cell>V</cell><cell>A</cell><cell>C</cell><cell>A</cell><cell></cell><cell>N</cell><cell></cell><cell>U</cell><cell></cell><cell></cell><cell>L</cell><cell></cell><cell>F</cell><cell></cell><cell></cell><cell>A</cell><cell></cell><cell></cell><cell></cell></row>
+<row><cell></cell><cell></cell><cell>O</cell><cell></cell><cell>P</cell><cell>E</cell><cell>R</cell><cell>R</cell><cell>O</cell><cell></cell><cell>E</cell><cell></cell><cell>A</cell><cell></cell><cell></cell><cell></cell><cell></cell><cell>D</cell><cell></cell></row>
+<row><cell></cell><cell></cell><cell>C</cell><cell></cell><cell></cell><cell>J</cell><cell></cell><cell>I</cell><cell></cell><cell></cell><cell>N</cell><cell></cell><cell></cell><cell>T</cell><cell>I</cell><cell>G</cell><cell>R</cell><cell>E</cell><cell></cell></row>
+<row><cell>C</cell><cell></cell><cell>O</cell><cell></cell><cell></cell><cell>O</cell><cell></cell><cell>C</cell><cell>A</cell><cell>B</cell><cell>A</cell><cell>L</cell><cell>L</cell><cell>O</cell><cell></cell><cell>A</cell><cell></cell><cell>L</cell><cell></cell></row>
+<row><cell>A</cell><cell></cell><cell>D</cell><cell></cell><cell>H</cell><cell></cell><cell></cell><cell>A</cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell>R</cell><cell></cell><cell>T</cell><cell></cell><cell>F</cell><cell></cell></row>
+<row><cell>S</cell><cell>E</cell><cell>R</cell><cell>P</cell><cell>I</cell><cell>E</cell><cell>N</cell><cell>T</cell><cell>E</cell><cell></cell><cell></cell><cell></cell><cell></cell><cell>T</cell><cell></cell><cell>O</cell><cell></cell><cell>I</cell><cell></cell></row>
+<row><cell>T</cell><cell></cell><cell>I</cell><cell></cell><cell>P</cell><cell></cell><cell></cell><cell>O</cell><cell></cell><cell></cell><cell></cell><cell>E</cell><cell></cell><cell>U</cell><cell></cell><cell></cell><cell></cell><cell>N</cell><cell></cell></row>
+<row><cell>O</cell><cell></cell><cell>L</cell><cell></cell><cell>O</cell><cell></cell><cell>A</cell><cell></cell><cell>P</cell><cell></cell><cell></cell><cell>L</cell><cell></cell><cell>G</cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell></row>
+<row><cell>R</cell><cell></cell><cell>O</cell><cell></cell><cell>P</cell><cell></cell><cell>B</cell><cell></cell><cell>O</cell><cell></cell><cell></cell><cell>E</cell><cell></cell><cell>A</cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell></row>
+<row><cell></cell><cell></cell><cell></cell><cell></cell><cell>O</cell><cell></cell><cell>E</cell><cell></cell><cell>L</cell><cell></cell><cell></cell><cell>F</cell><cell></cell><cell></cell><cell>S</cell><cell></cell><cell></cell><cell></cell><cell></cell></row>
+<row><cell></cell><cell></cell><cell></cell><cell></cell><cell>T</cell><cell></cell><cell>J</cell><cell></cell><cell>L</cell><cell></cell><cell>C</cell><cell>A</cell><cell>B</cell><cell>R</cell><cell>A</cell><cell></cell><cell></cell><cell></cell><cell></cell></row>
+<row><cell></cell><cell>I</cell><cell>G</cell><cell>U</cell><cell>A</cell><cell>N</cell><cell>A</cell><cell></cell><cell>I</cell><cell></cell><cell></cell><cell>N</cell><cell></cell><cell></cell><cell>P</cell><cell></cell><cell></cell><cell></cell><cell></cell></row>
+<row><cell></cell><cell></cell><cell></cell><cell></cell><cell>M</cell><cell></cell><cell></cell><cell></cell><cell>T</cell><cell></cell><cell></cell><cell>T</cell><cell>O</cell><cell>R</cell><cell>O</cell><cell></cell><cell></cell><cell></cell><cell></cell></row>
+<row><cell></cell><cell>R</cell><cell>I</cell><cell>N</cell><cell>O</cell><cell>C</cell><cell>E</cell><cell>R</cell><cell>O</cell><cell>N</cell><cell>T</cell><cell>E</cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell></row>
+<row><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell></row>
+</grid>
+<clues>
+<item><word>IGUANA</word><def>Habia una vez una...</def></item>
+<item><word>SERPIENTE</word><def>cuando se rie se le ven los dientes</def></item>
+<item><word>LEON</word><def>Rey de la selva</def></item>
+<item><word>CABALLO</word><def>mam&#x00ed;fero perisod&#x00e1;ctilo domesticado</def></item>
+<item><word>RINOCERONTE</word><def>Su cuerno es de pelo</def></item>
+<item><word>RATA</word><def>Congresista</def></item>
+<item><word>TORO</word><def>Victima del "deporte" mas saguinario</def></item>
+<item><word>TIGRE</word><def>no es como lo pintan</def></item>
+<item><word>PERRO</word><def>Mejor Amigo del Hombre</def></item>
+<item><word>COLIBRI</word><def>Pajaro mas peque&#x00f1;o del mundo</def></item>
+<item><word>COBAYO</word><def>Mascota de Alexa</def></item>
+<item><word>CABRA</word><def>Primer animal clonado en brasil</def></item>
+<item><word>JABALI</word><def>Amigo de Timon</def></item>
+<item><word>VACA</word><def>Sagrada en la India</def></item>
+<item><word>CONEJO</word><def>Bugs Bunny</def></item>
+<item><word>COCODRILO</word><def>saur&#x00f3;psidos arcosaurios</def></item>
+<item><word>ARA&#x00d1;A</word><def>Tiene 8 patas</def></item>
+<item><word>POLLITO</word><def>Sale de un huevo</def></item>
+<item><word>DELFIN</word><def>Manifero Acuatico</def></item>
+<item><word>ABEJA</word><def>demando a los humanos por la miel</def></item>
+<item><word>BALLENA</word><def>Liberen a Willy</def></item>
+<item><word>CASTOR</word><def>Hace represas naturales</def></item>
+<item><word>SAPO</word><def>Anfibio </def></item>
+<item><word>JIRAFA</word><def>Cuello largo</def></item>
+<item><word>SURICATO</word><def>Animal Favorito de Davi</def></item>
+<item><word>ELEFANTE</word><def>Tiene 4 rodillas</def></item>
+<item><word>OVEJA</word><def>lana sube lana baja</def></item>
+<item><word>HIPOPOTAMO</word><def>Gloria en Madagascar</def></item>
+<item><word>TORTUGA</word><def>Nemo decia que vivian 100 a&#x00f1;os</def></item>
+<item><word>GATO</word><def>Mascota de Adriana</def></item>
+</clues>
+</crossword>
+</data>
+<hotpot-config-file>
+<global>
+<separate-js-file>0</separate-js-file>
+<clue-caption>Clue</clue-caption>
+<next-q-caption>=&amp;#x003E;</next-q-caption>
+<last-q-caption>&amp;#x003C;=</last-q-caption>
+<incorrect-indicator>.I.</incorrect-indicator>
+<font-size>small</font-size>
+<include-next-ex>1</include-next-ex>
+<restart-caption>Restart</restart-caption>
+<contents-url>contents.htm</contents-url>
+<include-timer>0</include-timer>
+<font-face>Geneva,Arial,sans-serif</font-face>
+<include-scorm-12>0</include-scorm-12>
+<user-string-3>three</user-string-3>
+<show-correct-first-time>0</show-correct-first-time>
+<user-string-2>two</user-string-2>
+<user-string-1>one</user-string-1>
+<vlink-color>#0000CC</vlink-color>
+<title-color>#ff9933</title-color>
+<correct-indicator>:)</correct-indicator>
+<contents-caption>Index</contents-caption>
+<show-all-questions-caption>Show all questions</show-all-questions-caption>
+<undo-caption>Undo</undo-caption>
+<header-code></header-code>
+<hint-caption>Pista</hint-caption>
+<check-button-caption>Check</check-button-caption>
+<email>you@yourserver.com</email>
+<show-one-by-one-caption>Show questions one by one</show-one-by-one-caption>
+<name-please>Please enter your name:</name-please>
+<formmail-url>http://yourserver.com/cgi-bin/FormMail.pl</formmail-url>
+<next-ex-caption>=&amp;#x003E;</next-ex-caption>
+<back-caption>&amp;#x003C;=</back-caption>
+<text-color>#000000</text-color>
+<page-bg-color>#cccccc</page-bg-color>
+<times-up>Se termino tu tiempo!! Q LEEEENTOOOO!!</times-up>
+<nav-bar-color>#ff0000</nav-bar-color>
+<include-contents>1</include-contents>
+<your-score-is>TU PUNTAJE ES</your-score-is>
+<graphic-url></graphic-url>
+<link-color>#0000ff</link-color>
+<keypad-characters></keypad-characters>
+<show-also-correct>1</show-also-correct>
+<correct-first-time>Questions answered correctly first time: </correct-first-time>
+<include-cgi>0</include-cgi>
+<ex-bg-color>#999999</ex-bg-color>
+<ok-caption>OK</ok-caption>
+<process-for-rtl>0</process-for-rtl>
+<check-caption>Verificar</check-caption>
+<include-back>1</include-back>
+<next-correct-letter>La letra siguiente es:</next-correct-letter>
+</global>
+<jcross>
+<instructions>Para ver las definiciones de las palabras, haz click en el numero dos de la derecha. Escribe la palabra al frente de la definicion y pulsa en el boton insertar, para colocar la palabra a la derecha.
+Si tienes dudas, haz click en el boton &quot;Ver Pista&quot;. Pero cuidado, cada vez que pidas una pista, disminuiras tu puntuacion.
+Cuando termines, haz click en el boton &quot;Verificar resultados&quot;.</instructions>
+<header-code></header-code>
+<clues-across>Atraves</clues-across>
+<include-hint>1</include-hint>
+<include-keypad>0</include-keypad>
+<click-to-add>Click on a word to add it to the sentence.</click-to-add>
+<guess-incorrect>Mal</guess-incorrect>
+<case-sensitive>0</case-sensitive>
+<next-correct-part>Next correct part is: </next-correct-part>
+<next-ex-url>nextpage.htm</next-ex-url>
+<send-email>0</send-email>
+<show-also-correct>1</show-also-correct>
+<this-much-correct>This much of your answer is correct: </this-much-correct>
+<exercise-subtitle>Crucigrama de Prueba</exercise-subtitle>
+<capitalize-first-letter>0</capitalize-first-letter>
+<include-clue-list>0</include-clue-list>
+<clues-down>Abajo</clues-down>
+<guess-correct>Muy Bien</guess-correct>
+<next-correct-letter>*Next correct letter is: </next-correct-letter>
+<include-show-answer>0</include-show-answer>
+<separate-javascript-file>0</separate-javascript-file>
+<enter-caption>Enter</enter-caption>
+<also-correct>Also correct: </also-correct>
+</jcross>
+</hotpot-config-file>
+
+</hotpot-jcross-file>

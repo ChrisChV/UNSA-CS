@@ -1,0 +1,8 @@
+<map id="G" name="G">
+<area shape="rect" id="node5" href="$a00068.html" title="Processes several queries in FIFO manner, optimized for high throughput." alt="" coords="5,160,107,189"/>
+<area shape="rect" id="node7" href="$a00096.html" title="&quot;Transaction&quot; nested within another transaction" alt="" coords="131,160,272,189"/>
+<area shape="rect" id="node9" href="$a00099.html" title="pqxx::tablestream" alt="" coords="296,160,421,189"/>
+<area shape="rect" id="node2" href="$a00059.html" title="pqxx::internal::namedclass" alt="" coords="112,5,291,35"/>
+<area shape="rect" id="node11" href="$a00098.html" title="pqxx::tablereader" alt="" coords="225,237,348,267"/>
+<area shape="rect" id="node13" href="$a00100.html" title="pqxx::tablewriter" alt="" coords="372,237,489,267"/>
+</map>

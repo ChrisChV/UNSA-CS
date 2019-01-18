@@ -1,0 +1,31 @@
+predicate ordered(A : ARRAY [Z], i : Z, j : Z) = forall x : Z y : Z,
+    i <= x -> x <= y -> y <= j -> A[x] <= A[y]
+predicate is_in(A : ARRAY [Z], v : Z, i : Z, j : Z) = exists x : Z,
+    (i <= x /\ x <= j) /\ A[x] = v
+
+function bsearch( A : ARRAY [Z], len : Z , v : Z ) : Z 
+  precondition n_ge_one : len >= 1 //lenght ia st least 1
+  precondition orderedA: ordered(A, 1, len)//array is ordered
+  precondition is_inA: is_in(A, v, 1, len) //the value we look for is in the array
+  postcondition A[bsearch] = v //the result is a pointer to the value we look for 
+  var i : Z
+      j : Z
+      k : Z
+begin
+  i := 1
+  { i = 1 /\ len >= 1 /\ ordered(A, 1, len) /\ is_in(A, v, 1, len) }
+  j := len
+  { i = 1 /\ j = len /\ len >= 1 /\ ordered(A, 1, len) /\ is_in(A, v, 1, len) }
+  while i < j do
+    invariant is_in(A, v, i, j) /\ ordered(A, i, j) /\ i<=j
+  begin
+      k := (i + j) / 2
+      { is_in(A, v, i, j) /\ ordered(A, i, j) /\ i<j /\ k = (i+j)/2 }
+      if A[k] < v then
+        i := k + 1
+      else
+        j := k
+    end
+    { is_in(A, v, i, i) }
+    bsearch := i
+end
