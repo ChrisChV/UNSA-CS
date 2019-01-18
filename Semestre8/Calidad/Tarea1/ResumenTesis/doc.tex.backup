@@ -1,0 +1,113 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{color}
+\usepackage{parskip}
+\usepackage{graphicx}
+\usepackage{multirow}
+\usepackage{listings}
+\usepackage{vmargin}
+\usepackage{datetime}
+\newdate{date}{5}{09}{2017}
+\graphicspath{ {imagenes/} }
+\definecolor{mygreen}{rgb}{0,0.6,0}
+\definecolor{lbcolor}{rgb}{0.9,0.9,0.9}
+\usepackage{epstopdf}
+
+
+\setpapersize{A4}
+\setmargins{2.5cm}       % margen izquierdo
+{1.5cm}                        % margen superior
+{16.5cm}                      % anchura del texto
+{23.42cm}                    % altura del texto
+{10pt}                           % altura de los encabezados
+{1cm}                           % espacio entre el texto y los encabezados
+{0pt}                             % altura del pie de página
+{2cm}     
+
+
+
+\begin{document}
+\title{Resumen Capítulo 2 y 3}
+\author{
+Christofer Fabián Chávez Carazas \\
+\small{Universidad Nacional de San Agustín de Arequipa} \\
+\small{Escuela Profesional de Ciencia de la Computación} \\
+\small{Calidad de Software}
+}
+\date{\displaydate{date}}
+
+\maketitle
+
+\begin{enumerate}
+ \item \textbf{Modelo de Calidad de Procesos de Software}
+ 
+ Cuando se habla de calidad, pueden surgir varios conceptos dependiendo del contexto en el que se trabaje, por ejemplo, W. Edwards Deming
+ nos dice que ``La calidad es una serie de cuestionamientos hacia una mejora continua, definidos en términos de satisfacción del cliente'', y
+ Joseph M. Duran nos dice que la calidad es ``La adecuación para el uso, satisfaciendo las necesidades del cliente''. Y así se podrían nombrar a varios
+ autores. En el ámbito del software, es necesario diferenciar entre la calidad del producto de software y la calidad del proceso de desarrollo.
+ El primero depende mucho del segundo, ya que ``Sin un buen proceso de desarrollo es casi imposible obtener un buen producto''. \\
+ El mayor problema que se presenta al hablar de calidad de software es encontrar propiedades en el software que nos den una indicación de su calidad.
+ Para resolver esto surgen los modelos de calidad, que son puntos de referencia reproducibles. También existen los modelos de calidad de procesos, los cuales
+ buscan alcanzar una mejora de proceso que, según Sommerville, significa entender los procesos existentes y cambiarlos para reducir los costes y el tiempo
+ de desarrollo.
+ 
+ \item \textbf{Modelos de Evaluación y Mejora de Procesos de Software}
+  
+ \begin{itemize}
+  \item \textbf{CMM:} El modelo \textit{Capability Maturity Model}, contiene los elementos para conseguir proceses eficaces en uno o
+  más cuerpos de conocimiento. Se establecen 5 niveles de capacidad ala hora de medir la madurez de los procesos de una organización, siendo el nivel inicial caótico
+  y el final maduro. Para que una organización pueda estar en un nivel tiene que satisfacer criterios relacionados a ese nivel y al nivel anterior.
+  \item \textbf{SCE:} Tiene como objetivo determinar la capacidad de una organización en base a sus procesos de software. Usa CMM como modelo de referencia.
+  \item \textbf{CBA-IPI (CMM-Based): } Le permite a la organización conocer la capacidad de sus procesos de software mediante la identificación de fortalezas y debilidades en base al modelos CMM.
+  \item \textbf{IDEAL: } Propone el camino de acciones que debe tener el programa de mejora de procesos de software cuando una organización desea implementar CMM, en el cual se basa.
+  \item \textbf{Personal Software Process (PSP): } Orientado a la mejora individual de cada ingeniero de software, asistiéndolos en la realización de planes precisos.
+  \item \textbf{Team Software Process (TSP): } Ayuda a conformar equipos para el desarrollo de software de calidad en base a PSP. Se busca minimizar el tiempo del proyecto y maximizar
+  la productividad.
+  \item \textbf{People-CMM: } Ayuda a las organizaciones a resolver de forma exitosa los aspectos críticos relacionados con sus recursos humanos. El objetivo es mejorar los procesos
+  de gestión y desarrollo de los empleados.
+  \item \textbf{CMMI: } El modelo \textit{Capability Maturity Model Integration} Proporciona un enfoque disciplinado para mejorar los procesos de una organización. A diferencia de CMM, CMMI se aplica a lo largo de
+  todo el ciclo de vida de ingeniería, no únicamente al ciclo de vida del desarrollo del producto software. CMMI usa dos tipos de representaciones de sus modelos, representación por etapas y continuo.
+  La representación por etapas proporciona un marco predefinido para la mejora organizacional basada en el agrupamiento y ordenación de procesos y en las relaciones organizacionales asociadas. A las etapas se les denomina nivel de madurez.
+  CMMI contempla cinco niveles de madurez: inicial, gestionado, definido, cuantitativamente gestionado y optimizado.
+  La representación continua proporciona una guía en la cual debería realizarse el proceso de mejora.
+  \item \textbf{SCAMPI: } es un método de evaluación de clase A, aplicable a un amplio rango de modelos de evaluación. Basado en CMM-Based, EIA/IS y SCE.
+  Las principales fases de evaluación son:
+  \begin{itemize}
+   \item Planificación y preparación de la evaluación.
+   \item realización de la evaluación.
+   \item Informe de resultados.
+  \end{itemize}
+  \item \textbf{SPICE :} Representa el mayor marco de colaboración internacional establecida con la finalidad de desarrollar un estándar de evaluación de procesos de software.
+  \item \textbf{ISO/IEC 15504: } Es un estándar aplicable a cualquier organización que quiera mejorar la capacidad de sus procesos, independientemente de la organización y todo lo que ella involucra.
+  \item \textbf{Bootstrap: } Resultado del proyecto ESPRIT 5451. Describe el proceso de evaluación desarrollados para determinar si una organización se encuentra en cierto nivel de madurez, 
+  identificando los puntos débiles y fuertes.
+  \item \textbf{Familia ISO 9000: } tiene como objetivo establecer los principios a seguir sobre sistemas de calidad y el aseguramiento de las mismas en una organización.
+  Las normas ISO 9001, 9002 y 9003 se unificaron en una sola, tomando el nombre de ISO 9001:2000.
+  \begin{itemize}
+   \item \textbf{ISO 9001:2000: } Especifica los requisitos para un sistema de gestión de calidad cuando una organización necesita productos que satisfagan los requisitos del cliente y aspira 
+   a aumentar la satisfacción del cliente.
+   \item \textbf{ISO 9001:2008: } Su objetivo es proporcionar un conjunto de requisitos, que si se implementan de manera adecuada, darán confianza a sus clientes.
+   \item \textbf{La guía TickIT: } Creada por el DTI del Reino Unido por el desinterés en adoptar la norma ISO 9000 de las empresas de desarrollo.
+   \item \textbf{ISO/IEC 9003:2004: } Ofrece una guía de la aplicación de la ISO 9001:2000 en empresas desarrolladoras de software.
+   \item \textbf{ISO/IEC 12207:2004: } Establece un marco común orientado a los procesos del ciclo de vida del software.
+  \end{itemize}
+  \item \textbf{COMPETISOFT: } Es una iniciativa integradora de diferentes propuestas de mejora de procesos software para PYMES desarroladoras de software.
+  El objetivo es incrementar el nivel de competitividad de las PYMES desarrolladoras de software en iberoamérica.
+  \item \textbf{MPS:BR} Mejora de proceso del Software Brasileño. Liderado por la empresa SOFTEX de Brasil. El modelo contempla 22 procesos de la norma ISO 12207 y 7 niveles de madurez.
+  El método de evaluación se basa en la norma ISO 15504.
+  \item \textbf{MoProSoft: } Surge como respuesta a la dificultad de las empresas por implementar los diferentes modelos de mejora de procesos, siendo un modelo fácil de entender, práctico y económico.
+  El objetivo de MoProSoft es elevar la capacidad de las organizaciones para ofrecer servicios con calidad.
+  \item \textbf{EvalProSoft: } Es un método de evaluación de procesos para la industria de software. Este método de evaluación se aplica a las organizaciones 
+  dedicadas al desarrollo y/o mantenimiento de software.
+  \item \textbf{Agile SPI: } Es un framework de SPI basado en modelos livianos que tiene como objetivo guiar la mejora de los procesos de desarrollo de software de forma ágil.
+  \item \textbf{}
+  
+ \end{itemize}
+
+ 
+\end{enumerate}
+
+
+\end{document}
+

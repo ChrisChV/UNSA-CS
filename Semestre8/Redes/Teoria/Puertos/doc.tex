@@ -1,0 +1,187 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{color}
+\usepackage{parskip}
+\usepackage{graphicx}
+\usepackage{multirow}
+\usepackage{listings}
+\usepackage{vmargin}
+\usepackage{datetime}
+\newdate{date}{22}{12}{2017}
+\graphicspath{ {imagenes/} }
+\definecolor{mygreen}{rgb}{0,0.6,0}
+\definecolor{lbcolor}{rgb}{0.9,0.9,0.9}
+\usepackage{epstopdf}
+\usepackage{float}
+
+
+\setpapersize{A4}
+\setmargins{2.5cm}       % margen izquierdo
+{1.5cm}                        % margen superior
+{16.5cm}                      % anchura del texto
+{23.42cm}                    % altura del texto
+{10pt}                           % altura de los encabezados
+{1cm}                           % espacio entre el texto y los encabezados
+{0pt}                             % altura del pie de página
+{2cm}     
+
+\lstset{
+backgroundcolor=\color{lbcolor},
+    tabsize=4,    
+%   rulecolor=,
+    language=[GNU]C++,
+        basicstyle=\tiny,
+        aboveskip={1.5\baselineskip},
+        columns=fixed,
+        showstringspaces=false,
+        extendedchars=false,
+        breaklines=true,
+        prebreak = \raisebox{0ex}[0ex][0ex]{\ensuremath{\hookleftarrow}},
+        frame=single,
+        showtabs=false,
+        showspaces=false,
+        showstringspaces=false,
+        identifierstyle=\ttfamily,
+        keywordstyle=\color[rgb]{0,0,1},
+        commentstyle=\color[rgb]{0.026,0.112,0.095},
+        stringstyle=\color{red},
+        numberstyle=\color[rgb]{0.205, 0.142, 0.73},
+%        \lstdefinestyle{C++}{language=C++,style=numbers}’.
+}
+
+
+\begin{document}
+\title{Tarea: Identificar Puertos}
+\author{
+Christofer Fabián Chávez Carazas \\
+\small{Universidad Nacional de San Agustín de Arequipa} \\
+\small{Escuela Profesional de Ciencia de la Computación} \\
+\small{Computación Centrada en Redes}
+}
+\date{\displaydate{date}}
+
+\maketitle
+
+\begin{large}
+ \textbf{Enunciado}
+\end{large}
+
+  Identificar los protocolos asociados a los siguientes puertos: 22, 66, 107, 118, 119, 137, 138, 150, 194, 443, 522,
+6891, 6901 indicando si son TCP o UDP y brevemente la función que soportan.
+
+\begin{large}
+ \textbf{Resolución}
+\end{large}
+
+\begin{itemize}
+ \item \textbf{Puerto 22}
+ \begin{itemize}
+  \item \textbf{Protocolo Asociado:}  SSH (Secure SHell)
+  \item \textbf{Soporta:} TCP y UDP
+  \item \textbf{Función:} SSH es un protocolo de administración remota que permite a los usuarios controlar y modificar sus servidores remotos a través de Internet.
+  A diferencia de otros protocolos de comunicación remota tales como FTP o Telnet, SSH encripta la sesión de conexión, haciendo imposible que alguien pueda obtener contraseñas no encriptadas.
+ \end{itemize}
+ \item \textbf{Puerto 66}
+ \begin{itemize}
+  \item \textbf{Protocolo Asociado:} Oracle SQLNet
+  \item \textbf{Soporta:} TCP y UDP
+  \item \textbf{Función:} Oracle SQLNet es un software de redes de Oracle que permite el acceso remoto a datos entre programas y la base de datos de Oracle.
+ \end{itemize}
+ \item \textbf{Puerto 107}
+ \begin{itemize}
+  \item \textbf{Protocolo Asociado:} Remote Telnet Service
+  \item \textbf{Soporta:} TCP y UDP
+  \item \textbf{Función:} RTelnet es una versión más segura del Telnet para sistemas Unix. Provee de funcionalidades similares a las de Telnet con la diferencia
+  de que los host se encuentran monitoreados por un firewall.
+ \end{itemize}
+ \item \textbf{Puerto 118}
+ \begin{itemize}
+  \item \textbf{Protocolo Asociado:} SQL Services
+  \item \textbf{Soporta:} TCP y UDP
+  \item \textbf{Función:} Es un sistema de manejo de bases de datos del modelo relacional, desarrollado por la empresa Microsoft. El puerto es utilizado por esta aplicación
+  para las conexiones remotas a las bases de datos creadas en ella.
+ \end{itemize}
+ \item \textbf{Puerto 119}
+ \begin{itemize}
+  \item \textbf{Protocolo Asociado:} NNTP (Network News Transport Protocol)
+  \item \textbf{Soporta:} TCP y UDP
+  \item \textbf{Función:}  NNTP  es un protocolo inicialmente creado para la lectura y publicación de artículos de noticias en Usenet. El funcionamiento del NNTP es muy
+  sencillo, consta de un servidor en el que están almacenadas las noticias y a él se conectan los clientes a través de la red.
+  La conexión entre cliente y servidor se hace de forma interactiva consiguiendo así un número de artículos duplicados muy bajo.
+ \end{itemize}
+ \item \textbf{Puerto 137}
+ \begin{itemize}
+  \item \textbf{Protocolo Asociado:} NetBios Name Service (NBNS)
+  \item \textbf{Soporta:} TCP (raramente) y UDP
+  \item \textbf{Función:} NetBios es una especificación de interfaz para acceso a servicios de red, es decir, una capa de software desarrollado para enlazar un sistema operativo
+  de red con hardware específico. NBNS es una parte de esta interfaz. Tiene casi el mismo propósito que una DNS: convertir direcciones comerciales a direcciones IP.
+ \end{itemize}
+ \item \textbf{Puerto 138}
+ \begin{itemize}
+  \item \textbf{Protocolo Asociado:} NetBios Datagram Service 
+  \item \textbf{Soporta:} UDP
+  \item \textbf{Función:} Este puerto es utilizado para el envío de datagramas por parte de NetBios
+ \end{itemize}
+ \item \textbf{Puerto 150}
+ \begin{itemize}
+  \item \textbf{Protocolo Asociado:} SQL-Net
+  \item \textbf{Soporta:} TCP y UDP
+  \item \textbf{Función:} Nos permite conectarnos remotamente a bases de datos SQL
+ \end{itemize}
+ \item \textbf{Puerto 194}
+ \begin{itemize}
+  \item \textbf{Protocolo Asociado:} IRC (Internet Relay Chat)
+  \item \textbf{Soporta:} TCP y UDP
+  \item \textbf{Función:} IRC es un protocolo de comunicación en tiempo real basado en texto, que permite debates entre dos o más personas.
+  Se diferencia de la mensajería instantánea en que los usuarios no deben acceder a establecer la comunicación de antemano, de tal forma que todos los usuarios
+  que se encuentran en un canal pueden comunicarse entre sí, aunque no hayan tenido ningún contacto anterior.
+ \end{itemize}
+ \item \textbf{Puerto 443}
+ \begin{itemize}
+  \item \textbf{Protocolo Asociado:} HTTPS
+  \item \textbf{Soporta:} TCP
+  \item \textbf{Función:} Es un protocolo de aplicación basado en el HTTP, destinado a la transferencia segura de datos de Hipertexto, es decir, es la versión segura de
+  HTTP.
+ \end{itemize}
+ \item \textbf{Puerto 522}
+ \begin{itemize}
+  \item \textbf{Protocolo Asociado:} NetMeeting
+  \item \textbf{Soporta:} TCP
+  \item \textbf{Función:} NetMeeting fue un cliente de videollamada VoIP y multipunto incluido en muchas versiones de Microsoft Windows.
+ \end{itemize}
+ \item \textbf{Puerto 6891}
+ \begin{itemize}
+  \item \textbf{Protocolo Asociado:} MSN Messenger (archivos) (6891 - 6900)
+  \item \textbf{Soporta:} TCP
+  \item \textbf{Función:} MSN Messenger fue un programa de mensajería instantánea creado por Microsoft en 1999 y descontinuado en el 2005 debido a su reemplazo
+  por Windows Live Messenger. Estos puertos estaban destinados para el envío de archivos y mensajes desde la aplicación.
+ \end{itemize}
+ \item \textbf{Puerto 6901}
+ \begin{itemize}
+  \item \textbf{Protocolo Asociado:} MSN Messenger (voz)
+  \item \textbf{Soporta:} TCP
+  \item \textbf{Función:} Este protocolo se utiliza para el transporte de voz desde la aplicación.
+ \end{itemize}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+\end{itemize}
+
+
+
+
+\end{document}
+

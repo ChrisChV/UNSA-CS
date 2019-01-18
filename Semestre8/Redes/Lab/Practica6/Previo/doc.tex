@@ -1,0 +1,196 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{color}
+\usepackage{parskip}
+\usepackage{graphicx}
+\usepackage{multirow}
+\usepackage{listings}
+\usepackage{vmargin}
+\usepackage{datetime}
+\newdate{date}{26}{10}{2017}
+\graphicspath{ {imagenes/} }
+\definecolor{mygreen}{rgb}{0,0.6,0}
+\definecolor{lbcolor}{rgb}{0.9,0.9,0.9}
+\usepackage{epstopdf}
+\usepackage{float}
+
+
+\setpapersize{A4}
+\setmargins{2.5cm}       % margen izquierdo
+{1.5cm}                        % margen superior
+{16.5cm}                      % anchura del texto
+{23.42cm}                    % altura del texto
+{10pt}                           % altura de los encabezados
+{1cm}                           % espacio entre el texto y los encabezados
+{0pt}                             % altura del pie de página
+{2cm}     
+
+\lstset{
+backgroundcolor=\color{lbcolor},
+    tabsize=4,    
+%   rulecolor=,
+    language=[GNU]C++,
+        basicstyle=\tiny,
+        aboveskip={1.5\baselineskip},
+        columns=fixed,
+        showstringspaces=false,
+        extendedchars=false,
+        breaklines=true,
+        prebreak = \raisebox{0ex}[0ex][0ex]{\ensuremath{\hookleftarrow}},
+        frame=single,
+        showtabs=false,
+        showspaces=false,
+        showstringspaces=false,
+        identifierstyle=\ttfamily,
+        keywordstyle=\color[rgb]{0,0,1},
+        commentstyle=\color[rgb]{0.026,0.112,0.095},
+        stringstyle=\color{red},
+        numberstyle=\color[rgb]{0.205, 0.142, 0.73},
+%        \lstdefinestyle{C++}{language=C++,style=numbers}’.
+}
+
+
+\begin{document}
+\title{Previo de la Pŕactica 6}
+\author{
+Christofer Fabián Chávez Carazas \\
+\small{Universidad Nacional de San Agustín de Arequipa} \\
+\small{Escuela Profesional de Ciencia de la Computación} \\
+\small{Computación Centrada en Redes}
+}
+\date{\displaydate{date}}
+
+\maketitle
+
+\textbf{Describa los siguientes protocolos, indicando el uso general, los servicios que soportan y las aplicaciones típicas del mismo:}
+\begin{itemize}
+ \item \textbf{PPP}
+ 
+ \textit{(Point to Point Protocol)} Hoy en día  hay muchas personas que necesitan conectarse a una computadora desde casa, pero no quieren hacerlo a través de Internet, sino a través de una línea telefónica dedicada.
+ La línea telefónica proporciona el enlace físico, pero para controlar y gestionar la transferencia de datos se necesita un protocolo de enlace punto a punto. 
+ El primer protocolo diseñado para este propósito fue el Protocolo de Internet de línea serie (SLIP).
+ Sin embargo, SLIP tiene algunas deficiencias: no soporta protocolos diferentes al protocolo Internet (IP), no permite que la dirección IP sea asignada dinámicamente y no soporta la autenticación del usuario.
+ PPP se creó para solucionar los problemas de conectividad remota de Internet y dar respuesta a las deficiencias de SLIP.
+ PPP suministra conexiones de router a router y de host a red a través de circuitos síncronos y asíncronos.
+ PPP soporta los siguientes servicios:
+ 
+ \begin{itemize}
+  \item Control de configuración del enlace de datos.
+  \item Proporciona dirección dinámica de direcciones IP.
+  \item Multiplexión de protocolo de red.
+  \item configuración de enlace y verificación de la calidad del enlace.
+  \item Detección de errores.
+  \item Opciones de negociación para destrezas tales como negociación de la dirección de capa de red y negociaciones de compresión de datos.
+ \end{itemize}
+ 
+ El protocolo de enlace característico de Internet es el PPP, que se utiliza en:
+ 
+ \begin{itemize}
+  \item Líneas dedicadas Punto a Punto.
+  \item Conexiones RTC analógicas o digitales (RDSI).
+  \item Conexiones de alta velocidad sobre enlaces SONET/SDH
+ \end{itemize}
+
+ \item \textbf{HDLC}
+ 
+ \textit{(High-Level Data Link Control)} es un protocolo de comunicaciones de propósito general punto a punto, que opera a nivel de enlace de datos. 
+ Se basa en ISO 3309 e ISO 4335. Surge como una evolución del anterior SDLC. Proporciona recuperación de errores en caso de pérdida de paquetes de datos, 
+ fallos de secuencia y otros, por lo que ofrece una comunicación confiable entre el transmisor y el receptor.
+ HDLC soporta los siguiente servicios:
+ 
+ \begin{itemize}
+  \item Orientados a bit: provee una gran eficiencia con respecto a los protocolos orientados a byte, 
+  usando la estrategia de bit-stuffing (inserción de bit). También utilizar bits de control es otra
+  ventaja, en vez de bytes.
+  \item Poseen tres etapas en la comunicación:
+  \begin{itemize}
+   \item Logical Link Setup (establecimiento lógico de enlace).
+   \item Transmisión de información.
+   \item Liberación del enlace.
+  \end{itemize}
+  \item Control de flujo: esto se realiza a través de piggybacking.
+  \item Control de errores: cada frame lleva consigo un codigo de redundancia cíclica, utilizando el CRCCCITT como polinomio generador.
+  \item Permite el sondeo de terminales.
+  \item Protocolos de ventana deslizante (protocolos 5 y 6 teóricos de Tanenbaum).
+  \end{itemize}
+  
+ Existen tres tipos de conexión, que se basan en los roles de cada una de las partes de la o las conexiones
+físicas.
+Uno es la conexión con modo de respuesta normal (NRN) para configuraciones centralizadas, que puede
+utilizar líneas punto a punto o multipunto y el frame de extablecimiento puede ser SNRM o SNRME,
+dependiendo del tamaño de la ventana deslizante.
+Otro modo es la conexión con modo de respuesta asincrónico (ARM), también para configuraciones
+centralizadas con punto a punto o multipunto, usando SARM o SARME como frame de establecimiento de
+conexión.
+Por último está el modo de respuesta asincrónica balanceada (ABM) exclusivo para punto a punto, usando
+SABM o SABME.
+En los dos primeros casos se habla de una estación principal, que controla el flujo de datos hacia y desde
+las terminales , aparte de recuperar en casos de fallas, etc., donde la estación está encargada de generar
+los comandos para recibir las respuestas de las terminales, solo en el caso de estar en NRM. En ARM las
+terminales pueden transmitir sin pedir permiso del principal.
+En modo balanceado está claro que es para dos partes con la misma capacidad ( no está la idea de
+host/terminal o amo/esclavo), cada uno puede dar órdenes o generar respuestas dependiendo del caso.
+Este modo es el único permitido en LAPB, que es utilizado en redes con X.25 (nivel de red), donde el
+establecimiento del enlace se hace a través de un SABM y un UA como respuesta, inicializando
+contadores, ventanas y temporizadores.
+La desconexión se realiza por un intercambio de DISC y su UA respectivo.
+
+ \item \textbf{PAP}
+ 
+ \textit{(Password Authentication Protocol)} es un protocolo simple de autenticación para autenticar un usuario contra un servidor de acceso remoto o contra un proveedor
+ de servicios de internet. PAP es un subprotocolo usado por la autenticación del protocolo PPP (Point to Point Protocol), 
+ validando a un usuario que accede a ciertos recursos. PAP transmite contraseñas o passwords en ASCII sin cifrar, por lo que se considera inseguro. 
+ PAP se usa como último recurso cuando el servidor de acceso remoto no soporta un protocolo de autenticación más fuerte.
+ PAP provee de un método simple para el punto para establecer su identidad usando una negociación bidireccional. 
+ Esto se hace solo al establecer el enlace inicial. Después de que la fase de la creación del enlace está completada, un par ID/Password es repetidamente enviado por 
+ el punto al autenticador hasta que la identidad es admitida o la conexión es terminada.
+ Hay muchos servidores remotos de sistemas operativos de red que admiten PAP:
+ \begin{itemize}
+  \item Servidores P2P
+  \item Servidores Cliente / Servidor (R.A.D.I.U.S)
+  \item \textit{Point to Point Protocol}
+ \end{itemize}
+
+ \item \textbf{Frame Relay}
+ 
+ Frame Relay es un protocolo de capa de enlace de datos conmutado de estándar industrial, que maneja múltiples circuitos virtuales mediante el encapsulamiento de
+ Control de enlace de datos de alto nivel (HDLC) entre dispositivos conectados. 
+ Frame Relay cuenta con las siguientes características:
+ \begin{itemize}
+  \item Orientado a conexión.
+  \item Paquetes de longitud variable.
+  \item Velocidad de 34Mbps.
+  \item Servicio de paquetes en circuito virtual, tanto con circuitos virtuales conmutados como con circuitos virtuales permanentes.
+  \item Trabaja muy similar a una simple conexión de modo-circuito (en donde se establece la conexión entre el receptor y el transmisor, y luego se lleva a cabo la comunicación de la información), la diferencia esta en que la información del usuario no es transmitida continuamente sino que es conmutada en pequeños paquetes (Frame Relays).
+  \item Sigue el principio de ISDN de separar los datos del usuario de los datos de control de señalización para lo cual divide la capa de enlace en dos subcapas.
+  \item Mínimo procesamiento en los nodos de enlace o conmutación.
+  \item Supone medios de transmisión confiables.
+  \item Funciones implementadas en los extremos de la subred.
+  \item Maneja el protocolo HDLC de igual manera que X.25.
+  \item El protocolo de transferencia es bidireccional entre las terminales
+  \item La capa inferior detecta pero no corrige los errores, se deja para las capas más altas, lo cual lo hace más rápido y transparente.
+  \item Ideal para interconectar LAN y WAN por sus altas velocidades y transparencia a las capas de red superiores.
+  \item Se pueden cargar múltiples protocolos de LAN sobre Frame Relay.
+  \item En Frame-Relay se transmiten paquetes de longitud variable a través de la red, lo cual hace poco apta su utilización para la transmisión de tráfico de voz, dado que si se escogen paquetes muy grandes, se introduce un retardo demasiado alto (no permitido para el tráfico de este tipo) o se introduce un retardo variable para cada paquete lo cual no garantiza que la voz fluya de forma natural, degradando la calidad del servicio.
+ \end{itemize}
+
+ 
+\begin{thebibliography}{1}
+\bibitem{one}
+  Tanenbaum, Andrew S., and David J. Wetherall. Computer networks. Pearson, 2011.
+
+ 
+ 
+\end{thebibliography}
+
+ 
+ 
+ 
+
+ 
+\end{itemize}
+
+\end{document}
+
+s

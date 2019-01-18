@@ -1,0 +1,73 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{color}
+\usepackage{parskip}
+\usepackage{graphicx}
+\usepackage{multirow}
+\usepackage{listings}
+\usepackage{vmargin}
+\usepackage{datetime}
+\newdate{date}{07}{09}{2017}
+\graphicspath{ {imagenes/} }
+\definecolor{mygreen}{rgb}{0,0.6,0}
+\definecolor{lbcolor}{rgb}{0.9,0.9,0.9}
+\usepackage{epstopdf}
+
+
+\setpapersize{A4}
+\setmargins{2.5cm}       % margen izquierdo
+{1.5cm}                        % margen superior
+{16.5cm}                      % anchura del texto
+{23.42cm}                    % altura del texto
+{10pt}                           % altura de los encabezados
+{1cm}                           % espacio entre el texto y los encabezados
+{0pt}                             % altura del pie de página
+{2cm}     
+
+
+\begin{document}
+\title{Previo de la Segunda Práctica}
+\author{
+Christofer Fabián Chávez Carazas \\
+\small{Universidad Nacional de San Agustín de Arequipa} \\
+\small{Escuela Profesional de Ciencia de la Computación} \\
+\small{Computación Centrada en Redes}
+}
+\date{\displaydate{date}}
+
+\maketitle
+
+Definir claramente los siguientes términos:
+
+\begin{itemize}
+ \item \textbf{Controlador: } Programa que permite al sistema operativo interactuar con un periférico, haciendo una 
+ abstracción del hardware y proporcionando una interfaz para utilizar el dispositivo.
+ \item \textbf{Dirección MAC: } Dirección del hardware de control de acceso a soportes de un distribuidor que identifica los equipos, los
+ servidores, los routers u otros dispositivos de red. También conocida como dirección física, tiene 48 bits y es única para cada dispositivo.
+ \item \textbf{Dirección IP: } Es un número que identifica exclusivamente un equipo en una red o en Internet. Las direcciones IP de los equipos en una red
+ de servidor-cliente pueden cambiar diariamente o con mayor frecuencia. La dirección de un equipo debe ser única dentro de una red.
+ \item \textbf{Máscara de Red: } La máscara de red permite distinguir dentro de la dirección IP, los bits que identifican a la red y los bits que identifican al host.
+ Dependiendo de la configuración que se tome, se pueden clasificar las direcciones en diferentes clases.
+ \item \textbf{Puerta de Enlace: } Es el dispositivo que actúa de interfaz de conexión entre aparatos o dispositivos y también posibilita compartir recursos entre dos o más computadoras.
+ \item \textbf{Subred: } Porciones de una red TCP/IP usada para aumentar el ancho de banda en la red subdividiendo la red en porciones o segmentos.
+ \item \textbf{Proxy: } Aplicación (o agente) que se ejecuta en una gateway de seguridad y que actúa como servidor y cliente, que acepta conexiones de un cliente y realiza solicitudes en
+ nombre de este al servidor de destino. Existen varios tipos de proxy, cada uno de ellos con un objetivo específico.
+ \item \textbf{Firewall: } Hardware, software o una combinación de ambos que se usa para evitar que los usuarios de Internet no autorizados accedan a una red privada. Toda la información que entra en o que sale de una
+ red debe pasar por un firewall, que examina los paquetes de información y bloquea los que no cumplan criterios de seguridad.
+ \item \textbf{Host: } En un entorno de red, una computadora u otro dispositivo conectado a una red que provee y utiliza servicios de ella. 
+ \item \textbf{ARP: } (\textit{Address Resolution Protocol}) Es un protocolo de comunicaciones de la capa de enlace, responsable de encontrar la dirección MAC que corresponde a una determinada dirección IP en una red local.
+ \item \textbf{Hostname: } Es un nombre único e informal que se le da a un dispositivo conectado a una red.
+ \item \textbf{DHCP: } El programa usado en las redes servidor-cliente, en comparación con las redes punto a punto. Cuando una red usa el DHCP, la red incluye un servidor DHCP que asigna automáticamente las direcciones IP a los equipos en la
+ red según lo necesario. Cada vez que un equipo se desconecta de la red y se vuelve a conectar, el servidor DHCP asigna una nueva dirección IP.
+\end{itemize}
+
+\begin{thebibliography}{1}
+
+\bibitem{sym}
+ Symantec. Glosario.
+
+ 
+\end{thebibliography}
+\end{document}
+
