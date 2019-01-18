@@ -1,0 +1,17 @@
+function sumNum( n : Z ) : Z
+   	precondition natural: n >= 0
+   	postcondition sumNum > n
+   	var z : Z
+begin
+	z := n
+   	{n>=0 /\ z = n}
+   	if n % 2 == 0 then
+		z := n + 1
+		{z > n}   		
+   	else
+   		z := n + 2
+   		{z > n}
+
+   	{z > n}
+	sumNum := z
+end

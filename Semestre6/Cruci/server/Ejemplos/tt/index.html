@@ -1,0 +1,874 @@
+<?xml version="1.0"?>
+       <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "xhtml11.dtd">
+       <html xmlns="http://www.w3.org/1999/xhtml"
+             xml:lang="en"><head>
+<meta name="author" content="Plantilal creada por Hot Potatoes de Half-Baked Software, registrado en San Mateo. Modificada por ZealotSoft"></meta>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+<link rel="schema.DC" href="http://purl.org/dc/elements/1.1/" />
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" /> 
+
+<title>
+
+</title>
+
+<link href="estilo/demo.css" rel="stylesheet" type="text/css" />
+<link href="estilo/estilo.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript">
+
+
+function Client(){
+
+	this.min = false; if (document.getElementById){this.min = true;};
+
+	this.ua = navigator.userAgent;
+	this.name = navigator.appName;
+	this.ver = navigator.appVersion;  
+
+	this.gecko = (this.ua.indexOf('Gecko') > 1);
+	if (this.gecko){
+		this.geckoVer = parseInt(this.ua.substring(this.ua.indexOf('Gecko')+6, this.ua.length));
+		if (this.geckoVer < 20020000){this.min = false;}
+	}
+	
+	this.firebird = (this.ua.indexOf('Firebird') > 1);
+	
+
+	this.safari = (this.ua.indexOf('Safari') > 1);
+	if (this.safari){
+		this.gecko = false;
+	}
+
+	this.ie = (this.ua.indexOf('MSIE') > 0);
+	if (this.ie){
+		this.ieVer = parseFloat(this.ua.substring(this.ua.indexOf('MSIE')+5, this.ua.length));
+		if (this.ieVer < 5.5){this.min = false;}
+	}
+	
+	this.opera = (this.ua.indexOf('Opera') > 0);
+	if (this.opera){
+		this.operaVer = parseFloat(this.ua.substring(this.ua.indexOf('Opera')+6, this.ua.length));
+		if (this.operaVer < 7.04){this.min = false;}
+	}
+	if (this.min == false){
+	}
+
+	this.ie5mac = (this.ie&&this.mac&&(this.ieVer<6));
+}
+
+var C = new Client();
+
+function NavBtnOver(Btn){
+	if (Btn.className != 'NavButtonDown'){Btn.className = 'NavButtonUp';}
+}
+
+function NavBtnOut(Btn){
+	Btn.className = 'NavButton';
+}
+
+function NavBtnDown(Btn){
+	Btn.className = 'NavButtonDown';
+}
+
+function FuncBtnOver(Btn){
+	if (Btn.className != 'FuncButtonDown'){Btn.className = 'FuncButtonUp';}
+}
+
+function FuncBtnOut(Btn){
+	Btn.className = 'FuncButton';
+}
+
+function FuncBtnDown(Btn){
+	Btn.className = 'FuncButtonDown';
+}
+
+function FocusAButton(){
+	if (document.getElementById('CheckButton1') != null){
+		document.getElementById('CheckButton1').focus();
+	}
+	else{
+		if (document.getElementById('CheckButton2') != null){
+			document.getElementById('CheckButton2').focus();
+		}
+		else{
+			document.getElementsByTagName('button')[0].focus();
+		}
+	}
+}
+
+var topZ = 1000;
+
+function ShowMessage(Feedback){
+	var Output = Feedback + '<br /><br />';
+	document.getElementById('FeedbackContent').innerHTML = Output;
+	var FDiv = document.getElementById('FeedbackDiv');
+	topZ++;
+	FDiv.style.zIndex = topZ;
+	FDiv.style.top = TopSettingWithScrollOffset(30) + 'px';
+
+	FDiv.style.display = 'block';
+
+	ShowElements(false, 'input');
+	ShowElements(false, 'select');
+	ShowElements(false, 'object');
+	ShowElements(true, 'object', 'FeedbackContent');
+
+	setTimeout("document.getElementById('FeedbackOKButton').focus()", 50);
+}
+
+function ShowElements(Show, TagName, ContainerToReverse){
+// added third argument to allow objects in the feedback box to appear
+//IE bug -- hide all the form elements that will show through the popup
+//FF on Mac bug : doesn't redisplay objects whose visibility is set to visible
+//unless the object's display property is changed
+
+	//get container object (by Id passed in, or use document otherwise)
+	TopNode = document.getElementById(ContainerToReverse);
+	var Els;
+	if (TopNode != null) {
+		Els = TopNode.getElementsByTagName(TagName);
+	} else {
+		Els = document.getElementsByTagName(TagName);
+	}
+
+	for (var i=0; i<Els.length; i++){
+		if (TagName == "object") {
+			//manipulate object elements in all browsers
+			if (Show == true){
+				Els[i].style.visibility = 'visible';
+				//get Mac FireFox to manipulate display, to force screen redraw
+				if (C.mac && C.gecko) {Els[i].style.display = '';}
+			}
+			else{
+				Els[i].style.visibility = 'hidden';
+				if (C.mac && C.gecko) {Els[i].style.display = 'none';}
+			}
+		} 
+		else {
+			// tagName is either input or select (that is, Form Elements)
+			// ie6 has a problem with Form elements, so manipulate those
+			if (C.ie) {
+				if (C.ieVer < 7) {
+					if (Show == true){
+						Els[i].style.visibility = 'visible';
+					}
+					else{
+						Els[i].style.visibility = 'hidden';
+					}
+				}
+			}
+		}
+	}
+}
+
+
+
+function HideFeedback(){
+	document.getElementById('FeedbackDiv').style.display = 'none';
+	ShowElements(true, 'input');
+	ShowElements(true, 'select');
+	ShowElements(true, 'object');
+	if (Finished == true){
+		Finish();
+	}
+}
+
+
+//GENERAL UTILITY FUNCTIONS AND VARIABLES
+
+//PAGE DIMENSION FUNCTIONS
+function PageDim(){
+//Get the page width and height
+	this.W = 600;
+	this.H = 400;
+	this.W = document.getElementsByTagName('body')[0].clientWidth;
+	this.H = document.getElementsByTagName('body')[0].clientHeight;
+}
+
+var pg = null;
+
+function GetPageXY(El) {
+	var XY = {x: 0, y: 0};
+	while(El){
+		XY.x += El.offsetLeft;
+		XY.y += El.offsetTop;
+		El = El.offsetParent;
+	}
+	return XY;
+}
+
+function GetScrollTop(){
+	if (typeof(window.pageYOffset) == 'number'){
+		return window.pageYOffset;
+	}
+	else{
+		if ((document.body)&&(document.body.scrollTop)){
+			return document.body.scrollTop;
+		}
+		else{
+			if ((document.documentElement)&&(document.documentElement.scrollTop)){
+				return document.documentElement.scrollTop;
+			}
+			else{
+				return 0;
+			}
+		}
+	}
+}
+
+function GetViewportHeight(){
+	if (typeof window.innerHeight != 'undefined'){
+		return window.innerHeight;
+	}
+	else{
+		if (((typeof document.documentElement != 'undefined')&&(typeof document.documentElement.clientHeight !=
+     'undefined'))&&(document.documentElement.clientHeight != 0)){
+			return document.documentElement.clientHeight;
+		}
+		else{
+			return document.getElementsByTagName('body')[0].clientHeight;
+		}
+	}
+}
+
+function TopSettingWithScrollOffset(TopPercent){
+	var T = Math.floor(GetViewportHeight() * (TopPercent/100));
+	return GetScrollTop() + T; 
+}
+
+//CODE FOR AVOIDING LOSS OF DATA WHEN BACKSPACE KEY INVOKES history.back()
+var InTextBox = false;
+
+function SuppressBackspace(e){ 
+	if (InTextBox == true){return;}
+	if (C.ie) {
+		thisKey = window.event.keyCode;
+	}
+	else {
+		thisKey = e.keyCode;
+	}
+
+	var Suppress = false;
+
+	if (thisKey == 8) {
+		Suppress = true;
+	}
+
+	if (Suppress == true){
+		if (C.ie){
+			window.event.returnValue = false;	
+			window.event.cancelBubble = true;
+		}
+		else{
+			e.preventDefault();
+		}
+	}
+}
+
+if (C.ie){
+	document.attachEvent('onkeydown',SuppressBackspace);
+	window.attachEvent('onkeydown',SuppressBackspace);
+}
+else{
+	if (window.addEventListener){
+		window.addEventListener('keypress',SuppressBackspace,false);
+	}
+}
+
+function ReduceItems(InArray, ReduceToSize){
+	var ItemToDump=0;
+	var j=0;
+	while (InArray.length > ReduceToSize){
+		ItemToDump = Math.floor(InArray.length*Math.random());
+		InArray.splice(ItemToDump, 1);
+	}
+}
+
+function Shuffle(InArray){
+	var Num;
+	var Temp = new Array();
+	var Len = InArray.length;
+
+	var j = Len;
+
+	for (var i=0; i<Len; i++){
+		Temp[i] = InArray[i];
+	}
+
+	for (i=0; i<Len; i++){
+		Num = Math.floor(j  *  Math.random());
+		InArray[i] = Temp[Num];
+
+		for (var k=Num; k < (j-1); k++) {
+			Temp[k] = Temp[k+1];
+		}
+		j--;
+	}
+	return InArray;
+}
+
+function WriteToInstructions(Feedback) {
+	document.getElementById('InstructionsDiv').innerHTML = Feedback;
+
+}
+
+
+
+
+function EscapeDoubleQuotes(InString){
+	return InString.replace(/"/g, '&quot;')
+}
+
+function TrimString(InString){
+        var x = 0;
+
+        if (InString.length != 0) {
+                while ((InString.charAt(InString.length - 1) == '\u0020') || (InString.charAt(InString.length - 1) == '\u000A') || (InString.charAt(InString.length - 1) == '\u000D')){
+                        InString = InString.substring(0, InString.length - 1)
+                }
+
+                while ((InString.charAt(0) == '\u0020') || (InString.charAt(0) == '\u000A') || (InString.charAt(0) == '\u000D')){
+                        InString = InString.substring(1, InString.length)
+                }
+
+                while (InString.indexOf('  ') != -1) {
+                        x = InString.indexOf('  ')
+                        InString = InString.substring(0, x) + InString.substring(x+1, InString.length)
+                 }
+
+                return InString;
+        }
+
+        else {
+                return '';
+        }
+}
+
+function FindLongest(InArray){
+	if (InArray.length < 1){return -1;}
+
+	var Longest = 0;
+	for (var i=1; i<InArray.length; i++){
+		if (InArray[i].length > InArray[Longest].length){
+			Longest = i;
+		}
+	}
+	return Longest;
+}
+
+//UNICODE CHARACTER FUNCTIONS
+function IsCombiningDiacritic(CharNum){
+	var Result = (((CharNum >= 0x0300)&&(CharNum <= 0x370))||((CharNum >= 0x20d0)&&(CharNum <= 0x20ff)));
+	Result = Result || (((CharNum >= 0x3099)&&(CharNum <= 0x309a))||((CharNum >= 0xfe20)&&(CharNum <= 0xfe23)));
+	return Result;
+}
+
+function IsCJK(CharNum){
+	return ((CharNum >= 0x3000)&&(CharNum < 0xd800));
+}
+
+//SETUP FUNCTIONS
+//BROWSER WILL REFILL TEXT BOXES FROM CACHE IF NOT PREVENTED
+function ClearTextBoxes(){
+	var NList = document.getElementsByTagName('input');
+	for (var i=0; i<NList.length; i++){
+		if ((NList[i].id.indexOf('Guess') > -1)||(NList[i].id.indexOf('Gap') > -1)){
+			NList[i].value = '';
+		}
+		if (NList[i].id.indexOf('Chk') > -1){
+			NList[i].checked = '';
+		}
+	}
+}
+
+//EXTENSION TO ARRAY OBJECT
+function Array_IndexOf(Input){
+	var Result = -1;
+	for (var i=0; i<this.length; i++){
+		if (this[i] == Input){
+			Result = i;
+		}
+	}
+	return Result;
+}
+Array.prototype.indexOf = Array_IndexOf;
+
+//IE HAS RENDERING BUG WITH BOTTOM NAVBAR
+function RemoveBottomNavBarForIE(){
+	if ((C.ie)&&(document.getElementById('Reading') != null)){
+		if (document.getElementById('BottomNavBar') != null){
+			document.getElementById('TheBody').removeChild(document.getElementById('BottomNavBar'));
+		}
+	}
+}
+
+
+
+
+//HOTPOTNET-RELATED CODE
+
+var HPNStartTime = (new Date()).getTime();
+var SubmissionTimeout = 30000;
+var Detail = ''; //Global that is used to submit tracking data
+
+function Finish(){
+//If there's a form, fill it out and submit it
+	if (document.store != null){
+		Frm = document.store;
+		Frm.starttime.value = HPNStartTime;
+		Frm.endtime.value = (new Date()).getTime();
+		Frm.mark.value = Score;
+		Frm.detail.value = Detail;
+		Frm.submit();
+	}
+}
+
+
+
+
+//JCROSS CORE JAVASCRIPT CODE
+
+var InGap = false;
+var CurrentBox = null;
+var Feedback = '';
+var AcrossCaption = '';
+var DownCaption = '';
+var Correct = 'Muy Bien';
+var Incorrect = 'Mal'; 
+var GiveHint = '*Next correct letter is: ';
+var YourScoreIs = 'TU PUNTAJE ES';
+var BuiltGrid = '';
+var BuiltExercise = '';
+var Penalties = 0;
+var Score = 0;
+var InTextBox = false;
+var Locked = false;
+var TimeOver = false;
+var CaseSensitive = false; 
+
+var InputStuff = '<form method="post" action="" onsubmit="return false;"><span class="ClueNum">[strClueNum]: </span>';
+InputStuff += '[strClue] <input onfocus="CurrentBox=this;InTextBox=true;" onblur="InTextBox=false;" id="[strBoxId]" type="edit" size="[strEditSize]" maxlength="[strMaxLength]"></input>';
+InputStuff += '<button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" onclick="EnterGuess([strParams])">Enter</button>';
+InputStuff += '<button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" onclick="ShowHint([strParams])">Pista</button>';
+InputStuff += '</form>';
+
+var CurrBoxElement = null;
+var Finished = false;
+
+function StartUp(){
+	RemoveBottomNavBarForIE();
+//Show a keypad if there is one	(added bugfix for 6.0.4.12)
+	if (document.getElementById('CharacterKeypad') != null){
+		document.getElementById('CharacterKeypad').style.display = 'block';
+	}
+
+	
+	AcrossCaption = document.getElementById('CluesAcrossLabel').innerHTML;
+	DownCaption = document.getElementById('CluesDownLabel').innerHTML;
+
+
+
+
+
+
+}
+
+function GetAnswerLength(Across,x,y){
+	Result = 0;
+	if (Across == false){
+		while ((x<L.length)&&(L[x][y].length > 0)){
+			Result += L[x][y].length;
+			x++;
+		} 
+		return Result;
+	}
+	else{
+		while ((y<L[x].length)&&(L[x][y].length > 0)){
+			Result += L[x][y].length;
+			y++;
+		} 	
+		return Result;
+	}
+}
+
+function GetEditSize(Across,x,y){
+	var Len = GetAnswerLength(Across,x,y);
+	if (IsCJK(L[x][y].charCodeAt(0))){
+		Len *= 2;
+	}
+	return Len;
+}
+
+function ShowClue(ClueNum,x,y){
+	var Result = '';
+	var Temp;
+	var strParams;
+	var Clue = document.getElementById('Clue_A_' + ClueNum);
+	if (Clue != null){
+		Temp = InputStuff.replace(/\[ClueNum\]/g, ClueNum);
+		Temp = Temp.replace(/\[strClueNum\]/g, AcrossCaption + ' ' + ClueNum);
+		strParams = 'true,' + ClueNum + ',' + x + ',' + y + ',\'[strBoxId]\'';
+		Temp = Temp.replace(/\[strParams\]/g, strParams);
+		Temp = Temp.replace(/\[strBoxId\]/g, 'GA_' + ClueNum + '_' + x + '_' + y);
+		Temp = Temp.replace(/\[strEditSize\]/g, GetEditSize(true,x,y));
+		Temp = Temp.replace(/\[strMaxLength\]/g, GetAnswerLength(true,x,y));
+		Temp = Temp.replace(/\[strClue\]/g, Clue.innerHTML, Temp);
+		Result += Temp;
+	}
+	Clue = document.getElementById('Clue_D_' + ClueNum);
+	if (Clue != null){
+		Temp = InputStuff.replace(/\[ClueNum\]/g, ClueNum);
+		Temp = Temp.replace(/\[strClueNum\]/g, DownCaption + ' ' + ClueNum);
+		strParams = 'false,' + ClueNum + ',' + x + ',' + y + ',\'[strBoxId]\'';
+		Temp = Temp.replace(/\[strParams\]/g, strParams);
+		Temp = Temp.replace(/\[strBoxId\]/g, 'GD_' + ClueNum + '_' + x + '_' + y);
+		Temp = Temp.replace(/\[strEditSize\]/g, GetAnswerLength(false,x,y));
+		Temp = Temp.replace(/\[strClue\]/g, Clue.innerHTML, Temp);
+		Result += Temp;
+	}
+	document.getElementById('ClueEntry').innerHTML = Result;
+}
+
+function EnterGuess(Across,ClueNum,x,y,BoxId){
+	if (document.getElementById(BoxId) != null){
+		var Guess = document.getElementById(BoxId).value;
+		var AnsLength = GetAnswerLength(Across,x,y);
+		EnterAnswer(Guess,Across,AnsLength,x,y);
+	}
+}
+
+function SplitStringToPerceivedChars(InString, PC){
+	var Temp = InString.charAt(0);
+	if (InString.length > 1){
+		for (var i=1; i<InString.length; i++){
+			if (IsCombiningDiacritic(InString.charCodeAt(i)) == true){
+				Temp += InString.charAt(i);
+			}
+			else{
+				PC.push(Temp);
+				Temp = InString.charAt(i);
+			}
+		}
+	}
+	PC.push(Temp);
+}
+
+function EnterAnswer(Guess,Across,AnsLength,x,y){
+	var PC = new Array();
+	SplitStringToPerceivedChars(Guess, PC);
+	
+	var i=x;
+	var j=y;
+	var Letter = 0;
+	while (Letter < AnsLength){
+		if (Letter < PC.length){
+			G[i][j] = PC[Letter];
+			if (document.getElementById('L_' + i + '_' + j) != null){
+				document.getElementById('L_' + i + '_' + j).innerHTML = PC[Letter];
+			}
+		}
+		if (Across == true){
+			j++;
+		}
+		else{
+			i++;
+		}
+		Letter++;
+	}
+}
+
+function SetGridSquareValue(x,y,Val){
+	var GridId = 'L_' + x + '_' + y;
+	if (document.getElementById(GridId) != null){
+		document.getElementById(GridId).innerHTML = Val;
+	}
+}
+
+function ShowHint(Across,ClueNum,x,y,BoxId){
+	var i=x;
+	var j=y;
+	var LetterFromGuess = '';
+	var LetterFromKey = '';
+	var OutString = '';
+	if (Across==true){
+		while (j<L[i].length){
+			if (L[i][j] != ''){
+				OutString += L[i][j];
+				if (CaseSensitive == true){
+					LetterFromKey = L[i][j];
+					LetterFromGuess = G[i][j];
+				}
+				else {
+					LetterFromKey = L[i][j].toUpperCase();
+					LetterFromGuess = G[i][j].toUpperCase();
+				}
+				if (LetterFromGuess != LetterFromKey){
+//				if (G[i][j] != L[i][j]){
+					G[i][j] = L[i][j];
+					Penalties++;
+					break;
+				}
+			}
+			else{
+				break;
+			}
+		j++;
+		}
+	}
+	else{
+		while (i<L.length){
+			if (L[i][j] != ''){
+				OutString += L[i][j];
+				if (CaseSensitive == true){
+					LetterFromKey = L[i][j];
+					LetterFromGuess = G[i][j];
+				}
+				else {
+					LetterFromKey = L[i][j].toUpperCase();
+					LetterFromGuess = G[i][j].toUpperCase();
+				}
+				if (LetterFromGuess != LetterFromKey){
+//				if (G[i][j] != L[i][j]){
+					G[i][j] = L[i][j];
+					Penalties++;
+					break;
+				}
+			}
+			else{
+				break;
+			}
+		i++;
+		}
+	}
+	if (document.getElementById(BoxId) != null){
+		document.getElementById(BoxId).value = OutString;
+	}
+}
+
+L = new Array();
+L[0] = new Array('H','O','L','A');
+L[1] = new Array('','','A','');
+L[2] = new Array('','','L','');
+L[3] = new Array('','','O','');
+
+CL = new Array();
+CL[0] = new Array('1','0','2','0');
+CL[1] = new Array('0','0','0','0');
+CL[2] = new Array('0','0','0','0');
+CL[3] = new Array('0','0','0','0');
+
+G = new Array();
+G[0] = new Array('','','','');
+G[1] = new Array('','','','');
+G[2] = new Array('','','','');
+G[3] = new Array('','','','');
+
+function CheckAnswers(){
+	if (Locked == true){return;}
+
+	var AllCorrect = true;
+	var TotLetters = 0;
+	var CorrectLetters = 0;
+	var LetterFromKey = ''; 
+	var LetterFromGuess = '';
+	
+//Check each letter
+	for (var i=0; i<L.length; i++){
+		for (var j=0; j<L[i].length; j++){
+			if (L[i][j] != ''){
+				TotLetters++;
+				if (CaseSensitive == true) {
+					LetterFromKey = L[i][j];
+					LetterFromGuess = G[i][j];
+				}
+				else {
+					LetterFromKey = L[i][j].toUpperCase();
+					LetterFromGuess = G[i][j].toUpperCase();
+				}
+				if (LetterFromGuess != LetterFromKey){ 
+					G[i][j] = '';
+//Blank that square in the grid
+					SetGridSquareValue(i,j,'');
+					AllCorrect = false;
+				}
+				else{
+					CorrectLetters++;
+				}
+			}
+		}
+	}
+
+	Score = Math.floor(((CorrectLetters-Penalties) * 100)/TotLetters);
+	if (Score < 0){Score = 0;}
+
+//Compile the output
+	var Output = '';
+
+	if (AllCorrect == true){
+		Output = Correct + '<br />';
+	}
+
+	Output += YourScoreIs + ' ' + Score + '%.<br />';
+	if (AllCorrect == false){
+		window.alert("CRUCIGRAMA CON ERRORES");
+	}
+
+	//ShowMessage(Output);
+	//WriteToInstructions(Output);
+
+	
+	if ((AllCorrect == true)){		
+		window.alert("FELICIDADES TERMINASTE!!!!");
+		//TimeOver = true;
+		//Locked = true;
+		//Finished = true;
+		//setTimeout('Finish()', SubmissionTimeout);
+	}
+
+}
+
+function Finish(){
+//If there's a form, fill it out and submit it
+	if (document.store != null){
+		Frm = document.store;
+		Frm.starttime.value = HPNStartTime;
+		Frm.endtime.value = (new Date()).getTime();
+		Frm.mark.value = Score;
+		Frm.submit();
+	}
+}
+
+function TypeChars(Chars){
+	if (CurrentBox != null){
+		CurrentBox.value += Chars;
+	}
+}
+
+
+
+
+
+
+
+//-->
+
+//]]>
+
+</script>
+
+
+</head>
+
+<body onload="StartUp()" id="TheBody">
+
+<div class="Titles">
+	<h2 class="ExerciseTitle">CRUCIGRAMA CON JAVASCRIPT</h2>
+
+
+
+</div>
+
+<div id="InstructionsDiv" class="StdDiv">
+	<div id="Instructions">Para ver las definiciones de las palabras, haz click en el numero dos de la derecha. Escribe la palabra al frente de la definicion y pulsa en el boton insertar, para colocar la palabra a la derecha.
+Si tienes dudas, haz click en el boton "Ver Pista". Pero cuidado, cada vez que pidas una pista, disminuiras tu puntuacion.
+Cuando termines, haz click en el boton "Verificar resultados".</div>
+</div>
+
+
+
+<div id="MainDiv" class="StdDiv">
+
+
+
+<div id="ClueEntry">
+
+</div>
+
+<!-- This top button is hidden; uncomment it to reveal it. -->
+<!--
+<button id="CheckButton1" class="FuncButton" onmouseover="FuncBtnOver(this)" onfocus="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onblur="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" onclick="CheckAnswers()">&nbsp;Verificar&nbsp;</button>
+
+ -->
+ 
+<table class="CrosswordGrid">
+<tbody>
+<tr id="Row_0">
+	<td class="NumLetterCell">
+		<a href="javascript:void(0);" class="GridNum" onclick="ShowClue(1,0,0)">1</a>
+		<span class="NumLetterCellText" id="L_0_0" onclick="ShowClue(1,0,0)">&nbsp;&nbsp;&nbsp;</span>
+	</td>
+	<td class="LetterOnlyCell"><span id="L_0_1">&nbsp;</span></td>
+	<td class="NumLetterCell">
+		<a href="javascript:void(0);" class="GridNum" onclick="ShowClue(2,0,2)">2</a>
+		<span class="NumLetterCellText" id="L_0_2" onclick="ShowClue(2,0,2)">&nbsp;&nbsp;&nbsp;</span>
+	</td>
+	<td class="LetterOnlyCell"><span id="L_0_3">&nbsp;</span></td>
+<tr id="Row_1">
+	<td class="BlankCell">&nbsp;</td>
+	<td class="BlankCell">&nbsp;</td>
+	<td class="LetterOnlyCell"><span id="L_1_2">&nbsp;</span></td>
+	<td class="BlankCell">&nbsp;</td>
+<tr id="Row_2">
+	<td class="BlankCell">&nbsp;</td>
+	<td class="BlankCell">&nbsp;</td>
+	<td class="LetterOnlyCell"><span id="L_2_2">&nbsp;</span></td>
+	<td class="BlankCell">&nbsp;</td>
+<tr id="Row_3">
+	<td class="BlankCell">&nbsp;</td>
+	<td class="BlankCell">&nbsp;</td>
+	<td class="LetterOnlyCell"><span id="L_3_2">&nbsp;</span></td>
+	<td class="BlankCell">&nbsp;</td>
+</tbody>
+</table>
+
+<button id="CheckButton2" class="FuncButton" onmouseover="FuncBtnOver(this)" onfocus="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onblur="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" onclick="CheckAnswers()">&nbsp;Verificar&nbsp;</button><br>
+<img src="logo.png" class="logo" width="120" style="margin: 10px 0;"><h3 style="font-size: 20px;color:rgba(79, 79, 79,1);">Tutoriales Markapp</h3>
+
+<table id="Clues" style="display: none;"><tbody>
+<tr>
+<td>
+
+<table id="Clues" style="display: none;"><tbody>
+<tr>
+<td>
+
+<table class="ClueList">
+<tbody id="CluesAcross">
+<tr><td colspan="2"><h3 class="ExerciseSubtitle" id="CluesAcrossLabel">Atraves</h3></td></tr>
+<tr><td class="ClueNum">1</td><td id="Clue_A_1" class="clue">HOLA</td></tr>
+</tbody>
+</table>
+</td>
+<td>
+
+<table class="ClueList">
+<tbody id="CluesDown">
+<tr><td colspan="2"><h3 class="ExerciseSubtitle" id="CluesDownLabel">Abajo</h3></td></tr>
+<tr><td class="ClueNum">2</td><td id="Clue_D_2" class="clue">LALO</td></tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+
+
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

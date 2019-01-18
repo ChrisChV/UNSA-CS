@@ -1,0 +1,4 @@
+<map id="G" name="G">
+<area shape="rect" id="node3" href="$a00025.html" title="Iterator for rows (tuples) in a result. Use as result::const_iterator." alt="" coords="31,83,207,112"/>
+<area shape="rect" id="node5" href="$a00026.html" title="Reverse iterator for result. Use as result::const_reverse_iterator." alt="" coords="5,160,232,189"/>
+</map>

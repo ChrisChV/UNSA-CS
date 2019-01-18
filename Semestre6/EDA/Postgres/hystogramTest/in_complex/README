@@ -1,0 +1,7 @@
+parameters:
+
+./in_complex <path_images> <file_name_images> <database> <user> <password> <table_insert>
+
+example:
+
+./in_complex ~/Desktop/img_test/ img_test/imagens.dat mtree julio null test
