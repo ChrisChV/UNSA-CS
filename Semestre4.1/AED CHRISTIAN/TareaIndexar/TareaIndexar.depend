@@ -1,0 +1,42 @@
+# depslib dependency file v1.0
+1441841336 source:c:\users\christofer\documents\semestre4\tareaindexar\main.cpp
+	<iostream>
+	<Table.h>
+
+1441837396 source:c:\users\christofer\documents\semestre4\tareaindexar\src\record.cpp
+
+1441842403 c:\users\christofer\documents\semestre4\tareaindexar\include\table.h
+	<list>
+	<fstream>
+	<Record.h>
+
+1441842263 c:\users\christofer\documents\semestre4\tareaindexar\include\record.h
+	"iostream"
+
+1441840313 source:c:\users\christofer\documents\semestre4\tareaindexar\src\table.cpp
+
+1442198986 source:c:\users\christofer\documents\semestre4\aed christian\tareaindexar\main.cpp
+	<iostream>
+	<Table.h>
+	"list"
+	"sad.h"
+
+1442201756 c:\users\christofer\documents\semestre4\aed christian\tareaindexar\include\table.h
+	<list>
+	<fstream>
+	<Record.h>
+	<algorithm>
+	"sad.h"
+	<cstring>
+
+1442032370 c:\users\christofer\documents\semestre4\aed christian\tareaindexar\include\record.h
+	"iostream"
+	"sad.h"
+
+1441837396 source:c:\users\christofer\documents\semestre4\aed christian\tareaindexar\src\record.cpp
+
+1441840313 source:c:\users\christofer\documents\semestre4\aed christian\tareaindexar\src\table.cpp
+
+1442197282 c:\users\christofer\documents\semestre4\aed christian\tareaindexar\include\sad.h
+	"iostream"
+
