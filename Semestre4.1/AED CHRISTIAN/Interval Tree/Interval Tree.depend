@@ -1,0 +1,14 @@
+# depslib dependency file v1.0
+1444587865 source:/home/chris/Documentos/Semestre/Semestre4/AED CHRISTIAN/Interval Tree/src/IntervalTree.cpp
+
+1445741077 source:/home/chris/Documentos/Semestre/Semestre4/AED CHRISTIAN/Interval Tree/main.cpp
+	<iostream>
+	"IntervalTree.h"
+	"stdlib.h"
+	"time.h"
+
+1445741127 /home/chris/Documentos/Semestre/Semestre4/AED CHRISTIAN/Interval Tree/include/IntervalTree.h
+	"fstream"
+	"iostream"
+	"list"
+

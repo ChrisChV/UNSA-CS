@@ -1,0 +1,19 @@
+# depslib dependency file v1.0
+1441686287 source:c:\users\christofer\documents\semestre4\circularaed\src\circular.cpp
+
+1441749109 source:c:\users\christofer\documents\semestre4\circularaed\main.cpp
+	<iostream>
+	"Circular.h"
+
+1441758292 c:\users\christofer\documents\semestre4\circularaed\include\circular.h
+	"iostream"
+
+1443123719 source:/home/chris/Documentos/Semestre/Semestre4/AED CHRISTIAN/CircularAED/main.cpp
+	<iostream>
+	"Circular.h"
+
+1443123719 /home/chris/Documentos/Semestre/Semestre4/AED CHRISTIAN/CircularAED/include/Circular.h
+	"iostream"
+
+1443123719 source:/home/chris/Documentos/Semestre/Semestre4/AED CHRISTIAN/CircularAED/src/Circular.cpp
+

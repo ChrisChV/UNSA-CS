@@ -1,0 +1,221 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{color}
+\usepackage{parskip}
+\usepackage{graphicx}
+\usepackage{multirow}
+\usepackage{listings}
+\usepackage{vmargin}
+\graphicspath{ {imagenes/} }
+\definecolor{mygreen}{rgb}{0,0.6,0}
+\definecolor{lbcolor}{rgb}{0.9,0.9,0.9}
+\usepackage{epstopdf}
+
+
+
+\setpapersize{A4}
+\setmargins{2.5cm}       % margen izquierdo
+{1.5cm}                        % margen superior
+{16.5cm}                      % anchura del texto
+{23.42cm}                    % altura del texto
+{10pt}                           % altura de los encabezados
+{1cm}                           % espacio entre el texto y los encabezados
+{0pt}                             % altura del pie de página
+{2cm}     
+
+\lstset{
+backgroundcolor=\color{lbcolor},
+    tabsize=4,    
+%   rulecolor=,
+    language=[GNU]C++,
+        basicstyle=\tiny,
+        aboveskip={1.5\baselineskip},
+        columns=fixed,
+        showstringspaces=false,
+        extendedchars=false,
+        breaklines=true,
+        prebreak = \raisebox{0ex}[0ex][0ex]{\ensuremath{\hookleftarrow}},
+        frame=single,
+        showtabs=false,
+        showspaces=false,
+        showstringspaces=false,
+        identifierstyle=\ttfamily,
+        keywordstyle=\color[rgb]{0,0,1},
+        commentstyle=\color[rgb]{0.026,0.112,0.095},
+        stringstyle=\color{red},
+        numberstyle=\color[rgb]{0.205, 0.142, 0.73},
+%        \lstdefinestyle{C++}{language=C++,style=numbers}’.
+}
+
+\begin{document}
+
+\begin{Large}
+ NOMBRE:CHRISTOFER FABIÁN CHÁVEZ CARAZAS
+ CURSO MATEMÁTICA APLICADA A LA COMPUTACIÓN
+\end{Large}
+
+\section{Problema}
+
+Let z denote the vector whose entries are all ones (Using $MATLAB: z =
+ones (n, 1)$ ), and let $b = H_{n} z$, where $H_{n}$ is again the $nxn$ Hilbert matrix. If
+we now solve the system $H_{n}x = b$ for $x$, we should get $z$ as the solution in theory.
+Using MATLAB, try solving $H_{n}x=b$ for $n = 4, 8, 12$, and $16$,
+and see what you get. In each case compute the condition number $K_{2}(H_{n})$ and the
+norm of the difference: $|| \hat{x}-z ||_{2} $, where $x$ is the computed solution. Calculate the
+residual $\hat{r} = b - H_{n}\hat{x}, too$.
+
+\section{Resolución}
+
+\begin{itemize}
+ \item Comando utilizado para hallar las $\hat{x}$ : \textbf{inv(hilb(n))*(hilb(n)*ones(n,1)}
+ \item Comando utilizado para hallar el numbero de condición de las matrices de Hilbert: \textbf{cond(hilb(n),2)}
+\end{itemize}
+
+\twocolumn
+
+\subsection{n = 4}
+
+$$ \hat{x} = \left[ \begin{array}{c}
+		1 \\
+		1 \\
+		1 \\
+		1
+              \end{array}
+       \right]
+$$
+
+$$ K_{2}(H_{4}) = 15513.7387389292$$
+
+$$ || \hat{x}-z ||_{2} = Inf$$ 
+
+$$ \hat{r} = \left[ \begin{array}{c}
+		0 \\
+		0 \\
+		0 \\
+		0
+              \end{array}
+       \right]
+$$
+
+\subsection{n = 8}
+
+$$ \hat{x} = \left[ \begin{array}{c}
+   0.999999999781721 \\  
+   1.000000012107193 \\
+   0.999999865889549 \\
+   1.000000953674316 \\
+   0.999997973442078 \\
+   1.000003695487976 \\
+   0.999997735023499 \\
+   1.000000745058060
+              \end{array}
+       \right]
+$$
+
+$$ K_{2}(H_{8}) = 15257575538.0600$$ 
+
+$$ || \hat{x}-z ||_{2} = 1 $$
+
+$$ \hat{r} = \left[ \begin{array}{c}
+  -1.79717677628588e-07 \\
+  -1.50963208822574e-07 \\
+  -1.30347141080733e-07 \\
+  -1.14779250770525e-07 \\
+  -1.02581775740518e-07 \\
+  -9.27550027896018e-08 \\
+  -8.46627511430498e-08 \\
+  -7.78795593570081e-08 
+              \end{array}
+       \right]
+$$
+
+\subsection{n = 12}
+
+$$ \hat{x} = \left[ \begin{array}{c}
+    1.000002890825272 \\
+    0.999629974365234 \\
+    1.011596679687500 \\
+    0.837890625000000 \\
+    2.218750000000000 \\
+   -4.406250000000000 \\
+   16.250000000000000 \\
+  -27.250000000000000 \\
+   34.000000000000000 \\
+  -24.000000000000000 \\
+   11.312500000000000 \\
+   -0.828125000000000
+              \end{array}
+       \right]
+$$
+
+$$ K_{2}(H_{12}) = 17514731907091464$$ 
+
+$$ || \hat{x}-z ||_{2} = 1 $$
+
+$$ \hat{r} = \left[ \begin{array}{c}
+   0.0949912272748490 \\
+   0.0854571917313338 \\
+   0.0776645584348064 \\
+   0.0711762774616187 \\
+   0.0656900195113981 \\
+   0.0609901335181495 \\
+   0.0569187092733036 \\
+   0.0533574781002125 \\
+   0.0502161103610116 \\
+   0.0474244244605579 \\
+   0.0449270644445785 \\
+   0.0426797800631873 
+              \end{array}
+       \right]
+$$
+
+\subsection{n = 16}
+
+$$ \hat{x} = \left[ \begin{array}{c}
+    0.999999046325684 \\
+    1.000366210937500 \\
+    0.992187500000000 \\
+    1.062500000000000 \\
+    0.000000000000000 \\
+    4.000000000000000 \\
+  -32.000000000000000 \\
+  -16.000000000000000 \\
+   24.000000000000000 \\
+   -8.000000000000000 \\
+  -16.000000000000000 \\
+  -10.500000000000000 \\
+  -48.000000000000000 \\
+   96.000000000000000 \\
+  -16.000000000000000 \\
+   12.000000000000000
+              \end{array}
+       \right]
+$$
+
+$$ K_{2}(H_{16}) = 786546777843164544$$
+
+$$ || \hat{x}-z ||_{2} = 1 $$
+
+$$ \hat{r} = \left[ \begin{array}{c}
+   4.80366486924009 \\
+   4.14288737110991 \\
+   3.63184575178155 \\
+   3.22577690875621 \\
+   2.89604221724863 \\
+   2.62347113990895 \\
+   2.39475549258432 \\
+   2.20037540036119 \\
+   2.03334702368229 \\
+   1.88843548261652 \\
+   1.76164311930311 \\
+   1.64986698005578 \\
+   1.55066371500547 \\
+   1.46208460707313 \\
+   1.38255752924964 \\
+   1.31080099826630
+              \end{array}
+       \right]
+$$
+
+\end{document}

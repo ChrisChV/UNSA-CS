@@ -1,0 +1,7 @@
+<RCC>
+    <qresource prefix="/">
+        <file>prerequisitos.dat</file>
+        <file>cursos.csv</file>
+        <file>cursos.dat</file>
+    </qresource>
+</RCC>

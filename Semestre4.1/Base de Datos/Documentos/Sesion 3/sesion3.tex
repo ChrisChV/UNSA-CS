@@ -1,0 +1,138 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{color}
+\usepackage{parskip}
+\usepackage{graphicx}
+\usepackage{multirow}
+\usepackage{listings}
+\definecolor{mygreen}{rgb}{0,0.6,0}
+\definecolor{lbcolor}{rgb}{0.9,0.9,0.9}
+\DeclareGraphicsExtensions{.pdf,.png,.eps}
+\usepackage{epstopdf}
+
+\lstset{
+backgroundcolor=\color{lbcolor},
+    tabsize=4,    
+%   rulecolor=,
+    language=SQL,
+        basicstyle=\scriptsize,
+        aboveskip={1.5\baselineskip},
+        columns=fixed,
+        showstringspaces=false,
+        extendedchars=false,
+        breaklines=true,
+        prebreak = \raisebox{0ex}[0ex][0ex]{\ensuremath{\hookleftarrow}},
+        frame=single,
+        numbers=left,
+        showtabs=false,
+        showspaces=false,
+        showstringspaces=false,
+        identifierstyle=\ttfamily,
+        keywordstyle=\color[rgb]{0,0,1},
+        commentstyle=\color[rgb]{0.026,0.112,0.095},
+        stringstyle=\color{red},
+        numberstyle=\color[rgb]{0.205, 0.142, 0.73},
+%        \lstdefinestyle{C++}{language=C++,style=numbers}’.
+}
+
+\begin{document}
+
+\begin{Large}
+\textbf{Hecho por:} Christofer Fabián Chávez Carazas
+\end{Large}
+
+\section{Creando base de datos con sus respectivas tablas}
+
+\begin{lstlisting}
+create database sesion3;
+use sesion3;
+
+create table Clientes(
+NCliente int not null,
+Nombre varchar(100) not null,
+Dir varchar(200),
+Telefono char(8),
+Poblacion varchar(100) not null);
+
+alter table Clientes
+add constraint pk_Clientes
+primary key(NCliente);
+
+create table Producto(
+CodProducto int not null,
+Descripcion varchar(200) not null,
+Precio int not null);
+
+alter table Producto
+add constraint pk_Producto
+primary key(CodProducto);
+
+create table Venta(
+IdVenta int not null,
+CodProducto int not null,
+NCliente int not null,
+Cantidad int not null);
+
+alter table Venta
+add constraint pk_Venta
+primary key(IdVenta);
+
+alter table Venta
+add constraint fk_VentaProducto
+foreign key(CodProducto)
+references Producto(CodProducto);
+
+alter table Venta
+add constraint fk_VentaCliente
+foreign key(NCliente)
+references Clientes(NCliente);
+
+\end{lstlisting}
+
+\section{Insertando filas}
+
+\begin{lstlisting}
+use sesion3;
+
+insert into Clientes values(1,'Chris','Huascar','4534354','Arequipa');
+insert into Clientes values(2,'Carlos','Dolores','1233423','Lima');
+insert into Clientes values(3, 'Julitus', 'Av Maria', '3124324', 'Arequipa');
+insert into Clientes values(4, 'Juan', 'C Tacna', '21321321', 'Lima');
+insert into Clientes values(5, 'Nicoll', 'Bustamante', '213321', 'Arequipa');
+
+insert into Producto values(1,'Papel', 100);
+insert into Producto values(2, 'Ropa', 200);
+insert into Producto values(3, 'Comida', 300);
+insert into Producto values(4, 'TV', 500);
+insert into Producto values(5, 'Compu', 1000);
+
+insert into Venta values(1,5,1,3);
+insert into Venta values(2,1,5,100);
+insert into Venta values(3,3,2,300);
+insert into Venta values(4,3,5,500);
+insert into Venta values(5,4,3,50);
+
+insert into Venta values(18,1,1,30);
+\end{lstlisting}
+
+\section{Consultas}
+
+\begin{enumerate}
+
+\item Nombre de los Clientes que viven en Arequipa.
+
+\begin{lstlisting}
+select Nombre from clientes where Poblacion like 'Arequipa';
+\end{lstlisting}
+
+\item Código de Producto y Descripción de los productos cuyo código y descripción coincidan.
+
+\begin{lstlisting}
+select CodProducto, Descripcion from Producto where CodProducto = Descripcion;
+\end{lstlisting}
+
+
+\end{enumerate}
+
+\end{document}

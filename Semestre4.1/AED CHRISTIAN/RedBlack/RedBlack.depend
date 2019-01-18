@@ -1,0 +1,14 @@
+# depslib dependency file v1.0
+1446506242 source:/home/chris/Documentos/Semestre/Semestre4/AED CHRISTIAN/RedBlack/main.cpp
+	<iostream>
+	"RedBlack.h"
+	"stdlib.h"
+	"time.h"
+
+1445740062 /home/chris/Documentos/Semestre/Semestre4/AED CHRISTIAN/RedBlack/include/RedBlack.h
+	"iostream"
+	"fstream"
+	"list"
+
+1444495539 source:/home/chris/Documentos/Semestre/Semestre4/AED CHRISTIAN/RedBlack/src/RedBlack.cpp
+

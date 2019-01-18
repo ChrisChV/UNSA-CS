@@ -1,0 +1,12 @@
+<% @title = "Close your account" %>
+
+<h3>Closing your account</h3>
+
+<p>At Bitbar, we value all our users and we would be really sad to see you leave. However, if for some reason you need to close your account, please confirm that you are <strong><%= @logged_in_user.username %></strong> and click on the button below.</p>
+
+<p>Please note that once deleted, we will not be able to restore your account.</p>
+
+<form action="close" method="post">  
+  <%= display_error(@error) %>
+  <input class="pure-button button-primary" type="submit" value="I confirm that I want to close my account" />
+</form>

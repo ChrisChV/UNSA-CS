@@ -1,0 +1,36 @@
+<map id="G" name="G">
+<area shape="rect" id="node1" href="$a00074.html" title="Mixin base class to identify libpqxx&#45;specific exception types." alt="" coords="5,165,155,195"/>
+<area shape="rect" id="node3" href="$a00004.html" title="Invalid argument passed to libpqxx, similar to std::invalid_argument." alt="" coords="208,32,352,61"/>
+<area shape="rect" id="node5" href="$a00029.html" title="pqxx::conversion_error" alt="" coords="203,85,357,115"/>
+<area shape="rect" id="node7" href="$a00038.html" title="Run&#45;time failure encountered by libpqxx, similar to std::runtime_error." alt="" coords="233,139,327,168"/>
+<area shape="rect" id="node63" href="$a00049.html" title="Internal error in libpqxx library." alt="" coords="213,192,347,221"/>
+<area shape="rect" id="node65" href="$a00077.html" title="Something is out of range, similar to std::out_of_range." alt="" coords="219,245,341,275"/>
+<area shape="rect" id="node67" href="$a00113.html" title="Error in usage of libpqxx library, similar to std::logic_error." alt="" coords="217,299,343,328"/>
+<area shape="rect" id="node9" href="$a00014.html" title="Exception class for lost or failed backend connection." alt="" coords="407,45,572,75"/>
+<area shape="rect" id="node13" href="$a00045.html" title="&quot;Help, I don&#39;t know whether transaction was committed successfully!&quot;" alt="" coords="420,139,559,168"/>
+<area shape="rect" id="node15" href="$a00086.html" title="Exception class for failed queries." alt="" coords="436,272,543,301"/>
+<area shape="rect" id="node11" href="$a00102.html" title="pqxx::too_many_connections" alt="" coords="637,5,829,35"/>
+<area shape="rect" id="node17" href="$a00031.html" title="Error in data provided to SQL statement." alt="" coords="660,59,807,88"/>
+<area shape="rect" id="node19" href="$a00039.html" title="Database feature not supported in current setup." alt="" coords="640,112,827,141"/>
+<area shape="rect" id="node21" href="$a00046.html" title="pqxx::insufficient_privilege" alt="" coords="645,165,821,195"/>
+<area shape="rect" id="node23" href="$a00047.html" title="Resource shortage on the server." alt="" coords="641,219,825,248"/>
+<area shape="rect" id="node29" href="$a00048.html" title="pqxx::integrity_constraint_violation" alt="" coords="623,272,844,301"/>
+<area shape="rect" id="node41" href="$a00050.html" title="pqxx::invalid_cursor_name" alt="" coords="645,325,821,355"/>
+<area shape="rect" id="node43" href="$a00051.html" title="pqxx::invalid_cursor_state" alt="" coords="647,379,820,408"/>
+<area shape="rect" id="node45" href="$a00052.html" title="pqxx::invalid_sql_statement_name" alt="" coords="623,432,844,461"/>
+<area shape="rect" id="node47" href="$a00069.html" title="PL/pgSQL error." alt="" coords="668,485,799,515"/>
+<area shape="rect" id="node55" href="$a00097.html" title="pqxx::syntax_error" alt="" coords="668,619,799,648"/>
+<area shape="rect" id="node25" href="$a00035.html" title="pqxx::disk_full" alt="" coords="940,59,1047,88"/>
+<area shape="rect" id="node27" href="$a00066.html" title="pqxx::out_of_memory" alt="" coords="920,112,1067,141"/>
+<area shape="rect" id="node31" href="$a00018.html" title="pqxx::check_violation" alt="" coords="920,165,1067,195"/>
+<area shape="rect" id="node33" href="$a00042.html" title="pqxx::foreign_key_violation" alt="" coords="904,219,1083,248"/>
+<area shape="rect" id="node35" href="$a00061.html" title="pqxx::not_null_violation" alt="" coords="915,272,1072,301"/>
+<area shape="rect" id="node37" href="$a00081.html" title="pqxx::restrict_violation" alt="" coords="917,325,1069,355"/>
+<area shape="rect" id="node39" href="$a00112.html" title="pqxx::unique_violation" alt="" coords="919,379,1068,408"/>
+<area shape="rect" id="node49" href="$a00070.html" title="pqxx::plpgsql_no_data_found" alt="" coords="899,432,1088,461"/>
+<area shape="rect" id="node51" href="$a00071.html" title="Exception raised in PL/pgSQL procedure." alt="" coords="927,485,1060,515"/>
+<area shape="rect" id="node53" href="$a00072.html" title="pqxx::plpgsql_too_many_rows" alt="" coords="895,539,1092,568"/>
+<area shape="rect" id="node57" href="$a00108.html" title="pqxx::undefined_column" alt="" coords="912,592,1075,621"/>
+<area shape="rect" id="node59" href="$a00109.html" title="pqxx::undefined_function" alt="" coords="911,645,1076,675"/>
+<area shape="rect" id="node61" href="$a00110.html" title="pqxx::undefined_table" alt="" coords="919,699,1068,728"/>
+</map>

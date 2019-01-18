@@ -1,0 +1,19 @@
+# depslib dependency file v1.0
+1451986406 source:/home/chris/Documentos/Semestre/Semestre4/Patricia/Patricia/main.cpp
+	<fstream>
+	<string>
+	<deque>
+
+1452074082 
+
+1452074082 source:g:\patricia\patricia\main.cpp
+	<fstream>
+	<string>
+	<deque>
+
+1452191649 source:/home/chris/Documentos/Semestre/Semestre4/Patricia/Patricia/main.cpp
+	<fstream>
+	<string>
+	<deque>
+	"vector"
+

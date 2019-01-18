@@ -1,0 +1,25 @@
+<% @title = "Transfer" %>
+
+<h3>Transfer Bitbars</h3>
+
+<form class="pure-form pure-form-stacked" action="super_secure_post_transfer" method="post">
+	<%= display_error(@error) %>
+
+	<p>
+		You currently have <%= @logged_in_user.bitbars %> bitbars.
+	</p>
+
+  <label for="destination_username">Transfer to</label>
+  <input type="text" name="destination_username" value="<%= @user %>">
+
+  <label for="quantity">Amount</label>
+  <input type="text" name="quantity" value="<%= @amount%>"/>
+
+  <label>Super Secret Token</label>
+  <label><%= @token%></label>
+
+  <label for="tokeninput">Enter Secret Token</label>
+  <input type="text" name="tokeninput" value="" />
+  
+  <p><input type="submit" class="pure-button button-primary" value="Transfer" /></p>
+</form>

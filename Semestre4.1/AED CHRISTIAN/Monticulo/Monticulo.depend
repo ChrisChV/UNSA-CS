@@ -1,0 +1,22 @@
+# depslib dependency file v1.0
+1443675301 source:c:\users\chris\documents\semestre4\aed christian\monticulo\src\monticulo.cpp
+
+1443676563 source:c:\users\chris\documents\semestre4\aed christian\monticulo\main.cpp
+	<iostream>
+	"Monticulo.h"
+
+1443681124 c:\users\chris\documents\semestre4\aed christian\monticulo\include\monticulo.h
+	"vector"
+	"algorithm"
+
+1443715522 source:/home/chris/Documentos/Semestre/Semestre4/AED CHRISTIAN/Monticulo/src/Monticulo.cpp
+
+1443718198 source:/home/chris/Documentos/Semestre/Semestre4/AED CHRISTIAN/Monticulo/main.cpp
+	<iostream>
+	"Monticulo.h"
+
+1443918655 /home/chris/Documentos/Semestre/Semestre4/AED CHRISTIAN/Monticulo/include/Monticulo.h
+	"vector"
+	"algorithm"
+	"fstream"
+

@@ -1,0 +1,52 @@
+Desarrollar un paqute de software que genere automaticamente analizadores sintacticos para lenguajes regulares. En primer lugar, escriban un programa que acepte gramaticas regulares como entrada y genere como salidas las tablas de transiciones correspondientes. Luego escriba un programa que analice su cadena de entrada de acuerdo con la tabla de transiciones generada por el programa anterior.
+
+	Diagrama de Transiciones
+	Tabla de Transiciones
+	Analizador lexico(Basado en la Tabla de Trancisiones)
+
+Gramática: Se define como una cuadrupla (V,T,S,R) donde V es un conjunto de no_terminales, T es un conjunto finito de terminales, S(un elemento de V) es el símbolo inicial y R es un conjunto finito de reglas de escritura.
+Gramática Regular: Es aquella gramática cuyas reglas de reescritura se adhieren a las siguientes restricciones. El lado izquierdo de cualquier regla de reescritura de una gramática regular debe consistir en un solo no terminal, mientras que el lado derecho debe ser un terminal seguido por un terminal o un solo no terminal o la cadena vacia.
+
+Z->yX
+Z->x
+W->vacio
+
+Considere que en una gramática regular, cualquier regla de la forma N->x, podría reemplazarse con el par de reglas:
+
+N->xX
+X->vacio
+
+En el siguiente ejemplo se puede observar:
+
+	Gramatica Regular	Diagrama de Transiciones
+		S->xX		 
+		S->yY		
+		X->yY
+		X->vacio
+		Y->xX
+		Y->vacio
+	
+	Tabla de Transiciones
+
+	  x y F
+	S X Y e
+	X e Y A
+	Y X e A
+
+Ejemplo de Formato de Archivo
+
+T:x,y //terminales
+N:S,X,Y //noTerminales
+I:S //simbolo inicial
+V:v //caracter de cadena vacia
+R:	//reglas
+S->xX
+S->yY
+X->yY
+X->v
+Y->xX
+Y->v
+	
+
+
+		

