@@ -1,0 +1,20 @@
+function sum( n : Z ) : Z
+   	precondition natural: n >= 1
+   	postcondition sum = n * (n) / 2
+   	var x : Z
+   	    y : Z
+begin
+   	x := 1
+   	{ n >= 1 /\ x = 1 }
+   	y := 0
+   	{ n >= 1 /\ x = 1 /\ y = 0 }
+   	while x <= n do
+   	invariant gauss: y = x * (x-1) / 2 /\ x<= n+1 /\ n >= 1
+   	begin
+     		y := y + x
+     		{ y - x = x * (x-1) / 2 /\ x<= n /\ n >= 1 }
+     		x := x + 1
+    end
+   	{ y = n * (n) / 2  }
+   	sum := y
+end

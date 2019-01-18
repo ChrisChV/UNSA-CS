@@ -1,0 +1,5 @@
+Este texto se encuentra en el archivo t1,
+y la tarea seria unirlo con el archivo t2;
+
+Este texto se encuentra en el archivo t2,
+no se si se va unir con el archivo t1;

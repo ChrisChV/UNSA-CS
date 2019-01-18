@@ -1,0 +1,16 @@
+# depslib dependency file v1.0
+1445818457 source:/home/chris/Documentos/Semestre/Semestre4/AED CHRISTIAN/SegmentTree/src/SegmentTree.cpp
+
+1445826498 source:/home/chris/Documentos/Semestre/Semestre4/AED CHRISTIAN/SegmentTree/main.cpp
+	<iostream>
+	"vector"
+	"SegmentTree.h"
+	"stdlib.h"
+	"time.h"
+
+1445826492 /home/chris/Documentos/Semestre/Semestre4/AED CHRISTIAN/SegmentTree/include/SegmentTree.h
+	"vector"
+	"list"
+	"fstream"
+	"iostream"
+

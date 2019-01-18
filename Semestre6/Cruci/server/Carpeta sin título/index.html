@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <title>Word Find</title>
+  <link rel="stylesheet" type="text/css" href="styles/style.css">
+</head>
+<body>
+
+<div id='puzzle'></div>
+<div id='words'></div>
+<div><button id='solve'>Rendirse (Resolver)</button></div>
+
+<script language="javascript" type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script> 
+<script type="text/javascript" src="scripts/wordfind.js"></script> 
+<script type="text/javascript" src="scripts/wordfindgame.js"></script> 
+<script>
+
+  var words = ['extrusion','tolva','boquilla','cortador', 'boquillaanular','poliolefina','tornillo','mezclado','graceadora','aditivo','carga','pelicula','lamina','rodillo','textura','materialescristalinos','ps','abs','plasticosamorfos'];
+
+  var words2 = ['Extrusión','Tolva','Boquilla','Cortador','Boquilla Anular','Poliolefina','Tornillo','Mezclado','Graceadora','Aditivo','Carga','Película','Lámina','Rodillo','Textura','','Materiales Cristalinos','PS','ABS','Plásticos Amorfos'];
+
+  var gamePuzzle = wordfindgame.create(words, words2,'#puzzle', '#words');
+
+  $('#solve').click( function() {
+    wordfindgame.solve(gamePuzzle, words);
+  });
+
+  var puzzle = wordfind.newPuzzle(
+    words, 
+    {height: 18, width:18, fillBlanks: false}
+  );
+  wordfind.print(puzzle);
+
+</script>
+</body>
+</html>

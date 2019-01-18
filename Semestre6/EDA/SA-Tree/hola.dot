@@ -1,0 +1,17 @@
+graph{
+Node0[label = "0,0"];
+Node0 -- Node3;
+Node0 -- Node1;
+Node0 -- Node2;
+Node3[label = "0,-1"];
+Node3 -- Node6;
+Node1[label = "1,1"];
+Node1 -- Node7;
+Node2[label = "-2,1"];
+Node2 -- Node4;
+Node6[label = "1,-2"];
+Node7[label = "4,4"];
+Node4[label = "-3,2"];
+Node4 -- Node5;
+Node5[label = "-4,2"];
+}

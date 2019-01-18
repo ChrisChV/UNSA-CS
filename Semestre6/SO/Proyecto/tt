@@ -1,0 +1,6 @@
+Colas
+a FIFO
+b RR-10
+Mapeo
+Sistema[{P:a/a , E:a/a}]
+Normal[P:b/a , {E:b/b/a , P:a/a}]

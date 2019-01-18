@@ -1,0 +1,25 @@
+# depslib dependency file v1.0
+1443414298 source:c:\users\chris\documents\semestre4\aed yuber\monticulo\main.cpp
+	<iostream>
+	"Monticulo.h"
+	<fstream>
+	"math.h"
+
+1443412880 c:\users\chris\documents\semestre4\aed yuber\monticulo\include\monticulo.h
+	<vector>
+	<iostream>
+
+1443407766 source:c:\users\chris\documents\semestre4\aed yuber\monticulo\src\monticulo.cpp
+
+1444867080 source:/home/chris/Documentos/Semestre/Semestre4/AED YUBER/Monticulo/main.cpp
+	<iostream>
+	"Monticulo.h"
+	<fstream>
+	"math.h"
+
+1443493519 /home/chris/Documentos/Semestre/Semestre4/AED YUBER/Monticulo/include/Monticulo.h
+	<vector>
+	<iostream>
+
+1443493519 source:/home/chris/Documentos/Semestre/Semestre4/AED YUBER/Monticulo/src/Monticulo.cpp
+

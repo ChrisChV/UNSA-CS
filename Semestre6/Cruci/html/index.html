@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <title>Pupiletras</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+
+<script>
+function cambiarPestanna(pestannas,pestanna) {
+    
+    pestanna = document.getElementById(pestanna.id);
+    listaPestannas = document.getElementById(pestannas.id);
+    
+    cpestanna = document.getElementById('c'+pestanna.id);
+    listacPestannas = document.getElementById('contenido'+pestannas.id);
+    
+    i=0;
+    while (typeof listacPestannas.getElementsByTagName('div')[i] != 'undefined'){
+        $(document).ready(function(){
+            $(listacPestannas.getElementsByTagName('div')[i]).css('display','none');
+            $(listaPestannas.getElementsByTagName('li')[i]).css('background','');
+            $(listaPestannas.getElementsByTagName('li')[i]).css('padding-bottom','');
+        });
+        i += 1;
+    }
+ 
+    $(document).ready(function(){
+        $(cpestanna).css('display','');
+        $(pestanna).css('background','dimgray');
+        $(pestanna).css('padding-bottom','2px'); 
+    });
+ 
+}
+</script>
+
+<div class="contenedor">
+
+        <div class="titulo">ACTIVIDAD INTERACTIVA - EXTRUSIÓN DE TUBERÍAS Y LAMINAS</div>
+
+        <h>Integrantes</h></br>
+
+        Burgos Zegarra Javier</br>
+        Samata Puma Omar</br>
+        Sumalave Nina hugo
+
+        <div id="pestanas">
+            <ul id=lista>
+                <li id="pestana1"><a href='javascript:cambiarPestanna(pestanas,pestana1);'>TEXTO</a></li>
+                <li id="pestana2"><a href='javascript:cambiarPestanna(pestanas,pestana2);'>VIDEO</a></li>
+            </ul>
+        </div>
+ 
+        <body onload="javascript:cambiarPestanna(pestanas,pestana1);">
+ 
+        <div id="contenidopestanas">
+            <div id="cpestana1">
+                El proceso por el cual se fabrican tuberías y perfiles consiste en líneas de 
+                <b class ="tip"><u>extrusión<span>Proceso de compactación y fusión de un material plástico , forzándolo a través de un orificio de manera continua. El material es transportado a través del cilindro de la máquina calentado por un tornillo helicoidal o tornillos, donde es calentado y mezclado a un estado homogéneo y luego forzado a través de una matriz de la forma requerida para el producto acabado.</span></u></b>
+                 (SECADOR, ALIMENTACION, 
+                 <b class = "tip"><u>TOLVA<span>depósito de alimentación en el que se carga polvo de moldeo y desde el que cae en una máquina de moldeo o extrusora, a veces a través de un dispositivo de medición.</span></u></b>
+                 , EXTRUSORA, BOMBAS DE ENGRANAJES,
+                 <b class = "tip"><u>BOQUILLA<span>Una boquilla está diseñada para formar bajo presión un sello entre el cilindro calefactor o la cámara de transferencia y el molde, la cual le dependiendo de la geometría y forma de esta le dara las formas las formas al material extruido</span></u></b>
+                 , SISTEMA DE CALIBRADO, SISTEMA DE ENFRIAMIENTO, MEDIDOR, TENSIONADO,
+                  <b class = "tip"><u>CORTADOR<span>Consiste en cuchillas estacionarias o de tipo guillotina si la velocidad de extrusión es suficientemente baja o el material es flexible , o en cuchillas transportables en el caso de materiales rigidos . cada ves mas frecuente el cortador por chorro de aire</span></u></b>
+                  ): 
+                  <b class = "tip"><u>la boquilla anular<span>Boquilla utilizado para la obtencion de tubos</span></u></b>
+                  , sistema de calibrado y uno de enfriamiento, zona de tensionado y un cortador. Todos estos componentes de una línea de extrusión de tubos y tuberías. En la cual la precisión de la extrusión de estos productos depende directamente del diámetro calibrado interno y externo. El sistema de calibrado el cual es prescindible para obtener productos de alta calidad se le debe aplicar parámetros de trabajo (temperatura, presión y composición) precisos tales como la introducción de aire a presión. El diámetro de la pared se controla con un láser calibrador. Para la extrusión de tuberías y perfiles se emplea básicamente del material base de PVC, 
+                  <b class = "tip"><u>POLIOLEFINAS<span>Las poliolefinas son termoplásticos parcialmente cristalinos del grupo de los plásticos estándar. Los representantes más importantes dentro de este grupo son el polietileno (PE) y el polipropileno (PP), que, juntos, representan aproximadamente la mitad de todo el volumen de producción de los plásticos.</span></u></b>
+                   (HDPE, PP Y LDPE) que son generalmente para la conducción de agua y alcantarillado; así como para gases, líquidos a presión. Ofreciendo excelente características en largos periodos de tiempo, denotando su poco desgaste y precio relativamente bajo. Muchas líneas de extrusión de perfiles presentan muchas formas y dimensiones, cambiando lógicamente la forma de la boquilla y la posibilidad de emplear aire interno del
+                  <b class = "tip"><u>tornillo<span>O usillo consiste en un cilindro largo rodeado por un filete helicoidal. El tornillo es una de las partes mas importantes ya que contribuye a realizar las funciones de transportar , calentar , fundir y mezclar el material . La estabilidad del proceso y la calidad del producto que se obtiene depende en gran medida del diseño del tornillo</span></u></b>
+                   a presión y temperatura controlada. Estos productos sirven para las aplicaciones como empaquetados y precintados. La mayoría de los plásticos necesitan una etapa previa de 
+                   <b class = "tip"><u>mezclado<span>Es la acción por la cual dos o mas polímeros se van a unir molecularmente , para ello los polímeros se sirven en formas muy diferentes ,que van desde gránulos (granza ), polvos, planchas,resinas liquidas de bajo peso molecular.Se distingue dos tipos de mezclado: Intensivo o disperso(compounding ) y Extensivo o distribuido (blending)</span></u></b>
+                    antes del procesado, el cual requiere un mezclado extensivo donde se mezclan superficialmente y rápidamente. En el mezclado se utilizan extrusoras de doble husillo y en la salida de estas cuentan con 
+                    <b class = "tip"><u>granceadoras<span>Máquina utilizada para recuperar sobrantes, desechos, y piezas rechazadas para reducirlas a partículas, de un tamaño que puedan ser reprocesadas. También se les llama molinos y recicladoras.</span></u></b>
+                     que producen las granzas formuladas. Cuando se realiza el mezclado al polímero se le suele añadir en la tolva de alimentación: 
+                     <b class = "tip"><u>aditivos<span>Un material, p,ej. una carga, añadido a un compuesto plástico, el cual puede alterar las propiedades del producto terminado, pero que no reacciona químicamente con ninguno de los componentes del compuesto</span></u></b>
+                      y <b class = "tip"><u>cargas<span>Nombre utilizado corrientemente, en lugar de relleno. Material sólido e inerte, que se añade a un plástico para modificar sus propiedades</span></u></b> </br></br>
+Las líneas de 
+<b class = "tip"><u>películas<span>Las películas se obtienen: por la extrusión de un plástico fundido, utilizando una hilera circular o plana, por calandrado, por solución colada, por conversión química, o por pelado. Las películas pueden ser orientadas uniaxial o biaxial; o bien laminadas para modificar sus propiedades. Las películas se distinguen de las hojas en la industria del plástico y de embalaje por su grueso. Una lámina de menos de 0,25 mm. se le llama normalmente película. Sobre este grueso se le llama hoja.</span></u></b>
+ y 
+ <b class = "tip"><u>láminas<span>Porción de cualquier materia extendida en superficie y de poco grosor.  Un simple pliegue, doblez o capa en un laminado, el cual está hecho por una superposición de capas</span></u></b>
+  mediante el proceso con pila de rodillos; se considera el grosos de láminas y películas que se desea obtener. Mediante el proceso de pila de rodillos se emplea para la fabricación de láminas en el cual el control de la temperatura en la boquilla debe ser muy preciso, la cual se mantiene más elevada en los extremos que en el centro de la lámina para evitar que se presente una deformación plástica. Los principales componentes de esta línea son: la extrusora, pila de 
+  <b class = "tip"><u>rodillos<span>Un cilindro montado sobre cojinetes, y utilizada en funciones tales como: trabajos de formado, aplastamiento, movimiento, estampado o impresión.</span></u></b>
+  , sección de enfriamiento y una serie de rodillos contando a su vez con una sección de tensionado y recojo. La 
+  <b class = "tip"><u>textura<span>Estructura propia de los tejidos, que se repite periódicamente en su longuitud y anchura. La forman un número determinado de hilos de urdimbre y otro, igual o diferente, de hilos de trama, que se entrecruzan o ligan siguiendo un orden propio de cada caso.</span></u></b>
+   va acorde con la presión que se ejerce sobre la lámina usando rodillos pulidos y de requerir texturas lisa el uso de negativos aplicados en los rodillos, teniendo una trayectoria en forma de S con un recorrido de pilas de rodillos, sección de enfriamiento y sección de tensionado. También existe el procesado con sistema de rodillos fríos el cual tiene como complemento la unidad de tratamiento superficial además de un amplio sistema de rodillos acondicionados a una determinada temperatura de control mediante este proceso se pueden obtener productos transparentes aun en el caso de emplear 
+   <b class = "tip"><u>material cristalinos<span>Dícese del estado en el cual, las moléculas se hallan ordenadas en formas características, de modo que forman sólidos que presentan diferentes propiedades, según la dirección (anisotropía) y pueden tomar espontáneamente caras planas</span></u></b>
+    de rápido enfriamiento. Con ello se da la fabricación de películas de plásticos de PVC las cuales se aplican en la industria de la construcción. También se emplea para unir espuma de 
+    <b class = "tip"><u>PS<span>( Poliestireno) Es un homopolímero amorfo del estireno, que se obtiene por polimerización en bloque o en suspensión a través de radicales libres</span></u></b>
+     y 
+     <b class = "tip"><u>ABS<span>(Acrilonitrilo-butadieno-estireno). Los productos de esta familia son muy tenaces, no quebradizos, duros, rígidos y resistentes a los productos químicos. Son un terpolímero de tres monómeros, frecuentemente considerado como un poliestireno modificado puesto que sus propiedades son parecidas al PS, excepto que su resistencia al impacto es muy alta. El ABS típico contiene aproximadamente el 20% caucho, 25% acrilonitrilo, y 55% estireno.</span></u></b>
+      y otros 
+      <b class = "tip"><u>plásticos amorfos<span>Sin forma regular o bien determinada. Cuerpo sólido no cristalino</span></u></b>
+       como PVC, PC, PMMA, PET y otras combinaciones de plásticos en multicapas que se usan en 
+       <b class = "tip"><u>termoconformado<span>Cualquier proceso de formación de una lámina termoplástica que consiste en calentar la lámina y empujarla hacia abajo sobre una superficie del molde.</span></u></b>
+       . Y otro proceso de obtención de películas es por líneas de 
+       <b class = "tip"><u>películas sopladas<span>Es el método más común para la fabricación de películas o films, y en general se utiliza para fabricar bolsas de plásticos termoplásticos.</span></u></b>
+        el cual es el más común para fabricar 
+        <b class = "tip"><u>bolsas de plástico<span>Especie de talega o saco de una materia flexible, que sirve para guardar o llevar alguna cosa. Una especie de bolsa plana, de plástico papal, soldada por tres lados y con una dobladura en el lado abierto</span></u></b>
+         a partir de HDPE y LDPE y en ocasiones también de PVC, PP, PA entre otros. Estas líneas de extrusión equipadas con boquilla anular y por el interior de la boquilla se inyectan aire como si se tratara de una burbuja. En algunos casos el material se expande hasta tres veces su diámetro original la cual es estirada por los rodillos que se encuentran orientados biaxialmente. El material que sale de la boquilla en estado fundido que asciende se enfría gracias a la corriente de aire que circula al exterior de la burbuja,
+          <b class = "tip"><u>curando<span>Para cambiar las propiedades físicas de un material por reacción química, que puede ser condensación, polimerización o vulcanización; generalmente se realiza por la acción de Calor y catalizadores, solos o en combinación, con o sin presión</span></u></b>
+           en ambas orientaciones (axial y longitudinal). Este proceso se le conoce como estabilización de la burbuja. Tratándose inicialmente de un 
+           <b class = "tip"><u>material fundido<span>Un material plástico en una condición fundida o plastificada</span></u></b>
+           . La 
+           <b class = "tip"><u>viscosidad<span>Fricción interna o resistencia al flujo de un líquido; La relación constante de esfuerzo de cizallamiento a la velocidad de un cizallamiento. En los líquidos para los que esta relación es una función de la tensión, la "viscosidad aparente" se define como esta relación.</span></u></b>
+            extensional que presenta que para la mayoría de polímeros al aumentar el esfuerzo de tracción aplicada a esta. Comportamiento que se le conoce como TROUTONIANO que sería equivalente al comportamiento NEWTONIANO en caso de presentar esfuerzos en cizalla. Bueno com o hemos visto los procesos de fabricación de estos productos gracias a la tecnología de extrusión diversificada mediante nuevas tecnologías y aplicaciones en este proceso, gracias a el montaje y complemento de piezas importantes y parámetros de trabajo los cuales permiten un proceso preciso obteniendo productos óptimos y de alta calidad. INGENIERIA DE MATERIALES TECNOLOGIA E INNOVACION
+            </div>
+            <div id="cpestana2">
+                <iframe  width="560" height="315" src="https://www.youtube.com/embed/UIAk_dlkUPE" frameborder="0" allowfullscreen></iframe>
+            </div>
+    </div>
+
+</br>
+<div class="titulo">PUPILETRAS</div>
+
+<div id='puzzle'></div>
+<div id='words'></div>
+<div><button id='solve'>Rendirse (Resolver)</button></div>
+
+
+<script language="javascript" type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script> 
+<script type="text/javascript" src="wordfind.js"></script> 
+<script type="text/javascript" src="wordfindgame.js"></script> 
+<script>
+
+  var words = ['abs','aditivo','bolsasdeplastico','boquillaanular','boquillas','carga','cortador','curando','extrusion','graceadora','lamina','materialfundido','materialescristalinos','mezclado','ps','peliculasoplada','peliculas','plasticosamorfos','poliolefina','rodillo','termoconformado','textura','tolva','tornillo','viscosidad'];
+
+  var words2 = ['Extrusión','Tolva','Boquillas','Cortador','Boquilla Anular','Poliolefina','Tornillo','Mezclado','Graceadora','Aditivo','Carga','Películas','Lámina','Rodillo','Textura','Materiales Cristalinos','PS','ABS','Plásticos Amorfos','Termoconformado','Película Soplada','Bolsas de Plástico','Curando','Material Fundido','Viscosidad'];
+
+  var gamePuzzle = wordfindgame.create(words, words2,'#puzzle', '#words');
+
+  $('#solve').click( function() {
+    wordfindgame.solve(gamePuzzle, words);
+  });
+
+  var puzzle = wordfind.newPuzzle(
+    words, 
+    {height: 18, width:18, fillBlanks: false}
+  );
+  wordfind.print(puzzle);
+
+</script>
+
+</body>
+</html>
+
+
+

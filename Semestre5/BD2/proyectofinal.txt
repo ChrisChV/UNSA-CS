@@ -1,0 +1,12 @@
+Mini google
+Corpus de google palabra 1 - palabra 2 - monto (bigramas)
+
+filtrar solamente los que correspondan a ingles.
+Diccionario digital "Wornet". Librerias para consultar a worner WORDNET::similarity Ted Pedorsen
+Solo se necesita que una palabra este en ingles para que pase el filtro
+
+Organizar en tablitas relacionales (base de datos)
+
+Construir el word space model
+
+GOOGLE

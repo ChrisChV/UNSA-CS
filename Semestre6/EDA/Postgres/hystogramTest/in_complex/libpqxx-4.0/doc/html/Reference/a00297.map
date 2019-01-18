@@ -1,0 +1,9 @@
+<map id="G" name="G">
+<area shape="rect" id="node13" href="$a00035.html" title="pqxx::disk_full" alt="" coords="32,392,139,421"/>
+<area shape="rect" id="node15" href="$a00066.html" title="pqxx::out_of_memory" alt="" coords="163,392,309,421"/>
+<area shape="rect" id="node2" href="$a00086.html" title="Exception class for failed queries." alt="" coords="107,237,213,267"/>
+<area shape="rect" id="node4" href="$a00038.html" title="Run&#45;time failure encountered by libpqxx, similar to std::runtime_error." alt="" coords="113,160,207,189"/>
+<area shape="rect" id="node6" href="$a00074.html" title="Mixin base class to identify libpqxx&#45;specific exception types." alt="" coords="5,83,155,112"/>
+<area shape="rect" id="node8" title="STL class." alt="" coords="179,83,301,112"/>
+<area shape="rect" id="node10" title="STL class." alt="" coords="188,5,292,35"/>
+</map>

@@ -1,0 +1,4 @@
+<map id="G" name="G">
+<area shape="rect" id="node3" href="$a00028.html" title="Iterator for fields in a tuple. Use as tuple::const_iterator." alt="" coords="31,83,201,112"/>
+<area shape="rect" id="node5" href="$a00027.html" title="Reverse iterator for a tuple. Use as tuple::const_reverse_iterator." alt="" coords="5,160,227,189"/>
+</map>

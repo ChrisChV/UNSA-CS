@@ -1,0 +1,26 @@
+digraph{
+1 [color=red,style=filled];
+10 [color=green,style=filled];
+11 [color=yellow,style=filled];
+2 [color=red,style=filled];
+3 [color=red,style=filled];
+4 [color=red,style=filled];
+5 [color=blue,style=filled];
+6 [color=blue,style=filled];
+7 [color=blue,style=filled];
+8 [color=green,style=filled];
+9 [color=green,style=filled];
+1->2 [label=0];
+2->4 [label=0];
+3->1 [label=0];
+4->6 [label=0];
+4->3 [label=0];
+6->5 [label=0];
+5->7 [label=0];
+7->6 [label=0];
+7->8 [label=0];
+8->10 [label=0];
+10->9 [label=0];
+9->8 [label=0];
+10->11 [label=0];
+}

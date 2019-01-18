@@ -1,0 +1,6 @@
+<map id="G" name="G">
+<area shape="rect" id="node3" href="$a00073.html" title="pqxx::internal::PQAlloc\&lt; const unsigned char, pqxx::internal::freemallocmem_templated\&lt; const unsigned char \&gt; \&gt;" alt="" coords="843,5,1528,35"/>
+<area shape="rect" id="node7" href="$a00073.html" title="pqxx::internal::PQAlloc\&lt; const internal::result_data, internal::freemem_result_data \&gt;" alt="" coords="931,59,1440,88"/>
+<area shape="rect" id="node5" href="$a00013.html" title="pqxx::binarystring" alt="" coords="1579,5,1704,35"/>
+<area shape="rect" id="node9" href="$a00082.html" title="Result set containing data returned by a query or command." alt="" coords="1596,59,1687,88"/>
+</map>
