@@ -1,0 +1,16 @@
+<% @title = "Register Form" %>
+
+<h3>Register</h3>
+
+<form id=register_form class=pure-form-stacked action=post_register method=post>
+    
+    <%= display_error(@error) %>
+
+    <label for=username>Username</label>
+    <input type=text name=username value=<%= @username %>>
+
+    <label for=password>Password</label>
+    <input type=password name=password />
+    
+    <p><input type=submit class=pure-button value=Register /></p>
+</form>

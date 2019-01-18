@@ -1,0 +1,7 @@
+1. El paquete TCP enviado como respuesta es un paquete TCP RCT,ACK, que en el wireshark aparece en color rojo, indicando que hay un problema en ese paquete.
+
+2. En este caso no hay ninguna respuesta por parte del servidor a los multiples paquetes que se envian desde el cliente.
+
+3. Realiza tbm POST, OPTION, PROPFIND
+
+

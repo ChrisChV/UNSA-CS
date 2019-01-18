@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>
+      <% if @title %>
+         Bitbar - <%= @title %>
+      <% else %>
+          Bitbar
+      <% end %>
+  </title>
+  
+  <meta charset="UTF-8">
+  <%= stylesheet_link_tag    "application", media: "all" %>
+  <% if not @disable_framebusting %>
+      <script>
+      // Framebusting.
+      if(top.location != self.location){
+              parent.location = self.location;
+      }
+      </script>
+  <% end %> 
+</head>
+<body>
+
+<div class="container">
+
+<div id="header">
+    <div id="titles">
+        <h1>Ƀitbar</h1>
+        <h3>The Crypto-Free Crypto Currency</h3>
+    </div>
+    <div id="navbar" class="pure-menu pure-menu-horizontal">
+        <ul class="pure-menu-list">
+            <li class="pure-menu-item"><a class="pure-menu-link" href="/">Home</a></li>
+            <li class="pure-menu-item"><a class="pure-menu-link" href="/transfer">Transfer</a></li>
+            <li class="pure-menu-item"><a class="pure-menu-link" href="/close" title="Close your account">Close</a></li>
+            <li class="pure-menu-item"><a class="pure-menu-link" href="/profile">Profile</a></li>            
+        </ul>
+    </div>
+</div>
+
+<div id="main" class="centerpiece">
+  <div class="login-status">
+    <% if @logged_in_user %>
+      <span class="login-status-text">Hi, <strong><%= @logged_in_user.username %></strong></span>
+      <a href="logout" class="button-primary pure-button">Log out</a>
+    <% else %>
+      <a href="login" class="button-primary pure-button">Log in</a>
+      <a href="register" class="button-primary pure-button">Register</a>
+    <% end %>
+  </div>
+
+  <!-- page-specific content goes here -->
+  <%= yield %>
+  <!-- end page-specific content -->
+</div>
+
+</div>
+
+<div class="footer">
+Copyright Bitbar 2016
+</div>
+
+</body>
+</html>

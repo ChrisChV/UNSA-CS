@@ -1,0 +1,12 @@
+<html>
+<body>
+	<script>
+	window.location = "http://localhost:3000/login";
+	var req = new XMLHttpRequest();
+	var name = document.getElementById("username").value;
+	var pass = document.getElementById("password").value;
+	alert(pass)
+	req.open("POST","http://localhost:3000/post_login",false);
+	</script>
+</body>
+</html>

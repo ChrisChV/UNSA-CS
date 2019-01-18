@@ -1,0 +1,27 @@
+COMANDOS
+p <var> -> print
+
+rt <file> <n> -> Generar n thetas randon en el archivo <file>
+
+go <file> <n> -> Graficar en octave con las thetas en el archivo file y con
+el nombre imagen00n, si n es negativo no se guarda archivo.
+
+run <file> <n> <alfa> <lambda> -> Correr la regresion <n> iteraciones con
+los thethas dentro del <file> 
+
+runr <file> <n> <iter> <alfa> <lambda> -> Corre la regresion con <iter> iteraciones
+con <n> thetas random generadas en <file>
+
+save <file> -> Guarda los puntos en <file>
+
+load <file> -> Carga los puntos de <file>
+
+g <file> -> Grafica el polinomio con las thetas de <file>
+
+clear all -> Limpia el todo el plano
+
+clear poli -> Limpi el polinomio del plano
+
+exit -> Salir
+
+help -> Help
