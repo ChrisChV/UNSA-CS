@@ -1,0 +1,6 @@
+footer {
+  background-color: lighten($background-color, 5%);
+  color: darken($font-color, 50%);
+  font-size: 80%;
+  padding: 10px 0px;
+}

@@ -1,0 +1,16 @@
+header {
+  height: 70vh;
+  position: relative;
+  background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url(/images/netflix-hero.jpg);
+  background-size: cover;
+  background-position: center;
+  .text-box {
+    position: absolute;
+    top: 30%;
+    font-weight: 100;
+    b {
+      font-weight: 700;
+      font-size: 200%;
+    }
+  }
+}

@@ -1,0 +1,1 @@
+gnuplot -e "set term png;set output 'imagenes/image.png';splot exp(-x * x) * exp(-y * y),'xyz.tsv' using 1:2:3 with points pointsize 1 pointtype 7;"

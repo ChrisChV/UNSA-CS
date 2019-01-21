@@ -1,0 +1,17 @@
+digraph{
+A [color = "green"];
+A
+B
+C
+D
+A->B [label ="0"];
+A->B [label ="1"];
+B->C [label ="0"];
+B->B [label ="1"];
+C->D [label ="0"];
+C->B [label ="1"];
+D->C [label ="0"];
+D->E [label ="1"];
+A [color="red"]
+B [color="red"]
+}

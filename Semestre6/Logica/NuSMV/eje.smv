@@ -1,0 +1,14 @@
+ASSING
+	init(location) := m1;
+	next(location) := case
+					location = m1 & b <= 30: m2;
+					location = m2: m1;
+					TRUE: location;
+				esac;
+	next(a) := case
+				location = m2 & a <= 98 : a + 2;
+				TRUE a;
+			esac;
+	next(b) := case
+				location = m2 & b <= 99: b + 1;
+			esac;

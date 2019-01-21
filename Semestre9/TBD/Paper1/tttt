@@ -1,0 +1,9 @@
+if(uid != 1){
+		srand(uid);
+		int tt = rand() % 3;
+		serendipia.clear();
+		for(int i = 0; i < tt; i++){
+			int sr = rand() % 3000 + 1;
+			serendipia.push_back(sr);
+		}
+	}

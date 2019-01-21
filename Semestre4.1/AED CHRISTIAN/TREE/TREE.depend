@@ -1,0 +1,13 @@
+# depslib dependency file v1.0
+1443493519 source:/home/chris/Documentos/Semestre/Semestre4/AED CHRISTIAN/TREE/src/Tree.cpp
+
+1445830531 source:/home/chris/Documentos/Semestre/Semestre4/AED CHRISTIAN/TREE/main.cpp
+	<iostream>
+	"Tree.h"
+
+1445830296 /home/chris/Documentos/Semestre/Semestre4/AED CHRISTIAN/TREE/include/Tree.h
+	"iostream"
+	"list"
+	"algorithm"
+	"fstream"
+

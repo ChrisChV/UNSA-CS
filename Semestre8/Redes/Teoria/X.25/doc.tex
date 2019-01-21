@@ -1,0 +1,229 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{color}
+\usepackage{parskip}
+\usepackage{graphicx}
+\usepackage{multirow}
+\usepackage{listings}
+\usepackage{vmargin}
+\usepackage{datetime}
+\newdate{date}{19}{11}{2017}
+\graphicspath{ {imagenes/} }
+\definecolor{mygreen}{rgb}{0,0.6,0}
+\definecolor{lbcolor}{rgb}{0.9,0.9,0.9}
+\usepackage{epstopdf}
+\usepackage{float}
+
+
+\setpapersize{A4}
+\setmargins{2.5cm}       % margen izquierdo
+{1.5cm}                        % margen superior
+{16.5cm}                      % anchura del texto
+{23.42cm}                    % altura del texto
+{10pt}                           % altura de los encabezados
+{1cm}                           % espacio entre el texto y los encabezados
+{0pt}                             % altura del pie de página
+{2cm}     
+
+\lstset{
+backgroundcolor=\color{lbcolor},
+    tabsize=4,    
+%   rulecolor=,
+    language=[GNU]C++,
+        basicstyle=\tiny,
+        aboveskip={1.5\baselineskip},
+        columns=fixed,
+        showstringspaces=false,
+        extendedchars=false,
+        breaklines=true,
+        prebreak = \raisebox{0ex}[0ex][0ex]{\ensuremath{\hookleftarrow}},
+        frame=single,
+        showtabs=false,
+        showspaces=false,
+        showstringspaces=false,
+        identifierstyle=\ttfamily,
+        keywordstyle=\color[rgb]{0,0,1},
+        commentstyle=\color[rgb]{0.026,0.112,0.095},
+        stringstyle=\color{red},
+        numberstyle=\color[rgb]{0.205, 0.142, 0.73},
+%        \lstdefinestyle{C++}{language=C++,style=numbers}’.
+}
+
+
+\begin{document}
+\title{Protocolos y X.25}
+\author{
+Christofer Fabián Chávez Carazas \\
+\small{Universidad Nacional de San Agustín de Arequipa} \\
+\small{Escuela Profesional de Ciencia de la Computación} \\
+\small{Computación Centrada en Redes}
+}
+\date{\displaydate{date}}
+
+\maketitle
+
+\begin{large}
+ \textbf{Defina las funciones implementadas por los protocolos IP, ARP, ICMP, IGMP y RARP}
+\end{large}
+
+\begin{itemize}
+ \item \textbf{IP} \\
+ 
+ Este protocolo implementa dos funciones básicas: direccionamiento y fragmentación. 
+ Los routers de Internet utilizan las direcciones que se encuentran en la cabecera de los paquetes IP para transmitirlos hacia su destino. 
+ La selección del camino más apropiado para un paquete dado se denomina encaminamiento. Los hosts implicados en una sesión pueden usar diferentes campos
+ en la cabecera IP para fragmentar y reensamblar los paquetes IP cuando éstos deban atravesar redes que requieran un tamaño pequeño para las tramas del nivel de enlace. 
+ IP añade una cabecera de información de control a cada segmento para formar lo que se denomina un datagrama IP. En la cabecera IP, además de otros campos, se
+ incluirá la dirección del computador destino. La cabecera del paquete contiene la información que la subred necesita para transferir los datos. La cabecera
+ puede contener, entre otros, los siguientes campos:
+ \begin{itemize}
+  \item \textbf{Dirección de la subred destino:} la subred debe conocer a qué dispositivo se debe entregar el paquete.
+  \item \textbf{Funciones solicitadas:} el protocolo de acceso a la red puede solicitar la utilización de ciertas
+  funciones ofrecidas por la subred, por ejemplo, la utilización de prioridades.
+ \end{itemize}
+ 
+ El protocolo de Internet utiliza cuatro campos clave para prestar su servicio: el Tipo de Servicio (TOS - Type Of Service), el Tiempo de Vida (TTL - Time To Live), Opciones, y Suma de Control de Cabecera. 
+El Tipo de Servicio se utiliza para indicar la calidad del servicio deseado. El tipo de servicio es un conjunto abstracto o generalizado de parámetros que se utilizan para determinar de qué modo hay que tratar a cada uno de los paquetes. Así, por ejemplo, el Tipo de Servicio será usado en los routers para seleccionar parámetros de comunicación como, la tecnología de enlace que se utilizará para el siguiente salto, el camino a seguir por el paquete, su prioridad en las colas, etc. 
+El Tiempo de Vida es una indicación de un límite superior en el periodo de vida de un paquete IP. Es fijado por el remitente del mensaje a un valor inicial, que se reduce en una unidad en todos los routers por los que va atravesando. Si el tiempo de vida alcanza un valor de cero antes de que el paquete llegue a su destino, éste es destruido. 
+Las Opciones proporcionan funciones de control necesarias o útiles en algunas situaciones pero innecesarias para las comunicaciones más comunes. Las opciones incluyen recursos para marcas de tiempo, seguridad y encaminamiento especial, etc. 
+La Suma de Control de Cabecera proporciona una verificación de que la información contenida en el paquete ha sido transmitida correctamente. Los datos pueden sufrir alteraciones en la comunicación, por ese motivo se incluye cierta información redundante que contiene una suma de comprobación de los campos de cabecera. Si al recibir un nuevo paquete la suma de comprobación es inválida, el paquete es descartado inmediatamente por la entidad que detecta el error. 
+
+ \item \textbf{ARP} \\
+ 
+ El protocolo ARP (Address Resolution Protocol, protocolo de resolución de dirección) tiene un papel clave entre los protocolos de capa de Internet relacionados con el protocolo TCP/IP,
+ ya que permite que se conozca la dirección física de una tarjeta de interfaz de red correspondiente a una dirección IP. 
+ Cada equipo conectado a la red tiene un número de identificación de 48 bits. Este es un número único establecido en el momento de la fabricación de la tarjeta.
+ Sin embargo, la comunicación en Internet no utiliza directamente este número (ya que las direcciones de los equipos deberían cambiarse cada vez que se cambia la
+ tarjeta de interfaz de red), sino una dirección lógica asignada por un organismo: la dirección IP. 
+ Para que las direcciones físicas se puedan conectar con las direcciones lógicas, el protocolo ARP interroga a los equipos de la red para averiguar sus direcciones físicas y
+ luego crea una tabla de búsqueda entre las direcciones lógicas y físicas en una memoria caché. 
+ Cuando un equipo debe comunicarse con otro, consulta la tabla de búsqueda. Si la dirección requerida no se encuentra en la tabla, el protocolo ARP envía una solicitud a
+ la red. Todos los equipos en la red comparan esta dirección lógica con la suya. Si alguno de ellos se identifica con esta dirección, el equipo responderá al ARP, que
+ almacenará el par de direcciones en la tabla de búsqueda, y, a continuación, podrá establecerse la comunicación. 
+
+ \item \textbf{ICMP} \\
+ 
+ El estándar IP especifica que una implementación que cumpla las especificaciones del protocolo debe también implementar ICMP (RFC 792).
+ ICMP proporciona un medio para transferir mensajes desde los dispositivos de encaminamiento y otros computadores a un computador. En esencia, ICMP proporciona
+ información de realimentación sobre problemas del entorno de la comunicación. Algunas situaciones donde se utiliza son: cuando un datagrama no puede alcanzar su destino,
+ cuando el dispositivo de encaminamiento no tiene la capacidad de almacenar temporalmente para reenviar el datagrama y cuando el dispositivo de encaminamiento
+ indica a una estación que envíe el tráfico por una ruta más corta. En la mayoría de los casos, el mensaje ICMP se envía en respuesta a un datagrama,
+ bien por un dispositivo de encaminamiento en el camino del datagrama o por el computador destino deseado.
+ 
+ \item \textbf{IGMP} \\
+ 
+ El Protocolo de administración de grupos de Internet (IGMP) es un protocolo de comunicaciones utilizado por los hosts y routers adyacentes en las redes IP
+ para establecer la pertenencia a grupos de multidifusión. IGMP ofrece sus routers con un método para unirse y dejar grupos multicast. Grupos de multidifusión y
+ sistemas que han optado por recibir los datos que se envían a una dirección de multidifusión específica. Hay dos tipos de dispositivos:
+ \begin{itemize}
+  \item \textbf{El Querier:} Envía mensajes dispositivos conectados a sus segmentos de red que los dispositivos son miembros de grupos de multidifusión específicos que piden.
+  \item \textbf{El receptor:} Recibe tráfico multicast destinado a una dirección de multidifusión. Este dispositivo puede ser un dispositivo cliente o un router,
+  que luego envía los datos a otros hosts y routers.
+ \end{itemize}
+ 
+ \item \textbf{RARP} \\
+ 
+ El protocolo RARP (Reverse Address Resolution Protocol, protocolo de resolución de dirección inversa) es mucho menos utilizado. Es un tipo de directorio
+ inverso de direcciones lógicas y físicas. En realidad, este protocolo se usa esencialmente para las estaciones de trabajo sin discos duros que desean conocer
+ su dirección física.
+ El protocolo RARP le permite a la estación de trabajo averiguar su dirección IP desde una tabla de búsqueda entre las direcciones MAC (direcciones físicas) y
+ las direcciones IP alojadas por una pasarela ubicada en la misma red de área local (LAN). Para poder hacerlo, el administrador debe definir los parámetros de la pasarela
+ (router) con la tabla de búsqueda para las direcciones MAC/IP. A diferencia del ARP, este protocolo es estático. Por lo que la tabla de búsqueda debe estar
+ siempre actualizada para permitir la conexión de nuevas tarjetas de interfaz de red. 
+ El protocolo RARP tiene varias limitaciones. Se necesita mucho tiempo de administración para mantener las tablas importantes en los servidores. Esto se ve reflejado
+ aun más en las grandes redes. Lo que plantea problemas de recursos humanos, necesarios para el mantenimiento de las tablas de búsqueda y de capacidad por parte del
+ hardware que aloja la parte del servidor del protocolo RARP. Efectivamente, el protocolo RARP permite que varios servidores respondan a solicitudes, pero no prevé
+ mecanismos que garanticen que todos los servidores puedan responder, ni que respondan en forma idéntica. Por lo que, en este tipo de arquitectura, no podemos confiar
+ en que un servidor RARP sepa si una dirección MAC se puede conectar con una dirección IP, porque otros servidores ARP pueden tener una respuesta diferente.
+ Otra limitación del protocolo RARP es que un servidor solo puede servir a una LAN. 
+ Para solucionar los dos primeros problemas de administración, el protocolo RARP se puede remplazar por el protocolo DRARP, que es su versión dinámica. 
+ Otro enfoque consiste en la utilización de un servidor DHCP (Dynamic Host Configuration Protocol, en español: protocolo de configuración de host dinámico), 
+ que permite una resolución dinámica de las direcciones. Además, el protocolo DHCP es compatible con el protocolo BOOTP (Bootstrap Protocol, protocolo de secuencia 
+ de arranque) y, al igual que este protocolo, puede ser encaminado, lo que le permite servir varias LAN. Solo interactúa con el protocolo IP.
+\end{itemize}
+
+\begin{large}
+ \textbf{Investigar la arquitectura X.25, relacionándola con el modelo OSI}
+\end{large}
+
+Entre los protocolos comúnmente asociados con el modelo OSI, el conjunto de protocolos conocido
+como X.25 es probablemente el mejor conocido y el más ampliamente utilizado. X.25 fue establecido como
+una recomendación de la ITU-TS, una organización internacional que recomienda estándares
+para los servicios telefónicos internacionales.
+
+\begin{itemize}
+ \item \textbf{Nivel Físico}
+ 
+ Es recomendado entre el ETD y el ETCD el X.21. X.25 asume que dentro del nivel físico existen 2 tipos de nivel.
+ X.21 mantiene activados los circuitos T(transmisión) y R(recepción) durante el intercambio de paquetes. Se utiliza
+ para el acceso a redes de conmutación digital (telefonía digital. Asume también, que el X.21bis se encuentra
+ en estado 13S(enviar datos), 13R(recibir datos) o 13(transferencia de datos. Al igual que se emplea para el 
+ acceso a través de un enlace punto a punto.
+ 
+ \item \textbf{Nivel de Enlace}
+ 
+ Garantiza la transferencia confiable de datos a través de enlaces de datos, mediante la transmisión de datos
+ con una secuencia de tramas. Este protocolo de línea es un conjunto de HDLC. LAPB y X.25 interactúan de la siguiente forma.
+ En la trama LAPB, el paquete X.25 se transporta dentro del campo I. Es LAPB el que se encarga de que lleguen correctamente
+ los paquetes X.25 que transmiten a través de un canal susceptible de errores, desde o hacia la interfaz DTE/DCE.
+ 
+ \item \textbf{Servicio de Circuito Virtual}
+ 
+ Este ofrece dos tipos de circuitos virtuales: llamadas virtuales y circuitos virtuales permanentes. Una llamada virtual es una circuito virtual
+ que se establece dinámicamente mediante una petición de llamada. Un circuito virtual permanente es un circuito virtual fijo asignado en la red.
+ 
+ La red X.25 realiza el control de flujo y control de errores nodo a nodo, mientras que en la frame relay dichos
+ controles se realizan de extremo a extremo.
+ 
+ \item \textbf{Control de flujo}
+ 
+ En un paquete de datos se combinan dos números de secuencia (el de envío y el de recepción) para coordinar el intercambio de paquetes entre el DTE y el DCE.
+ El esquema de numeración extendida permite que el número de secuencia tome valores hasta 127(módulo 128).
+ 
+ \item \textbf{Ventajas}
+ 
+ \begin{itemize}
+  \item X.25 ofrece una capacidad variable y compartida de baja velocidad de transmisión que puede ser conmutada o permanente.
+  \item Asignación dinámica de la capacidad.
+  \item Transporte de datos de múltiples sistemas.
+  \item Fiable.
+  \item Control de errores.
+ \end{itemize}
+
+ \item \textbf{Desventajas}
+ 
+ \begin{itemize}
+  \item Ancho de banda limitado.
+  \item Retardo de transmisión grande y variable.
+  \item Señalización en canal y común, ineficaz y problemática.
+  \item Poca velocidad de transmisión.
+  \item No tiene una rápida y efectiva interconexión de LANs.
+ \end{itemize}
+
+ 
+ 
+\end{itemize}
+
+
+
+\begin{thebibliography}{1}
+ \bibitem{libro}
+ Stallings, WilliamWilliam Stallings. ``Comunicaciones y redes de computadores.'' Pearson Educación, 2004.
+ 
+ \bibitem{IP}
+ Juan Martinez, ``Protocolo de Internet (IP - Internet Protocol)'', Universidad Rey Juan Carlos, 2005.
+ 
+ \bibitem{arp}
+ CCM-High-Tech ``El protocolo ARP'', 2017
+ 
+ \bibitem{x25}
+ Jorge Herrera Martinez, ``X.25 Y SU RELACIÓN CON EL MODELO OSI'', 2013.
+ 
+ 
+\end{thebibliography}
+
+
+
+\end{document}
+

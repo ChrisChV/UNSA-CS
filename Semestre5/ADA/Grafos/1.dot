@@ -1,0 +1,17 @@
+digraph{
+1 [color=black];
+2 [color=black];
+3 [color=black];
+4 [color=black];
+5 [color=black];
+6 [color=black];
+1->4;
+2->1;
+2->5;
+3->2;
+3->6;
+4->6;
+4->5;
+5->3;
+6->5;
+}

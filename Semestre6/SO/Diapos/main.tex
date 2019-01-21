@@ -1,0 +1,450 @@
+\documentclass{beamer}
+\usepackage[spanish]{babel}
+\usepackage[utf8]{inputenc}
+
+\usetheme{Madrid}
+
+
+\title{Principios del Hardware de E/S}
+
+\author{Christofer Chávez Carazas
+        \and Karen Gordillo Viña
+        \and Ruben Torres Lima}
+
+
+\institute[Universities of Somewhere and Elsewhere] 
+{Universidad Nacional de San Agustín \\ Ciencia de la Computación}
+
+
+\date{\today}
+
+
+
+
+\AtBeginSubsection[]
+{
+  \begin{frame}<beamer>{Outline}
+    \tableofcontents[currentsection,currentsubsection]
+  \end{frame}
+}
+
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+%\begin{frame}{Contenidos}
+ % \tableofcontents
+%\end{frame}
+
+
+
+\begin{frame}{Introducción}
+\begin{itemize}
+    
+
+ \item  Una de las funciones principales de un sistema operativo es el control de todos los dispositivos de entrada/salida de la computadora.
+  
+  \item Debe enviar comandos a los dispositivos, detectar las interrupciones y controlar los errores.
+  \item Debe proporcionar además una interfaz entre los dispositivos y el resto del sistema, sencilla y fácil de usar.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Dispositivos de E/S}
+    \begin{block}{}
+    Dispositivos de bloque
+    \end{block}
+    \begin{block}{}
+    Dispositivos de carácter
+    \end{block}
+\end{frame}
+
+\begin{frame}{Dispositivos de bloque}
+    \begin{itemize}
+    
+    \item Un dispositivo de bloque es aquel que almacena la información en bloques de tamaño fijo, cada uno con su propia dirección.
+    
+    
+    \item La propiedad esencial de un dispositivo de bloque es la posibilidad de leer o escribir en un bloque de forma independiente de los demás.
+    
+    
+    \item Los tamaños comunes de los bloques van desde 128 bytes hasta 1024 bytes.
+    
+    
+    \item Los discos son dispositivos de bloque.
+    
+    \end{itemize}
+    
+\end{frame}
+
+\begin{frame}{Dispositivos de carácter}
+    \begin{itemize}
+        
+    \item Un dispositivo de caracter envía o recibe un flujo de caracteres, sin sujetarse a una estructura de bloques.
+    
+    \item Las terminales, impresoras de la línea, cintas de papel, tarjetas perforadas, interfaces de una red, ratones (para apuntar hacia la pantalla), y muchos otros dispositivos no parecidos a los discos son dispositivos de caracter.
+    
+    \end{itemize}
+\end{frame}
+
+
+\begin{frame}{Controladores de Dispositivos}
+  \begin{block}{Las unidades de E/S generalmente constan de:}
+    \begin{itemize}
+      \item Un componente mecánico.
+      \item Un componente electrónico, el controlador del dispositivo o adaptador.  
+    \end{itemize}
+  \end{block}
+  
+  \begin{block}{Los modelos más frecuentes de comunicación
+entre la cpu y los controladores son:}
+
+    \begin{itemize}
+        \item Para la mayoría de las micro y mini computadoras se
+        utiliza el modelo de bus del sistema.
+        \item Para la mayoría de los mainframes se utiliza el modelo
+        de varios buses y computadoras especializadas en E/S.
+        llamadas canales de E/S.
+    \end{itemize}
+
+  \end{block}
+\end{frame}
+
+\begin{frame}{Controladores de Dispositivos}
+    \begin{block}{La comunicación es mediante un flujo de bits en serie que:}
+    \begin{itemize}
+        \item Comienza con un preámbulo.
+        \item Sigue con una serie de bits (de un sector de disco, por ej.).
+        \item Concluye con una suma para verificación o un código corrector de errores.
+    \end{itemize}
+    \end{block}
+    
+    \begin{block}{El preámbulo:}
+    \begin{itemize}
+        \item Se escribe al dar formato al disco.
+        \item Contiene el número de cilindro y sector, el tamaño de sector y otros datos similares.
+    \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}{Controladores de Dispositivos}
+    \begin{block}{El controlador debe:}
+    \begin{itemize}
+        \item Convertir el flujo de bits en serie en un bloque de bytes.
+        \item Efectuar cualquier corrección de errores necesaria.
+        \item Copiar el bloque en la memoria principal.
+    \end{itemize}
+    \end{block}
+    
+    \begin{block}{Cada controlador posee registros que utiliza para comunicarse con la cpu:}
+    \begin{itemize}
+    \item Pueden ser parte del espacio normal de direcciones de la memoria: E/S mapeada a memoria.
+    \item Pueden utilizar un espacio de direcciones especial para la E/S, asignando a cada controlador una parte de él.
+    \end{itemize}
+
+    \end{block}
+    
+\end{frame}
+
+
+\begin{frame}{Controladores de Dispositivos}
+  \begin{block}{}
+  El S.O. realiza la E/S al escribir comandos en los registros de los controladores; los parámetros de los comandos también se cargan en los registros de los controladores. Al aceptar el comando, la cpu puede dejar al controlador y dedicarse a otro trabajo.
+  \end{block}
+  
+  \begin{block}{Al terminar el comando, el controlador provoca una interrupción para permitir que el S.O.:}
+  \begin{itemize}
+    \item Obtenga el control de la cpu.
+    \item Verifique los resultados de la operación.
+\end{itemize}
+  \end{block}
+  \begin{block}{}
+  La cpu obtiene los resultados y el estado del dispositivo
+al leer uno o más bytes de información de los registros
+del controlador.
+  \end{block}
+\end{frame}
+
+\begin{frame}{Acceso Directo a Memoria (DMA)}
+    \begin{block}{}
+        El acceso directo a memoria (DMA) permite a cierto tipo de componentes de una computadora acceder a la memoria del sistema para leer o escribir independientemente de la unidad central de procesamiento (CPU) principal.
+    \end{block}
+\end{frame}
+
+\begin{frame}{Acceso Directo a Memoria (DMA)}
+    \begin{block}{}
+        Lectura sin DMA
+    \end{block}
+    \begin{block}{}
+        Lectura con DMA
+    \end{block}
+\end{frame}
+
+\begin{frame}{Lectura sin DMA}
+        \begin{block}{
+            El controlador lee en serie el bloque (uno o más sectores) de la unidad:
+            \pause 
+        }
+        \begin{itemize}
+            \item {
+                La lectura es bit por bit.
+                \pause
+            }
+            \item {
+                Los bits del bloque se graban en el buffer interno del controlador.
+                \pause
+            }
+        \end{itemize}
+        
+        \end{block}
+        
+        \begin{block}{
+            Se calcula la suma de verificación para corroborar que no existen errores de lectura.
+            
+        }
+        \end{block}
+        \pause
+        \begin{block}{
+            El controlador provoca una interrupción.
+        }
+        \end{block}
+        
+\end{frame}
+
+\begin{frame}{Lectura sin DMA}
+        \begin{block}{
+            El S. O. lee el bloque del disco por medio del buffer del controlador:
+            \pause 
+        }
+        \begin{itemize}
+            \item {
+                La lectura es por byte o palabra a la vez.
+                \pause
+            }
+            \item {
+                En cada iteración de este ciclo se lee un byte o una palabra del registro del controlador y se almacena en memoria.
+                \pause
+            }
+        \end{itemize}
+        \end{block}
+        
+        \begin{block}{
+            Se desperdicia tiempo de la CPU.
+        }
+        \end{block}
+        
+\end{frame}
+
+\begin{frame}{Lectura con DMA}
+        \begin{block}{
+            La CPU proporciona al controlador:
+            \pause 
+        }
+        \begin{itemize}
+            \item {
+                La dirección del bloque en el disco.
+                \pause
+            }
+            \item {
+                La dirección en memoria adonde debe ir el bloque.
+                \pause
+            }
+            \item {
+                 El número de bytes por transferir.
+            }
+        \end{itemize}
+        \end{block}
+        
+        
+\end{frame}
+
+\begin{frame}{Lectura con DMA}
+    
+        \begin{block}{
+            Luego de que el controlador leyó todo el bloque del dispositivo a su buffer y de que corroboró la suma de verificación:
+            \pause
+        }
+        \begin{itemize}
+            \item {
+                Copia el primer byte o palabra a la memoria principal.
+                \pause
+            }
+            \item {
+                 Lo hace en la dirección especificada por medio de la dirección de memoria de DMA.
+                \pause
+            }
+            \item {
+                 Incrementa la dirección DMA y decrementa el contador DMA en el número de bytes que acaba de transferir.
+                \pause
+            }
+            \item {
+                Se repite este proceso hasta que el contador se anula y por lo tanto el controlador provoca una interrupción.
+                \pause
+            }
+            \item {
+                 Al iniciar su ejecución el S.O. luego de la interrupción provocada, no debe copiar el bloque en la memoria, porque ya se encuentra ahí.
+            }
+            
+        \end{itemize}
+        \end{block}
+        
+\end{frame}
+
+\begin{frame}{Lectura con DMA}
+    
+        \begin{block}{
+            El controlador necesita un buffer interno porque una vez iniciada una transferencia del disco:
+            \pause
+        }
+        \begin{itemize}
+            \item {
+                Los bits siguen llegando del disco constantemente.
+                \pause
+            }
+            
+            \item {
+                 No interesa si el controlador está listo o no para recibirlos.
+                \pause
+            }
+            \item {
+                 Si el controlador intentara escribir los datos en la memoria directamente:
+                \pause
+                \begin{itemize}
+                    \item {
+                        Tendría que recurrir al bus del sistema para c / u de las palabras (o bytes) transferidas.
+                        \pause
+                    }
+                    \item {
+                        El bus podría estar ocupado por otro dispositivo y el controlador debería esperar.
+                        \pause
+                    }
+                    \ item {
+                        Si la siguiente palabra llegara antes de que la anterior hubiera sido almacenada, el controlador la tendría que almacenar en alguna parte.
+                        \pause
+                    }
+                \end{itemize}
+            }
+            
+        \end{itemize}
+        \end{block}
+        
+\end{frame}
+
+\begin{frame}{Lectura con DMA}
+    
+        \begin{block}{
+            Si el bloque se guarda en un buffer interno:
+            \pause
+        }
+        \begin{itemize}
+            \item {
+                El bus no se necesita sino hasta que el DMA comienza.
+                \pause
+            }
+            
+            \item {
+                 La transferencia DMA a la memoria ya no es un aspecto crítico del tiempo.
+            }
+            
+        \end{itemize}
+        \end{block}
+        
+\end{frame}
+
+
+\begin{frame}{Lectura con DMA}
+    
+        \begin{block}{
+            Los controladores simples no pueden atender la E/S simultánea:
+            \pause
+        }
+        \begin{itemize}
+            \item {
+                Mientras transfieren a la memoria, el sector que pasa debajo de la cabeza del disco se pierde; es decir que el bloque siguiente al recién leído se pierde.
+                \pause
+            }
+            
+            \item {
+                 La lectura de una pista completa se hará en dos rotaciones completas, una para los bloques pares y otra para los impares.
+                
+            }
+
+            
+        \end{itemize}
+        \end{block}
+        
+\end{frame}
+
+\begin{frame}{Lectura con DMA}
+    
+        \begin{block}{
+            Los controladores simples no pueden atender la E/S simultánea:
+            \pause
+        }
+        \begin{itemize}
+            
+            \item {
+                 Si el tiempo necesario para una transferencia de un bloque del controlador a la memoria por medio del bus es mayor que el tiempo necesario para leer un bloque del disco:
+                \pause
+                \begin{itemize}
+                    \item {
+                        Sería necesario leer un bloque y luego saltar dos o más bloques.
+                        \pause
+                    }
+                    \item {
+                        El salto de bloques:
+                        \pause
+                        \begin{itemize}
+                            \item {
+                                Se ejecuta para darle tiempo al controlador para la transferencia de los datos a la memoria.
+                                \pause
+                            }
+                            \item {
+                                Se llama separación.
+                                \pause
+                            }
+                            \item{
+                                Al formatear el disco, los bloques se numeran tomando en cuenta el factor de separación.
+                                \pause
+                            }
+                        \end{itemize}
+                    }
+                    \item {
+                        El bus podría estar ocupado por otro dispositivo y el controlador debería esperar.
+                        \pause
+                    }
+                    \item {Esto permite al S. O.: 
+                        \pause
+                    }
+                    \begin{itemize}
+                        \item {
+                            Leer los bloques con numeración consecutiva.
+                            \pause
+                        }
+                        \item {
+                            Conservar la máxima velocidad posible del hardware.
+        
+                        }
+                    \end{itemize}
+                \end{itemize}
+            }
+            
+        \end{itemize}
+        \end{block}
+        
+\end{frame}
+
+\begin{frame}{Conclusiones}
+\begin{itemize}
+    \item A pesar de que los dispositivos de hardware se encuentran clasificados, no todos los dispositivos encajan perfectamente en dichas clasificaciones.
+    \item El trabajo de lectura sin DMA muestra desperdicio de tiempo en la CPU.
+    \item Con la disposicion de un buffer interno el tiempo ya no es critico en la transferencia de la DMA a la memoria.
+    \item Los controladores simples no tienen capacidad de atencion simultanea por lo cual se generan perdidas de bloques mientras otros se tranfieren a memoria.
+\end{itemize}
+\end{frame}
+
+\end{document}
+
+

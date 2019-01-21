@@ -1,0 +1,33 @@
+body {
+  font-family: $font-stack;
+  font-size: 20px !important;
+  color: $font-color;
+  background-color: $background-color;
+}
+
+.btn {
+  background: transparent;
+  padding: 5px 15px;
+  border-radius: 0;
+  color: $font-color;
+}
+
+.btn-full {
+  border: 1px solid $netflix-red;
+}
+
+.btn-full:hover,
+.btn-full:active {
+  color: lighten($font-color, 20%);
+  border: 1ps solid lighten($netflix-red, 20%)
+}
+
+.btn-ghost {
+  border: 1px solid $font-color;
+}
+
+.btn-ghost:hover,
+.btn-ghost:active {
+  color: lighten($font-color, 20%);
+  border: 1ps solid lighten($font-color, 20%)
+}

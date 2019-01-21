@@ -1,0 +1,10 @@
+<map id="G" name="G">
+<area shape="rect" id="node13" href="$a00108.html" title="pqxx::undefined_column" alt="" coords="5,392,168,421"/>
+<area shape="rect" id="node15" href="$a00109.html" title="pqxx::undefined_function" alt="" coords="192,392,357,421"/>
+<area shape="rect" id="node17" href="$a00110.html" title="pqxx::undefined_table" alt="" coords="381,392,531,421"/>
+<area shape="rect" id="node2" href="$a00086.html" title="Exception class for failed queries." alt="" coords="221,237,328,267"/>
+<area shape="rect" id="node4" href="$a00038.html" title="Run&#45;time failure encountered by libpqxx, similar to std::runtime_error." alt="" coords="228,160,321,189"/>
+<area shape="rect" id="node6" href="$a00074.html" title="Mixin base class to identify libpqxx&#45;specific exception types." alt="" coords="120,83,269,112"/>
+<area shape="rect" id="node8" title="STL class." alt="" coords="293,83,416,112"/>
+<area shape="rect" id="node10" title="STL class." alt="" coords="303,5,407,35"/>
+</map>

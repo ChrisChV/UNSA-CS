@@ -1,0 +1,21 @@
+Automata de (a.b.c)*
+Estados
+4
+0 [0 6 7]
+1 [1 2]
+2 [3 4]
+3 [0 5 7]
+Inicial
+0
+Aceptacion
+2
+0 3 
+Entradas
+3
+a b c 
+Transiciones
+4
+0 a 1
+1 b 2
+2 c 3
+3 a 1

@@ -1,0 +1,6 @@
+Inicio
+variables a,b,c:short
+Leer a
+Leer b
+c<-a+b
+Escribir c

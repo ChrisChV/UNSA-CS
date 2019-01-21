@@ -1,0 +1,25 @@
+# depslib dependency file v1.0
+1450577954 source:/home/chris/Documentos/Semestre/Semestre4/AED YUBER/Huffman/src/ArbolH.cpp
+
+1450670595 source:/home/chris/Documentos/Semestre/Semestre4/AED YUBER/Huffman/main.cpp
+	<iostream>
+	"ArbolH.h"
+	"map"
+
+1450670808 /home/chris/Documentos/Semestre/Semestre4/AED YUBER/Huffman/include/ArbolH.h
+	"list"
+	"FibonacciHeap.h"
+	"fstream"
+	"Monticulo.h"
+
+1450589130 /home/chris/Documentos/Semestre/Semestre4/AED YUBER/Huffman/include/FibonacciHeap.h
+	"list"
+	"map"
+	"fstream"
+	"iostream"
+
+1450662606 /home/chris/Documentos/Semestre/Semestre4/AED YUBER/Huffman/include/Monticulo.h
+	"vector"
+	"algorithm"
+	"fstream"
+

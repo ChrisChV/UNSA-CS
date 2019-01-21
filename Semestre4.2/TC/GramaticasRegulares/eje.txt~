@@ -1,0 +1,9 @@
+T:x,y;
+N:S,X,Y;
+R:
+S->xX
+S->yY
+X->yY
+X->%
+Y->xX
+Y->%

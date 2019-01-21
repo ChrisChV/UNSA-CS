@@ -1,0 +1,38 @@
+<% @title = "Profile" %>
+
+<h3>View profile</h3>
+
+<form class="pure-form" action="/profile" method="get">
+    <input type="text" name="username" value="<%= @username %>" placeholder="username">
+    <input class="pure-button" type="submit" value="Show">
+</form>
+
+<%= display_error(@error) %>
+    
+<% if @user %>
+    <% if @user == @logged_in_user then %>
+        <h3>Your profile</h3>
+    <% else %>
+        <h3><%= @user.username %>'s profile</h3>
+    <% end  %>
+    
+    <p id="bitbar_display">0 bitbars</p>
+        
+    <% if @user.profile and @user.profile != "" %>
+        <div id="profile"><%= sanitize_profile(@user.profile) %></div>
+    <% end %>
+    
+    <span id="bitbar_count" class="<%= @user.bitbars %>" />
+    <script type="text/javascript">
+      var total = eval(document.getElementById('bitbar_count').className);
+      function showBitbars(bitbars) {
+        document.getElementById("bitbar_display").innerHTML = bitbars + " bitbars";
+        if (bitbars < total) {
+          setTimeout("showBitbars(" + (bitbars + 1) + ")", 20);
+        }
+      }
+      if (total > 0) showBitbars(0);  // count up to total
+    </script>
+<% end %>
+
+    

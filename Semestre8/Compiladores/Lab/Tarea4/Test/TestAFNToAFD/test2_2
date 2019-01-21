@@ -1,0 +1,20 @@
+Automata de (b|b.c)+
+Estados
+3
+0 [0 2 6 8]
+1 [0 1 2 3 4 6 7 9]
+2 [0 2 5 6 7 9]
+Inicial
+0
+Aceptacion
+2
+1 2 
+Entradas
+2
+b c 
+Transiciones
+4
+0 b 1
+1 b 1
+1 c 2
+2 b 1
