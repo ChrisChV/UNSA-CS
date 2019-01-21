@@ -1,0 +1,36 @@
+.navbar-default .navbar-brand {
+  color: $netflix-red;
+  font-size: 120%;
+  font-weight: 700;
+  text-transform: uppercase
+}
+
+.navbar-default {
+  background-color: transparent;
+  border-color: transparent;
+}
+
+.inner-addon { 
+  position: relative; 
+}
+
+.navbar {
+  margin-bottom: 0px;
+  min-height: 80px;
+  padding-top: 15px;
+}
+/* style icon */
+.inner-addon .glyphicon {
+  position: absolute;
+  padding: 7px;
+  pointer-events: none;
+  color: darken($font-color, 50%)
+}
+
+/* align icon */
+.left-addon .glyphicon  { left:  0px;}
+.right-addon .glyphicon { right: 0px;}
+
+/* add padding  */
+.left-addon input  { padding-left:  30px; }
+.right-addon input { padding-right: 30px; }
