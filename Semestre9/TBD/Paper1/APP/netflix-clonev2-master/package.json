@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "axios": "^0.16.1",
+    "axios": "^0.21.1",
     "prop-types": "^15.5.8",
     "react": "^15.5.4",
     "react-autosuggest": "^9.0.1",
